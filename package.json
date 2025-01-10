@@ -14,10 +14,13 @@
   "dependencies": {
     "@headlessui/react": "^2.2.0",
     "clsx": "^2.1.1",
+    "framer-motion": "^11.17.0",
     "next": "15.1.4",
     "prettier": "^3.4.2",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.4.0",
+    "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.3",
@@ -25,6 +28,7 @@
     "@storybook/addon-essentials": "^8.4.7",
     "@storybook/addon-interactions": "^8.4.7",
     "@storybook/addon-onboarding": "^8.4.7",
+    "@storybook/addon-styling-webpack": "^1.0.1",
     "@storybook/blocks": "^8.4.7",
     "@storybook/nextjs": "^8.4.7",
     "@storybook/react": "^8.4.7",
