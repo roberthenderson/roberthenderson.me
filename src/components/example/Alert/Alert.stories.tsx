@@ -36,6 +36,11 @@ export const TitleDescriptionButtons: Story = {
   args: {
     ...args,
     description: 'This is a test description sentence.',
-    buttons: [<Button>Confirm</Button>, <Button plain>Cancel</Button>],
+    buttons: [
+      <Button key={1}>Confirm</Button>,
+      <Button key={2} plain>
+        Cancel
+      </Button>,
+    ],
   },
 };

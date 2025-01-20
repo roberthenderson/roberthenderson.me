@@ -65,7 +65,7 @@ export const BadgeButton = forwardRef(function BadgeButton(
     ),
   ref: React.ForwardedRef<HTMLElement>,
 ) {
-  let classes = clsxMerge(
+  const classes = clsxMerge(
     className,
     'group relative inline-flex rounded-md focus:outline-none data-[focus]:outline data-[focus]:outline-2 data-[focus]:outline-offset-2 data-[focus]:outline-blue-500',
   );

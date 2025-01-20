@@ -1,5 +1,6 @@
 import { clsxMerge } from '@/src/utils/clsxMerge';
 import * as Headless from '@headlessui/react';
+import Image from 'next/image';
 import React, { forwardRef } from 'react';
 import { TouchTarget } from './Button/Button';
 import { Link } from './link';
@@ -54,7 +55,7 @@ export function Avatar({
           </text>
         </svg>
       )}
-      {src && <img className="size-full" src={src} alt={alt} />}
+      {src && <Image className="size-full" src={src} alt={alt} />}
     </span>
   );
 }
@@ -74,7 +75,7 @@ export const AvatarButton = forwardRef(function AvatarButton(
     ),
   ref: React.ForwardedRef<HTMLElement>,
 ) {
-  let classes = clsxMerge(
+  const classes = clsxMerge(
     className,
     square ? 'rounded-[20%]' : 'rounded-full',
     'relative inline-grid focus:outline-none data-[focus]:outline data-[focus]:outline-2 data-[focus]:outline-offset-2 data-[focus]:outline-blue-500',

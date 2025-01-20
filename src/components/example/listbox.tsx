@@ -125,7 +125,7 @@ export function ListboxOption<T>({
   Headless.ListboxOptionProps<'div', T>,
   'as' | 'className'
 >) {
-  let sharedClasses = clsxMerge(
+  const sharedClasses = clsxMerge(
     // Base
     'flex min-w-0 items-center',
     // Icons
