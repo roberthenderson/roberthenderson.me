@@ -171,7 +171,7 @@ export const Button = forwardRef(function Button(
   { color, outline, plain, className, children, ...props }: ButtonProps,
   ref: React.ForwardedRef<HTMLElement>,
 ) {
-  let classes = clsxMerge(
+  const classes = clsxMerge(
     className,
     styles.base,
     outline
