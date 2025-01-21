@@ -136,7 +136,6 @@ export const usePageSections = () => {
     if (scrollPosition > 0) {
       return;
     }
-    console.log('scroll element into view');
 
     const { pathname } = router;
     if (pathname !== '/') {
