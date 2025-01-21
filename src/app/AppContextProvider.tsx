@@ -9,8 +9,7 @@ import {
   useContext,
   useState,
 } from 'react';
-
-type AppTheme = 'light' | 'dark';
+import { useDarkMode } from '../hooks/useDarkMode';
 
 export enum PageSectionsEnum {
   About = 'About',
@@ -30,11 +29,12 @@ type HeaderRef = RefObject<HTMLElement | null> | null;
 type PageSections = PageSection[] | null;
 
 interface AppContextType {
+  ready: boolean;
   router: NextRouter;
   headerRef: HeaderRef;
   setHeaderRef: Dispatch<SetStateAction<HeaderRef>>;
-  isDarkTheme: boolean;
-  toggleTheme: () => void;
+  darkMode: boolean;
+  setDarkMode: Dispatch<SetStateAction<boolean>>;
   pageSectionsList: PageSections;
   setPageSectionsList: Dispatch<SetStateAction<PageSections>>;
   activeSection: PageSectionsEnum | null;
@@ -49,27 +49,21 @@ export const AppContextProvider: FC<{ children: ReactNode }> = ({
   const router = useRouter();
 
   const [headerRef, setHeaderRef] = useState<HeaderRef>(null);
-
-  const [theme, setTheme] = useState<AppTheme>('light');
-  const isDarkTheme = theme === 'dark';
-
   const [pageSectionsList, setPageSectionsList] = useState<PageSections>(null);
   const [activeSection, setActiveSection] = useState<PageSectionsEnum | null>(
     null,
   );
-
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
-  };
+  const { ready, darkMode, setDarkMode } = useDarkMode();
 
   return (
     <AppContext.Provider
       value={{
+        ready,
         router,
         headerRef,
         setHeaderRef,
-        isDarkTheme,
-        toggleTheme,
+        darkMode,
+        setDarkMode,
         pageSectionsList,
         setPageSectionsList,
         activeSection,

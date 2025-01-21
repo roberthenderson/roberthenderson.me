@@ -7,13 +7,15 @@ import { Navigation } from './Navigation';
 const THEME_ICON_SIZE = 28;
 
 export const Header: FC = () => {
-  const { isDarkTheme, toggleTheme, setHeaderRef } = useAppContext();
+  const { darkMode, setDarkMode, setHeaderRef } = useAppContext();
   const headerRef = useRef<HTMLElement>(null);
   useEffect(() => setHeaderRef(headerRef), [setHeaderRef]);
 
   const handleLogoClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const toggleDarkMode = () => setDarkMode((prev) => !prev);
 
   return (
     <header
@@ -33,10 +35,10 @@ export const Header: FC = () => {
       <div className="flex items-center gap-20">
         <Navigation />
         <button
-          onClick={toggleTheme}
+          onClick={toggleDarkMode}
           className="opacity-100 transition-opacity hover:opacity-75"
         >
-          {isDarkTheme ? (
+          {darkMode ? (
             <MdDarkMode size={THEME_ICON_SIZE} />
           ) : (
             <MdOutlineDarkMode size={THEME_ICON_SIZE} />

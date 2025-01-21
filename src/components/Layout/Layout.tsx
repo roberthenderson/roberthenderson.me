@@ -9,10 +9,14 @@ export const Layout = ({
 }: Readonly<{
   children: ReactNode;
 }>) => {
-  const { isDarkTheme } = useAppContext();
+  const { ready, darkMode } = useAppContext();
+
+  if (!ready) {
+    return null;
+  }
 
   return (
-    <div className={clsxMerge(isDarkTheme && 'dark')}>
+    <div className={clsxMerge(darkMode ? 'dark' : 'light')}>
       <Metadata />
       <div
         className={clsxMerge(
