@@ -19,9 +19,7 @@ interface NavigationItemProps {
 }
 
 const NavigationItem: FC<NavigationItemProps> = ({ section }) => {
-  const { router } = useAppContext();
   const handleNavLinkClick = () => {
-    router.push('', section.link, { shallow: true });
     scrollElementIntoView(section.ref.current);
   };
 

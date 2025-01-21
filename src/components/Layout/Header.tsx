@@ -1,5 +1,4 @@
 import { clsxMerge } from '@/src/utils/clsxMerge';
-import Link from 'next/link';
 import { FC, useEffect, useRef } from 'react';
 import { MdDarkMode, MdOutlineDarkMode } from 'react-icons/md';
 import { useAppContext } from '../../app/AppContextProvider';
@@ -11,6 +10,10 @@ export const Header: FC = () => {
   const { isDarkTheme, toggleTheme, setHeaderRef } = useAppContext();
   const headerRef = useRef<HTMLElement>(null);
   useEffect(() => setHeaderRef(headerRef), [setHeaderRef]);
+
+  const handleLogoClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <header
@@ -24,9 +27,9 @@ export const Header: FC = () => {
         'transition-all',
       )}
     >
-      <Link href="/" className="font-dmSerif text-logo">
+      <button onClick={handleLogoClick} className="font-dmSerif text-logo">
         .robert
-      </Link>
+      </button>
       <div className="flex items-center gap-20">
         <Navigation />
         <button
