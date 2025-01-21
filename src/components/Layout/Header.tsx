@@ -1,6 +1,6 @@
 import { clsxMerge } from '@/src/utils/clsxMerge';
 import Link from 'next/link';
-import { FC } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import { MdDarkMode, MdOutlineDarkMode } from 'react-icons/md';
 import { useAppContext } from '../../app/AppContextProvider';
 import { Navigation } from './Navigation';
@@ -8,10 +8,13 @@ import { Navigation } from './Navigation';
 const THEME_ICON_SIZE = 28;
 
 export const Header: FC = () => {
-  const { isDarkTheme, toggleTheme } = useAppContext();
+  const { isDarkTheme, toggleTheme, setHeaderRef } = useAppContext();
+  const headerRef = useRef(null);
+  useEffect(() => setHeaderRef(headerRef.current), [setHeaderRef]);
 
   return (
     <header
+      ref={headerRef}
       className={clsxMerge(
         'sticky left-0 top-0',
         'flex items-center justify-between gap-2',

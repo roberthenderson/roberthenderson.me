@@ -5,6 +5,7 @@ const Home = () => {
 
   return (
     <div className="flex flex-col gap-10 pb-10">
+      <div className="h-40">WELCOME</div>
       {pageSections.map((section) => (
         <section
           key={section.label}

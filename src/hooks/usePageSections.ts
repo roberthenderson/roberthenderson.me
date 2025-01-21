@@ -9,7 +9,14 @@ import {
 import { scrollElementIntoView } from '../utils/scrollElementIntoView';
 
 export const usePageSections = () => {
-  const { router, setPageSectionsList } = useAppContext();
+  const {
+    router,
+    setPageSectionsList,
+    activeSection,
+    setActiveSection,
+    headerRef,
+  } = useAppContext();
+
   const aboutSection = useRef<HTMLElement | null>(null);
   const skillsSection = useRef<HTMLElement | null>(null);
   const projectsSection = useRef<HTMLElement | null>(null);
@@ -28,21 +35,25 @@ export const usePageSections = () => {
   const pageSections: PageSection[] = useMemo(
     () => [
       {
+        id: PageSectionsEnum.About,
         label: PageSectionsEnum.About,
         ref: aboutSection,
         link: pageSectionLinks[PageSectionsEnum.About],
       },
       {
+        id: PageSectionsEnum.Skills,
         label: PageSectionsEnum.Skills,
         ref: skillsSection,
         link: pageSectionLinks[PageSectionsEnum.Skills],
       },
       {
+        id: PageSectionsEnum.Projects,
         label: PageSectionsEnum.Projects,
         ref: projectsSection,
         link: pageSectionLinks[PageSectionsEnum.Projects],
       },
       {
+        id: PageSectionsEnum.Contact,
         label: PageSectionsEnum.Contact,
         ref: contactSection,
         link: pageSectionLinks[PageSectionsEnum.Contact],
@@ -82,6 +93,7 @@ export const usePageSections = () => {
    */
   useEffect(() => {
     if (
+      !headerRef?.current?.offsetHeight ||
       !aboutSection.current?.offsetTop ||
       !skillsSection.current?.offsetTop ||
       !projectsSection.current?.offsetTop ||
@@ -90,74 +102,97 @@ export const usePageSections = () => {
       return;
     }
 
+    const scrollWithHeaderHeight =
+      scrollPosition + headerRef.current.offsetHeight;
+
     // If we're at the top, show the root route
-    if (scrollPosition === 0 && router.asPath !== '/') {
+    if (
+      scrollWithHeaderHeight < aboutSection.current.offsetTop &&
+      router.asPath !== '/'
+    ) {
       router.push('', '/', { shallow: true });
+      setActiveSection(null);
     } else if (
-      scrollPosition > 0 &&
-      scrollPosition < skillsSection.current.offsetTop &&
+      scrollWithHeaderHeight >= aboutSection.current.offsetTop &&
+      scrollWithHeaderHeight < skillsSection.current.offsetTop &&
       router.asPath !== pageSectionLinks[PageSectionsEnum.About]
     ) {
       router.push('', pageSectionLinks[PageSectionsEnum.About], {
         shallow: true,
       });
+      setActiveSection(PageSectionsEnum.About);
     } else if (
-      scrollPosition >= skillsSection.current.offsetTop &&
-      scrollPosition < projectsSection.current.offsetTop &&
+      scrollWithHeaderHeight >= skillsSection.current.offsetTop &&
+      scrollWithHeaderHeight < projectsSection.current.offsetTop &&
       router.asPath !== pageSectionLinks[PageSectionsEnum.Skills]
     ) {
       router.push('', pageSectionLinks[PageSectionsEnum.Skills], {
         shallow: true,
       });
+      setActiveSection(PageSectionsEnum.Skills);
     } else if (
-      scrollPosition >= projectsSection.current.offsetTop &&
-      scrollPosition < contactSection.current.offsetTop &&
+      scrollWithHeaderHeight >= projectsSection.current.offsetTop &&
+      scrollWithHeaderHeight < contactSection.current.offsetTop &&
       router.asPath !== pageSectionLinks[PageSectionsEnum.Projects]
     ) {
       router.push('', pageSectionLinks[PageSectionsEnum.Projects], {
         shallow: true,
       });
+      setActiveSection(PageSectionsEnum.Projects);
     } else if (
-      scrollPosition >= contactSection.current.offsetTop &&
-      scrollPosition < scrollPosition + contactSection.current.offsetHeight &&
+      scrollWithHeaderHeight >= contactSection.current.offsetTop &&
+      scrollWithHeaderHeight <
+        scrollWithHeaderHeight + contactSection.current.offsetHeight &&
       router.asPath !== pageSectionLinks[PageSectionsEnum.Contact]
     ) {
       router.push('', pageSectionLinks[PageSectionsEnum.Contact], {
         shallow: true,
       });
+      setActiveSection(PageSectionsEnum.Contact);
     }
-  }, [scrollPosition, router, pageSectionLinks]);
+  }, [scrollPosition, headerRef, router, pageSectionLinks, setActiveSection]);
 
   /**
    * If a user comes directly to a page section from a URL,
    * scroll to that section
    */
   useEffect(() => {
-    if (scrollPosition > 0) {
+    // If the user has come directly to the page, the base state
+    // will have a `scrollPosition` of 0 and `activeSection` of
+    // null.
+    if (scrollPosition > 0 || activeSection !== null) {
       return;
     }
 
-    const { pathname } = router;
-    if (pathname !== '/') {
-      const pageSection = capitalize(pathname.slice(1)) as PageSectionsEnum;
+    const { asPath } = router;
+    if (asPath !== '/') {
+      const pageSection = capitalize(asPath.slice(1)) as PageSectionsEnum;
       switch (pageSection) {
         case PageSectionsEnum.About:
           scrollElementIntoView(aboutSection.current);
+          setActiveSection(PageSectionsEnum.About);
           break;
         case PageSectionsEnum.Skills:
           scrollElementIntoView(skillsSection.current);
+          setActiveSection(PageSectionsEnum.Skills);
           break;
         case PageSectionsEnum.Projects:
           scrollElementIntoView(projectsSection.current);
+          setActiveSection(PageSectionsEnum.Projects);
           break;
         case PageSectionsEnum.Contact:
           scrollElementIntoView(contactSection.current);
+          setActiveSection(PageSectionsEnum.Contact);
           break;
         default:
           router.push('/', undefined, { shallow: true });
+          setActiveSection(null);
       }
+    } else {
+      setActiveSection(null);
     }
-  }, [router, scrollPosition]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router, scrollPosition, setActiveSection]);
 
   return { pageSections };
 };
