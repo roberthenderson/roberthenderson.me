@@ -1,7 +1,9 @@
+import { usePageNavigation } from '../hooks/usePageNavigation';
 import { usePageSections } from '../hooks/usePageSections';
 
 const Home = () => {
-  const { pageSections } = usePageSections();
+  const { pageSectionLinks, pageSections } = usePageSections();
+  usePageNavigation({ pageSectionLinks, pageSections });
 
   return (
     <div className="flex flex-col gap-10 pb-10">
