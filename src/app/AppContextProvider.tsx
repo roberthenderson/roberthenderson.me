@@ -26,7 +26,7 @@ export interface PageSection {
   link: string;
 }
 
-type HeaderRef = RefObject<HTMLElement> | null;
+type HeaderRef = RefObject<HTMLElement | null> | null;
 type PageSections = PageSection[] | null;
 
 interface AppContextType {

@@ -9,8 +9,8 @@ const THEME_ICON_SIZE = 28;
 
 export const Header: FC = () => {
   const { isDarkTheme, toggleTheme, setHeaderRef } = useAppContext();
-  const headerRef = useRef(null);
-  useEffect(() => setHeaderRef(headerRef.current), [setHeaderRef]);
+  const headerRef = useRef<HTMLElement>(null);
+  useEffect(() => setHeaderRef(headerRef), [setHeaderRef]);
 
   return (
     <header
