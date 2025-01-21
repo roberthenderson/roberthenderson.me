@@ -1,6 +1,7 @@
 import { clsxMerge } from '@/src/utils/clsxMerge';
 import type { Metadata } from 'next';
-import { useState } from 'react';
+import { ReactNode } from 'react';
+import { useAppContext } from '../../app/AppContextProvider';
 import { Header } from './Header';
 
 export const metadata: Metadata = {
@@ -11,13 +12,15 @@ export const metadata: Metadata = {
 export const Layout = ({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) => {
-  const [isDark, setIsDark] = useState(true);
+  const { isDarkTheme } = useAppContext();
   return (
-    <div className={clsxMerge('flex flex-col gap-4', isDark && 'dark')}>
-      <Header setIsDark={setIsDark} />
-      <section>{children}</section>
+    <div
+      className={clsxMerge('flex flex-col', 'w-full', isDarkTheme && 'dark')}
+    >
+      <Header />
+      <main className="max-w-7xl lg:px-8">{children}</main>
       <footer>This is the footer</footer>
     </div>
   );
