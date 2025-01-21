@@ -12,15 +12,19 @@ export const Layout = ({
   const { isDarkTheme } = useAppContext();
 
   return (
-    <>
+    <div className={clsxMerge(isDarkTheme && 'dark')}>
       <Metadata />
       <div
-        className={clsxMerge('flex flex-col', 'w-full', isDarkTheme && 'dark')}
+        className={clsxMerge(
+          'flex w-full flex-col',
+          'transition-colors',
+          'bg-slate-200 text-slate-950 dark:bg-slate-950 dark:text-slate-200',
+        )}
       >
         <Header />
         <main className="max-w-7xl px-8">{children}</main>
         <footer>This is the footer</footer>
       </div>
-    </>
+    </div>
   );
 };
