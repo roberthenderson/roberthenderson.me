@@ -1,21 +1,14 @@
 import { clsxMerge } from '@/src/utils/clsxMerge';
 import { FC, useEffect, useRef } from 'react';
-import { MdDarkMode, MdOutlineDarkMode } from 'react-icons/md';
 import { useAppContext } from '../../app/AppContextProvider';
+import { DarkModeToggle } from '../DarkModeToggle/DarkModeToggle';
+import { Logo } from '../Logo/Logo';
 import { Navigation } from './Navigation';
 
-const THEME_ICON_SIZE = 28;
-
 export const Header: FC = () => {
-  const { darkMode, setDarkMode, setHeaderRef } = useAppContext();
+  const { setHeaderRef } = useAppContext();
   const headerRef = useRef<HTMLElement>(null);
   useEffect(() => setHeaderRef(headerRef), [setHeaderRef]);
-
-  const handleLogoClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const toggleDarkMode = () => setDarkMode((prev) => !prev);
 
   return (
     <header
@@ -30,34 +23,12 @@ export const Header: FC = () => {
         'md:px-8',
       )}
     >
-      <button
-        onClick={handleLogoClick}
-        className="font-dmSerif text-logo group pb-1"
-      >
-        <span className="text-violet-900 transition-colors dark:text-violet-400">
-          .r
-        </span>
-        <span className="transition-all group-hover:text-violet-900 max-sm:hidden dark:text-violet-600 group-hover:dark:text-violet-300">
-          obert
-        </span>
-      </button>
+      <Logo />
       <div
         className={clsxMerge('flex items-center gap-6', 'md:gap-10 lg:gap-20')}
       >
         <Navigation />
-        <button
-          onClick={toggleDarkMode}
-          className="opacity-100 transition-opacity hover:opacity-75"
-        >
-          {darkMode ? (
-            <MdDarkMode size={THEME_ICON_SIZE} className="text-yellow-600" />
-          ) : (
-            <MdOutlineDarkMode
-              size={THEME_ICON_SIZE}
-              className="text-violet-600"
-            />
-          )}
-        </button>
+        <DarkModeToggle />
       </div>
     </header>
   );
