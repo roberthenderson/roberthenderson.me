@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { FaFileDownload, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const ICON_CLASSNAME =
-  'text-amber-800 dark:text-slate-50 opacity-80 transition-opacity hover:opacity-100';
+  'text-amber-700 dark:text-slate-50 opacity-80 transition-opacity hover:opacity-100';
 
 export const Links: FC = () => {
   return (
