@@ -12,7 +12,7 @@ export const HeroSection: FC = () => {
     <section
       className={clsxMerge(
         'flex w-full justify-between',
-        'border-b-[1rem] border-yellow-600 bg-violet-100 transition-colors',
+        'border-b-[0.75rem] border-amber-600 bg-violet-100 transition-colors',
         'dark:border-yellow-700 dark:bg-slate-900',
         'relative overflow-hidden',
       )}

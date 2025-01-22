@@ -17,7 +17,7 @@ export const Header: FC = () => {
         'sticky left-0 top-0 z-50',
         'flex items-center justify-between gap-2',
         'h-16 w-full px-4',
-        'border-b-3 border-yellow-600 bg-indigo-200 text-violet-500',
+        'border-b-3 border-amber-600 bg-indigo-200 text-violet-500',
         'dark:border-yellow-700 dark:bg-indigo-950 dark:text-violet-300',
         'transition-all',
         'md:px-8',

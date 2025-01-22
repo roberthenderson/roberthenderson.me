@@ -10,11 +10,7 @@ const Home = () => {
     <div className="flex flex-col pb-10">
       <HeroSection />
       {pageSections.map((section) => (
-        <section
-          key={section.label}
-          ref={section.ref}
-          className="h-[2000px] scroll-mt-16"
-        >
+        <section key={section.label} ref={section.ref} className="scroll-mt-16">
           <div className="py-6">{section.label}</div>
         </section>
       ))}

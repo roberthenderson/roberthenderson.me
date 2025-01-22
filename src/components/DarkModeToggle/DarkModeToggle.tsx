@@ -16,7 +16,7 @@ export const DarkModeToggle: FC = () => {
       {darkMode ? (
         <MdDarkMode size={THEME_ICON_SIZE} className="text-yellow-600" />
       ) : (
-        <MdOutlineDarkMode size={THEME_ICON_SIZE} className="text-purple-700" />
+        <MdOutlineDarkMode size={THEME_ICON_SIZE} className="text-amber-700" />
       )}
     </button>
   );

@@ -16,11 +16,11 @@ export const Layout = ({
   }
 
   return (
-    <div className={clsxMerge(darkMode ? 'dark' : 'light')}>
+    <div className={clsxMerge(darkMode ? 'dark' : 'light', 'h-screen')}>
       <Metadata />
       <div
         className={clsxMerge(
-          'flex w-full flex-col',
+          'flex h-full w-full flex-col',
           'transition-colors',
           'bg-slate-200 text-slate-950 dark:bg-slate-950 dark:text-slate-200',
         )}
