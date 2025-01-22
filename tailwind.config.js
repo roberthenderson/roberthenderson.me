@@ -9,11 +9,20 @@ module.exports = {
         logo: '2.5rem',
       },
       fontFamily: {
-        poppins: '"Poppins", serif',
+        poppins: '"Poppins", sans-serif',
         dmSerif: '"DM Serif Text", serif',
       },
       fontWeight: {
         500: 500,
+      },
+      borderWidth: {
+        3: '3px',
+      },
+      lineHeight: {
+        11: '2.75rem',
+        12: '3rem',
+        14: '3.5rem',
+        16: '4rem',
       },
       colors: {
         background: 'var(--background)',

@@ -26,7 +26,7 @@ export const Layout = ({
         )}
       >
         <Header />
-        <main className="max-w-7xl px-8">{children}</main>
+        <main>{children}</main>
         <footer>This is the footer</footer>
       </div>
     </div>

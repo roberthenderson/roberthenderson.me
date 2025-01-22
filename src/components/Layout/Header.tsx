@@ -21,27 +21,41 @@ export const Header: FC = () => {
     <header
       ref={headerRef}
       className={clsxMerge(
-        'sticky left-0 top-0',
+        'sticky left-0 top-0 z-50',
         'flex items-center justify-between gap-2',
-        'h-16 w-full px-8',
-        'bg-indigo-200 text-violet-800',
-        'dark:bg-indigo-950 dark:text-violet-300',
+        'h-16 w-full px-4',
+        'border-b-3 border-yellow-600 bg-indigo-300 text-violet-500',
+        'dark:border-yellow-700 dark:bg-indigo-950 dark:text-violet-300',
         'transition-all',
+        'md:px-8',
       )}
     >
-      <button onClick={handleLogoClick} className="font-dmSerif text-logo">
-        .robert
+      <button
+        onClick={handleLogoClick}
+        className="font-dmSerif text-logo group pb-1"
+      >
+        <span className="text-violet-900 transition-colors dark:text-violet-400">
+          .r
+        </span>
+        <span className="transition-all group-hover:text-violet-900 max-sm:hidden dark:text-violet-600 group-hover:dark:text-violet-300">
+          obert
+        </span>
       </button>
-      <div className="flex items-center gap-20">
+      <div
+        className={clsxMerge('flex items-center gap-6', 'md:gap-10 lg:gap-20')}
+      >
         <Navigation />
         <button
           onClick={toggleDarkMode}
           className="opacity-100 transition-opacity hover:opacity-75"
         >
           {darkMode ? (
-            <MdDarkMode size={THEME_ICON_SIZE} />
+            <MdDarkMode size={THEME_ICON_SIZE} className="text-yellow-600" />
           ) : (
-            <MdOutlineDarkMode size={THEME_ICON_SIZE} />
+            <MdOutlineDarkMode
+              size={THEME_ICON_SIZE}
+              className="text-violet-600"
+            />
           )}
         </button>
       </div>

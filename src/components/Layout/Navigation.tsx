@@ -6,7 +6,7 @@ import { FC } from 'react';
 export const Navigation: FC = () => {
   const { pageSectionsList } = useAppContext();
   return (
-    <nav className="flex gap-8 text-sm">
+    <nav className={clsxMerge('flex gap-4 text-sm', 'md:gap-8')}>
       {pageSectionsList?.map((section) => (
         <NavigationItem key={section.label} section={section} />
       ))}
