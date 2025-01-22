@@ -5,6 +5,9 @@ module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      spacing: {
+        18: '72px',
+      },
       letterSpacing: {
         wide: '0.01em',
         wider: '0.02em',

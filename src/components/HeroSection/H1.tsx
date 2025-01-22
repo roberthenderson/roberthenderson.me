@@ -22,7 +22,7 @@ export const H1: FC = () => {
         <p
           className={clsxMerge(
             'font-leagueSpartan text-left text-6xl text-purple-700 transition-colors',
-            'dark:text-violet-200',
+            'dark:text-slate-200',
             'sm:text-[53px] sm:tracking-tight lg:text-6xl lg:tracking-normal',
           )}
         >

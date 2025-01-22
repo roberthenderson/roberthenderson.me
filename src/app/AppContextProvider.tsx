@@ -20,9 +20,10 @@ export enum PageSectionsEnum {
 
 export interface PageSection {
   id: PageSectionsEnum;
-  label: PageSectionsEnum;
+  label: string;
   ref: RefObject<HTMLElement | null>;
   link: string;
+  children: ReactNode;
 }
 
 type HeaderRef = RefObject<HTMLElement | null> | null;
