@@ -16,7 +16,7 @@ export const Layout = ({
   }
 
   return (
-    <div className={clsxMerge(darkMode ? 'dark' : 'light', 'h-screen')}>
+    <div className={clsxMerge(darkMode ? 'dark' : 'light')}>
       <Metadata />
       <div
         className={clsxMerge(

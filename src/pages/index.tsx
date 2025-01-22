@@ -7,10 +7,14 @@ const Home = () => {
   usePageNavigation({ pageSectionLinks, pageSections });
 
   return (
-    <div className="gap-18 flex flex-col pb-10">
+    <div className="flex flex-col gap-14 pb-10">
       <HeroSection />
       {pageSections.map((section) => (
-        <section key={section.id} ref={section.ref} className="scroll-mt-16">
+        <section
+          key={section.id}
+          ref={section.ref}
+          className="scroll-mt-16 py-4"
+        >
           {section.children}
         </section>
       ))}
