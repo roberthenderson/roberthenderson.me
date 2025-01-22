@@ -17,17 +17,22 @@ export const Header: FC = () => {
         'sticky left-0 top-0 z-50',
         'flex items-center justify-between gap-2',
         'h-16 w-full px-4',
-        'border-b-3 border-yellow-600 bg-indigo-300 text-violet-500',
+        'border-b-3 border-yellow-600 bg-indigo-200 text-violet-500',
         'dark:border-yellow-700 dark:bg-indigo-950 dark:text-violet-300',
         'transition-all',
         'md:px-8',
       )}
     >
       <Logo />
-      <div
-        className={clsxMerge('flex items-center gap-6', 'md:gap-10 lg:gap-20')}
-      >
+      <div className="sm:hidden">
         <Navigation />
+      </div>
+      <div
+        className={clsxMerge('flex items-center gap-6', 'lg:gap-18 md:gap-16')}
+      >
+        <div className="max-sm:hidden">
+          <Navigation />
+        </div>
         <DarkModeToggle />
       </div>
     </header>

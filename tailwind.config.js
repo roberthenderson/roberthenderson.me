@@ -5,12 +5,18 @@ module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      letterSpacing: {
+        wide: '0.01em',
+        wider: '0.02em',
+        tight: '-0.005em',
+      },
       fontSize: {
         logo: '2.5rem',
       },
       fontFamily: {
-        poppins: '"Poppins", sans-serif',
+        leagueSpartan: '"League Spartan", serif',
         dmSerif: '"DM Serif Text", serif',
+        dmSans: '"DM Sans", serif',
       },
       fontWeight: {
         500: 500,

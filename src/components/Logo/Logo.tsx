@@ -8,12 +8,12 @@ export const Logo: FC = () => {
   return (
     <button
       onClick={handleLogoClick}
-      className="group pb-1 font-dmSerif text-logo"
+      className="group pb-2 font-dmSerif text-logo sm:pb-1"
     >
-      <span className="text-violet-900 transition-colors dark:text-violet-400">
+      <span className="text-purple-900 transition-colors dark:text-purple-400">
         .r
       </span>
-      <span className="transition-all group-hover:text-violet-900 max-sm:hidden dark:text-violet-600 group-hover:dark:text-violet-400">
+      <span className="transition-all group-hover:text-purple-900 max-sm:hidden dark:text-purple-600 group-hover:dark:text-purple-400">
         obert
       </span>
     </button>

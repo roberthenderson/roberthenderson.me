@@ -11,12 +11,12 @@ export const DarkModeToggle: FC = () => {
   return (
     <button
       onClick={toggleDarkMode}
-      className="opacity-100 transition-opacity hover:opacity-75"
+      className="opacity-100 transition-opacity hover:opacity-80"
     >
       {darkMode ? (
         <MdDarkMode size={THEME_ICON_SIZE} className="text-yellow-600" />
       ) : (
-        <MdOutlineDarkMode size={THEME_ICON_SIZE} className="text-violet-600" />
+        <MdOutlineDarkMode size={THEME_ICON_SIZE} className="text-purple-700" />
       )}
     </button>
   );

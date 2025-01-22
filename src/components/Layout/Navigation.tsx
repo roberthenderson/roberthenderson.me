@@ -27,8 +27,8 @@ const NavigationItem: FC<NavigationItemProps> = ({ section }) => {
     <button
       onClick={handleNavLinkClick}
       className={clsxMerge(
-        'font-500 text-violet-600 transition-all dark:text-violet-400',
-        'hover:text-violet-950 dark:hover:text-violet-200',
+        'font-500 text-violet-600 transition-all dark:text-purple-400',
+        'hover:text-violet-950 dark:hover:text-purple-200',
       )}
     >
       {section.label}
