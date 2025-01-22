@@ -125,7 +125,7 @@ export const useSkills = () => {
         label: 'React',
         icon: <FaReact size={ICON_SIZE} />,
         description:
-          'Expert in React. Extensive experience creating components, hooks, and fine-tuning browser performance.',
+          'Expert in React building components, hooks, and performance optimization.',
       },
       {
         label: 'Typescript',
@@ -137,19 +137,18 @@ export const useSkills = () => {
         label: 'Javascript',
         icon: <SiJavascript size={ICON_SIZE} />,
         description:
-          '15 years of Javascript experience from vanilla through web components and React.',
+          '15 years of Javascript experience from vanilla through and React.',
       },
       {
         label: 'NextJS',
         icon: <SiNextdotjs size={ICON_SIZE} />,
-        description:
-          '5+ years of building NextJS apps and knowledge of how to optimize for performance with Server-Side Rendering.',
+        description: '5+ years of building NextJS apps.',
       },
       {
         label: 'TailwindCSS',
         icon: <SiTailwindcss size={ICON_SIZE} />,
         description:
-          '20+ years of using CSS, SASS, and Less. Most recently using my expert CSS knowledge with TailwindCSS.',
+          '20+ years of using CSS, SASS, and Less. Now an expert in TailwindCSS.',
       },
       {
         label: 'Git',
