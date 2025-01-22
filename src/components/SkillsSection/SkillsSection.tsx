@@ -9,7 +9,7 @@ export const SkillsSection: FC = () => {
   return (
     <div className="mx-auto flex max-w-screen-2xl justify-center gap-20 px-12">
       <div className="flex w-1/4 flex-col gap-8">
-        <h3 className="font-dmSerif text-6xl font-semibold text-violet-950 dark:text-indigo-300">
+        <h3 className="font-dmSerif text-6xl font-semibold text-violet-950 dark:text-slate-400">
           Skills & Experience
         </h3>
         <div className="flex flex-wrap gap-1.5 text-sm">

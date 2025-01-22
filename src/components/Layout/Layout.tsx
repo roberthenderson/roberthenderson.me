@@ -22,7 +22,7 @@ export const Layout = ({
         className={clsxMerge(
           'flex h-full w-full flex-col',
           'transition-colors',
-          'bg-violet-200 text-slate-950 dark:bg-indigo-950 dark:text-slate-200',
+          'bg-violet-50 text-slate-950 dark:bg-slate-800 dark:text-slate-200',
         )}
       >
         <Header />
