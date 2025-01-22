@@ -6,7 +6,7 @@ import { FC } from 'react';
 export const Navigation: FC = () => {
   const { pageSectionsList } = useAppContext();
   return (
-    <nav className={clsxMerge('flex gap-4 text-sm', 'md:gap-8')}>
+    <nav className={clsxMerge('flex gap-3 text-sm', 'sm:gap-6 md:gap-8')}>
       {pageSectionsList?.map((section) => (
         <NavigationItem key={section.label} section={section} />
       ))}
@@ -27,8 +27,9 @@ const NavigationItem: FC<NavigationItemProps> = ({ section }) => {
     <button
       onClick={handleNavLinkClick}
       className={clsxMerge(
-        'font-500 text-violet-600 transition-all dark:text-purple-400',
-        'hover:text-violet-950 dark:hover:text-purple-200',
+        'font-500 text-sm text-violet-600 transition-all',
+        'hover:text-violet-950 dark:text-purple-400 dark:hover:text-purple-200',
+        'sm:text-base',
       )}
     >
       {section.label}
