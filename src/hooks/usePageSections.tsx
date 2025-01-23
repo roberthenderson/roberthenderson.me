@@ -4,6 +4,7 @@ import {
   PageSectionsEnum,
   useAppContext,
 } from '../app/AppContextProvider';
+import { CompaniesSection } from '../components/CompaniesSection/CompaniesSection';
 import { SkillsSection } from '../components/SkillsSection/SkillsSection';
 
 export type PageSectionLinks = Record<PageSectionsEnum, string>;
@@ -40,7 +41,7 @@ export const usePageSections = () => {
         label: PageSectionsEnum.Companies,
         ref: companiesSection,
         link: pageSectionLinks[PageSectionsEnum.Companies],
-        children: <div></div>,
+        children: <CompaniesSection />,
       },
       {
         id: PageSectionsEnum.About,
