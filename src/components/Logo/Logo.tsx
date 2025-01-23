@@ -10,10 +10,10 @@ export const Logo: FC = () => {
       onClick={handleLogoClick}
       className="group pb-2 font-dmSerif text-logo sm:pb-1"
     >
-      <span className="text-purple-900 transition-colors dark:text-purple-400">
+      <span className="text-indigo-900 transition-colors dark:text-indigo-400">
         .r
       </span>
-      <span className="transition-all group-hover:text-purple-900 max-sm:hidden dark:text-purple-600 group-hover:dark:text-purple-400">
+      <span className="text-indigo-500 transition-all group-hover:text-indigo-900 max-sm:hidden dark:text-indigo-600 group-hover:dark:text-indigo-400">
         obert
       </span>
     </button>

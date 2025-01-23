@@ -42,6 +42,8 @@ export const usePageSections = () => {
         ref: companiesSection,
         link: pageSectionLinks[PageSectionsEnum.Companies],
         children: <CompaniesSection />,
+        className:
+          'bg-violet-100 border-t-2 border-b-[5px] border-t-violet-500 border-b-violet-600 dark:bg-slate-900 dark:border-0 md:py-12',
       },
       {
         id: PageSectionsEnum.About,

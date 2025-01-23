@@ -1,24 +1,24 @@
 import { clsxMerge } from '@/src/utils/clsxMerge';
 import { FC, ReactNode } from 'react';
 
-interface SectionContentProps {
+interface SectionHeadingProps {
   children: ReactNode;
   className?: string;
 }
 
-export const SectionContent: FC<SectionContentProps> = ({
+export const SectionHeading: FC<SectionHeadingProps> = ({
   children,
   className,
 }) => {
   return (
-    <div
+    <h3
       className={clsxMerge(
-        'mx-auto flex max-w-screen-xl flex-col justify-center gap-8 px-8',
-        'md:flex-row md:gap-8 md:px-12 2xl:px-0',
+        'text-center font-dmSerif text-5xl font-semibold text-indigo-950 dark:text-slate-300',
+        'lg:text-6xl',
         className,
       )}
     >
       {children}
-    </div>
+    </h3>
   );
 };

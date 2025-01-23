@@ -24,6 +24,7 @@ export interface PageSection {
   ref: RefObject<HTMLElement | null>;
   link: string;
   children: ReactNode;
+  className?: string;
 }
 
 type HeaderRef = RefObject<HTMLElement | null> | null;

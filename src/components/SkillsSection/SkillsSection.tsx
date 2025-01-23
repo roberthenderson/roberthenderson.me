@@ -1,6 +1,7 @@
 import { clsxMerge } from '@/src/utils/clsxMerge';
 import { FC } from 'react';
 import { SectionContent } from '../SectionContent/SectionContent';
+import { SectionHeading } from '../SectionHeading/SectionHeading';
 import { SkillCard } from './SkillCard';
 import { SkillTag } from './SkillTag';
 import { useSkills } from './useSkills';
@@ -11,14 +12,9 @@ export const SkillsSection: FC = () => {
   return (
     <SectionContent>
       <div className={clsxMerge('flex w-full flex-col gap-6', 'md:w-2/5')}>
-        <h3
-          className={clsxMerge(
-            'text-center font-dmSerif text-5xl font-semibold text-violet-950 dark:text-slate-300',
-            'sm:text-left lg:text-6xl',
-          )}
-        >
-          Skills & Experience
-        </h3>
+        <SectionHeading className="sm:text-left">
+          Skills & Technologies
+        </SectionHeading>
         <p className="text-center sm:text-left">
           I take pride in building clean and usable interfaces on the web for
           all screen sizes. I've worked on small projects to large scalable

@@ -10,7 +10,7 @@ export const SkillCard: FC<SkillCardProps> = ({ skill }) => {
   return (
     <div
       className={clsxMerge(
-        'relative flex min-h-44 flex-col justify-between gap-10 overflow-hidden rounded-md border-[4px] border-violet-300 bg-violet-300/40 p-5',
+        'border-border-card relative flex min-h-44 flex-col justify-between gap-10 overflow-hidden rounded-2xl border-2 bg-violet-200/40 p-5',
         'dark:border-slate-700 dark:bg-slate-900/60',
         'md:gap-4 md:px-4 md:py-3 xl:aspect-square xl:gap-0',
       )}
@@ -24,7 +24,7 @@ export const SkillCard: FC<SkillCardProps> = ({ skill }) => {
       <p className="text-base leading-5 sm:text-sm">{skill.description}</p>
       <div
         className={clsxMerge(
-          'absolute bottom-6 right-10 z-10 scale-[4] overflow-hidden rounded-sm text-violet-900 opacity-10',
+          'absolute bottom-6 right-10 z-10 scale-[4] overflow-hidden rounded-sm text-indigo-900 opacity-[0.08]',
           'dark:text-slate-200',
           'xl:bottom-10 xl:right-14 xl:scale-[5]',
         )}

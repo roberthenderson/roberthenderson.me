@@ -11,7 +11,7 @@ export const HeroSection: FC = () => {
   return (
     <section
       className={clsxMerge(
-        'border-b-[0.75rem] border-purple-700 bg-violet-100 transition-colors',
+        'border-b-[0.75rem] border-violet-700 bg-violet-100 transition-colors',
         'dark:border-yellow-700 dark:bg-slate-950',
         'relative overflow-hidden',
       )}
