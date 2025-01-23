@@ -13,7 +13,7 @@ const Home = () => {
         <section
           key={section.id}
           ref={section.ref}
-          className="scroll-mt-16 py-4"
+          className="min-h-screen scroll-mt-16 py-4"
         >
           {section.children}
         </section>
