@@ -16,7 +16,7 @@ export const HeroSection: FC = () => {
         'relative overflow-hidden',
       )}
     >
-      <div className="mx-auto flex w-full max-w-screen-xl justify-between">
+      <div className="mx-auto flex w-full max-w-screen-xl justify-between px-8 lg:px-12 2xl:px-0">
         <Image
           src={Robert}
           alt="Robert Henderson, Frontend Engineer"
@@ -28,8 +28,8 @@ export const HeroSection: FC = () => {
         />
         <div
           className={clsxMerge(
-            'flex w-full flex-col px-10 pb-14 pt-12',
-            'md:pt-22 md:pb-16 lg:px-28',
+            'flex w-full flex-col pb-14 pt-12',
+            'md:pt-22 md:pb-16',
           )}
         >
           <H2 />

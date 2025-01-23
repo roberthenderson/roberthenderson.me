@@ -53,6 +53,10 @@ export const useSkills = () => {
         type: 'code',
       },
       {
+        label: 'UX',
+        type: 'design',
+      },
+      {
         label: 'SASS',
         type: 'framework',
       },
@@ -67,6 +71,10 @@ export const useSkills = () => {
       {
         label: 'Figma',
         type: 'design',
+      },
+      {
+        label: 'Chakra UI',
+        type: 'framework',
       },
       {
         label: 'Responsive Web Design',

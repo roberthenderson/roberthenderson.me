@@ -19,6 +19,8 @@ export const SkillTag: FC<SkillTagProps> = ({ skill }) => {
             skill.type === 'framework',
           'border-fuchsia-800 bg-fuchsia-100 text-fuchsia-800 dark:border-fuchsia-800 dark:bg-fuchsia-700/70':
             skill.type === 'design',
+          'border-sky-800 bg-sky-100 text-sky-800 dark:border-sky-800 dark:bg-sky-700/70':
+            skill.type === 'devops',
         },
       )}
     >
