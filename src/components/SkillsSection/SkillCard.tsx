@@ -10,9 +10,9 @@ export const SkillCard: FC<SkillCardProps> = ({ skill }) => {
   return (
     <div
       className={clsxMerge(
-        'relative flex flex-col justify-between gap-6 overflow-hidden rounded-md border-[4px] border-violet-300 bg-violet-300/40 px-4 py-3',
+        'relative flex min-h-44 flex-col justify-between gap-10 overflow-hidden rounded-md border-[4px] border-violet-300 bg-violet-300/40 p-5',
         'dark:border-slate-700 dark:bg-slate-900/60',
-        'xl:aspect-square xl:gap-0',
+        'md:px-4 md:py-3 xl:aspect-square xl:gap-0',
       )}
     >
       <div className="flex items-center justify-between">
@@ -21,7 +21,7 @@ export const SkillCard: FC<SkillCardProps> = ({ skill }) => {
           {skill.icon}
         </div>
       </div>
-      <p className="text-base leading-5 md:text-sm">{skill.description}</p>
+      <p className="text-base leading-5 sm:text-sm">{skill.description}</p>
       <div
         className={clsxMerge(
           'absolute bottom-6 right-10 z-10 scale-[4] overflow-hidden rounded-sm text-violet-900 opacity-10',
