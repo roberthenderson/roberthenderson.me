@@ -12,14 +12,14 @@ export const usePageSections = () => {
   const { setPageSectionsList } = useAppContext();
 
   const skillsSection = useRef<HTMLElement | null>(null);
-  const projectsSection = useRef<HTMLElement | null>(null);
+  const companiesSection = useRef<HTMLElement | null>(null);
   const aboutSection = useRef<HTMLElement | null>(null);
   const contactSection = useRef<HTMLElement | null>(null);
 
   const pageSectionLinks: PageSectionLinks = useMemo(
     () => ({
       [PageSectionsEnum.Skills]: `/${PageSectionsEnum.Skills.toLowerCase()}`,
-      [PageSectionsEnum.Projects]: `/${PageSectionsEnum.Projects.toLowerCase()}`,
+      [PageSectionsEnum.Companies]: `/${PageSectionsEnum.Companies.toLowerCase()}`,
       [PageSectionsEnum.About]: `/${PageSectionsEnum.About.toLowerCase()}`,
       [PageSectionsEnum.Contact]: `/${PageSectionsEnum.Contact.toLowerCase()}`,
     }),
@@ -36,10 +36,10 @@ export const usePageSections = () => {
         children: <SkillsSection />,
       },
       {
-        id: PageSectionsEnum.Projects,
-        label: PageSectionsEnum.Projects,
-        ref: projectsSection,
-        link: pageSectionLinks[PageSectionsEnum.Projects],
+        id: PageSectionsEnum.Companies,
+        label: PageSectionsEnum.Companies,
+        ref: companiesSection,
+        link: pageSectionLinks[PageSectionsEnum.Companies],
         children: <div></div>,
       },
       {

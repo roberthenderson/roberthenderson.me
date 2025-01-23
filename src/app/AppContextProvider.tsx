@@ -14,7 +14,7 @@ import { useDarkMode } from '../hooks/useDarkMode';
 export enum PageSectionsEnum {
   About = 'About',
   Skills = 'Skills',
-  Projects = 'Projects',
+  Companies = 'Companies',
   Contact = 'Contact',
 }
 
