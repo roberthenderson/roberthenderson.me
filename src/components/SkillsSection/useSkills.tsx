@@ -65,6 +65,10 @@ export const useSkills = () => {
         type: 'code',
       },
       {
+        label: 'CI',
+        type: 'devops',
+      },
+      {
         label: 'Java',
         type: 'code',
       },
@@ -77,6 +81,10 @@ export const useSkills = () => {
         type: 'framework',
       },
       {
+        label: 'SEO',
+        type: 'code',
+      },
+      {
         label: 'Responsive Web Design',
         type: 'design',
       },
@@ -87,6 +95,10 @@ export const useSkills = () => {
       {
         label: 'E-Commerce',
         type: 'industry',
+      },
+      {
+        label: 'Open Graph',
+        type: 'code',
       },
       {
         label: 'Crypto',
@@ -111,6 +123,10 @@ export const useSkills = () => {
       {
         label: 'Web Components',
         type: 'framework',
+      },
+      {
+        label: 'HTML',
+        type: 'code',
       },
       {
         label: 'AWS',

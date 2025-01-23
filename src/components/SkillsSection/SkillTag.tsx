@@ -12,6 +12,7 @@ export const SkillTag: FC<SkillTagProps> = ({ skill }) => {
       className={clsxMerge(
         'rounded-lg border border-violet-700 bg-violet-300/50 px-2 py-0.5 text-violet-800',
         'dark:border-purple-800 dark:bg-purple-700 dark:text-slate-100',
+        'lg:px-3',
         {
           'border-amber-800 bg-amber-50/50 text-amber-800 dark:border-yellow-800 dark:bg-yellow-700/70':
             skill.type === 'code',

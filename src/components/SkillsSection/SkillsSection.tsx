@@ -10,7 +10,7 @@ export const SkillsSection: FC = () => {
 
   return (
     <SectionContent>
-      <div className={clsxMerge('flex w-full flex-col gap-8', 'md:w-2/5')}>
+      <div className={clsxMerge('flex w-full flex-col gap-6', 'md:w-2/5')}>
         <h3
           className={clsxMerge(
             'text-center font-dmSerif text-5xl font-semibold text-violet-950 dark:text-slate-300',
@@ -33,7 +33,7 @@ export const SkillsSection: FC = () => {
       <div
         className={clsxMerge(
           'grid w-full grid-cols-1 gap-4',
-          'sm:grid-cols-2 md:w-3/5 xl:grid-cols-3 xl:gap-5',
+          'sm:grid-cols-2 md:w-3/5 md:pt-2 xl:grid-cols-3 xl:gap-5',
         )}
       >
         {skillCards.map((skill) => (
