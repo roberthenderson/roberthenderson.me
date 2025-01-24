@@ -17,14 +17,12 @@ export const usePageSections = () => {
   const skillsSection = useRef<HTMLElement | null>(null);
   const companiesSection = useRef<HTMLElement | null>(null);
   const aboutSection = useRef<HTMLElement | null>(null);
-  const contactSection = useRef<HTMLElement | null>(null);
 
   const pageSectionLinks: PageSectionLinks = useMemo(
     () => ({
       [PageSectionsEnum.Skills]: `/${PageSectionsEnum.Skills.toLowerCase()}`,
       [PageSectionsEnum.Companies]: `/${PageSectionsEnum.Companies.toLowerCase()}`,
       [PageSectionsEnum.About]: `/${PageSectionsEnum.About.toLowerCase()}`,
-      [PageSectionsEnum.Contact]: `/${PageSectionsEnum.Contact.toLowerCase()}`,
     }),
     [],
   );
@@ -54,13 +52,6 @@ export const usePageSections = () => {
         label: PageSectionsEnum.About,
         ref: aboutSection,
         link: pageSectionLinks[PageSectionsEnum.About],
-        children: <div></div>,
-      },
-      {
-        id: PageSectionsEnum.Contact,
-        label: PageSectionsEnum.Contact,
-        ref: contactSection,
-        link: pageSectionLinks[PageSectionsEnum.Contact],
         children: <div></div>,
       },
     ],

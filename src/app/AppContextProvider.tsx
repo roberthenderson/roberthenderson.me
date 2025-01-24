@@ -15,7 +15,6 @@ export enum PageSectionsEnum {
   About = 'About',
   Skills = 'Skills',
   Companies = 'Companies',
-  Contact = 'Contact',
 }
 
 export interface PageSection {
