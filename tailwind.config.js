@@ -51,6 +51,9 @@ export const theme = {
       foreground: 'var(--foreground)',
       border: {
         card: nonDeprecatedColors.indigo[400],
+        dark: {
+          card: nonDeprecatedColors.slate[700],
+        },
       },
     },
   },
