@@ -3,10 +3,10 @@ import { FC } from 'react';
 export const MetaplexLogo: FC = () => {
   return (
     <svg viewBox="0 0 124 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g clip-path="url(#clip0_4779_99813)">
+      <g clipPath="url(#clip0_4779_99813)">
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M9.08241 8.63562C9.16584 8.51233 9.17565 8.34958 9.09714 8.22136L4.33208 0.158106C4.26338 0.0397463 4.14069 -0.0292969 4.00329 -0.0292969H0.656463C0.36202 -0.0292969 0.17554 0.291261 0.327669 0.547707L6.58947 11.2889C6.72688 11.5305 7.0753 11.5453 7.23234 11.3135L9.08241 8.63562ZM3.29663 11.1212C3.44876 11.3776 3.26228 11.7031 2.96783 11.7031H2.96293H0.671185C0.460168 11.7031 0.28841 11.5305 0.28841 11.3184V7.4323C0.28841 7.03776 0.803684 6.89968 0.999978 7.23503L3.29663 11.1212Z"
           fill="currentColor"
         ></path>
@@ -15,7 +15,7 @@ export const MetaplexLogo: FC = () => {
           fill="currentColor"
         ></path>
       </g>
-      <g clip-path="url(#clip1_4779_99813)">
+      <g clipPath="url(#clip1_4779_99813)">
         <path
           d="M28.9023 11.3329H30.6726V4.28006L34.7899 11.3329H36.2964L40.4137 4.28006V11.3329H42.184V0.666992H40.445L35.5499 9.07972L30.6413 0.666992H28.9023V11.3329Z"
           fill="currentColor"

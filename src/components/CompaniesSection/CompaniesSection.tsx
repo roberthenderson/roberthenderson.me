@@ -19,7 +19,7 @@ export const CompaniesSection: FC = () => {
         )}
       >
         {featuredCompanies.map((company) => (
-          <FeaturedCompany company={company} />
+          <FeaturedCompany key={company.id} company={company} />
         ))}
       </div>
       <div
@@ -29,7 +29,7 @@ export const CompaniesSection: FC = () => {
         )}
       >
         {otherCompanies.map((company) => (
-          <OtherCompany company={company} />
+          <OtherCompany key={company.id} company={company} />
         ))}
       </div>
     </SectionContent>

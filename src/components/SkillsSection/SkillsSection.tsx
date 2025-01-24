@@ -22,7 +22,7 @@ export const SkillsSection: FC = () => {
         </p>
         <div className="flex flex-wrap justify-center gap-3 text-sm sm:justify-start">
           {skillTags.map((skill) => (
-            <SkillTag skill={skill} />
+            <SkillTag key={skill.label} skill={skill} />
           ))}
         </div>
       </div>
@@ -33,7 +33,7 @@ export const SkillsSection: FC = () => {
         )}
       >
         {skillCards.map((skill) => (
-          <SkillCard skill={skill} />
+          <SkillCard key={skill.label} skill={skill} />
         ))}
       </div>
     </SectionContent>
