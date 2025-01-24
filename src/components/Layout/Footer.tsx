@@ -3,18 +3,19 @@ import { clsxMerge } from '@/src/utils/clsxMerge';
 import Image from 'next/image';
 import { FC } from 'react';
 import { FaRegCopyright } from 'react-icons/fa';
+import { SiNextdotjs } from 'react-icons/si';
 import { Links } from '../HeroSection/Links';
 import { TextLink } from '../TextLink/TextLink';
 
 export const Footer: FC = () => {
   const year = new Date().getFullYear();
   return (
-    <footer className="border-t-5 flex h-[600px] w-full flex-col overflow-hidden border-violet-500 bg-[#78a2cc] dark:border-indigo-700">
+    <footer className="border-t-5 flex h-[600px] w-full flex-col overflow-hidden border-violet-700 bg-[#78a2cc] dark:border-slate-950">
       <div className="relative flex h-full w-full flex-col justify-between">
-        <section className="relative z-10 w-full bg-violet-500/20 dark:bg-indigo-500/20">
+        <section className="relative z-10 w-full bg-violet-500/20 dark:bg-slate-700">
           <div
             className={clsxMerge(
-              'flex flex-col items-center justify-between gap-6 px-4 py-4 text-slate-50',
+              'flex flex-col items-center justify-between gap-2 px-4 py-4 text-slate-50',
               'md:flex-row md:px-8 lg:px-16',
             )}
           >
@@ -24,11 +25,13 @@ export const Footer: FC = () => {
                 <span>{year} Robert Henderson.</span>
               </div>
               <div className="flex gap-2">
-                <span>
+                <span className="flex items-center gap-1">
                   <TextLink href={GITHUB_REPO_URL} target="_blank">
-                    Built from scratch
+                    Built
                   </TextLink>{' '}
-                  in
+                  with
+                  <SiNextdotjs size={20} className="mx-0.5 text-slate-100" />
+                  NextJS in
                 </span>
                 <Image
                   src={'/fortcollins.png'}
