@@ -20,7 +20,7 @@ export const SkillsSection: FC = () => {
           all screen sizes. I've worked on small projects to large scalable
           consumer and enterprise applications with millions of monthly users.
         </p>
-        <div className="flex flex-wrap justify-center gap-1.5 text-sm sm:justify-start">
+        <div className="flex flex-wrap justify-center gap-3 text-sm sm:justify-start">
           {skillTags.map((skill) => (
             <SkillTag skill={skill} />
           ))}
@@ -28,7 +28,7 @@ export const SkillsSection: FC = () => {
       </div>
       <div
         className={clsxMerge(
-          'grid w-full grid-cols-1 gap-4',
+          'grid w-full grid-cols-1 justify-items-start gap-4',
           'sm:grid-cols-2 md:w-3/5 md:pt-2 xl:grid-cols-3 xl:gap-5',
         )}
       >

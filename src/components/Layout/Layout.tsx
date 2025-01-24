@@ -2,6 +2,7 @@ import { clsxMerge } from '@/src/utils/clsxMerge';
 import { ReactNode } from 'react';
 import { useAppContext } from '../../app/AppContextProvider';
 import { Metadata } from '../Metadata/Metadata';
+import { Footer } from './Footer';
 import { Header } from './Header';
 
 export const Layout = ({
@@ -27,7 +28,7 @@ export const Layout = ({
       >
         <Header />
         <main>{children}</main>
-        <footer>This is the footer</footer>
+        <Footer />
       </div>
     </div>
   );
