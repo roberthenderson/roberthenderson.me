@@ -38,7 +38,6 @@ const NavigationItem: FC<NavigationItemProps> = ({
 }) => {
   const { activeSection, setActiveSection } = useAppContext();
   const [isHovered, setIsHovered] = useState(false);
-  const [touched, setTouched] = useState(false);
 
   const isActive = section.id === activeSection;
   // So the transition below moves the underline from right
@@ -47,23 +46,15 @@ const NavigationItem: FC<NavigationItemProps> = ({
   const isMovingLeft = index < prevIndex;
 
   const handleNavLinkClick = () => {
-    setActiveSection(null);
+    setActiveSection(section.id);
     scrollElementIntoView(section.ref.current);
   };
-  const handleTouchStart = () => {
-    setTouched(true);
-    setPrevIndex(index);
-  };
   const handleMouseEnter = () => {
-    if (!touched) {
-      setIsHovered(true);
-    }
+    setIsHovered(true);
   };
   const handleMouseLeave = () => {
-    if (!touched) {
-      setIsHovered(false);
-      setPrevIndex(index);
-    }
+    setIsHovered(false);
+    setPrevIndex(index);
   };
 
   return (
@@ -75,7 +66,6 @@ const NavigationItem: FC<NavigationItemProps> = ({
         'hover:text-violet-600 dark:text-slate-200 dark:hover:text-slate-300',
         'sm:text-base',
       )}
-      onTouchStart={handleTouchStart}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

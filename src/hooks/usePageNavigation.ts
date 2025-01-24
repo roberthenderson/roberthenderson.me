@@ -49,8 +49,9 @@ export const usePageNavigation = ({
     if (!headerRef?.current?.offsetHeight) {
       return;
     }
-    const scrollWithHeaderHeight =
-      scrollPosition + headerRef.current.offsetHeight;
+    const scrollWithHeaderHeight = Math.ceil(
+      scrollPosition + headerRef.current.offsetHeight,
+    );
 
     // If we're at the top, show the root route
     if (
