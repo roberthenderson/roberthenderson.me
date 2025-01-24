@@ -6,6 +6,7 @@ import {
 } from '../app/AppContextProvider';
 import { CompaniesSection } from '../components/CompaniesSection/CompaniesSection';
 import { SkillsSection } from '../components/SkillsSection/SkillsSection';
+import { INDIGO_GRADIENT_BG } from '../constants';
 import { clsxMerge } from '../utils/clsxMerge';
 
 export type PageSectionLinks = Record<PageSectionsEnum, string>;
@@ -44,8 +45,8 @@ export const usePageSections = () => {
         link: pageSectionLinks[PageSectionsEnum.Companies],
         children: <CompaniesSection />,
         className: clsxMerge(
-          'bg-gradient-to-t from-indigo-100 from-15% via-indigo-100/90 via-30% to-indigo-400/35',
-          'border-t-2 border-b-[5px] border-t-violet-500 border-b-violet-600 dark:bg-none dark:bg-slate-900 dark:border-0 md:py-12',
+          INDIGO_GRADIENT_BG,
+          'border-t-2 border-b-5 border-t-violet-500 border-b-violet-600 dark:bg-none dark:bg-slate-900 dark:border-0 md:py-12',
         ),
       },
       {

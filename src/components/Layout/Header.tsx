@@ -18,7 +18,7 @@ export const Header: FC = () => {
         'flex items-center justify-between gap-2',
         'h-16 w-full px-4',
         'border-b-3 border-violet-600 bg-indigo-200',
-        'dark:border-yellow-700 dark:bg-slate-800',
+        'dark:border-indigo-300 dark:bg-slate-800',
         'transition-all',
         'md:px-8',
       )}
@@ -28,7 +28,7 @@ export const Header: FC = () => {
         <Navigation />
       </div>
       <div
-        className={clsxMerge('flex items-center gap-6', 'lg:gap-18 md:gap-10')}
+        className={clsxMerge('flex items-center gap-6', 'md:gap-10 lg:gap-18')}
       >
         <div className="max-sm:hidden">
           <Navigation />

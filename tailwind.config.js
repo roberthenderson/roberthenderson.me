@@ -38,6 +38,7 @@ export const theme = {
     },
     borderWidth: {
       3: '3px',
+      5: '5px',
     },
     lineHeight: {
       11: '2.75rem',
