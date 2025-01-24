@@ -10,7 +10,7 @@ export const CompaniesSection: FC = () => {
   const { featuredCompanies, otherCompanies } = useCompanies();
 
   return (
-    <SectionContent className="md:flex-col md:gap-16">
+    <SectionContent className="gap-12 sm:gap-8 md:flex-col md:gap-14">
       <SectionHeading>Work Experience</SectionHeading>
       <div
         className={clsxMerge(
@@ -22,7 +22,12 @@ export const CompaniesSection: FC = () => {
           <FeaturedCompany company={company} />
         ))}
       </div>
-      <div className="grid grid-cols-3 items-center gap-16 px-10">
+      <div
+        className={clsxMerge(
+          'grid grid-cols-1 items-center gap-8',
+          'sm:grid-cols-3 sm:gap-2 lg:px-10 xl:gap-12',
+        )}
+      >
         {otherCompanies.map((company) => (
           <OtherCompany company={company} />
         ))}

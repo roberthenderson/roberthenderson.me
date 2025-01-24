@@ -54,7 +54,7 @@ export const useCompanies = () => {
           <Image
             src={VlocityLogo}
             alt="Vlocity"
-            className="mx-auto w-4/5 pt-1"
+            className="mx-auto w-4/5 pt-8 sm:pt-1"
           />
         ),
         className: darkMode ? 'grayscale brightness-200' : '',
@@ -66,7 +66,7 @@ export const useCompanies = () => {
           <Image
             src={BlueAcornLogo}
             alt="Blue Acorn"
-            className="w-[95%] pb-2"
+            className="w-[95%] pt-2 sm:pb-1.5 sm:pt-0"
           />
         ),
         className: darkMode ? 'grayscale brightness-200' : '',
