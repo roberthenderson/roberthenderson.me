@@ -44,7 +44,7 @@ export const usePageSections = () => {
         children: <CompaniesSection />,
         className: clsxMerge(
           INDIGO_GRADIENT_BG,
-          'border-t-2 border-b-5 border-t-violet-500 border-b-violet-600 dark:bg-none dark:bg-slate-900 dark:border-0 md:py-12',
+          'border-t-2 border-b-12 border-t-violet-500 border-b-violet-600 dark:bg-none dark:bg-slate-900 dark:border-b-12 dark:border-slate-700 md:py-12',
         ),
       },
       {

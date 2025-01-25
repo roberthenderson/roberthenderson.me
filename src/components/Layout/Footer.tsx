@@ -1,27 +1,31 @@
+import { useAppContext } from '@/src/app/AppContextProvider';
 import { GITHUB_REPO_URL } from '@/src/constants';
 import { clsxMerge } from '@/src/utils/clsxMerge';
 import Image from 'next/image';
 import { FC } from 'react';
 import { FaRegCopyright } from 'react-icons/fa';
 import { SiNextdotjs } from 'react-icons/si';
+import { EmailButton } from '../EmailButton/EmailButton';
 import { Links } from '../HeroSection/Links';
 import { TextLink } from '../TextLink/TextLink';
 
 export const Footer: FC = () => {
+  const { darkMode } = useAppContext();
   const year = new Date().getFullYear();
+
   return (
     <footer className="border-t-5 flex h-[600px] w-full flex-col overflow-hidden border-violet-700 bg-[#78a2cc] dark:border-slate-950">
       <div className="relative flex h-full w-full flex-col justify-between">
-        <section className="relative z-10 w-full bg-violet-500/20 dark:bg-slate-700">
+        <section className="relative z-10 w-full bg-indigo-200 dark:bg-slate-700">
           <div
             className={clsxMerge(
-              'flex flex-col items-center justify-between gap-2 px-4 py-4 text-slate-50',
+              'flex flex-col items-center justify-between gap-2 px-4 py-4 text-violet-950 dark:text-slate-50',
               'md:flex-row md:px-8 lg:px-16',
             )}
           >
             <div className="flex flex-col items-center gap-1 md:flex-row">
               <div className="flex items-center gap-2">
-                <FaRegCopyright className="text-slate-100" />
+                <FaRegCopyright />
                 <span>{year} Robert Henderson.</span>
               </div>
               <div className="flex gap-2">
@@ -30,11 +34,11 @@ export const Footer: FC = () => {
                     Built
                   </TextLink>{' '}
                   with
-                  <SiNextdotjs size={20} className="mx-0.5 text-slate-100" />
+                  <SiNextdotjs size={20} className="mx-0.5" />
                   NextJS in
                 </span>
                 <Image
-                  src={'/fortcollins.png'}
+                  src={darkMode ? '/fortcollins.png' : '/fortcollins_dark.png'}
                   alt="Fort Collins, Colorado"
                   width="90"
                   height="23"
@@ -42,7 +46,10 @@ export const Footer: FC = () => {
                 />
               </div>
             </div>
-            <Links variant="footer" />
+            <div className="flex items-center gap-6">
+              <EmailButton />
+              <Links variant="footer" />
+            </div>
           </div>
         </section>
         <div

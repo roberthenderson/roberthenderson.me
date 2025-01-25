@@ -12,11 +12,11 @@ export const Links: FC<LinksProps> = ({ variant = 'hero' }) => {
   const iconClassName = useMemo(
     () =>
       clsxMerge(
-        'text-amber-700 opacity-80 transition-opacity',
+        'text-indigo-950 opacity-80 transition-opacity',
         'dark:text-slate-50',
         'hover:opacity-100',
         {
-          'text-slate-50': variant === 'footer',
+          'text-violet-950': variant === 'footer',
         },
       ),
     [variant],

@@ -17,7 +17,7 @@ export const SkillCard: FC<SkillCardProps> = ({ skill }) => {
     >
       <div className="flex items-center justify-between">
         <p className="text-lg font-semibold">{skill.label}</p>
-        <div className="text-amber-700 opacity-80 dark:text-yellow-700">
+        <div className="text-violet-700 opacity-80 dark:text-yellow-700">
           {skill.icon}
         </div>
       </div>

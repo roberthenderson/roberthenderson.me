@@ -20,7 +20,7 @@ export const SkillsSection: FC = () => {
           all screen sizes. I've worked on small projects to large scalable
           consumer and enterprise applications with millions of monthly users.
         </p>
-        <div className="flex flex-wrap justify-center gap-3 text-sm sm:justify-start">
+        <div className="flex flex-wrap justify-center gap-x-3 gap-y-2 text-sm sm:justify-start">
           {skillTags.map((skill) => (
             <SkillTag key={skill.label} skill={skill} />
           ))}
