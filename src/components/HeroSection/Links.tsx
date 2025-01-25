@@ -6,9 +6,10 @@ import { FaFileDownload, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 interface LinksProps {
   variant?: 'hero' | 'footer';
+  className?: string;
 }
 
-export const Links: FC<LinksProps> = ({ variant = 'hero' }) => {
+export const Links: FC<LinksProps> = ({ variant = 'hero', className }) => {
   const iconClassName = useMemo(
     () =>
       clsxMerge(
@@ -24,7 +25,16 @@ export const Links: FC<LinksProps> = ({ variant = 'hero' }) => {
   const iconSize = useMemo(() => (variant === 'footer' ? 32 : 24), [variant]);
 
   return (
-    <div className="flex cursor-pointer gap-4 text-2xl max-sm:pt-6 lg:gap-5">
+    <div
+      className={clsxMerge(
+        'flex cursor-pointer gap-2 text-2xl',
+        'md:gap-3 lg:gap-5',
+        {
+          'gap-4 max-sm:pt-4': variant === 'hero',
+        },
+        className,
+      )}
+    >
       <Link href={GITHUB_URL} target="_blank">
         <FaGithub className={iconClassName} size={iconSize} />
       </Link>

@@ -2,7 +2,12 @@ import { clsxMerge } from '@/src/utils/clsxMerge';
 import { FC } from 'react';
 import { RiSendPlaneLine } from 'react-icons/ri';
 
-export const EmailButton: FC = () => {
+interface EmailButtonProps {
+  variant: 'header' | 'hero' | 'footer';
+  className?: string;
+}
+
+export const EmailButton: FC<EmailButtonProps> = ({ variant, className }) => {
   return (
     <button
       className={clsxMerge(
@@ -10,9 +15,16 @@ export const EmailButton: FC = () => {
         'sm:px-6 sm:py-1.5',
         'dark:bg-teal-600 dark:text-teal-100',
         'hover:bg-emerald-600/90 hover:text-emerald-50 dark:hover:bg-teal-600/90 hover:dark:text-teal-50',
+        {
+          'px-4 text-sm lg:text-base': variant === 'footer',
+          'ml-1 px-16 md:hidden': variant === 'hero',
+        },
+        className,
       )}
     >
-      <span className="max-sm:hidden">Let's Talk</span>
+      <span className={clsxMerge(variant === 'header' && 'max-sm:hidden')}>
+        Let's Talk
+      </span>
       <RiSendPlaneLine size={18} />
     </button>
   );

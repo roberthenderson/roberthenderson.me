@@ -2,6 +2,7 @@ import { clsxMerge } from '@/src/utils/clsxMerge';
 import Image from 'next/image';
 import { FC } from 'react';
 import Robert from '../../../public/robert.webp';
+import { EmailButton } from '../EmailButton/EmailButton';
 import { H1 } from './H1';
 import { H2 } from './H2';
 import { Links } from './Links';
@@ -36,11 +37,12 @@ export const HeroSection: FC = () => {
           <H1 />
           <div
             className={clsxMerge(
-              'flex flex-col-reverse items-center justify-end gap-4 pt-1 sm:pt-6 md:pt-1',
+              'md:gap4 flex flex-col-reverse items-center justify-end gap-3 sm:pt-6 md:pt-1',
               'sm:flex-row lg:gap-6',
             )}
           >
             <Links />
+            <EmailButton variant="hero" />
             <TagLine />
           </div>
         </div>
