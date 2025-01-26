@@ -29,8 +29,8 @@ export const HeroSection: FC = () => {
         />
         <div
           className={clsxMerge(
-            'flex w-full flex-col pb-14 pt-12',
-            'md:pt-22 md:pb-16',
+            'pt-13 flex w-full flex-col pb-12',
+            'md:pt-22 sm:pb-14 md:pb-16',
           )}
         >
           <H2 />

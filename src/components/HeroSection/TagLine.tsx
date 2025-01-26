@@ -7,7 +7,7 @@ export const TagLine: FC = () => {
       className={clsxMerge(
         'pl-1 text-right text-[1.3rem] leading-[22px] tracking-wide text-slate-500',
         'dark:text-slate-500',
-        'sm:pl-0 sm:pr-0.5 sm:text-base',
+        'max-sm:pb-6 sm:pl-0 sm:pr-0.5 sm:text-base',
       )}
     >
       <span>15 years of experience</span>

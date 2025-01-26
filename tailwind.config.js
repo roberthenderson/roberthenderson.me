@@ -18,6 +18,7 @@ const nonDeprecatedColors = Object.fromEntries(
 export const theme = {
   extend: {
     spacing: {
+      13: '3.25rem',
       18: '72px',
     },
     letterSpacing: {
