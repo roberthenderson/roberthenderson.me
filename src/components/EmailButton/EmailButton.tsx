@@ -17,7 +17,7 @@ export const EmailButton: FC<EmailButtonProps> = ({ variant, className }) => {
         'hover:bg-emerald-600/90 hover:text-emerald-50 dark:hover:bg-teal-600/90 hover:dark:text-teal-50',
         {
           'px-4 text-sm lg:text-base': variant === 'footer',
-          'ml-1 px-16 md:hidden': variant === 'hero',
+          'ml-1 px-16 sm:hidden': variant === 'hero',
         },
         className,
       )}
