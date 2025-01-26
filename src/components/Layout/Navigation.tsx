@@ -36,14 +36,15 @@ const NavigationItem: FC<NavigationItemProps> = ({
   prevIndex,
   setPrevIndex,
 }) => {
-  const { activeSection, setActiveSection } = useAppContext();
+  const { pageSectionsList, activeSection, setActiveSection } = useAppContext();
   const [isHovered, setIsHovered] = useState(false);
 
   const isActive = section.id === activeSection;
   // So the transition below moves the underline from right
   // to left when the user's previous hover is coming from
   // the right and moving left.
-  const isMovingLeft = index < prevIndex;
+  const isMovingLeft =
+    prevIndex === pageSectionsList?.length || index < prevIndex;
 
   const handleNavLinkClick = () => {
     setActiveSection(section.id);
