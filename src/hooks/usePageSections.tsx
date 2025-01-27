@@ -9,38 +9,27 @@ import { SkillsSection } from '../components/SkillsSection/SkillsSection';
 import { INDIGO_GRADIENT_BG } from '../constants';
 import { clsxMerge } from '../utils/clsxMerge';
 
-export type PageSectionLinks = Record<PageSectionsEnum, string>;
-
 export const usePageSections = () => {
-  const { setPageSectionsList } = useAppContext();
+  const { setPageSectionsList, pageSectionLinks } = useAppContext();
 
   const skillsSection = useRef<HTMLElement | null>(null);
   const companiesSection = useRef<HTMLElement | null>(null);
   const aboutSection = useRef<HTMLElement | null>(null);
 
-  const pageSectionLinks: PageSectionLinks = useMemo(
-    () => ({
-      [PageSectionsEnum.Skills]: `/${PageSectionsEnum.Skills.toLowerCase()}`,
-      [PageSectionsEnum.Companies]: `/${PageSectionsEnum.Companies.toLowerCase()}`,
-      [PageSectionsEnum.About]: `/${PageSectionsEnum.About.toLowerCase()}`,
-    }),
-    [],
-  );
-
   const pageSections: PageSection[] = useMemo(
     () => [
       {
         id: PageSectionsEnum.Skills,
-        label: PageSectionsEnum.Skills,
+        label: 'Skills',
         ref: skillsSection,
         link: pageSectionLinks[PageSectionsEnum.Skills],
         children: <SkillsSection />,
       },
       {
-        id: PageSectionsEnum.Companies,
-        label: PageSectionsEnum.Companies,
+        id: PageSectionsEnum.Work,
+        label: 'Work',
         ref: companiesSection,
-        link: pageSectionLinks[PageSectionsEnum.Companies],
+        link: pageSectionLinks[PageSectionsEnum.Work],
         children: <CompaniesSection />,
         className: clsxMerge(
           INDIGO_GRADIENT_BG,
@@ -49,10 +38,10 @@ export const usePageSections = () => {
       },
       {
         id: PageSectionsEnum.About,
-        label: PageSectionsEnum.About,
+        label: 'About',
         ref: aboutSection,
         link: pageSectionLinks[PageSectionsEnum.About],
-        children: <div></div>,
+        children: <div className="h-[1000px]"></div>,
       },
     ],
     [pageSectionLinks],

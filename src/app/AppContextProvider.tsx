@@ -7,15 +7,19 @@ import {
   RefObject,
   SetStateAction,
   useContext,
+  useMemo,
   useState,
 } from 'react';
 import { useDarkMode } from '../hooks/useDarkMode';
+import { usePrevious } from '../hooks/usePrevious';
 
 export enum PageSectionsEnum {
-  About = 'About',
-  Skills = 'Skills',
-  Companies = 'Companies',
+  Skills,
+  Work,
+  About,
 }
+
+export type PageSectionLinks = Record<PageSectionsEnum, string>;
 
 export interface PageSection {
   id: PageSectionsEnum;
@@ -40,6 +44,8 @@ interface AppContextType {
   setPageSectionsList: Dispatch<SetStateAction<PageSections>>;
   activeSection: PageSectionsEnum | null;
   setActiveSection: Dispatch<SetStateAction<PageSectionsEnum | null>>;
+  prevActiveSection: PageSectionsEnum | null;
+  pageSectionLinks: PageSectionLinks;
 }
 
 const AppContext = createContext<AppContextType | null>(null);
@@ -54,7 +60,17 @@ export const AppContextProvider: FC<{ children: ReactNode }> = ({
   const [activeSection, setActiveSection] = useState<PageSectionsEnum | null>(
     null,
   );
+  const prevActiveSection = usePrevious(activeSection);
   const { ready, darkMode, setDarkMode } = useDarkMode();
+
+  const pageSectionLinks: PageSectionLinks = useMemo(
+    () => ({
+      [PageSectionsEnum.Skills]: `/skills`,
+      [PageSectionsEnum.Work]: `/work-experience`,
+      [PageSectionsEnum.About]: `/about`,
+    }),
+    [],
+  );
 
   return (
     <AppContext.Provider
@@ -69,6 +85,8 @@ export const AppContextProvider: FC<{ children: ReactNode }> = ({
         setPageSectionsList,
         activeSection,
         setActiveSection,
+        prevActiveSection,
+        pageSectionLinks,
       }}
     >
       {children}

@@ -2,7 +2,7 @@ import { PageSection, useAppContext } from '@/src/app/AppContextProvider';
 import { clsxMerge } from '@/src/utils/clsxMerge';
 import { scrollElementIntoView } from '@/src/utils/scrollElementIntoView';
 import { Transition } from '@headlessui/react';
-import { Dispatch, FC, SetStateAction, useState } from 'react';
+import { Dispatch, FC, SetStateAction, useMemo, useState } from 'react';
 
 export const Navigation: FC = () => {
   const { pageSectionsList } = useAppContext();
@@ -36,15 +36,28 @@ const NavigationItem: FC<NavigationItemProps> = ({
   prevIndex,
   setPrevIndex,
 }) => {
-  const { pageSectionsList, activeSection, setActiveSection } = useAppContext();
+  const {
+    pageSectionsList,
+    activeSection,
+    setActiveSection,
+    prevActiveSection,
+  } = useAppContext();
   const [isHovered, setIsHovered] = useState(false);
 
   const isActive = section.id === activeSection;
   // So the transition below moves the underline from right
-  // to left when the user's previous hover is coming from
-  // the right and moving left.
-  const isMovingLeft =
-    prevIndex === pageSectionsList?.length || index < prevIndex;
+  // to left when the user's previous hover/scroll is coming from
+  // the right/bottom.
+  const shouldTransitionToLeft = useMemo(() => {
+    if (
+      prevActiveSection !== null &&
+      activeSection !== null &&
+      prevActiveSection > activeSection
+    ) {
+      return true;
+    }
+    return prevIndex === pageSectionsList?.length || index < prevIndex;
+  }, [prevActiveSection, activeSection, prevIndex, index, pageSectionsList]);
 
   const handleNavLinkClick = () => {
     setActiveSection(section.id);
@@ -81,7 +94,8 @@ const NavigationItem: FC<NavigationItemProps> = ({
             'data-[closed]:opacity-0',
             // Entering styles
             'data-[enter]:data-[closed]:-translate-x-full data-[enter]:duration-200',
-            isMovingLeft && 'data-[enter]:data-[closed]:translate-x-full',
+            shouldTransitionToLeft &&
+              'data-[enter]:data-[closed]:translate-x-full',
           )}
         />
       </Transition>
