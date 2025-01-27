@@ -55,8 +55,14 @@ export const ContactSection: FC = () => {
   );
 
   return (
-    <div ref={contactSectionRef}>
-      <SectionContent alwaysColumn className="max-w-[480px] pb-16">
+    <div
+      ref={contactSectionRef}
+      className={clsxMerge(
+        SECTION_SPACING_CLASSNAME,
+        ALTERNATE_SECTION_CLASSNAME,
+      )}
+    >
+      <SectionContent alwaysColumn className="max-w-[480px]">
         <SectionHeading>Let's get in touch</SectionHeading>
         <Form data={CONTACT_FORM_DATA} />
       </SectionContent>

@@ -8,14 +8,14 @@ import { CompaniesSection } from '../components/CompaniesSection/CompaniesSectio
 import { SectionContent } from '../components/SectionContent/SectionContent';
 import { SectionHeading } from '../components/SectionHeading/SectionHeading';
 import { SkillsSection } from '../components/SkillsSection/SkillsSection';
-import { INDIGO_GRADIENT_BG } from '../constants';
+import { ALTERNATE_SECTION_CLASSNAME } from '../constants';
 import { clsxMerge } from '../utils/clsxMerge';
 
 export const usePageSections = () => {
   const { setPageSectionsList, pageSectionLinks } = useAppContext();
 
   const skillsSection = useRef<HTMLElement | null>(null);
-  const companiesSection = useRef<HTMLElement | null>(null);
+  const workSection = useRef<HTMLElement | null>(null);
   const aboutSection = useRef<HTMLElement | null>(null);
 
   const pageSections: PageSection[] = useMemo(
@@ -30,13 +30,10 @@ export const usePageSections = () => {
       {
         id: PageSectionsEnum.Work,
         label: 'Work',
-        ref: companiesSection,
+        ref: workSection,
         link: pageSectionLinks[PageSectionsEnum.Work],
         children: <CompaniesSection />,
-        className: clsxMerge(
-          INDIGO_GRADIENT_BG,
-          'border-t-2 border-b-12 border-t-violet-500 border-b-violet-600 dark:bg-none dark:bg-slate-900 dark:border-b-12 dark:border-slate-700 md:py-12',
-        ),
+        className: clsxMerge(ALTERNATE_SECTION_CLASSNAME),
       },
       {
         id: PageSectionsEnum.About,

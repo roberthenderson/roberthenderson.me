@@ -1,5 +1,6 @@
 import { ContactSection } from '../components/ContactSection/ContactSection';
 import { HeroSection } from '../components/HeroSection/HeroSection';
+import { SECTION_SPACING_CLASSNAME } from '../constants';
 import { usePageNavigation } from '../hooks/usePageNavigation';
 import { usePageSections } from '../hooks/usePageSections';
 import { clsxMerge } from '../utils/clsxMerge';
@@ -9,13 +10,13 @@ const Home = () => {
   usePageNavigation({ pageSections });
 
   return (
-    <div className="flex flex-col pb-10">
+    <div className="flex flex-col">
       <HeroSection />
       {pageSections.map((section) => (
         <section
           key={section.id}
           ref={section.ref}
-          className={clsxMerge('scroll-mt-16 py-8 md:py-16', section.className)}
+          className={clsxMerge(SECTION_SPACING_CLASSNAME, section.className)}
         >
           {section.children}
         </section>

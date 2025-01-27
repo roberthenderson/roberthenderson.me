@@ -1,3 +1,4 @@
+import { ALTERNATE_SECTION_CLASSNAME } from '@/src/constants';
 import { clsxMerge } from '@/src/utils/clsxMerge';
 import Image from 'next/image';
 import { FC } from 'react';
@@ -12,9 +13,8 @@ export const HeroSection: FC = () => {
   return (
     <section
       className={clsxMerge(
-        'border-b-12 border-violet-700 bg-indigo-100 transition-colors',
-        'dark:border-slate-700 dark:bg-slate-950',
-        'relative overflow-hidden',
+        'relative overflow-hidden transition-colors',
+        ALTERNATE_SECTION_CLASSNAME,
       )}
     >
       <div className="mx-auto flex w-full max-w-screen-xl justify-between px-8 lg:px-12 2xl:px-0">

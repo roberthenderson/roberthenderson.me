@@ -14,7 +14,7 @@ export const FieldLabel: FC<FieldLabelProps> = ({ children, focused }) => {
         'transition-colors',
         'block pb-0.5 text-sm font-500 text-slate-500',
         'dark:text-slate-400',
-        focused && 'text-violet-700 dark:text-yellow-600',
+        focused && 'text-violet-700 dark:text-indigo-400',
       )}
     >
       {children}

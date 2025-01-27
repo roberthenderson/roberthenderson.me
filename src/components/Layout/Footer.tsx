@@ -13,7 +13,7 @@ export const Footer: FC = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="flex h-[350px] w-full flex-col overflow-hidden border-t-2 border-violet-700 bg-[#78a2cc] sm:h-[600px] dark:border-slate-600">
+    <footer className="flex h-[350px] w-full flex-col overflow-hidden bg-[#78a2cc] sm:h-[600px]">
       <div className="relative flex h-full w-full flex-col justify-between">
         <section className="relative z-10 w-full bg-indigo-200 dark:bg-slate-700">
           <div
