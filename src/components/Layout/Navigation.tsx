@@ -43,6 +43,7 @@ const NavigationItem: FC<NavigationItemProps> = ({
     prevActiveSection,
   } = useAppContext();
   const [isHovered, setIsHovered] = useState(false);
+  const [isTouched, setIsTouched] = useState(false);
 
   const isActive = section.id === activeSection;
   // So the transition below moves the underline from right
@@ -63,8 +64,11 @@ const NavigationItem: FC<NavigationItemProps> = ({
     setActiveSection(section.id);
     scrollElementIntoView(section.ref.current);
   };
+  const handleTouchEnd = () => setIsTouched(true);
   const handleMouseEnter = () => {
-    setIsHovered(true);
+    // Checking for isTouched prevents the underline from sticking
+    // on the previous active section link on touch screens
+    setIsHovered(!isTouched);
   };
   const handleMouseLeave = () => {
     setIsHovered(false);
@@ -80,6 +84,7 @@ const NavigationItem: FC<NavigationItemProps> = ({
         'hover:text-violet-600 dark:text-slate-200 dark:hover:text-slate-300',
         'sm:text-base',
       )}
+      onTouchEnd={handleTouchEnd}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
