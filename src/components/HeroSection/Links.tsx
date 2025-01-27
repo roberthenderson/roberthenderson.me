@@ -27,8 +27,8 @@ export const Links: FC<LinksProps> = ({ variant = 'hero', className }) => {
   return (
     <div
       className={clsxMerge(
-        'flex cursor-pointer gap-2 text-2xl',
-        'md:gap-3 lg:gap-5',
+        'flex cursor-pointer gap-3 text-2xl',
+        'lg:gap-5',
         {
           'gap-4 max-sm:pt-0': variant === 'hero',
         },

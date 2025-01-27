@@ -5,6 +5,8 @@ import {
   useAppContext,
 } from '../app/AppContextProvider';
 import { CompaniesSection } from '../components/CompaniesSection/CompaniesSection';
+import { SectionContent } from '../components/SectionContent/SectionContent';
+import { SectionHeading } from '../components/SectionHeading/SectionHeading';
 import { SkillsSection } from '../components/SkillsSection/SkillsSection';
 import { INDIGO_GRADIENT_BG } from '../constants';
 import { clsxMerge } from '../utils/clsxMerge';
@@ -41,7 +43,12 @@ export const usePageSections = () => {
         label: 'About',
         ref: aboutSection,
         link: pageSectionLinks[PageSectionsEnum.About],
-        children: <div className="h-[1000px]"></div>,
+        children: (
+          <SectionContent alwaysColumn>
+            <SectionHeading>About me</SectionHeading>
+            <p>Hellur</p>
+          </SectionContent>
+        ),
       },
     ],
     [pageSectionLinks],

@@ -42,7 +42,7 @@ export const HeroSection: FC = () => {
             )}
           >
             <Links />
-            <EmailButton variant="hero" />
+            <EmailButton location="hero" />
             <TagLine />
           </div>
         </div>

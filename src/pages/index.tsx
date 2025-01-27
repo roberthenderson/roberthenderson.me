@@ -1,11 +1,12 @@
+import { ContactSection } from '../components/ContactSection/ContactSection';
 import { HeroSection } from '../components/HeroSection/HeroSection';
 import { usePageNavigation } from '../hooks/usePageNavigation';
 import { usePageSections } from '../hooks/usePageSections';
 import { clsxMerge } from '../utils/clsxMerge';
 
 const Home = () => {
-  const { pageSectionLinks, pageSections } = usePageSections();
-  usePageNavigation({ pageSectionLinks, pageSections });
+  const { pageSections } = usePageSections();
+  usePageNavigation({ pageSections });
 
   return (
     <div className="flex flex-col pb-10">
@@ -19,6 +20,7 @@ const Home = () => {
           {section.children}
         </section>
       ))}
+      <ContactSection />
     </div>
   );
 };

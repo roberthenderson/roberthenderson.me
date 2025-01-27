@@ -10,7 +10,7 @@ export const CompaniesSection: FC = () => {
   const { featuredCompanies, otherCompanies } = useCompanies();
 
   return (
-    <SectionContent className="gap-12 sm:gap-8 md:flex-col md:gap-14">
+    <SectionContent className="gap-12 sm:gap-8 md:gap-14" alwaysColumn>
       <SectionHeading>Work Experience</SectionHeading>
       <div
         className={clsxMerge(

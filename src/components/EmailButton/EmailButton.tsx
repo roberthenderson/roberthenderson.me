@@ -1,31 +1,35 @@
+import { useAppContext } from '@/src/app/AppContextProvider';
 import { clsxMerge } from '@/src/utils/clsxMerge';
+import { scrollElementIntoView } from '@/src/utils/scrollElementIntoView';
 import { FC } from 'react';
 import { RiSendPlaneLine } from 'react-icons/ri';
+import { Button } from '../base/Button/Button';
 
 interface EmailButtonProps {
-  variant: 'header' | 'hero' | 'footer';
+  location: 'header' | 'hero' | 'footer';
   className?: string;
 }
 
-export const EmailButton: FC<EmailButtonProps> = ({ variant, className }) => {
+export const EmailButton: FC<EmailButtonProps> = ({ location, className }) => {
+  const { contactSectionRef } = useAppContext();
+  const handleClick = () => scrollElementIntoView(contactSectionRef?.current);
+
   return (
-    <button
+    <Button
       className={clsxMerge(
-        'flex items-center gap-2 rounded-full bg-emerald-600 p-2 pr-2.5 pt-[9px] font-semibold text-emerald-100 transition-all',
-        'sm:px-6 sm:py-1.5',
-        'dark:bg-teal-600 dark:text-teal-100',
-        'hover:bg-emerald-600/90 hover:text-emerald-50 dark:hover:bg-teal-600/90 hover:dark:text-teal-50',
+        'flex items-center gap-2 pr-2.5',
         {
-          'px-4 text-sm lg:text-base': variant === 'footer',
-          'ml-1 px-16 sm:hidden': variant === 'hero',
+          'px-4 text-sm lg:text-base': location === 'footer',
+          'ml-1 px-16 sm:hidden': location === 'hero',
         },
         className,
       )}
+      onClick={handleClick}
     >
-      <span className={clsxMerge(variant === 'header' && 'max-sm:hidden')}>
+      <span className={clsxMerge(location === 'header' && 'max-sm:hidden')}>
         Let's Talk
       </span>
       <RiSendPlaneLine size={18} />
-    </button>
+    </Button>
   );
 };

@@ -31,6 +31,7 @@ export interface PageSection {
 }
 
 type HeaderRef = RefObject<HTMLElement | null> | null;
+type ContactSectionRef = RefObject<HTMLDivElement | null> | null;
 type PageSections = PageSection[] | null;
 
 interface AppContextType {
@@ -38,6 +39,8 @@ interface AppContextType {
   router: NextRouter;
   headerRef: HeaderRef;
   setHeaderRef: Dispatch<SetStateAction<HeaderRef>>;
+  contactSectionRef: ContactSectionRef;
+  setContactSectionRef: Dispatch<SetStateAction<ContactSectionRef>>;
   darkMode: boolean;
   setDarkMode: Dispatch<SetStateAction<boolean>>;
   pageSectionsList: PageSections;
@@ -56,6 +59,8 @@ export const AppContextProvider: FC<{ children: ReactNode }> = ({
   const router = useRouter();
 
   const [headerRef, setHeaderRef] = useState<HeaderRef>(null);
+  const [contactSectionRef, setContactSectionRef] =
+    useState<ContactSectionRef>(null);
   const [pageSectionsList, setPageSectionsList] = useState<PageSections>(null);
   const [activeSection, setActiveSection] = useState<PageSectionsEnum | null>(
     null,
@@ -79,6 +84,8 @@ export const AppContextProvider: FC<{ children: ReactNode }> = ({
         router,
         headerRef,
         setHeaderRef,
+        contactSectionRef,
+        setContactSectionRef,
         darkMode,
         setDarkMode,
         pageSectionsList,

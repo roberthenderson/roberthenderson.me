@@ -5,9 +5,8 @@ import Image from 'next/image';
 import { FC } from 'react';
 import { FaRegCopyright } from 'react-icons/fa';
 import { SiNextdotjs } from 'react-icons/si';
-import { EmailButton } from '../EmailButton/EmailButton';
 import { Links } from '../HeroSection/Links';
-import { TextLink } from '../TextLink/TextLink';
+import { TextLink } from '../base/TextLink/TextLink';
 
 export const Footer: FC = () => {
   const { darkMode } = useAppContext();
@@ -23,33 +22,33 @@ export const Footer: FC = () => {
               'md:flex-row md:px-6 lg:px-16',
             )}
           >
-            <div className="flex items-center gap-4 text-sm max-md:w-full max-md:justify-between md:gap-1 lg:text-base">
-              <EmailButton variant="footer" className="md:hidden" />
-              <div className="flex items-center gap-1 max-sm:hidden lg:gap-2">
-                <FaRegCopyright />
-                <span>{year} Robert Henderson.</span>
+            <div className="flex w-full items-center justify-between gap-4 text-sm md:gap-1 lg:text-base">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-1 lg:gap-2">
+                  <FaRegCopyright />
+                  <span>{year}</span>
+                  <span className="max-sm:hidden"> Robert Henderson.</span>
+                </div>
+                <div className="flex items-center gap-1 max-md:hidden">
+                  <span className="flex items-center gap-1">
+                    <TextLink href={GITHUB_REPO_URL} target="_blank">
+                      Built
+                    </TextLink>{' '}
+                    with
+                    <SiNextdotjs size={20} className="lg:mx-0.5" />
+                    NextJS in
+                  </span>
+                  <Image
+                    src={
+                      darkMode ? '/fortcollins.png' : '/fortcollins_dark.png'
+                    }
+                    alt="Fort Collins, Colorado"
+                    width="90"
+                    height="23"
+                    className="relative -left-3 top-[5px]"
+                  />
+                </div>
               </div>
-              <div className="flex items-center justify-between gap-2 max-md:hidden">
-                <span className="flex items-center gap-1">
-                  <TextLink href={GITHUB_REPO_URL} target="_blank">
-                    Built
-                  </TextLink>{' '}
-                  with
-                  <SiNextdotjs size={20} className="lg:mx-0.5" />
-                  NextJS in
-                </span>
-                <Image
-                  src={darkMode ? '/fortcollins.png' : '/fortcollins_dark.png'}
-                  alt="Fort Collins, Colorado"
-                  width="90"
-                  height="23"
-                  className="relative -left-3 top-[5px]"
-                />
-              </div>
-              <Links variant="footer" className="md:hidden" />
-            </div>
-            <div className="flex items-center gap-4 max-md:hidden lg:gap-6">
-              <EmailButton variant="footer" />
               <Links variant="footer" />
             </div>
           </div>

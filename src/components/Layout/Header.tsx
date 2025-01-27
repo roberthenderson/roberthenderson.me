@@ -33,7 +33,7 @@ export const Header: FC = () => {
           <Navigation />
         </div>
         <div className="flex items-center gap-4 sm:pl-8 md:pl-12">
-          <EmailButton variant="header" />
+          <EmailButton location="header" />
           <DarkModeToggle />
         </div>
       </div>

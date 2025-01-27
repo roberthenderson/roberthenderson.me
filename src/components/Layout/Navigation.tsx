@@ -81,7 +81,7 @@ const NavigationItem: FC<NavigationItemProps> = ({
       className={clsxMerge(
         'group relative text-sm font-500 text-violet-950 transition-all',
         'h-8',
-        'hover:text-violet-600 dark:text-slate-200 dark:hover:text-slate-300',
+        'dark:text-slate-200 dark:hover:text-slate-300',
         'sm:text-base',
       )}
       onTouchEnd={handleTouchEnd}
