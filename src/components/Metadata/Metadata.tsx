@@ -6,7 +6,7 @@ export const Metadata = () => {
 
   return (
     <Head>
-      <title>{`${activeSection ? activeSection + ' | ' : ''}Robert Henderson | Senior Frontend Engineer`}</title>
+      <title>{`${activeSection ? pageSectionsList?.find((section) => section.id === activeSection)?.label + ' | ' : ''}Robert Henderson | Senior Frontend Engineer`}</title>
       <meta name="author" content="Robert Henderson" />
       <meta
         name="description"
@@ -18,7 +18,7 @@ export const Metadata = () => {
       />
       <link
         rel="canonical"
-        href={`https://roberthenderson.dev${
+        href={`https://roberthenderson.me${
           activeSection
             ? pageSectionsList?.find(
                 (pageSection) => pageSection.id === activeSection,
