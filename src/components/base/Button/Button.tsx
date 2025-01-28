@@ -20,7 +20,7 @@ export const Button: FC<ButtonProps> = ({
     <HeadlessButton
       className={clsxMerge(
         'rounded-full p-2 font-semibold transition-all',
-        'sm:px-6 sm:py-1.5',
+        'px-6 py-1.5',
         {
           'bg-emerald-600 text-emerald-100 dark:bg-teal-600 dark:text-teal-100':
             variant === 'primary',

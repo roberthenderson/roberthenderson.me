@@ -6,7 +6,7 @@ import { RiSendPlaneLine } from 'react-icons/ri';
 import { Button } from '../base/Button/Button';
 
 interface EmailButtonProps {
-  location: 'header' | 'hero' | 'footer';
+  location: 'header' | 'hero';
   className?: string;
 }
 
@@ -17,9 +17,9 @@ export const EmailButton: FC<EmailButtonProps> = ({ location, className }) => {
   return (
     <Button
       className={clsxMerge(
-        'flex items-center gap-2 pr-2.5',
+        'flex items-center gap-2',
         {
-          'px-4 text-sm lg:text-base': location === 'footer',
+          'max-sm:py-2 max-sm:pl-2 max-sm:pr-2.5': location === 'header',
           'ml-1 px-16 sm:hidden': location === 'hero',
         },
         className,

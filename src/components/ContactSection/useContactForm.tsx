@@ -231,8 +231,8 @@ export const useContactForm = () => {
             <span>Send</span>
             <div
               className={clsxMerge(
-                'text-slate-400 transition-colors',
-                !formState.disabled && 'group-hover:text-slate-300',
+                'text-slate-300 transition-colors',
+                !formState.disabled && 'group-hover:text-slate-200',
               )}
             >
               {formState.loading ? (
