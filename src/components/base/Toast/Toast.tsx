@@ -40,7 +40,7 @@ export const Toast: FC<ToastProps> = ({
       <div
         role="alertdialog"
         className={clsxMerge(
-          'pointer-events-none fixed inset-x-0 bottom-0 z-50 sm:flex sm:justify-start sm:px-10 sm:pb-10 lg:px-8',
+          'pointer-events-none fixed inset-x-0 bottom-0 z-50 sm:flex sm:justify-end sm:px-10 sm:pb-10 lg:px-8',
           position === 'top' && 'top-0',
           container === 'local' && 'absolute',
           'transition duration-200 ease-in-out',
