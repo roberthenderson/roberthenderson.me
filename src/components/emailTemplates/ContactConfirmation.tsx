@@ -24,7 +24,7 @@ export const ContactConfirmation: FC<Readonly<ContactConfirmationProps>> = ({
           Thanks so much for reaching out. I will reply to you as soon as
           possible. A copy of your message is below.
         </p>
-        <p>Thanks, and I look forward to chatting.</p>
+        <p>I look forward to chatting.</p>
         <p>Robert</p>
       </div>
       <div

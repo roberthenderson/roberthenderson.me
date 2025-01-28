@@ -8,6 +8,7 @@ import { FC, useEffect, useRef } from 'react';
 import { SectionContent } from '../SectionContent/SectionContent';
 import { SectionHeading } from '../SectionHeading/SectionHeading';
 import { Form } from '../base/Form/Form';
+import { Toast } from '../base/Toast/Toast';
 import { useContactForm } from './useContactForm';
 
 export const ContactSection: FC = () => {
@@ -18,7 +19,7 @@ export const ContactSection: FC = () => {
     [setContactSectionRef],
   );
 
-  const { contactFormData, formState } = useContactForm();
+  const { contactFormData, formState, toast } = useContactForm();
 
   return (
     <div
@@ -32,6 +33,7 @@ export const ContactSection: FC = () => {
         <SectionHeading>Let's get in touch</SectionHeading>
         <Form data={contactFormData} state={formState} />
       </SectionContent>
+      <Toast {...toast} />
     </div>
   );
 };

@@ -43,7 +43,7 @@ export const usePageSections = () => {
         children: (
           <SectionContent alwaysColumn>
             <SectionHeading>About me</SectionHeading>
-            <p>Hellur</p>
+            <p>Work in progress...</p>
           </SectionContent>
         ),
       },

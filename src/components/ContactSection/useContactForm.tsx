@@ -2,12 +2,15 @@ import { clsxMerge } from '@/src/utils/clsxMerge';
 import { validateEmail } from '@/src/utils/validateEmail';
 import { useCallback, useMemo, useReducer } from 'react';
 import { BiMailSend } from 'react-icons/bi';
+import { CgSpinner } from 'react-icons/cg';
+import { useDebouncedCallback } from 'use-debounce';
 import { FormData } from '../base/Form/Form';
 import {
   FormActionType,
   FormError,
   useFormState,
 } from '../base/Form/useFormState';
+import { useToast } from '../base/Toast/useToast';
 
 interface ContactFormState {
   name: string;
@@ -34,10 +37,12 @@ const reducer = (state: ContactFormState, action: ContactFormAction) => {
       return { ...state, email: action.payload };
     case ContactFormActionType.setContent:
       return { ...state, content: action.payload };
+    default:
+      return state;
   }
 };
 
-const initialState = {
+const initialState: ContactFormState = {
   name: '',
   email: '',
   content: '',
@@ -46,23 +51,26 @@ const initialState = {
 const EMAIL_INVALID_MESSAGE = 'Please enter a valid email address.';
 
 export const useContactForm = () => {
-  const { formState, dispatchFormState } = useFormState();
+  const { formState, dispatchFormState, toggleLoading } = useFormState();
   const [state, dispatch] = useReducer(reducer, initialState);
   const resetState = () => {
     const types = Object.values(ContactFormActionType);
     types.forEach((type) => dispatch({ type, payload: '' }));
   };
+  const { toast, openToast, closeToast } = useToast();
 
-  const handleChange = useCallback(
-    (action: ContactFormAction) => {
-      dispatchFormState({ type: FormActionType.setErrors, payload: [] });
-      dispatchFormState({
-        type: FormActionType.setDisabled,
-        payload: false,
-      });
-      dispatch(action);
+  const handleError = useCallback(
+    (error: unknown) => {
+      if (error instanceof Error) {
+        openToast({
+          type: 'error',
+          message: error.message,
+          onClose: closeToast,
+        });
+      }
+      toggleLoading(false);
     },
-    [dispatchFormState],
+    [openToast, closeToast, toggleLoading],
   );
 
   const onSend = useCallback(async () => {
@@ -95,25 +103,79 @@ export const useContactForm = () => {
       email: state.email.trim(),
       content: state.content,
     });
-    const confirmationEmail = await fetch('/api/sendContactConfirmation', {
-      method: 'POST',
-      body,
+
+    toggleLoading(true);
+    try {
+      const confirmationEmail = await fetch('/api/sendContactConfirmation', {
+        method: 'POST',
+        body,
+      });
+      if (confirmationEmail.status === 400) {
+        const { message } = await confirmationEmail.json();
+        throw Error(message);
+      }
+    } catch (error) {
+      handleError(error);
+      return;
+    }
+
+    try {
+      const submissionEmail = await fetch('/api/sendContactSubmission', {
+        method: 'POST',
+        body,
+      });
+      if (submissionEmail.status === 400) {
+        const { message } = await submissionEmail.json();
+        throw Error(message);
+      }
+    } catch (error) {
+      handleError(error);
+      return;
+    }
+
+    dispatchFormState({ type: FormActionType.setStatus, payload: 200 });
+    openToast({
+      type: 'success',
+      message: 'Message sent successfully. Thank you!',
+      onClose: closeToast,
+      closeAfterMs: 5000,
     });
-    const submissionEmail = await fetch('/api/sendContactSubmission', {
-      method: 'POST',
-      body,
-    });
-    if (confirmationEmail.status === 200 && submissionEmail.status === 200) {
-      dispatchFormState({ type: FormActionType.setStatus, payload: 200 });
-      console.log('both successful');
-      resetState();
-    } else {
-      console.error('there was an error sending', {
-        confirmationEmail,
-        submissionEmail,
+    toggleLoading(false);
+    resetState();
+  }, [
+    state,
+    dispatchFormState,
+    closeToast,
+    openToast,
+    toggleLoading,
+    handleError,
+  ]);
+
+  const handleValidateEmail = useDebouncedCallback((email: string) => {
+    if (!validateEmail(email)) {
+      dispatchFormState({
+        type: FormActionType.setErrors,
+        payload: [
+          {
+            message: EMAIL_INVALID_MESSAGE,
+            name: 'email',
+          },
+        ],
       });
     }
-  }, [state, dispatchFormState]);
+  }, 1000);
+
+  const handleChange = useCallback(
+    (action: ContactFormAction) => {
+      dispatchFormState({ type: FormActionType.setErrors, payload: [] });
+      dispatchFormState({
+        type: FormActionType.setDisabled,
+        payload: false,
+      });
+      dispatch(action);
+    },
+    [dispatchFormState],
+  );
 
   const contactFormData: FormData = useMemo(
     () => ({
@@ -121,56 +183,64 @@ export const useContactForm = () => {
         "Please send information on your job opening or project. I'll respond promptly, thank you.",
       fields: [
         {
-          name: 'name',
           type: 'text',
           label: 'Name',
-          placeholder: "What's your name?",
-          onChange: (payload: string) =>
-            handleChange({ type: ContactFormActionType.setName, payload }),
-        },
-        {
-          name: 'email',
-          type: 'email',
-          label: 'Email',
-          placeholder: "What's your email?",
-          onChange: (payload: string) => {
-            if (payload && !validateEmail(payload)) {
-              dispatchFormState({
-                type: FormActionType.setErrors,
-                payload: [
-                  {
-                    message: EMAIL_INVALID_MESSAGE,
-                    name: 'email',
-                  },
-                ],
-              });
-              return;
-            }
-            handleChange({ type: ContactFormActionType.setEmail, payload });
+          props: {
+            name: 'name',
+            value: state.name,
+            placeholder: "What's your name?",
+            onChange: (event) =>
+              handleChange({
+                type: ContactFormActionType.setName,
+                payload: event.target.value,
+              }),
           },
         },
         {
-          name: 'content',
+          type: 'email',
+          label: 'Email',
+          props: {
+            name: 'email',
+            value: state.email,
+            placeholder: "What's your email?",
+            onChange: (event) => {
+              const payload = event.target.value;
+              handleChange({ type: ContactFormActionType.setEmail, payload });
+              handleValidateEmail(payload);
+            },
+          },
+        },
+        {
           type: 'textarea',
           label: 'Content',
           props: {
+            name: 'content',
+            value: state.content,
+            onChange: (event) =>
+              handleChange({
+                type: ContactFormActionType.setContent,
+                payload: event.target.value,
+              }),
             rows: 4,
           },
-          onChange: (payload: string) =>
-            handleChange({ type: ContactFormActionType.setContent, payload }),
         },
       ],
       button: {
         label: (
           <div className="flex items-center gap-2">
             <span>Send</span>
-            <BiMailSend
-              size={18}
+            <div
               className={clsxMerge(
                 'text-slate-400 transition-colors',
                 !formState.disabled && 'group-hover:text-slate-300',
               )}
-            />
+            >
+              {formState.loading ? (
+                <CgSpinner size={18} className="animate-spin" />
+              ) : (
+                <BiMailSend size={18} />
+              )}
+            </div>
           </div>
         ),
         variant: 'secondary',
@@ -178,8 +248,8 @@ export const useContactForm = () => {
         onClick: onSend,
       },
     }),
-    [onSend, handleChange, dispatchFormState, formState],
+    [state, formState, handleChange, handleValidateEmail, onSend],
   );
 
-  return { formState, contactFormData };
+  return { formState, contactFormData, toast };
 };
