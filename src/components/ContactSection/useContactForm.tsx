@@ -3,7 +3,11 @@ import { validateEmail } from '@/src/utils/validateEmail';
 import { useCallback, useMemo, useReducer } from 'react';
 import { BiMailSend } from 'react-icons/bi';
 import { FormData } from '../base/Form/Form';
-import { FormError, useFormState } from '../base/Form/useFormState';
+import {
+  FormActionType,
+  FormError,
+  useFormState,
+} from '../base/Form/useFormState';
 
 interface ContactFormState {
   name: string;
@@ -11,37 +15,49 @@ interface ContactFormState {
   content: string;
 }
 
+enum ContactFormActionType {
+  setName = 'setName',
+  setEmail = 'setEmail',
+  setContent = 'setContent',
+}
+
 type ContactFormAction =
-  | { type: 'setName'; payload: string }
-  | { type: 'setEmail'; payload: string }
-  | { type: 'setContent'; payload: string };
+  | { type: ContactFormActionType.setName; payload: string }
+  | { type: ContactFormActionType.setEmail; payload: string }
+  | { type: ContactFormActionType.setContent; payload: string };
 
 const reducer = (state: ContactFormState, action: ContactFormAction) => {
   switch (action.type) {
-    case 'setName':
+    case ContactFormActionType.setName:
       return { ...state, name: action.payload };
-    case 'setEmail':
+    case ContactFormActionType.setEmail:
       return { ...state, email: action.payload };
-    case 'setContent':
+    case ContactFormActionType.setContent:
       return { ...state, content: action.payload };
   }
+};
+
+const initialState = {
+  name: '',
+  email: '',
+  content: '',
 };
 
 const EMAIL_INVALID_MESSAGE = 'Please enter a valid email address.';
 
 export const useContactForm = () => {
   const { formState, dispatchFormState } = useFormState();
-  const [state, dispatch] = useReducer(reducer, {
-    name: '',
-    email: '',
-    content: '',
-  });
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const resetState = () => {
+    const types = Object.values(ContactFormActionType);
+    types.forEach((type) => dispatch({ type, payload: '' }));
+  };
 
   const handleChange = useCallback(
     (action: ContactFormAction) => {
-      dispatchFormState({ type: 'setErrors', payload: [] });
+      dispatchFormState({ type: FormActionType.setErrors, payload: [] });
       dispatchFormState({
-        type: 'setDisabled',
+        type: FormActionType.setDisabled,
         payload: false,
       });
       dispatch(action);
@@ -65,11 +81,11 @@ export const useContactForm = () => {
     }
     if (errors.length > 0) {
       dispatchFormState({
-        type: 'setErrors',
+        type: FormActionType.setErrors,
         payload: errors,
       });
       dispatchFormState({
-        type: 'setDisabled',
+        type: FormActionType.setDisabled,
         payload: true,
       });
       return;
@@ -88,8 +104,9 @@ export const useContactForm = () => {
       body,
     });
     if (confirmationEmail.status === 200 && submissionEmail.status === 200) {
-      dispatchFormState({ type: 'setStatus', payload: 200 });
+      dispatchFormState({ type: FormActionType.setStatus, payload: 200 });
       console.log('both successful');
+      resetState();
     } else {
       console.error('there was an error sending', {
         confirmationEmail,
@@ -109,7 +126,7 @@ export const useContactForm = () => {
           label: 'Name',
           placeholder: "What's your name?",
           onChange: (payload: string) =>
-            handleChange({ type: 'setName', payload }),
+            handleChange({ type: ContactFormActionType.setName, payload }),
         },
         {
           name: 'email',
@@ -119,7 +136,7 @@ export const useContactForm = () => {
           onChange: (payload: string) => {
             if (payload && !validateEmail(payload)) {
               dispatchFormState({
-                type: 'setErrors',
+                type: FormActionType.setErrors,
                 payload: [
                   {
                     message: EMAIL_INVALID_MESSAGE,
@@ -129,7 +146,7 @@ export const useContactForm = () => {
               });
               return;
             }
-            handleChange({ type: 'setEmail', payload });
+            handleChange({ type: ContactFormActionType.setEmail, payload });
           },
         },
         {
@@ -140,7 +157,7 @@ export const useContactForm = () => {
             rows: 4,
           },
           onChange: (payload: string) =>
-            handleChange({ type: 'setContent', payload }),
+            handleChange({ type: ContactFormActionType.setContent, payload }),
         },
       ],
       button: {

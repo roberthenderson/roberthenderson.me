@@ -8,18 +8,24 @@ export interface FormState {
   disabled: boolean;
 }
 
+export enum FormActionType {
+  setStatus = 'setStatus',
+  setErrors = 'setErrors',
+  setDisabled = 'setDisabled',
+}
+
 type FormAction =
-  | { type: 'setStatus'; payload: FormState['status'] }
-  | { type: 'setErrors'; payload: FormState['errors'] }
-  | { type: 'setDisabled'; payload: FormState['disabled'] };
+  | { type: FormActionType.setStatus; payload: FormState['status'] }
+  | { type: FormActionType.setErrors; payload: FormState['errors'] }
+  | { type: FormActionType.setDisabled; payload: FormState['disabled'] };
 
 const reducer = (state: FormState, action: FormAction) => {
   switch (action.type) {
-    case 'setStatus':
+    case FormActionType.setStatus:
       return { ...state, status: action.payload };
-    case 'setErrors':
+    case FormActionType.setErrors:
       return { ...state, errors: action.payload };
-    case 'setDisabled':
+    case FormActionType.setDisabled:
       return { ...state, disabled: action.payload };
   }
 };
