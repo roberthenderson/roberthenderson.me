@@ -74,14 +74,28 @@ export const useContactForm = () => {
       });
       return;
     }
-    const response = await fetch('/api/send', {
-      body: JSON.stringify({
-        name: state.name,
-        email: state.email,
-        content: state.content,
-      }),
+    const body = JSON.stringify({
+      name: state.name.trim(),
+      email: state.email.trim(),
+      content: state.content,
     });
-    dispatchFormState({ type: 'setStatus', payload: response.status });
+    const confirmationEmail = await fetch('/api/sendContactConfirmation', {
+      method: 'POST',
+      body,
+    });
+    const submissionEmail = await fetch('/api/sendContactSubmission', {
+      method: 'POST',
+      body,
+    });
+    if (confirmationEmail.status === 200 && submissionEmail.status === 200) {
+      dispatchFormState({ type: 'setStatus', payload: 200 });
+      console.log('both successful');
+    } else {
+      console.error('there was an error sending', {
+        confirmationEmail,
+        submissionEmail,
+      });
+    }
   }, [state, dispatchFormState]);
 
   const contactFormData: FormData = useMemo(

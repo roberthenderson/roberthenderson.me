@@ -12,7 +12,11 @@ import { FieldLabel } from '../FieldLabel/FieldLabel';
 export const Textarea: FC<HeadlessTextareaProps> = ({ className, ...rest }) => {
   return (
     <HeadlessTextarea
-      className={clsxMerge(FIELD_CLASSNAME, 'py-2 leading-5', className)}
+      className={clsxMerge(
+        FIELD_CLASSNAME,
+        'whitespace-pre-wrap py-2 leading-5',
+        className,
+      )}
       {...rest}
     />
   );
