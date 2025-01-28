@@ -36,7 +36,6 @@ export const AboutSection: FC = () => {
             Engineer.
           </p>
         </AboutSectionBanner>
-        {/* <SectionHeading>About me</SectionHeading> */}
         <div
           className={clsxMerge(
             'mx-auto max-w-screen-xl',
