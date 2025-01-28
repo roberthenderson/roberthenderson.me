@@ -21,6 +21,7 @@ export const Textarea: FC<HeadlessTextareaProps> = ({ className, ...rest }) => {
 interface TextareaFieldProps extends Omit<HeadlessTextareaProps, 'className'> {
   label?: string;
   classNames?: {
+    label?: string;
     field?: string;
     textarea?: string;
   };
@@ -35,7 +36,11 @@ export const TextareaField: FC<TextareaFieldProps> = ({
 
   return (
     <Field className={clsxMerge('text-left', classNames?.field)}>
-      {label && <FieldLabel focused={focused}>{label}</FieldLabel>}
+      {label && (
+        <FieldLabel focused={focused} className={classNames?.label}>
+          {label}
+        </FieldLabel>
+      )}
       <Textarea
         className={classNames?.textarea}
         onFocus={handleFocus}

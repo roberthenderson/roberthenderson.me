@@ -13,6 +13,7 @@ export const Button: FC<ButtonProps> = ({
   children,
   className,
   variant = 'primary',
+  disabled,
   ...rest
 }) => {
   return (
@@ -30,6 +31,8 @@ export const Button: FC<ButtonProps> = ({
           'dark:hover:bg-indigo-900 hover:dark:text-teal-50':
             variant === 'secondary',
         },
+        disabled && 'cursor-not-allowed disabled:opacity-70',
+        !disabled && 'hover:bg-opacity-95',
         className,
       )}
       {...rest}
