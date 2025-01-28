@@ -7,7 +7,7 @@ export const GITHUB_REPO_URL =
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/rhahenderson';
 
 // ClassNames
-export const SECTION_SPACING_CLASSNAME = 'scroll-mt-16 py-8 md:py-16';
+export const SECTION_SPACING_CLASSNAME = 'scroll-mt-16';
 export const ALTERNATE_SECTION_CLASSNAME =
   'border-t-2 border-b-12 border-t-violet-500 border-b-violet-600 bg-violet-100 dark:bg-slate-900 dark:border-b-12 dark:border-slate-600';
 export const INDIGO_GRADIENT_BG_CLASSNAME =

@@ -4,9 +4,8 @@ import {
   PageSectionsEnum,
   useAppContext,
 } from '../app/AppContextProvider';
+import { AboutSection } from '../components/AboutSection/AboutSection';
 import { CompaniesSection } from '../components/CompaniesSection/CompaniesSection';
-import { SectionContent } from '../components/SectionContent/SectionContent';
-import { SectionHeading } from '../components/SectionHeading/SectionHeading';
 import { SkillsSection } from '../components/SkillsSection/SkillsSection';
 import { ALTERNATE_SECTION_CLASSNAME } from '../constants';
 import { clsxMerge } from '../utils/clsxMerge';
@@ -40,12 +39,7 @@ export const usePageSections = () => {
         label: 'About',
         ref: aboutSection,
         link: pageSectionLinks[PageSectionsEnum.About],
-        children: (
-          <SectionContent alwaysColumn>
-            <SectionHeading>About me</SectionHeading>
-            <p>Work in progress...</p>
-          </SectionContent>
-        ),
+        children: <AboutSection />,
       },
     ],
     [pageSectionLinks],
