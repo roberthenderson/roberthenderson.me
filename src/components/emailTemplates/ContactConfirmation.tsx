@@ -29,9 +29,7 @@ export const ContactConfirmation: FC<Readonly<ContactConfirmationProps>> = ({
       </div>
       <div
         style={{
-          borderLeft: '3px solid #1e293b',
-          paddingTop: '16px',
-          paddingBottom: '16px',
+          borderLeft: '3px solid #94a3b8',
           paddingLeft: '16px',
         }}
       >

@@ -15,7 +15,7 @@ export const ContactSubmission: FC<Readonly<ContactSubmissionProps>> = ({
     <div>
       <p
         style={{
-          borderBottom: '1px solid #1e293b',
+          borderBottom: '1px solid #94a3b8',
           paddingBottom: '16px',
         }}
       >
