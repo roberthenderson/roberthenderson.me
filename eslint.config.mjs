@@ -27,5 +27,6 @@ export default tseslint.config(
         version: 'detect',
       },
     },
+    ignores: ['node_modules', '*.css', '*.js'],
   },
 );
