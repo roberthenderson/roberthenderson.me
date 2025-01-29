@@ -17,21 +17,21 @@ export enum PageSectionsEnum {
   Skills,
   Work,
   About,
+  Contact,
 }
 
 export type PageSectionLinks = Record<PageSectionsEnum, string>;
 
 export interface PageSection {
   id: PageSectionsEnum;
-  label: string;
+  label: ReactNode;
   ref: RefObject<HTMLElement | null>;
-  link: string;
+  link?: string;
+  isMainNavigation: boolean;
   children: ReactNode;
-  className?: string;
 }
 
 type HeaderRef = RefObject<HTMLElement | null> | null;
-type ContactSectionRef = RefObject<HTMLDivElement | null> | null;
 type PageSections = PageSection[] | null;
 
 interface AppContextType {
@@ -39,8 +39,6 @@ interface AppContextType {
   router: NextRouter;
   headerRef: HeaderRef;
   setHeaderRef: Dispatch<SetStateAction<HeaderRef>>;
-  contactSectionRef: ContactSectionRef;
-  setContactSectionRef: Dispatch<SetStateAction<ContactSectionRef>>;
   darkMode: boolean;
   setDarkMode: Dispatch<SetStateAction<boolean>>;
   pageSectionsList: PageSections;
@@ -59,8 +57,6 @@ export const AppContextProvider: FC<{ children: ReactNode }> = ({
   const router = useRouter();
 
   const [headerRef, setHeaderRef] = useState<HeaderRef>(null);
-  const [contactSectionRef, setContactSectionRef] =
-    useState<ContactSectionRef>(null);
   const [pageSectionsList, setPageSectionsList] = useState<PageSections>(null);
   const [activeSection, setActiveSection] = useState<PageSectionsEnum | null>(
     null,
@@ -73,6 +69,7 @@ export const AppContextProvider: FC<{ children: ReactNode }> = ({
       [PageSectionsEnum.Skills]: `/skills`,
       [PageSectionsEnum.Work]: `/work-experience`,
       [PageSectionsEnum.About]: `/about`,
+      [PageSectionsEnum.Contact]: '/contact',
     }),
     [],
   );
@@ -84,8 +81,6 @@ export const AppContextProvider: FC<{ children: ReactNode }> = ({
         router,
         headerRef,
         setHeaderRef,
-        contactSectionRef,
-        setContactSectionRef,
         darkMode,
         setDarkMode,
         pageSectionsList,

@@ -10,15 +10,20 @@ export const Navigation: FC = () => {
 
   return (
     <nav className={clsxMerge('flex gap-3 text-sm', 'sm:gap-6 md:gap-8')}>
-      {pageSectionsList?.map((section, index) => (
-        <NavigationItem
-          key={section.label}
-          index={index}
-          prevIndex={prevIndex}
-          section={section}
-          setPrevIndex={setPrevIndex}
-        />
-      ))}
+      {pageSectionsList?.map((section, index) => {
+        if (!section.isMainNavigation) {
+          return null;
+        }
+        return (
+          <NavigationItem
+            key={section.id}
+            index={index}
+            prevIndex={prevIndex}
+            section={section}
+            setPrevIndex={setPrevIndex}
+          />
+        );
+      })}
     </nav>
   );
 };

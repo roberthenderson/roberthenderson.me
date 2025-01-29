@@ -1,7 +1,7 @@
-import { useAppContext } from '@/src/app/AppContextProvider';
+import { PageSectionsEnum, useAppContext } from '@/src/app/AppContextProvider';
 import { clsxMerge } from '@/src/utils/clsxMerge';
 import { scrollElementIntoView } from '@/src/utils/scrollElementIntoView';
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 import { RiSendPlaneLine } from 'react-icons/ri';
 import { Button } from '../base/Button/Button';
 
@@ -11,8 +11,15 @@ interface EmailButtonProps {
 }
 
 export const EmailButton: FC<EmailButtonProps> = ({ location, className }) => {
-  const { contactSectionRef } = useAppContext();
-  const handleClick = () => scrollElementIntoView(contactSectionRef?.current);
+  const { pageSectionsList } = useAppContext();
+  const contactSection = useMemo(
+    () =>
+      pageSectionsList?.find(
+        (section) => section.id === PageSectionsEnum.Contact,
+      ),
+    [pageSectionsList],
+  );
+  const handleClick = () => scrollElementIntoView(contactSection?.ref?.current);
 
   return (
     <Button

@@ -6,9 +6,8 @@ import {
 } from '../app/AppContextProvider';
 import { AboutSection } from '../components/AboutSection/AboutSection';
 import { CompaniesSection } from '../components/CompaniesSection/CompaniesSection';
+import { ContactSection } from '../components/ContactSection/ContactSection';
 import { SkillsSection } from '../components/SkillsSection/SkillsSection';
-import { ALTERNATE_SECTION_CLASSNAME } from '../constants';
-import { clsxMerge } from '../utils/clsxMerge';
 
 export const usePageSections = () => {
   const { setPageSectionsList, pageSectionLinks } = useAppContext();
@@ -16,6 +15,7 @@ export const usePageSections = () => {
   const skillsSection = useRef<HTMLElement | null>(null);
   const workSection = useRef<HTMLElement | null>(null);
   const aboutSection = useRef<HTMLElement | null>(null);
+  const contactSection = useRef<HTMLElement | null>(null);
 
   const pageSections: PageSection[] = useMemo(
     () => [
@@ -24,6 +24,7 @@ export const usePageSections = () => {
         label: 'Skills',
         ref: skillsSection,
         link: pageSectionLinks[PageSectionsEnum.Skills],
+        isMainNavigation: true,
         children: <SkillsSection />,
       },
       {
@@ -31,15 +32,23 @@ export const usePageSections = () => {
         label: 'Work',
         ref: workSection,
         link: pageSectionLinks[PageSectionsEnum.Work],
+        isMainNavigation: true,
         children: <CompaniesSection />,
-        className: clsxMerge(ALTERNATE_SECTION_CLASSNAME),
       },
       {
         id: PageSectionsEnum.About,
         label: 'About',
         ref: aboutSection,
         link: pageSectionLinks[PageSectionsEnum.About],
+        isMainNavigation: true,
         children: <AboutSection />,
+      },
+      {
+        id: PageSectionsEnum.Contact,
+        label: 'Contact',
+        ref: contactSection,
+        isMainNavigation: false,
+        children: <ContactSection />,
       },
     ],
     [pageSectionLinks],
