@@ -87,6 +87,7 @@ const NavigationItem: FC<NavigationItemProps> = ({
         'group relative text-base font-500 text-violet-950 transition-all',
         'h-8',
         'dark:text-slate-200 dark:hover:text-slate-300',
+        'md:text-lg',
       )}
       onTouchEnd={handleTouchEnd}
       onMouseEnter={handleMouseEnter}

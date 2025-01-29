@@ -28,7 +28,7 @@ export const useCompanies = () => {
         ) : (
           <MagicEdenLogo textColor="#120c18" />
         ),
-        className: 'w-80 lg:w-96 mb-4',
+        className: 'w-72 md:w-96 mb-4',
       },
       {
         id: 'salesforce',

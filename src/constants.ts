@@ -9,7 +9,6 @@ export const RESUME_URI = '/pdf/Robert_Henderson_Resume.pdf';
 
 // ClassNames
 export const SECTION_CLASSNAME = clsxMerge(
-  'scroll-mt-16',
   'border-t-2 border-b-12 border-t-violet-500 border-b-violet-600 dark:border-b-12 dark:border-slate-600',
   'bg-violet-100 dark:bg-slate-900',
 );

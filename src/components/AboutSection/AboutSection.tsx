@@ -39,7 +39,7 @@ export const AboutSection: FC = () => {
         led me to web design and ultimately my career as a UI/UX Engineer.
       </SectionBanner>
       <SectionContent>
-        <Grid>
+        <Grid className="items-start">
           {ABOUT_SECTIONS.map((section, index) => (
             <div key={index} className="text-center sm:text-left">
               <p className="font-dmSerif text-[22px]/12 font-semibold text-violet-700 sm:text-[26px]/12 dark:text-slate-200">
