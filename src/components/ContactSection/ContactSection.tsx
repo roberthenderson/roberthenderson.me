@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { SectionContainer } from '../SectionContainer/SectionContainer';
 import { SectionContent } from '../SectionContent/SectionContent';
 import { SectionHeading } from '../SectionHeading/SectionHeading';
 import { Form } from '../base/Form/Form';
@@ -9,12 +10,12 @@ export const ContactSection: FC = () => {
   const { contactFormData, formState, toast } = useContactForm();
 
   return (
-    <>
-      <SectionContent className="max-w-[480px]">
-        <SectionHeading className="pb-4">Let's get in touch</SectionHeading>
+    <SectionContainer>
+      <SectionContent className="max-w-screen-sm">
+        <SectionHeading>Let's get in touch</SectionHeading>
         <Form data={contactFormData} state={formState} />
       </SectionContent>
       <Toast {...toast} />
-    </>
+    </SectionContainer>
   );
 };

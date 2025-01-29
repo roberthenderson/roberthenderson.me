@@ -84,10 +84,9 @@ const NavigationItem: FC<NavigationItemProps> = ({
     <button
       onClick={handleNavLinkClick}
       className={clsxMerge(
-        'group relative text-sm font-500 text-violet-950 transition-all',
+        'group relative text-base font-500 text-violet-950 transition-all',
         'h-8',
         'dark:text-slate-200 dark:hover:text-slate-300',
-        'sm:text-base',
       )}
       onTouchEnd={handleTouchEnd}
       onMouseEnter={handleMouseEnter}

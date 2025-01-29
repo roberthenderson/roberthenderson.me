@@ -16,11 +16,11 @@ export const WorkSection: FC = () => {
   return (
     <SectionContainer>
       <SectionContent>
-        <div className="m-auto flex flex-col items-center gap-4 md:flex-row md:items-end md:gap-6">
-          <SectionHeading>Work Experience</SectionHeading>
+        <SectionHeading>
+          <span>Work Experience</span>
           <LinkButton
             variant="secondary"
-            className="mb-1 flex items-center gap-2 py-2"
+            className="flex items-center gap-2 font-dmSans text-base md:self-end lg:mb-1.5"
             href={RESUME_URI}
             target="_blank"
             download
@@ -28,7 +28,7 @@ export const WorkSection: FC = () => {
             <span>Download Resume</span>
             <FiDownload />
           </LinkButton>
-        </div>
+        </SectionHeading>
       </SectionContent>
       <SectionBanner>
         In 1998, I started teaching myself to code by building a Miami Dolphins

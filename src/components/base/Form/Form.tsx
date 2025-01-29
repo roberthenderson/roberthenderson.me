@@ -44,7 +44,7 @@ export const Form: FC<FormProps> = ({ data, state }) => {
   return (
     <div className="flex flex-col items-end">
       <Fieldset className="mx-auto flex flex-col gap-6">
-        {legend && <Legend className="pb-4">{legend}</Legend>}
+        {legend && <Legend>{legend}</Legend>}
         {fields.map((field, index) => {
           return <FormField key={index} field={field} state={state} />;
         })}
