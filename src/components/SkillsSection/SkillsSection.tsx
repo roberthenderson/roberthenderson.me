@@ -1,5 +1,5 @@
-import { clsxMerge } from '@/src/utils/clsxMerge';
 import { FC } from 'react';
+import { Grid } from '../base/Grid/Grid';
 import { SectionContainer } from '../SectionContainer/SectionContainer';
 import { SectionContent } from '../SectionContent/SectionContent';
 import { SectionHeading } from '../SectionHeading/SectionHeading';
@@ -28,16 +28,11 @@ export const SkillsSection: FC = () => {
             ))}
           </div>
         </div>
-        <div
-          className={clsxMerge(
-            'grid w-full grid-cols-1 justify-items-start gap-4',
-            'sm:grid-cols-2 md:w-3/5 md:pt-2 xl:grid-cols-3 xl:gap-5',
-          )}
-        >
+        <Grid className="items-stretch text-left md:w-3/5 md:pt-2 lg:gap-5 xl:grid-cols-3">
           {skillCards.map((skill) => (
             <SkillCard key={skill.label} skill={skill} />
           ))}
-        </div>
+        </Grid>
       </SectionContent>
     </SectionContainer>
   );
