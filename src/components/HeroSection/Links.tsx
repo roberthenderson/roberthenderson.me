@@ -1,4 +1,4 @@
-import { GITHUB_URL, LINKEDIN_URL } from '@/src/constants';
+import { GITHUB_URL, LINKEDIN_URL, RESUME_URI } from '@/src/constants';
 import { clsxMerge } from '@/src/utils/clsxMerge';
 import Link from 'next/link';
 import { FC, useMemo } from 'react';
@@ -41,7 +41,7 @@ export const Links: FC<LinksProps> = ({ variant = 'hero', className }) => {
       <Link href={LINKEDIN_URL} target="_blank">
         <FaLinkedin className={iconClassName} size={iconSize} />
       </Link>
-      <Link href="/pdf/Robert_Henderson_Resume.pdf" target="_blank" download>
+      <Link href={RESUME_URI} target="_blank" download>
         <FaFileDownload className={iconClassName} size={iconSize} />
       </Link>
     </div>

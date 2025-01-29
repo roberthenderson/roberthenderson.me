@@ -1,4 +1,5 @@
 import { useAppContext } from '@/src/app/AppContextProvider';
+import { clsxMerge } from '@/src/utils/clsxMerge';
 import Image from 'next/image';
 import { ReactNode, useMemo } from 'react';
 import BlueAcornLogo from '../../../public/companies/blueacorn.png';
@@ -27,13 +28,13 @@ export const useCompanies = () => {
         ) : (
           <MagicEdenLogo textColor="#120c18" />
         ),
-        className: 'w-80',
+        className: 'w-80 lg:w-96 mb-4',
       },
       {
         id: 'salesforce',
         label: 'Salesforce',
         logo: <SalesforceLogo />,
-        className: 'w-32',
+        className: 'w-60 md:w-64',
       },
     ],
     [darkMode],
@@ -45,7 +46,10 @@ export const useCompanies = () => {
         id: 'metaplex',
         label: 'Metaplex',
         logo: <MetaplexLogo />,
-        className: darkMode ? 'text-slate-50' : 'text-black-900',
+        className: clsxMerge(
+          'w-5/6 sm:w-full min-[500px]:px-20',
+          darkMode ? 'text-slate-50' : 'text-black-900',
+        ),
       },
       {
         id: 'vlocity',
@@ -57,7 +61,7 @@ export const useCompanies = () => {
             className="mx-auto w-4/5 pt-8 sm:pt-1"
           />
         ),
-        className: darkMode ? 'grayscale brightness-200' : '',
+        className: darkMode ? 'brightness-125' : '',
       },
       {
         id: 'ba',
@@ -66,10 +70,10 @@ export const useCompanies = () => {
           <Image
             src={BlueAcornLogo}
             alt="Blue Acorn"
-            className="w-[95%] pt-2 sm:pb-1.5 sm:pt-0"
+            className="mx-auto w-2/3 pt-2 sm:w-[95%] sm:pb-1.5 sm:pt-0"
           />
         ),
-        className: darkMode ? 'grayscale brightness-200' : '',
+        className: darkMode ? 'brightness-125' : '',
       },
     ],
     [darkMode],

@@ -1,8 +1,12 @@
-import { clsxMerge } from '@/src/utils/clsxMerge';
 import Image from 'next/image';
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 import { ImQuotesRight } from 'react-icons/im';
-import { SectionContent } from '../SectionContent/SectionContent';
+import { SectionBanner } from '../SectionBanner/SectionBanner';
+import {
+  SectionContent,
+  SectionInnerContent,
+} from '../SectionContent/SectionContent';
+import { SectionHeading } from '../SectionHeading/SectionHeading';
 
 const ABOUT_SECTIONS = [
   {
@@ -25,24 +29,16 @@ const ABOUT_SECTIONS = [
 
 export const AboutSection: FC = () => {
   return (
-    <SectionContent alwaysColumn className="max-w-full gap-0 px-0 pb-0 md:p-0">
-      <div className="flex flex-col gap-8">
-        <AboutSectionBanner>
-          <p className="mx-auto max-w-screen-xl py-4 text-left md:py-0">
-            My interests are pretty diverse. I grew up rooting for the Miami
-            Dolphins and playing football in the fall. I drew and painted in the
-            winter, and performed in musicals in the spring. My creativity is
-            what led me to web design and ultimately my career as a UI/UX
-            Engineer.
-          </p>
-        </AboutSectionBanner>
-        <div
-          className={clsxMerge(
-            'mx-auto max-w-screen-xl',
-            'grid grid-cols-1 justify-center gap-6',
-            'px-8 sm:grid-cols-2 md:px-12 lg:gap-10 lg:px-16 xl:px-0',
-          )}
-        >
+    <SectionContent alwaysColumn showPadding={false}>
+      <div className="flex flex-col gap-8 py-16">
+        <SectionHeading>My Approach</SectionHeading>
+        <SectionBanner>
+          My interests are pretty diverse. I grew up rooting for the Miami
+          Dolphins and playing football in the fall. I drew and painted in the
+          winter, and performed in musicals in the spring. My creativity is what
+          led me to web design and ultimately my career as a UI/UX Engineer.
+        </SectionBanner>
+        <SectionInnerContent>
           {ABOUT_SECTIONS.map((section, index) => (
             <div key={index} className="text-left">
               <p className="font-dmSerif text-[26px]/12 font-semibold text-violet-700 dark:text-slate-200">
@@ -51,18 +47,17 @@ export const AboutSection: FC = () => {
               <p className="dark:text-slate-400">{section.text}</p>
             </div>
           ))}
-        </div>
-
-        <AboutSectionBanner>
-          <p className="font-dmSerif text-2xl italic sm:text-4xl">
-            A cat's work is never done.
-          </p>
-          <ImQuotesRight
-            size={120}
-            className="absolute -top-8 right-10 opacity-10 lg:right-16 xl:right-40"
-          />
-        </AboutSectionBanner>
+        </SectionInnerContent>
       </div>
+      <SectionBanner>
+        <p className="text-center font-dmSerif text-2xl italic sm:text-4xl">
+          A cat's work is never done.
+        </p>
+        <ImQuotesRight
+          size={120}
+          className="absolute -top-8 right-10 opacity-10 lg:right-16 xl:right-40"
+        />
+      </SectionBanner>
       <Image
         src="/about/kitties.jpg"
         alt="Kitties"
@@ -73,9 +68,3 @@ export const AboutSection: FC = () => {
     </SectionContent>
   );
 };
-
-const AboutSectionBanner: FC<{ children: ReactNode }> = ({ children }) => (
-  <div className="relative overflow-hidden bg-violet-200 px-8 py-5 md:px-12 md:py-8 lg:px-16 dark:bg-slate-700">
-    {children}
-  </div>
-);

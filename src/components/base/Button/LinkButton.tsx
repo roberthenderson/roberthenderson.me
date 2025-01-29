@@ -1,15 +1,14 @@
-import {
-  Button as HeadlessButton,
-  ButtonProps as HeadlessButtonProps,
-} from '@headlessui/react';
-import { FC } from 'react';
+import Link, { LinkProps as NextLinkProps } from 'next/link';
+import { FC, HTMLProps } from 'react';
 import { getButtonStyles } from './getButtonStyles';
 
-export interface ButtonProps extends HeadlessButtonProps {
+type LinkProps = NextLinkProps & HTMLProps<HTMLAnchorElement>;
+
+export interface LinkButtonProps extends LinkProps {
   variant?: 'primary' | 'secondary';
 }
 
-export const Button: FC<ButtonProps> = ({
+export const LinkButton: FC<LinkButtonProps> = ({
   children,
   className,
   variant = 'primary',
@@ -17,11 +16,11 @@ export const Button: FC<ButtonProps> = ({
   ...rest
 }) => {
   return (
-    <HeadlessButton
+    <Link
       className={getButtonStyles({ variant, disabled, className })}
       {...rest}
     >
       {children}
-    </HeadlessButton>
+    </Link>
   );
 };

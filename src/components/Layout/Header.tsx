@@ -17,7 +17,7 @@ export const Header: FC = () => {
       className={clsxMerge(
         'sticky left-0 top-0 z-50',
         'flex items-center justify-between gap-2',
-        'h-16 w-full px-4',
+        'h-16 w-full px-4 lg:h-18',
         'border-b-3 border-violet-600 bg-indigo-200',
         'dark:border-slate-600 dark:bg-slate-800',
         'transition-all',
