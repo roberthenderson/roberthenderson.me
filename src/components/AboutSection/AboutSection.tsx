@@ -14,7 +14,7 @@ const ABOUT_SECTIONS = [
   },
   {
     title: 'Take Risks',
-    text: 'My experience includes working on eCommerce websites, enterprise software, and web3/crypto consumer applications. I enjoy a challenge, and am eager take risks if it means learning more. I started working and did most of my work in crypto during the last bear market.',
+    text: 'My experience includes working on eCommerce websites, enterprise software, and web3/crypto consumer applications. I enjoy a challenge, and am eager to take risks if it means learning more. I started working and did most of my work in crypto during the last bear market.',
   },
   {
     title: 'Team Player',
