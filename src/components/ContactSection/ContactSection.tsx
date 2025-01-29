@@ -10,7 +10,7 @@ export const ContactSection: FC = () => {
 
   return (
     <>
-      <SectionContent alwaysColumn className="max-w-[480px]">
+      <SectionContent className="max-w-[480px]">
         <SectionHeading className="pb-4">Let's get in touch</SectionHeading>
         <Form data={contactFormData} state={formState} />
       </SectionContent>

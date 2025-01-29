@@ -1,12 +1,11 @@
 import { clsxMerge } from '@/src/utils/clsxMerge';
-import { FC, ReactNode } from 'react';
+import { FC, PropsWithChildren } from 'react';
 
 interface SectionHeadingProps {
-  children: ReactNode;
   className?: string;
 }
 
-export const SectionHeading: FC<SectionHeadingProps> = ({
+export const SectionHeading: FC<PropsWithChildren<SectionHeadingProps>> = ({
   children,
   className,
 }) => {

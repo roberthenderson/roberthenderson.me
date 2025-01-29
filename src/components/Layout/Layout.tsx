@@ -1,15 +1,11 @@
 import { clsxMerge } from '@/src/utils/clsxMerge';
-import { ReactNode } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import { useAppContext } from '../../app/AppContextProvider';
 import { Metadata } from '../Metadata/Metadata';
 import { Footer } from './Footer';
 import { Header } from './Header';
 
-export const Layout = ({
-  children,
-}: Readonly<{
-  children: ReactNode;
-}>) => {
+export const Layout: FC<PropsWithChildren> = ({ children }) => {
   const { ready, darkMode } = useAppContext();
 
   if (!ready) {

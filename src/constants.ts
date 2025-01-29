@@ -8,9 +8,11 @@ export const LINKEDIN_URL = 'https://www.linkedin.com/in/rhahenderson';
 export const RESUME_URI = '/pdf/Robert_Henderson_Resume.pdf';
 
 // ClassNames
-export const SECTION_SPACING_CLASSNAME = 'scroll-mt-16';
-export const ALTERNATE_SECTION_CLASSNAME =
-  'border-t-2 border-b-12 border-t-violet-500 border-b-violet-600 bg-violet-100 dark:bg-slate-900 dark:border-b-12 dark:border-slate-600';
+export const SECTION_CLASSNAME = clsxMerge(
+  'scroll-mt-16',
+  'border-t-2 border-b-12 border-t-violet-500 border-b-violet-600 dark:border-b-12 dark:border-slate-600',
+  'bg-violet-100 dark:bg-slate-900',
+);
 export const INDIGO_GRADIENT_BG_CLASSNAME =
   'bg-gradient-to-t from-indigo-100 from-15% via-indigo-100/90 via-30% to-indigo-400/35';
 export const FIELD_CLASSNAME = clsxMerge(

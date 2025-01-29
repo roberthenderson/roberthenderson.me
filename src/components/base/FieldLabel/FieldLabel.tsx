@@ -1,14 +1,13 @@
 import { clsxMerge } from '@/src/utils/clsxMerge';
 import { Label } from '@headlessui/react';
-import { FC, ReactNode } from 'react';
+import { FC, PropsWithChildren } from 'react';
 
 interface FieldLabelProps {
-  children: ReactNode;
   focused?: boolean;
   className?: string;
 }
 
-export const FieldLabel: FC<FieldLabelProps> = ({
+export const FieldLabel: FC<PropsWithChildren<FieldLabelProps>> = ({
   children,
   focused,
   className,

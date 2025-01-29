@@ -1,11 +1,10 @@
 import Image from 'next/image';
 import { FC } from 'react';
 import { ImQuotesRight } from 'react-icons/im';
+import { Grid } from '../base/Grid/Grid';
 import { SectionBanner } from '../SectionBanner/SectionBanner';
-import {
-  SectionContent,
-  SectionInnerContent,
-} from '../SectionContent/SectionContent';
+import { SectionContainer } from '../SectionContainer/SectionContainer';
+import { SectionContent } from '../SectionContent/SectionContent';
 import { SectionHeading } from '../SectionHeading/SectionHeading';
 
 const ABOUT_SECTIONS = [
@@ -29,16 +28,18 @@ const ABOUT_SECTIONS = [
 
 export const AboutSection: FC = () => {
   return (
-    <SectionContent alwaysColumn showPadding={false}>
-      <div className="flex flex-col gap-8 py-16">
+    <SectionContainer>
+      <SectionContent>
         <SectionHeading>My Approach</SectionHeading>
-        <SectionBanner>
-          My interests are pretty diverse. I grew up rooting for the Miami
-          Dolphins and playing football in the fall. I drew and painted in the
-          winter, and performed in musicals in the spring. My creativity is what
-          led me to web design and ultimately my career as a UI/UX Engineer.
-        </SectionBanner>
-        <SectionInnerContent>
+      </SectionContent>
+      <SectionBanner>
+        My interests are pretty diverse. I grew up rooting for the Miami
+        Dolphins and playing football in the fall. I drew and painted in the
+        winter, and performed in musicals in the spring. My creativity is what
+        led me to web design and ultimately my career as a UI/UX Engineer.
+      </SectionBanner>
+      <SectionContent>
+        <Grid>
           {ABOUT_SECTIONS.map((section, index) => (
             <div key={index} className="text-center sm:text-left">
               <p className="font-dmSerif text-[22px]/12 font-semibold text-violet-700 sm:text-[26px]/12 dark:text-slate-200">
@@ -47,8 +48,8 @@ export const AboutSection: FC = () => {
               <p className="dark:text-slate-400">{section.text}</p>
             </div>
           ))}
-        </SectionInnerContent>
-      </div>
+        </Grid>
+      </SectionContent>
       <SectionBanner>
         <p className="text-center font-dmSerif text-2xl italic sm:text-4xl">
           A cat's work is never done.
@@ -65,6 +66,6 @@ export const AboutSection: FC = () => {
         height="433"
         className="object-contain"
       />
-    </SectionContent>
+    </SectionContainer>
   );
 };

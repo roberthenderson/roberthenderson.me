@@ -5,9 +5,9 @@ import {
   useAppContext,
 } from '../app/AppContextProvider';
 import { AboutSection } from '../components/AboutSection/AboutSection';
-import { CompaniesSection } from '../components/CompaniesSection/CompaniesSection';
 import { ContactSection } from '../components/ContactSection/ContactSection';
 import { SkillsSection } from '../components/SkillsSection/SkillsSection';
+import { WorkSection } from '../components/WorkSection/WorkSection';
 
 export const usePageSections = () => {
   const { setPageSectionsList, pageSectionLinks } = useAppContext();
@@ -33,7 +33,7 @@ export const usePageSections = () => {
         ref: workSection,
         link: pageSectionLinks[PageSectionsEnum.Work],
         isMainNavigation: true,
-        children: <CompaniesSection />,
+        children: <WorkSection />,
       },
       {
         id: PageSectionsEnum.About,

@@ -3,6 +3,7 @@ import {
   createContext,
   Dispatch,
   FC,
+  PropsWithChildren,
   ReactNode,
   RefObject,
   SetStateAction,
@@ -51,9 +52,7 @@ interface AppContextType {
 
 const AppContext = createContext<AppContextType | null>(null);
 
-export const AppContextProvider: FC<{ children: ReactNode }> = ({
-  children,
-}) => {
+export const AppContextProvider: FC<PropsWithChildren> = ({ children }) => {
   const router = useRouter();
 
   const [headerRef, setHeaderRef] = useState<HeaderRef>(null);
@@ -67,7 +66,7 @@ export const AppContextProvider: FC<{ children: ReactNode }> = ({
   const pageSectionLinks: PageSectionLinks = useMemo(
     () => ({
       [PageSectionsEnum.Skills]: `/skills`,
-      [PageSectionsEnum.Work]: `/work-experience`,
+      [PageSectionsEnum.Work]: `/work`,
       [PageSectionsEnum.About]: `/about`,
       [PageSectionsEnum.Contact]: '/contact',
     }),
