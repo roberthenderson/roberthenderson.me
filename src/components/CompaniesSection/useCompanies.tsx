@@ -8,7 +8,7 @@ import { MagicEdenLogo } from '../MagicEdenLogo/MagicEdenLogo';
 import { MetaplexLogo } from '../MetaplexLogo/MetaplexLogo';
 import { SalesforceLogo } from '../SalesforceLogo/SalesforceLogo';
 
-export interface Company {
+export interface ICompany {
   id: string;
   label: string;
   logo: ReactNode;
@@ -18,7 +18,7 @@ export interface Company {
 export const useCompanies = () => {
   const { darkMode } = useAppContext();
 
-  const featuredCompanies: Company[] = useMemo(
+  const featuredCompanies: ICompany[] = useMemo(
     () => [
       {
         id: 'me',
@@ -40,7 +40,7 @@ export const useCompanies = () => {
     [darkMode],
   );
 
-  const otherCompanies: Company[] = useMemo(
+  const otherCompanies: ICompany[] = useMemo(
     () => [
       {
         id: 'metaplex',

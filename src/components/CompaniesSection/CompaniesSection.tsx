@@ -1,37 +1,59 @@
-import { clsxMerge } from '@/src/utils/clsxMerge';
+import { RESUME_URI } from '@/src/constants';
 import { FC } from 'react';
-import { SectionContent } from '../SectionContent/SectionContent';
+import { FiDownload } from 'react-icons/fi';
+import { LinkButton } from '../base/Button/LinkButton';
+import { SectionBanner } from '../SectionBanner/SectionBanner';
+import {
+  SectionContent,
+  SectionInnerContent,
+} from '../SectionContent/SectionContent';
 import { SectionHeading } from '../SectionHeading/SectionHeading';
-import { FeaturedCompany } from './FeaturedCompany';
-import { OtherCompany } from './OtherCompany';
+import { Company } from './Company';
 import { useCompanies } from './useCompanies';
 
 export const CompaniesSection: FC = () => {
   const { featuredCompanies, otherCompanies } = useCompanies();
 
   return (
-    <SectionContent className="gap-12 sm:gap-8 md:gap-14" alwaysColumn>
-      <SectionHeading>Work Experience</SectionHeading>
-      <div
-        className={clsxMerge(
-          'grid grid-cols-1 justify-center gap-6',
-          'sm:grid-cols-2 lg:gap-10 lg:px-16',
-        )}
-      >
+    <SectionContent
+      className="items-center gap-6 py-10 pb-10 md:py-16"
+      alwaysColumn
+      showPadding={false}
+    >
+      <div className="my-auto flex items-end gap-6">
+        <SectionHeading>Work Experience</SectionHeading>
+        <LinkButton
+          variant="secondary"
+          className="mb-1 flex items-center gap-2 py-2"
+          href={RESUME_URI}
+          target="_blank"
+          download
+        >
+          <span>Download Resume</span>
+          <FiDownload />
+        </LinkButton>
+      </div>
+      <SectionBanner>
+        In 1998, I started teaching myself to code by building a Miami Dolphins
+        fan site using Angelfire in unformatted HTML
+        <code className="text-sm"> {'<textarea />'}</code> blocks. I crashed
+        that Windows '95 desktop a ton and had to rewrite a lot of code. After
+        graduating from college with a Business degree when the market crashed
+        in 2009, I went back to school to refine my web design skills. I landed
+        an internship, and then full-time position at Blue Acorn and worked
+        there and for 4 other companies over the next 15 years, from startup to
+        big tech.
+      </SectionBanner>
+      <SectionInnerContent className="py-4">
         {featuredCompanies.map((company) => (
-          <FeaturedCompany key={company.id} company={company} />
+          <Company key={company.id} company={company} />
         ))}
-      </div>
-      <div
-        className={clsxMerge(
-          'grid grid-cols-1 items-center gap-8',
-          'sm:grid-cols-3 sm:gap-2 lg:px-10 xl:gap-12',
-        )}
-      >
+      </SectionInnerContent>
+      <SectionInnerContent columns={3}>
         {otherCompanies.map((company) => (
-          <OtherCompany key={company.id} company={company} />
+          <Company key={company.id} company={company} />
         ))}
-      </div>
+      </SectionInnerContent>
     </SectionContent>
   );
 };
