@@ -7,6 +7,8 @@ export const GITHUB_REPO_URL =
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/rhahenderson';
 export const RESUME_URI = '/pdf/Robert_Henderson_Resume.pdf';
 
+export const RESUME_FILENAME = 'Robert Henderson Resume';
+
 // ClassNames
 export const SECTION_CLASSNAME = clsxMerge(
   'border-t-2 border-b-12 border-t-violet-500 border-b-violet-600 dark:border-b-12 dark:border-slate-600',

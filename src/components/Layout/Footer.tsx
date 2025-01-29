@@ -1,6 +1,7 @@
 import { useAppContext } from '@/src/app/AppContextProvider';
 import { GITHUB_REPO_URL } from '@/src/constants';
 import { clsxMerge } from '@/src/utils/clsxMerge';
+import { sendGAEvent } from '@next/third-parties/google';
 import Image from 'next/image';
 import { FC } from 'react';
 import { FaRegCopyright } from 'react-icons/fa';
@@ -11,6 +12,9 @@ import { TextLink } from '../base/TextLink/TextLink';
 export const Footer: FC = () => {
   const { darkMode } = useAppContext();
   const year = new Date().getFullYear();
+
+  const handleBuiltLinkClick = () =>
+    sendGAEvent('event', 'footer_built_link_click');
 
   return (
     <footer className="flex h-[350px] w-full flex-col overflow-hidden bg-[#78a2cc] sm:h-[600px]">
@@ -31,7 +35,11 @@ export const Footer: FC = () => {
                 </div>
                 <div className="flex items-center gap-1 max-md:hidden">
                   <span className="flex items-center gap-1">
-                    <TextLink href={GITHUB_REPO_URL} target="_blank">
+                    <TextLink
+                      href={GITHUB_REPO_URL}
+                      target="_blank"
+                      onClick={handleBuiltLinkClick}
+                    >
                       Built
                     </TextLink>{' '}
                     with

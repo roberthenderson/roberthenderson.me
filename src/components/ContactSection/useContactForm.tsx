@@ -1,5 +1,6 @@
 import { clsxMerge } from '@/src/utils/clsxMerge';
 import { validateEmail } from '@/src/utils/validateEmail';
+import { sendGAEvent } from '@next/third-parties/google';
 import { useCallback, useMemo, useReducer } from 'react';
 import { BiMailSend } from 'react-icons/bi';
 import { CgSpinner } from 'react-icons/cg';
@@ -74,6 +75,7 @@ export const useContactForm = () => {
   );
 
   const onSend = useCallback(async () => {
+    sendGAEvent('event', 'send_button_click');
     const errors: FormError[] = [];
     if (!state.name) {
       errors.push({ message: 'Please enter your name.', name: 'name' });
@@ -88,6 +90,9 @@ export const useContactForm = () => {
       errors.push({ message: 'Please enter some text.', name: 'content' });
     }
     if (errors.length > 0) {
+      sendGAEvent('event', 'send_button_click_errors', {
+        errors,
+      });
       dispatchFormState({
         type: FormActionType.setErrors,
         payload: errors,
@@ -116,6 +121,7 @@ export const useContactForm = () => {
       }
     } catch (error) {
       handleError(error);
+      sendGAEvent('event', 'sendContactConfirmation_api_error', { error });
       return;
     }
 
@@ -130,6 +136,7 @@ export const useContactForm = () => {
       }
     } catch (error) {
       handleError(error);
+      sendGAEvent('event', 'sendContactSubmission_api_error', { error });
       return;
     }
 
@@ -142,6 +149,7 @@ export const useContactForm = () => {
     });
     toggleLoading(false);
     resetState();
+    sendGAEvent('event', 'send_email_success');
   }, [
     state,
     dispatchFormState,

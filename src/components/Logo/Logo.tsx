@@ -1,8 +1,13 @@
+import { useAppContext } from '@/src/app/AppContextProvider';
+import { sendGAEvent } from '@next/third-parties/google';
 import { FC } from 'react';
 
 export const Logo: FC = () => {
+  const { activeSection } = useAppContext();
+
   const handleLogoClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    sendGAEvent('event', 'logo_click', { fromSection: activeSection });
   };
 
   return (

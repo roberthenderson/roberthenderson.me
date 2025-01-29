@@ -2,6 +2,7 @@ import { PageSection, useAppContext } from '@/src/app/AppContextProvider';
 import { clsxMerge } from '@/src/utils/clsxMerge';
 import { scrollElementIntoView } from '@/src/utils/scrollElementIntoView';
 import { Transition } from '@headlessui/react';
+import { sendGAEvent } from '@next/third-parties/google';
 import { Dispatch, FC, SetStateAction, useMemo, useState } from 'react';
 
 export const Navigation: FC = () => {
@@ -68,6 +69,7 @@ const NavigationItem: FC<NavigationItemProps> = ({
   const handleNavLinkClick = () => {
     setActiveSection(section.id);
     scrollElementIntoView(section.ref.current);
+    sendGAEvent('event', 'nav_item_click', { label: section.label });
   };
   const handleTouchEnd = () => setIsTouched(true);
   const handleMouseEnter = () => {

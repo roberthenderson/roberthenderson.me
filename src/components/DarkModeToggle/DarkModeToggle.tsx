@@ -1,4 +1,5 @@
 import { useAppContext } from '@/src/app/AppContextProvider';
+import { sendGAEvent } from '@next/third-parties/google';
 import { FC } from 'react';
 import { MdDarkMode, MdOutlineDarkMode } from 'react-icons/md';
 
@@ -6,7 +7,10 @@ const THEME_ICON_SIZE = 28;
 
 export const DarkModeToggle: FC = () => {
   const { darkMode, setDarkMode } = useAppContext();
-  const toggleDarkMode = () => setDarkMode((prev) => !prev);
+  const toggleDarkMode = () => {
+    setDarkMode((prev) => !prev);
+    sendGAEvent('event', 'dark_mode_toggle_click', { darkMode: !darkMode });
+  };
 
   return (
     <button
