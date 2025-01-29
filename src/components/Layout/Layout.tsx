@@ -1,7 +1,6 @@
 import { clsxMerge } from '@/src/utils/clsxMerge';
 import { FC, PropsWithChildren } from 'react';
 import { useAppContext } from '../../app/AppContextProvider';
-import { Metadata } from '../Metadata/Metadata';
 import { Footer } from './Footer';
 import { Header } from './Header';
 
@@ -13,19 +12,17 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
   }
 
   return (
-    <div className={clsxMerge(darkMode ? 'dark' : 'light')}>
-      <Metadata />
-      <div
-        className={clsxMerge(
-          'flex h-full w-full flex-col',
-          'transition-colors',
-          'bg-violet-50 text-slate-950 dark:bg-slate-800 dark:text-slate-200',
-        )}
-      >
-        <Header />
-        <main>{children}</main>
-        <Footer />
-      </div>
+    <div
+      className={clsxMerge(
+        darkMode ? 'dark' : 'light',
+        'flex h-full w-full flex-col',
+        'transition-colors',
+        'bg-violet-50 text-slate-950 dark:bg-slate-800 dark:text-slate-200',
+      )}
+    >
+      <Header />
+      <main>{children}</main>
+      <Footer />
     </div>
   );
 };
