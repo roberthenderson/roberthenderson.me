@@ -20,7 +20,7 @@ export const CompaniesSection: FC = () => {
       alwaysColumn
       showPadding={false}
     >
-      <div className="my-auto flex items-end gap-6">
+      <div className="my-auto flex flex-col items-center gap-4 sm:flex-row sm:items-end sm:gap-6">
         <SectionHeading>Work Experience</SectionHeading>
         <LinkButton
           variant="secondary"

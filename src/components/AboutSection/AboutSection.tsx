@@ -40,8 +40,8 @@ export const AboutSection: FC = () => {
         </SectionBanner>
         <SectionInnerContent>
           {ABOUT_SECTIONS.map((section, index) => (
-            <div key={index} className="text-left">
-              <p className="font-dmSerif text-[26px]/12 font-semibold text-violet-700 dark:text-slate-200">
+            <div key={index} className="text-center sm:text-left">
+              <p className="font-dmSerif text-[22px]/12 font-semibold text-violet-700 sm:text-[26px]/12 dark:text-slate-200">
                 {section.title}
               </p>
               <p className="dark:text-slate-400">{section.text}</p>

@@ -39,7 +39,7 @@ export const SectionInnerContent: FC<{
     className={clsxMerge(
       'mx-auto max-w-screen-xl',
       'grid grid-cols-1 items-center justify-center gap-6',
-      'mb-2 px-8 sm:gap-0 md:px-12 lg:gap-10 lg:px-16',
+      'mb-2 px-6 sm:gap-0 sm:px-8 md:px-12 lg:gap-10 lg:px-16',
       columns === 2 && 'sm:grid-cols-2',
       columns === 3 &&
         'gap-8 sm:grid-cols-3 sm:gap-0 md:px-4 lg:gap-0 lg:px-6 xl:gap-20 xl:px-12',

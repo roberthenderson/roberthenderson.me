@@ -13,7 +13,7 @@ export const SectionHeading: FC<SectionHeadingProps> = ({
   return (
     <h3
       className={clsxMerge(
-        'text-center font-dmSerif text-5xl font-semibold text-indigo-950 dark:text-slate-200',
+        'text-center font-dmSerif text-4xl font-semibold text-indigo-950 sm:text-5xl dark:text-slate-200',
         'lg:text-6xl',
         className,
       )}

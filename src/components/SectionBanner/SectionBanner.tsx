@@ -8,7 +8,7 @@ export const SectionBanner: FC<{ children: ReactNode }> = ({ children }) => (
       'md:py-8',
     )}
   >
-    <div className="mx-auto max-w-screen-xl py-4 text-left md:px-12 md:py-0 lg:px-16">
+    <div className="mx-auto max-w-screen-xl px-8 py-4 text-center sm:text-left md:px-12 md:py-0 lg:px-16">
       {children}
     </div>
   </div>
