@@ -11,21 +11,21 @@ export default async function handler(request: NextRequest) {
 
   const dmSerifText = await fetch(
     new URL(
-      'http://localhost:3000/fonts/DM_Serif_Text/DMSerifText-Regular.ttf',
+      '../../../public/fonts/DM_Serif_Text/DMSerifText-Regular.ttf',
       import.meta.url,
     ),
   ).then((res) => res.arrayBuffer());
 
   const leagueSpartan = await fetch(
     new URL(
-      'http://localhost:3000/fonts/League_Spartan/static/LeagueSpartan-Medium.ttf',
+      '../../../public/fonts/League_Spartan/static/LeagueSpartan-Medium.ttf',
       import.meta.url,
     ),
   ).then((res) => res.arrayBuffer());
 
   const dmSans = await fetch(
     new URL(
-      'http://localhost:3000/fonts/DM_Sans/static/DMSans_36pt-Medium.ttf',
+      '../../../public/fonts/DM_Sans/static/DMSans_36pt-Medium.ttf',
       import.meta.url,
     ),
   ).then((res) => res.arrayBuffer());
