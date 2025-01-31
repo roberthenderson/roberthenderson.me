@@ -1,3 +1,4 @@
+import { getYearsExperience } from '@/src/utils/getYearsExperience';
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
 
@@ -120,7 +121,7 @@ export default async function handler(request: NextRequest) {
               marginLeft: 'auto',
             }}
           >
-            15 years of experience in big tech and startups
+            {getYearsExperience()} years of experience in big tech and startups
           </p>
           <div
             style={{
