@@ -1,6 +1,7 @@
 import { clsxMerge } from './utils/clsxMerge';
 
 // URLS
+export const BASE_URL = 'https://roberthenderson.me';
 export const GITHUB_URL = 'https://github.com/roberthenderson';
 export const GITHUB_REPO_URL =
   'https://github.com/roberthenderson/roberthenderson.me';
