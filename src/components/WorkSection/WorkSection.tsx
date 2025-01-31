@@ -1,21 +1,31 @@
 import { RESUME_FILENAME, RESUME_URI } from '@/src/constants';
 import { sendGAEvent } from '@next/third-parties/google';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { FiDownload } from 'react-icons/fi';
+import { Button } from '../base/Button/Button';
 import { LinkButton } from '../base/Button/LinkButton';
 import { Grid } from '../base/Grid/Grid';
+import { Modal } from '../base/Modal/Modal';
 import { SectionBanner } from '../SectionBanner/SectionBanner';
 import { SectionContainer } from '../SectionContainer/SectionContainer';
 import { SectionContent } from '../SectionContent/SectionContent';
 import { SectionHeading } from '../SectionHeading/SectionHeading';
 import { Company } from './Company';
 import { useCompanies } from './useCompanies';
+import { WorkSectionModalContent } from './WorkSectionModalContent';
 
 export const WorkSection: FC = () => {
   const { featuredCompanies, otherCompanies } = useCompanies();
+  const [modalOpen, setModalOpen] = useState(false);
+  const handleCloseModal = () => setModalOpen(false);
 
   const handleResumeDownloadClick = () =>
     sendGAEvent('event', 'download_resume_button_click');
+
+  const handleLearnMoreClick = () => {
+    setModalOpen(true);
+    sendGAEvent('event', 'learn_more_modal_button_click');
+  };
 
   return (
     <SectionContainer>
@@ -57,7 +67,16 @@ export const WorkSection: FC = () => {
             <Company key={company.id} company={company} />
           ))}
         </Grid>
+        <Button className="self-center" onClick={handleLearnMoreClick}>
+          Learn More
+        </Button>
       </SectionContent>
+      <Modal
+        open={modalOpen}
+        onClose={handleCloseModal}
+        title="Work Experience"
+        content={<WorkSectionModalContent />}
+      />
     </SectionContainer>
   );
 };
