@@ -10,24 +10,15 @@ export default async function handler(request: NextRequest) {
   const baseUrl = requestUrl.toString().split('/api')[0];
 
   const dmSerifText = await fetch(
-    new URL(
-      '../../../public/fonts/DM_Serif_Text/DMSerifText-Regular.ttf',
-      import.meta.url,
-    ),
+    `${baseUrl}/fonts/DM_Serif_Text/DMSerifText-Regular.ttf`,
   ).then((res) => res.arrayBuffer());
 
   const leagueSpartan = await fetch(
-    new URL(
-      '../../../public/fonts/League_Spartan/static/LeagueSpartan-Medium.ttf',
-      import.meta.url,
-    ),
+    `${baseUrl}/fonts/League_Spartan/static/LeagueSpartan-Medium.ttf`,
   ).then((res) => res.arrayBuffer());
 
   const dmSans = await fetch(
-    new URL(
-      '../../../public/fonts/DM_Sans/static/DMSans_36pt-Medium.ttf',
-      import.meta.url,
-    ),
+    `${baseUrl}/fonts/DM_Sans/static/DMSans_36pt-Medium.ttf`,
   ).then((res) => res.arrayBuffer());
 
   return new ImageResponse(
