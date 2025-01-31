@@ -17,11 +17,11 @@ export const Metadata = () => (
     <meta name="description" content={METADATA.description} />
     <meta name="keywords" content={METADATA.keywords} />
     {/* og: meta tags */}
-    <meta name="og:title" content={METADATA.title} />
-    <meta name="og:type" content="website" />
-    <meta name="og:description" content={METADATA.description} />
-    <meta name="og:url" content={BASE_URL} />
-    <meta name="og:image" content={`${BASE_URL}/api/og`} />
+    <meta property="og:title" content={METADATA.title} />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content={METADATA.description} />
+    <meta property="og:url" content={BASE_URL} />
+    <meta property="og:image" content={`${BASE_URL}/api/og`} />
     {/* Twitter meta tags */}
     <meta name="twitter:title" content={METADATA.title} />
     <meta name="twitter:description" content={METADATA.description} />
