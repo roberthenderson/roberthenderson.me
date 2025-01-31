@@ -10,7 +10,7 @@ import { SectionHeading } from '../SectionHeading/SectionHeading';
 const ABOUT_SECTIONS = [
   {
     title: 'Always Learning',
-    text: "I have a degree in Business Administration, but decided to pursue web development when I graduated. I started as an intern designing email marking emails, and learning SEO. I've continuously needed to learn new coding languages, paradigms, and frameworks.",
+    text: "I have a degree in Business Administration, but decided to pursue web development when I graduated. I started as an intern designing email marketing emails, and learning SEO. I've continuously needed to learn new coding languages, paradigms, and frameworks.",
   },
   {
     title: 'Take Risks',
