@@ -1,17 +1,19 @@
 /** @type {import('tailwindcss').Config} */
-import colors from 'tailwindcss/colors';
+import allColors from 'tailwindcss/colors';
 
 export const darkMode = 'selector';
 export const content = ['./src/**/*.{js,ts,jsx,tsx}'];
 
-const entries = Object.entries(Object.getOwnPropertyDescriptors(colors)).filter(
+const entries = Object.entries(
+  Object.getOwnPropertyDescriptors(allColors),
+).filter(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ([key, descriptor]) => {
     return typeof descriptor.get !== 'function'; // Exclude getters
   },
 );
 
-const nonDeprecatedColors = Object.fromEntries(
+export const colors = Object.fromEntries(
   entries.map(([key, descriptor]) => [key, descriptor.value]),
 );
 
@@ -50,13 +52,13 @@ export const theme = {
       16: '4rem',
     },
     colors: {
-      ...nonDeprecatedColors,
+      ...colors,
       background: 'var(--background)',
       foreground: 'var(--foreground)',
       border: {
-        card: nonDeprecatedColors.indigo[400],
+        card: colors.indigo[400],
         dark: {
-          card: nonDeprecatedColors.slate[700],
+          card: colors.slate[700],
         },
       },
     },
