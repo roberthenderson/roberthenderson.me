@@ -19,7 +19,8 @@ export const theme = {
   extend: {
     spacing: {
       13: '3.25rem',
-      18: '72px',
+      18: '4.5rem',
+      26: '6.5rem',
     },
     letterSpacing: {
       wide: '0.01em',

@@ -12,6 +12,7 @@ export const Logo: FC = () => {
 
   return (
     <button
+      aria-label="Robert Henderson"
       onClick={handleLogoClick}
       className="group pb-2 font-dmSerif text-logo sm:pb-1"
     >

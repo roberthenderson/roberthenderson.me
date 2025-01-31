@@ -28,7 +28,7 @@ export const Links: FC<LinksProps> = ({ variant = 'hero', className }) => {
       ),
     [variant],
   );
-  const iconSize = useMemo(() => (variant === 'footer' ? 32 : 24), [variant]);
+  const iconSize = useMemo(() => (variant === 'footer' ? 32 : 30), [variant]);
 
   const linkItems = useMemo(
     () => [
@@ -60,7 +60,7 @@ export const Links: FC<LinksProps> = ({ variant = 'hero', className }) => {
         'flex cursor-pointer gap-3 text-2xl',
         'lg:gap-5',
         {
-          'gap-4 max-sm:pt-0': variant === 'hero',
+          'max-sm:pt-0': variant === 'hero',
         },
         className,
       )}

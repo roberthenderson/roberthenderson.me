@@ -12,8 +12,8 @@ export const getButtonStyles = ({
   className?: HeadlessButtonProps['className'];
 }) => {
   return clsxMerge(
-    'rounded-full p-2 font-semibold transition-all',
-    'px-6 py-1.5',
+    'rounded-full font-semibold transition-all',
+    'px-6 py-2',
     {
       'bg-emerald-600 text-emerald-100 dark:bg-teal-600 dark:text-teal-100':
         variant === 'primary',

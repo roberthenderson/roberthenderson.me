@@ -3,33 +3,17 @@ import { FC } from 'react';
 
 export const H1: FC = () => {
   return (
-    <div className="flex justify-center gap-2 sm:justify-end">
-      <h1
-        className={clsxMerge(
-          'flex flex-col pl-2 pr-1 text-center leading-10',
-          'sm:text-right',
-        )}
-      >
-        <p
-          className={clsxMerge(
-            'pb-1.5 pl-0.5 text-left font-leagueSpartan text-[28px] tracking-tight text-indigo-400 transition-colors',
-            'dark:text-yellow-600',
-            'sm:pl-0 sm:text-2xl sm:tracking-wide lg:pl-0.5 lg:text-[28px] lg:tracking-tight',
-          )}
-        >
-          I'm an Experienced
-        </p>
-        <p
-          className={clsxMerge(
-            'text-left font-leagueSpartan text-6xl text-indigo-800 transition-colors',
-            'dark:text-slate-200',
-            'sm:text-[53px] sm:tracking-tight lg:text-6xl lg:tracking-normal',
-          )}
-        >
-          <span className="block leading-10">Frontend</span>
-          <span className="leading-10">Engineer</span>
-        </p>
-      </h1>
-    </div>
+    <h1
+      className={clsxMerge(
+        'text-center font-500 tracking-wider text-indigo-800 transition-colors',
+        'dark:text-slate-200',
+        'sm:text-right',
+        'relative -top-4 sm:-top-5',
+      )}
+    >
+      <span className="pl-0.5 text-[21px] sm:pl-0 sm:pr-1.5 sm:text-2xl sm:tracking-wider md:text-[32px] lg:pr-2">
+        I'm Robert Henderson
+      </span>
+    </h1>
   );
 };

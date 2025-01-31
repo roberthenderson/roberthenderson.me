@@ -3,22 +3,32 @@ import { FC } from 'react';
 
 export const H2: FC = () => {
   return (
-    <h2
-      className={clsxMerge(
-        'pb-5 text-center font-dmSerif font-semibold text-indigo-950 transition-colors',
-        'dark:text-yellow-600',
-        'sm:pb-6 sm:text-right',
-      )}
-    >
-      <span
+    <div className="flex justify-center gap-2 sm:justify-end">
+      <h2
         className={clsxMerge(
-          'relative text-8xl leading-16',
-          'max-sm:tracking-wider sm:-right-5 sm:text-7xl sm:text-[5rem] md:-right-6 md:text-8xl lg:-right-8 lg:text-9xl',
+          'flex flex-col pl-2 pr-1.5 text-center leading-10 lg:pr-2',
+          'sm:text-right',
         )}
       >
-        <span className="max-sm:ml-2.5 sm:mr-3">Hello</span>
-        <span className="max-sm:hidden">world.</span>
-      </span>
-    </h2>
+        <p
+          className={clsxMerge(
+            'pl-0.5 font-leagueSpartan text-[26px] tracking-tight text-slate-500 transition-colors',
+            'sm:pl-0 sm:text-[22px] sm:tracking-wide lg:text-[25px]',
+          )}
+        >
+          Accomplished Senior
+        </p>
+        <p
+          className={clsxMerge(
+            'text-left font-leagueSpartan text-6xl text-indigo-800 transition-colors',
+            'dark:text-slate-200',
+            'sm:text-[53px] sm:tracking-tight lg:text-6xl lg:tracking-normal',
+          )}
+        >
+          <span className="block leading-10">Frontend</span>
+          <span className="leading-10">Engineer</span>
+        </p>
+      </h2>
+    </div>
   );
 };

@@ -6,6 +6,7 @@ import Robert from '../../../public/robert.webp';
 import { EmailButton } from '../EmailButton/EmailButton';
 import { H1 } from './H1';
 import { H2 } from './H2';
+import { H3 } from './H3';
 import { Links } from './Links';
 import { TagLine } from './TagLine';
 
@@ -23,7 +24,7 @@ export const HeroSection: FC = () => {
           alt="Robert Henderson, Frontend Engineer"
           className={clsxMerge(
             'absolute -bottom-2 -left-14 z-10 w-[65%] opacity-90 hue-rotate-15 max-sm:hidden',
-            'sm:-left-24 sm:-top-2 sm:w-[60%] md:-left-28 md:w-[50%]',
+            'sm:-left-26 sm:-top-2 sm:w-[63%] md:-left-28 md:w-[55%] lg:w-[50%]',
             'dark:opacity-70',
           )}
         />
@@ -33,8 +34,9 @@ export const HeroSection: FC = () => {
             'md:pt-22 sm:pb-14 md:pb-16',
           )}
         >
-          <H2 />
+          <H3 />
           <H1 />
+          <H2 />
           <div
             className={clsxMerge(
               'md:gap4 flex flex-col-reverse items-center justify-end gap-3 sm:pt-6 md:pt-1',
