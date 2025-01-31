@@ -63,7 +63,7 @@ const NavigationItem: FC<NavigationItemProps> = ({
     ) {
       return true;
     }
-    return prevIndex === pageSectionsList?.length || index < prevIndex;
+    return prevIndex === pageSectionsList?.length || index <= prevIndex;
   }, [prevActiveSection, activeSection, prevIndex, index, pageSectionsList]);
 
   const handleNavLinkClick = () => {
