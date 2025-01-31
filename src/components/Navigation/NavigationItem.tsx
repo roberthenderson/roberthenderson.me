@@ -5,30 +5,6 @@ import { Transition } from '@headlessui/react';
 import { sendGAEvent } from '@next/third-parties/google';
 import { Dispatch, FC, SetStateAction, useMemo, useState } from 'react';
 
-export const Navigation: FC = () => {
-  const { pageSectionsList } = useAppContext();
-  const [prevIndex, setPrevIndex] = useState(0);
-
-  return (
-    <nav className={clsxMerge('flex gap-3 text-sm', 'sm:gap-6 md:gap-8')}>
-      {pageSectionsList?.map((section, index) => {
-        if (!section.isMainNavigation) {
-          return null;
-        }
-        return (
-          <NavigationItem
-            key={section.id}
-            index={index}
-            prevIndex={prevIndex}
-            section={section}
-            setPrevIndex={setPrevIndex}
-          />
-        );
-      })}
-    </nav>
-  );
-};
-
 interface NavigationItemProps {
   section: PageSection;
   index: number;
@@ -36,7 +12,7 @@ interface NavigationItemProps {
   setPrevIndex: Dispatch<SetStateAction<number>>;
 }
 
-const NavigationItem: FC<NavigationItemProps> = ({
+export const NavigationItem: FC<NavigationItemProps> = ({
   section,
   index,
   prevIndex,
@@ -52,19 +28,40 @@ const NavigationItem: FC<NavigationItemProps> = ({
   const [isTouched, setIsTouched] = useState(false);
 
   const isActive = section.id === activeSection;
+
   // So the transition below moves the underline from right
   // to left when the user's previous hover/scroll is coming from
   // the right/bottom.
+  const mainNavigationLength = useMemo(
+    () =>
+      pageSectionsList?.filter((section) => section.isMainNavigation)?.length ??
+      0,
+    [pageSectionsList],
+  );
   const shouldTransitionToLeft = useMemo(() => {
     if (
+      !isHovered &&
       prevActiveSection !== null &&
       activeSection !== null &&
       prevActiveSection > activeSection
     ) {
       return true;
     }
-    return prevIndex === pageSectionsList?.length || index <= prevIndex;
-  }, [prevActiveSection, activeSection, prevIndex, index, pageSectionsList]);
+    if (isHovered) {
+      return (
+        (index === mainNavigationLength - 1 && index === prevIndex) ||
+        index < prevIndex
+      );
+    }
+    return false;
+  }, [
+    isHovered,
+    prevActiveSection,
+    activeSection,
+    prevIndex,
+    index,
+    mainNavigationLength,
+  ]);
 
   const handleNavLinkClick = () => {
     setActiveSection(section.id);
@@ -90,27 +87,32 @@ const NavigationItem: FC<NavigationItemProps> = ({
         'h-8',
         'dark:text-slate-200 dark:hover:text-slate-300',
         'md:text-lg',
+        'px-1.5 sm:px-3 md:px-4',
       )}
       onTouchEnd={handleTouchEnd}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {section.label}
-      <Transition show={isActive || isHovered}>
-        <div
-          className={clsxMerge(
-            // Base styles
-            'absolute h-0.5 w-full rounded-sm bg-violet-950/50 transition ease-in-out',
-            'dark:bg-slate-200/50',
-            // Shared closed styles
-            'data-[closed]:opacity-0',
-            // Entering styles
-            'data-[enter]:data-[closed]:-translate-x-full data-[enter]:duration-200',
-            shouldTransitionToLeft &&
-              'data-[enter]:data-[closed]:translate-x-full',
-          )}
-        />
-      </Transition>
+      <span>
+        <span>{section.label}</span>
+        <Transition show={isActive || isHovered}>
+          <div
+            className={clsxMerge(
+              // Base styles
+              'ml-1.5 sm:ml-3 md:ml-4',
+              'w-[calc(100%-12px)] sm:w-[calc(100%-24px)] md:w-[calc(100%-32px)]',
+              'absolute bottom-0 left-0 h-0.5 rounded-sm bg-violet-950/50 transition ease-in-out',
+              'dark:bg-slate-200/50',
+              // Shared closed styles
+              'data-[closed]:opacity-0',
+              // Entering styles
+              'data-[enter]:data-[closed]:-translate-x-full data-[enter]:duration-200',
+              shouldTransitionToLeft &&
+                'data-[enter]:data-[closed]:translate-x-full',
+            )}
+          />
+        </Transition>
+      </span>
     </button>
   );
 };

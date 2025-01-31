@@ -4,7 +4,7 @@ import { useAppContext } from '../../app/AppContextProvider';
 import { DarkModeToggle } from '../DarkModeToggle/DarkModeToggle';
 import { EmailButton } from '../EmailButton/EmailButton';
 import { Logo } from '../Logo/Logo';
-import { Navigation } from './Navigation';
+import { Navigation } from '../Navigation/Navigation';
 
 export const Header: FC = () => {
   const { setHeaderRef } = useAppContext();
