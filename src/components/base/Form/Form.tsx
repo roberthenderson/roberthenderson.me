@@ -4,7 +4,7 @@ import { ChangeEvent, FC, ReactNode, useMemo } from 'react';
 import { Button, ButtonProps } from '../Button/Button';
 import { InputField } from '../Input/Input';
 import { TextareaField } from '../Textarea/Textarea';
-import { FormError, FormState } from './useFormState';
+import { FormState } from './useFormState';
 
 interface FormField {
   type: 'text' | 'email' | 'textarea';
@@ -106,7 +106,7 @@ const FormField: FC<{ field: FormField; state: FormState }> = ({
 };
 
 interface ErrorMessageProps {
-  error: FormError;
+  error: Error;
   className?: string;
 }
 

@@ -1,4 +1,5 @@
 import { clsxMerge } from '@/src/utils/clsxMerge';
+import { formatGAErrorString } from '@/src/utils/formatGAErrorString';
 import { validateEmail } from '@/src/utils/validateEmail';
 import { sendGAEvent } from '@next/third-parties/google';
 import { useCallback, useMemo, useReducer } from 'react';
@@ -6,11 +7,7 @@ import { BiMailSend } from 'react-icons/bi';
 import { CgSpinner } from 'react-icons/cg';
 import { useDebouncedCallback } from 'use-debounce';
 import { FormData } from '../base/Form/Form';
-import {
-  FormActionType,
-  FormError,
-  useFormState,
-} from '../base/Form/useFormState';
+import { FormActionType, useFormState } from '../base/Form/useFormState';
 import { useToast } from '../base/Toast/useToast';
 
 interface ContactFormState {
@@ -61,14 +58,13 @@ export const useContactForm = () => {
   const { toast, openToast, closeToast } = useToast();
 
   const handleError = useCallback(
-    (error: unknown) => {
-      if (error instanceof Error) {
-        openToast({
-          type: 'error',
-          message: error.message,
-          onClose: closeToast,
-        });
-      }
+    (error: Error) => {
+      openToast({
+        type: 'error',
+        message: error.message,
+        onClose: closeToast,
+      });
+
       toggleLoading(false);
     },
     [openToast, closeToast, toggleLoading],
@@ -76,7 +72,7 @@ export const useContactForm = () => {
 
   const onSend = useCallback(async () => {
     sendGAEvent('event', 'send_button_click');
-    const errors: FormError[] = [];
+    const errors: Error[] = [];
     if (!state.name) {
       errors.push({ message: 'Please enter your name.', name: 'name' });
     }
@@ -90,9 +86,10 @@ export const useContactForm = () => {
       errors.push({ message: 'Please enter some text.', name: 'content' });
     }
     if (errors.length > 0) {
-      sendGAEvent('event', 'send_button_click_errors', {
-        errors,
-      });
+      sendGAEvent(
+        'event',
+        `send_button_click_errors__${errors.flatMap((error) => formatGAErrorString(error))}`,
+      );
       dispatchFormState({
         type: FormActionType.setErrors,
         payload: errors,
@@ -120,8 +117,13 @@ export const useContactForm = () => {
         throw Error(message);
       }
     } catch (error) {
-      handleError(error);
-      sendGAEvent('event', 'sendContactConfirmation_api_error', { error });
+      if (error instanceof Error) {
+        handleError(error);
+        sendGAEvent(
+          'event',
+          `sendContactConfirmation_api_error__${formatGAErrorString(error)}`,
+        );
+      }
       return;
     }
 
@@ -135,8 +137,13 @@ export const useContactForm = () => {
         throw Error(message);
       }
     } catch (error) {
-      handleError(error);
-      sendGAEvent('event', 'sendContactSubmission_api_error', { error });
+      if (error instanceof Error) {
+        handleError(error);
+        sendGAEvent(
+          'event',
+          `sendContactSubmission_api_error__${formatGAErrorString(error)}`,
+        );
+      }
       return;
     }
 
