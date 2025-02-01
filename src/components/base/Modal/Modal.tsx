@@ -62,7 +62,7 @@ export const Modal: FC<ModalProps> = ({
             </button>
             <DialogTitle
               as="h3"
-              className="font-dmSerif text-4xl font-semibold text-indigo-950 sm:pb-10 sm:text-5xl dark:text-slate-100"
+              className="font-dmSerif text-4xl font-semibold text-indigo-950 sm:pb-6 sm:text-5xl dark:text-slate-100"
             >
               {title}
             </DialogTitle>
