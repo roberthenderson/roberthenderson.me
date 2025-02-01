@@ -7,7 +7,7 @@ export const Logo: FC = () => {
 
   const handleLogoClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    sendGAEvent('event', 'logo_click', { fromSection: activeSection });
+    sendGAEvent('event', `logo_click__from_${activeSection}`);
   };
 
   return (

@@ -22,7 +22,10 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       <Layout>
         <Component {...pageProps} />
       </Layout>
-      <GoogleAnalytics gaId="G-GML2L3HCRN" />
+      {typeof window !== 'undefined' &&
+        window.location.hostname !== 'localhost' && (
+          <GoogleAnalytics gaId="G-GML2L3HCRN" />
+        )}
     </AppContextProvider>
   );
 }

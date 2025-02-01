@@ -1,10 +1,8 @@
 import { useReducer } from 'react';
 
-export type FormError = { message: string; name?: string };
-
 export interface FormState {
   status: number | null;
-  errors: FormError[];
+  errors: Error[];
   disabled: boolean;
   loading: boolean;
 }

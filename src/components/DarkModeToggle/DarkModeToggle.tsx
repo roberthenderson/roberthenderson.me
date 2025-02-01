@@ -9,7 +9,10 @@ export const DarkModeToggle: FC = () => {
   const { darkMode, setDarkMode } = useAppContext();
   const toggleDarkMode = () => {
     setDarkMode((prev) => !prev);
-    sendGAEvent('event', 'dark_mode_toggle_click', { darkMode: !darkMode });
+    sendGAEvent(
+      'event',
+      `dark_mode_toggle_click__changing_to_${darkMode ? 'lightMode' : 'darkMode'}`,
+    );
   };
 
   return (

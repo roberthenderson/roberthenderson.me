@@ -66,7 +66,7 @@ export const NavigationItem: FC<NavigationItemProps> = ({
   const handleNavLinkClick = () => {
     setActiveSection(section.id);
     scrollElementIntoView(section.ref.current);
-    sendGAEvent('event', 'nav_item_click', { label: section.label });
+    sendGAEvent('event', `nav_item_click__${section.label}`);
   };
   const handleTouchEnd = () => setIsTouched(true);
   const handleMouseEnter = () => {

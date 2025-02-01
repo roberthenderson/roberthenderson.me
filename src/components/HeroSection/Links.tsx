@@ -90,7 +90,7 @@ const LinkItem: FC<PropsWithChildren<LinkItemProps>> = ({
   otherProps,
   children,
 }) => {
-  const handleClick = () => sendGAEvent('event', 'link_icon_click', { name });
+  const handleClick = () => sendGAEvent('event', `link_icon_click__${name}`);
 
   return (
     <Link href={href} target="_blank" onClick={handleClick} {...otherProps}>

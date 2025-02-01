@@ -22,7 +22,7 @@ export const EmailButton: FC<EmailButtonProps> = ({ location, className }) => {
   );
   const handleClick = () => {
     scrollElementIntoView(contactSection?.ref?.current);
-    sendGAEvent('event', 'email_button_click', { location });
+    sendGAEvent('event', `email_button_click__${location}`);
   };
 
   return (
