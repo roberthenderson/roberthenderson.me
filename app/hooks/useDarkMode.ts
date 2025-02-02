@@ -1,32 +1,14 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useTheme } from 'next-themes';
+import { useEffect } from 'react';
 import colors from 'tailwindcss/colors';
 
 export const useDarkMode = () => {
-  const [darkMode, setDarkMode] = useState<boolean>(false);
+  const { theme } = useTheme();
 
   useEffect(() => {
-    const storedPreference = localStorage.getItem('darkMode');
-    const isDarkMode: boolean = storedPreference
-      ? JSON.parse(storedPreference)
-      : false;
-    if (
-      isDarkMode ||
-      (!storedPreference &&
-        typeof window !== 'undefined' &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      setDarkMode(true);
-      document.documentElement.classList.add('dark');
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('darkMode', JSON.stringify(darkMode));
-
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
+    if (theme === 'dark') {
       document.documentElement.style.setProperty(
         '--foreground',
         colors.slate[200],
@@ -36,7 +18,6 @@ export const useDarkMode = () => {
         colors.slate[800],
       );
     } else {
-      document.documentElement.classList.remove('dark');
       document.documentElement.style.setProperty(
         '--foreground',
         colors.slate[950],
@@ -46,7 +27,5 @@ export const useDarkMode = () => {
         colors.indigo[200],
       );
     }
-  }, [darkMode]);
-
-  return { darkMode, setDarkMode };
+  }, [theme]);
 };

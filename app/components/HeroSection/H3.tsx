@@ -5,7 +5,7 @@ export const H3: FC = () => {
   return (
     <h3
       className={clsxMerge(
-        'pb-5 text-center font-dmSerif font-semibold text-indigo-950 transition-colors',
+        'pb-5 text-center font-dmSerif font-semibold text-indigo-950',
         'dark:text-yellow-600',
         'sm:text-right',
       )}

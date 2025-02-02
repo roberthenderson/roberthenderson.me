@@ -14,3 +14,4 @@ export const FIELD_CLASSNAME = clsxMerge(
   'focus:dark:bg-slate-200 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-violet-600',
   'dark:outline-slate-300 dark:focus:outline-indigo-500',
 );
+export const DARK_MODE_CLASSNAME = 'dark';

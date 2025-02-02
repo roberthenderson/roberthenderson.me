@@ -1,11 +1,12 @@
 'use client';
 
-import { PageSectionsEnum, useAppContext } from '@/app/AppContextProvider';
+import { useAppContext } from '@/app/AppContextProvider';
+import { Button } from '@/app/components/base/Button/Button';
+import { PageSectionsEnum } from '@/app/types';
 import { clsxMerge } from '@/app/utils/clsxMerge';
 import { navigateToSection } from '@/app/utils/navigateToSection';
 import { FC, useMemo } from 'react';
 import { RiSendPlaneLine } from 'react-icons/ri';
-import { Button } from '../base/Button/Button';
 
 interface EmailButtonProps {
   location: 'header' | 'hero';

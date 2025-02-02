@@ -12,7 +12,7 @@ export const H2: FC = () => {
       >
         <p
           className={clsxMerge(
-            'pl-0.5 font-leagueSpartan text-[26px] tracking-tight text-slate-500 transition-colors',
+            'pl-0.5 font-leagueSpartan text-[26px] tracking-tight text-slate-500',
             'sm:pl-0 sm:text-[22px] sm:tracking-wide lg:text-[25px]',
           )}
         >
@@ -20,7 +20,7 @@ export const H2: FC = () => {
         </p>
         <p
           className={clsxMerge(
-            'text-left font-leagueSpartan text-6xl text-indigo-800 transition-colors',
+            'text-left font-leagueSpartan text-6xl text-indigo-800',
             'dark:text-slate-200',
             'sm:text-[53px] sm:tracking-tight lg:text-6xl lg:tracking-normal',
           )}

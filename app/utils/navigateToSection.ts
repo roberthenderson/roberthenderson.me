@@ -1,6 +1,6 @@
 import { sendGAEvent } from '@next/third-parties/google';
 import { RefObject } from 'react';
-import { PageSectionsEnum } from '../AppContextProvider';
+import { PageSectionsEnum } from '../types';
 import { scrollElementIntoView } from './scrollElementIntoView';
 
 export const navigateToSection = (

@@ -13,10 +13,7 @@ import { TagLine } from './TagLine';
 export const HeroSection: FC = () => {
   return (
     <section
-      className={clsxMerge(
-        'relative overflow-hidden transition-colors',
-        SECTION_CLASSNAME,
-      )}
+      className={clsxMerge('relative overflow-hidden', SECTION_CLASSNAME)}
     >
       <div className="mx-auto flex w-full max-w-screen-xl justify-between px-8 lg:px-12 2xl:px-0">
         <Image

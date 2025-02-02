@@ -4,6 +4,7 @@ import { Header } from '@/app/components/Header/Header';
 import { clsxMerge } from '@/app/utils/clsxMerge';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { Metadata } from 'next';
+import { ThemeProvider } from 'next-themes';
 import { PropsWithChildren } from 'react';
 import './globals.css';
 
@@ -22,21 +23,22 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: PropsWithChildren) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <AppContextProvider>
-          <div
-            className={clsxMerge(
-              'flex h-full w-full flex-col',
-              'transition-colors',
-              'bg-violet-50 text-slate-950 dark:bg-slate-800 dark:text-slate-200',
-            )}
-          >
-            <Header />
-            <main>{children}</main>
-            <Footer />
-          </div>
-        </AppContextProvider>
+        <ThemeProvider attribute="class">
+          <AppContextProvider>
+            <div
+              className={clsxMerge(
+                'flex h-full w-full flex-col',
+                'bg-violet-50 text-slate-950 dark:bg-slate-800 dark:text-slate-200',
+              )}
+            >
+              <Header />
+              <main>{children}</main>
+              <Footer />
+            </div>
+          </AppContextProvider>
+        </ThemeProvider>
         {typeof window !== 'undefined' &&
           window.location.hostname !== 'localhost' && (
             <GoogleAnalytics gaId="G-GML2L3HCRN" />

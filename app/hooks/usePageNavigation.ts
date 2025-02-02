@@ -3,7 +3,8 @@
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
-import { PageSection, useAppContext } from '../AppContextProvider';
+import { useAppContext } from '../AppContextProvider';
+import { PageSection } from '../types';
 import { scrollElementIntoView } from '../utils/scrollElementIntoView';
 import { usePrevious } from './usePrevious';
 
@@ -101,11 +102,12 @@ export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
    */
   useEffect(() => {
     // If the user has come directly to the page, the base state
-    // will have a `scrollPosition` of 0.
-    if (scrollPosition > 0) {
+    // will have a `scrollPosition` of 0 and won't have a prevPathname
+    if (scrollPosition > 0 || prevPathname) {
       return;
     }
 
+    console.log({ pathname });
     if (pathname !== '/') {
       pageSections.forEach((pageSection) => {
         const pageSectionFromRoute = pageSections.find(
@@ -119,5 +121,5 @@ export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
         }
       });
     }
-  }, [pageSections, pathname, scrollPosition]);
+  }, [pageSections, pathname, prevPathname, scrollPosition]);
 };

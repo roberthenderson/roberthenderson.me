@@ -1,6 +1,5 @@
 'use client';
 
-import { useAppContext } from '@/app/AppContextProvider';
 import { GITHUB_REPO_URL } from '@/app/constants/urls';
 import { clsxMerge } from '@/app/utils/clsxMerge';
 import { sendGAEvent } from '@next/third-parties/google';
@@ -12,7 +11,6 @@ import { Links } from '../HeroSection/Links';
 import { TextLink } from '../base/TextLink/TextLink';
 
 export const Footer: FC = () => {
-  const { darkMode } = useAppContext();
   const year = new Date().getFullYear();
 
   const handleBuiltLinkClick = () =>
@@ -49,13 +47,20 @@ export const Footer: FC = () => {
                     NextJS in
                   </span>
                   <Image
-                    src={
-                      darkMode ? '/fortcollins.png' : '/fortcollins_dark.png'
-                    }
+                    suppressHydrationWarning
+                    src="/fortcollins.png"
                     alt="Fort Collins, Colorado"
                     width="90"
                     height="23"
-                    className="relative -left-3 top-[5px]"
+                    className="relative -left-3 top-[5px] hidden dark:block"
+                  />
+                  <Image
+                    suppressHydrationWarning
+                    src="/fortcollins_dark.png"
+                    alt="Fort Collins, Colorado"
+                    width="90"
+                    height="23"
+                    className="relative -left-3 top-[5px] block dark:hidden"
                   />
                 </div>
               </div>

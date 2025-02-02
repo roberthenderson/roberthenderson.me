@@ -1,4 +1,4 @@
-import { PageSection, PageSectionsEnum } from '../AppContextProvider';
+import { PageSection, PageSectionsEnum } from '../types';
 
 export const PAGE_SECTIONS: Record<
   PageSectionsEnum,

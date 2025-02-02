@@ -22,7 +22,6 @@ export const Header: FC = () => {
         'h-16 w-full px-4 lg:h-18',
         'border-b-3 border-violet-600 bg-indigo-200',
         'dark:border-slate-600 dark:bg-slate-800',
-        'transition-all',
         'md:px-8',
       )}
     >

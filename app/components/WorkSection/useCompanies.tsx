@@ -1,5 +1,7 @@
-import { useAppContext } from '@/app/AppContextProvider';
+'use client';
+
 import { clsxMerge } from '@/app/utils/clsxMerge';
+import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import { ReactNode, useMemo } from 'react';
 import BlueAcornLogo from '../../../public/companies/blueacorn.png';
@@ -16,18 +18,15 @@ export interface ICompany {
 }
 
 export const useCompanies = () => {
-  const { darkMode } = useAppContext();
+  const { theme } = useTheme();
+  const darkMode = useMemo(() => theme === 'dark', [theme]);
 
   const featuredCompanies: ICompany[] = useMemo(
     () => [
       {
         id: 'me',
         label: 'Magic Eden',
-        logo: darkMode ? (
-          <MagicEdenLogo />
-        ) : (
-          <MagicEdenLogo textColor="#120c18" />
-        ),
+        logo: <MagicEdenLogo />,
         className: 'w-72 md:w-96 mb-4',
       },
       {
@@ -37,7 +36,7 @@ export const useCompanies = () => {
         className: 'w-60 md:w-64',
       },
     ],
-    [darkMode],
+    [],
   );
 
   const otherCompanies: ICompany[] = useMemo(

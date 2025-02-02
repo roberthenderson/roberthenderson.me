@@ -1,5 +1,6 @@
-import { PageSectionsEnum, useAppContext } from '@/app/AppContextProvider';
+import { useAppContext } from '@/app/AppContextProvider';
 import { usePrevious } from '@/app/hooks/usePrevious';
+import { PageSectionsEnum } from '@/app/types';
 import { clsxMerge } from '@/app/utils/clsxMerge';
 import { navigateToSection } from '@/app/utils/navigateToSection';
 import { Transition } from '@headlessui/react';
