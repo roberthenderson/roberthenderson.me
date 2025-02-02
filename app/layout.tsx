@@ -90,10 +90,7 @@ export default function Layout({ children }: PropsWithChildren) {
             </div>
           </AppContextProvider>
         </ThemeProvider>
-        {typeof window !== 'undefined' &&
-          window.location.hostname !== 'localhost' && (
-            <GoogleAnalytics gaId="G-GML2L3HCRN" />
-          )}
+        <GoogleAnalytics gaId="G-GML2L3HCRN" />
       </body>
     </html>
   );
