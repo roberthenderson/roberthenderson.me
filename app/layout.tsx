@@ -90,7 +90,10 @@ export default function Layout({ children }: PropsWithChildren) {
             </div>
           </AppContextProvider>
         </ThemeProvider>
-        <GoogleAnalytics gaId="G-GML2L3HCRN" />
+        <GoogleAnalytics
+          gaId="G-GML2L3HCRN"
+          debugMode={process.env.NODE_ENV === 'development'}
+        />
       </body>
     </html>
   );
