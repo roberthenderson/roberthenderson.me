@@ -1,4 +1,6 @@
-import { SECTION_CLASSNAME } from '@/app/constants';
+'use client';
+
+import { SECTION_CLASSNAME } from '@/app/constants/classNames';
 import { usePageNavigation } from '@/app/hooks/usePageNavigation';
 import { usePageSections } from '@/app/hooks/usePageSections';
 import { clsxMerge } from '@/app/utils/clsxMerge';

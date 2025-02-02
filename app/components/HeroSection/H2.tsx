@@ -1,5 +1,3 @@
-'use client';
-
 import { clsxMerge } from '@/app/utils/clsxMerge';
 import { FC } from 'react';
 

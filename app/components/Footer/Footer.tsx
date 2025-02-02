@@ -1,5 +1,7 @@
+'use client';
+
 import { useAppContext } from '@/app/AppContextProvider';
-import { GITHUB_REPO_URL } from '@/app/constants';
+import { GITHUB_REPO_URL } from '@/app/constants/urls';
 import { clsxMerge } from '@/app/utils/clsxMerge';
 import { sendGAEvent } from '@next/third-parties/google';
 import Image from 'next/image';

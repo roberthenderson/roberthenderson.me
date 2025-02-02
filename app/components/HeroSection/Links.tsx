@@ -1,11 +1,7 @@
 'use client';
 
-import {
-  GITHUB_URL,
-  LINKEDIN_URL,
-  RESUME_FILENAME,
-  RESUME_URI,
-} from '@/app/constants';
+import { RESUME_FILENAME } from '@/app/constants/labels';
+import { GITHUB_URL, LINKEDIN_URL, RESUME_URI } from '@/app/constants/urls';
 import { clsxMerge } from '@/app/utils/clsxMerge';
 import { sendGAEvent } from '@next/third-parties/google';
 import Link from 'next/link';
@@ -69,6 +65,7 @@ export const Links: FC<LinksProps> = ({ variant = 'hero', className }) => {
     >
       {linkItems.map((item) => (
         <LinkItem
+          key={item.name}
           href={item.href}
           name={item.name}
           otherProps={item.otherProps}

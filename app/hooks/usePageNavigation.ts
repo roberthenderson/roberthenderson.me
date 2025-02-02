@@ -1,5 +1,6 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 import { PageSection, useAppContext } from '../AppContextProvider';
@@ -11,13 +12,9 @@ interface UsePageNavigationProps {
 }
 
 export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
-  const {
-    router,
-    activeSection,
-    setActiveSection,
-    headerRef,
-    pageSectionLinks,
-  } = useAppContext();
+  const pathname = usePathname();
+  const prevPathname = usePrevious(pathname);
+  const { headerRef } = useAppContext();
 
   /**
    * As a user scrolls, change the pathname as they reach each section
@@ -46,20 +43,18 @@ export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
     if (!headerRef?.current?.offsetHeight) {
       return;
     }
+
     const scrollWithHeaderHeight = Math.ceil(
       scrollPosition + headerRef.current.offsetHeight,
     );
-
     // If we're at the top, show the root route
     if (
       pageSections[0].ref.current?.offsetTop &&
       scrollWithHeaderHeight < pageSections[0].ref.current.offsetTop &&
-      router.asPath !== '/' &&
+      pathname !== '/' &&
       prevScrollPosition
     ) {
-      router
-        .push('', '/', { shallow: true })
-        .then(() => setActiveSection(null));
+      window.history.pushState(null, '', '/');
       return;
     }
 
@@ -70,12 +65,9 @@ export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
       lastSection?.offsetHeight &&
       scrollWithHeaderHeight >
         lastSection.offsetTop + lastSection.offsetHeight &&
-      router.asPath !== '/'
+      pathname !== '/'
     ) {
-      router
-        .push('', '/', { shallow: true })
-        .then(() => setActiveSection(null));
-      setActiveSection(null);
+      window.history.pushState(null, '', '/');
       return;
     }
 
@@ -88,22 +80,19 @@ export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
         scrollWithHeaderHeight >= currentSection.offsetTop &&
         scrollWithHeaderHeight <
           currentSection.offsetTop + currentSection.offsetHeight &&
-        router.asPath !== pageSectionLinks[pageSection.id]
+        pathname !== pageSection.id &&
+        pageSection.id !== prevPathname
       ) {
-        await router.push('', pageSectionLinks[pageSection.id], {
-          shallow: true,
-        });
-        setActiveSection(pageSection.id);
+        window.history.pushState(null, '', pageSection.id);
       }
     });
   }, [
-    router,
+    pathname,
+    prevPathname,
     pageSections,
     scrollPosition,
     prevScrollPosition,
     headerRef,
-    pageSectionLinks,
-    setActiveSection,
   ]);
 
   /**
@@ -112,28 +101,23 @@ export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
    */
   useEffect(() => {
     // If the user has come directly to the page, the base state
-    // will have a `scrollPosition` of 0 and `activeSection` of
-    // null.
-    if (scrollPosition > 0 || activeSection !== null) {
+    // will have a `scrollPosition` of 0.
+    if (scrollPosition > 0) {
       return;
     }
 
-    const { asPath } = router;
-    if (asPath !== '/') {
+    if (pathname !== '/') {
       pageSections.forEach((pageSection) => {
         const pageSectionFromRoute = pageSections.find(
-          (section) => section.link === router.asPath,
+          (section) => section.id === pathname,
         );
         if (
           pageSectionFromRoute &&
           pageSection.id === pageSectionFromRoute.id
         ) {
           scrollElementIntoView(pageSection.ref.current);
-          setActiveSection(pageSection.id);
         }
       });
     }
-    // Don't react to activeSection changes
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router, scrollPosition, setActiveSection]);
+  }, [pageSections, pathname, scrollPosition]);
 };

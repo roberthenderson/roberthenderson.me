@@ -1,33 +1,47 @@
-import { PageSection, useAppContext } from '@/app/AppContextProvider';
+import { PageSectionsEnum, useAppContext } from '@/app/AppContextProvider';
+import { usePrevious } from '@/app/hooks/usePrevious';
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import { scrollElementIntoView } from '@/app/utils/scrollElementIntoView';
+import { navigateToSection } from '@/app/utils/navigateToSection';
 import { Transition } from '@headlessui/react';
-import { sendGAEvent } from '@next/third-parties/google';
-import { Dispatch, FC, SetStateAction, useMemo, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import {
+  Dispatch,
+  FC,
+  ReactNode,
+  RefObject,
+  SetStateAction,
+  useMemo,
+  useState,
+} from 'react';
 
 interface NavigationItemProps {
-  section: PageSection;
+  id: PageSectionsEnum;
+  label: ReactNode;
+  ref?: RefObject<HTMLElement | null>;
   index: number;
   prevIndex: number;
   setPrevIndex: Dispatch<SetStateAction<number>>;
 }
 
 export const NavigationItem: FC<NavigationItemProps> = ({
-  section,
+  id,
+  label,
+  ref,
   index,
   prevIndex,
   setPrevIndex,
 }) => {
-  const {
-    pageSectionsList,
-    activeSection,
-    setActiveSection,
-    prevActiveSection,
-  } = useAppContext();
+  const { pageSectionsList } = useAppContext();
+  const pathname = usePathname();
+  const prevPathname = usePrevious(pathname);
+  const navList = Array.from(Object.values(PageSectionsEnum));
+  const pathnameIndex = navList.findIndex((nav) => nav === pathname);
+  const prevPathNameIndex = navList.findIndex((nav) => nav === prevPathname);
+
   const [isHovered, setIsHovered] = useState(false);
   const [isTouched, setIsTouched] = useState(false);
 
-  const isActive = section.id === activeSection;
+  const isActive = id === pathname;
 
   // So the transition below moves the underline from right
   // to left when the user's previous hover/scroll is coming from
@@ -41,9 +55,9 @@ export const NavigationItem: FC<NavigationItemProps> = ({
   const shouldTransitionToLeft = useMemo(() => {
     if (
       !isHovered &&
-      prevActiveSection !== null &&
-      activeSection !== null &&
-      prevActiveSection > activeSection
+      prevPathNameIndex !== undefined &&
+      pathnameIndex !== undefined &&
+      prevPathNameIndex > pathnameIndex
     ) {
       return true;
     }
@@ -56,18 +70,15 @@ export const NavigationItem: FC<NavigationItemProps> = ({
     return false;
   }, [
     isHovered,
-    prevActiveSection,
-    activeSection,
+    prevPathNameIndex,
+    pathnameIndex,
     prevIndex,
     index,
     mainNavigationLength,
   ]);
 
-  const handleNavLinkClick = () => {
-    setActiveSection(section.id);
-    scrollElementIntoView(section.ref.current);
-    sendGAEvent('event', `nav_item_click__${section.label}`);
-  };
+  const handleNavLinkClick = () =>
+    ref ? navigateToSection(id, ref, `nav_item_click__${label}`) : null;
   const handleTouchEnd = () => setIsTouched(true);
   const handleMouseEnter = () => {
     // Checking for isTouched prevents the underline from sticking
@@ -94,7 +105,7 @@ export const NavigationItem: FC<NavigationItemProps> = ({
       onMouseLeave={handleMouseLeave}
     >
       <span>
-        <span>{section.label}</span>
+        <span>{label}</span>
         <Transition show={isActive || isHovered}>
           <div
             className={clsxMerge(

@@ -1,4 +1,5 @@
-import { RESUME_FILENAME, RESUME_URI } from '@/app/constants';
+import { RESUME_FILENAME } from '@/app/constants/labels';
+import { RESUME_URI } from '@/app/constants/urls';
 import { sendGAEvent } from '@next/third-parties/google';
 import { FC } from 'react';
 import { FiDownload } from 'react-icons/fi';

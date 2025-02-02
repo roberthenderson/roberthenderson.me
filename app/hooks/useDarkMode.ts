@@ -5,23 +5,28 @@ import colors from 'tailwindcss/colors';
 
 export const useDarkMode = () => {
   const [darkMode, setDarkMode] = useState<boolean>(false);
-  const [ready, setReady] = useState<boolean>(false);
 
   useEffect(() => {
     const storedPreference = localStorage.getItem('darkMode');
-    if (storedPreference) {
-      setDarkMode(JSON.parse(storedPreference));
-    } else if (typeof window !== 'undefined') {
-      setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
+    const isDarkMode: boolean = storedPreference
+      ? JSON.parse(storedPreference)
+      : false;
+    if (
+      isDarkMode ||
+      (!storedPreference &&
+        typeof window !== 'undefined' &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      setDarkMode(true);
+      document.documentElement.classList.add('dark');
     }
-    // prevents a flash of the screen if the user has selected light mode
-    setReady(true);
   }, []);
 
   useEffect(() => {
     localStorage.setItem('darkMode', JSON.stringify(darkMode));
 
     if (darkMode) {
+      document.documentElement.classList.add('dark');
       document.documentElement.style.setProperty(
         '--foreground',
         colors.slate[200],
@@ -31,6 +36,7 @@ export const useDarkMode = () => {
         colors.slate[800],
       );
     } else {
+      document.documentElement.classList.remove('dark');
       document.documentElement.style.setProperty(
         '--foreground',
         colors.slate[950],
@@ -42,5 +48,5 @@ export const useDarkMode = () => {
     }
   }, [darkMode]);
 
-  return { ready, darkMode, setDarkMode };
+  return { darkMode, setDarkMode };
 };

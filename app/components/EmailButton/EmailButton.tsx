@@ -2,8 +2,7 @@
 
 import { PageSectionsEnum, useAppContext } from '@/app/AppContextProvider';
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import { scrollElementIntoView } from '@/app/utils/scrollElementIntoView';
-import { sendGAEvent } from '@next/third-parties/google';
+import { navigateToSection } from '@/app/utils/navigateToSection';
 import { FC, useMemo } from 'react';
 import { RiSendPlaneLine } from 'react-icons/ri';
 import { Button } from '../base/Button/Button';
@@ -22,10 +21,14 @@ export const EmailButton: FC<EmailButtonProps> = ({ location, className }) => {
       ),
     [pageSectionsList],
   );
-  const handleClick = () => {
-    scrollElementIntoView(contactSection?.ref?.current);
-    sendGAEvent('event', `email_button_click__${location}`);
-  };
+  const handleClick = () =>
+    contactSection
+      ? navigateToSection(
+          contactSection.id,
+          contactSection.ref,
+          `email_button_click__${location}`,
+        )
+      : null;
 
   return (
     <Button

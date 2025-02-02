@@ -1,14 +1,14 @@
-import { useAppContext } from '@/app/AppContextProvider';
-import { sendGAEvent } from '@next/third-parties/google';
+'use client';
+
+import { navigateToSection } from '@/app/utils/navigateToSection';
+import { usePathname } from 'next/navigation';
 import { FC } from 'react';
 
 export const Logo: FC = () => {
-  const { activeSection } = useAppContext();
+  const pathname = usePathname();
 
-  const handleLogoClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    sendGAEvent('event', `logo_click__from_${activeSection}`);
-  };
+  const handleLogoClick = () =>
+    navigateToSection('/', null, `logo_click__from_${pathname.slice(1)}`);
 
   return (
     <button

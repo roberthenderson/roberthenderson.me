@@ -1,11 +1,26 @@
+import { AppContextProvider } from '@/app/AppContextProvider';
+import { Footer } from '@/app/components/Footer/Footer';
+import { Header } from '@/app/components/Header/Header';
 import { clsxMerge } from '@/app/utils/clsxMerge';
 import { GoogleAnalytics } from '@next/third-parties/google';
-import { FC, PropsWithChildren } from 'react';
-import { AppContextProvider } from './AppContextProvider';
-import { Footer } from './components/Footer/Footer';
-import { Header } from './components/Header/Header';
+import { Metadata } from 'next';
+import { PropsWithChildren } from 'react';
+import './globals.css';
 
-export const Layout: FC<PropsWithChildren> = ({ children }) => {
+const METADATA = {
+  title: 'Robert Henderson | Senior Frontend Engineer',
+  description:
+    'Robert Henderson is an accomplished Senior Frontend Engineer with Javascript, React, Typescript, NextJS, and UX Web Design experience.',
+  keywords:
+    'robert henderson,javascript,typescript,frontend,engineer,developer,senior,react,reactjs,nextjs,web design,vercel,html,css,sass,ux,design,web',
+};
+
+export const metadata: Metadata = {
+  ...METADATA,
+  openGraph: { ...METADATA },
+};
+
+export default function Layout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body>
@@ -29,4 +44,4 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
       </body>
     </html>
   );
-};
+}

@@ -1,4 +1,4 @@
-import { FIELD_CLASSNAME } from '@/app/constants';
+import { FIELD_CLASSNAME } from '@/app/constants/classNames';
 import { useFieldFocus } from '@/app/hooks/useFieldFocus';
 import { clsxMerge } from '@/app/utils/clsxMerge';
 import {

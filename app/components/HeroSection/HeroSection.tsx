@@ -1,6 +1,4 @@
-'use client';
-
-import { SECTION_CLASSNAME } from '@/app/constants';
+import { SECTION_CLASSNAME } from '@/app/constants/classNames';
 import { clsxMerge } from '@/app/utils/clsxMerge';
 import Image from 'next/image';
 import { FC } from 'react';
@@ -22,6 +20,7 @@ export const HeroSection: FC = () => {
     >
       <div className="mx-auto flex w-full max-w-screen-xl justify-between px-8 lg:px-12 2xl:px-0">
         <Image
+          priority
           src={Robert}
           alt="Robert Henderson, Frontend Engineer"
           className={clsxMerge(

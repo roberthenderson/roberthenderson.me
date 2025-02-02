@@ -1,4 +1,4 @@
-import { BASE_URL } from '@/app/constants';
+import { BASE_URL } from '@/app/constants/urls';
 import Head from 'next/head';
 
 const METADATA = {

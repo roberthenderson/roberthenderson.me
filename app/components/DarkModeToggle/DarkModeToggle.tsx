@@ -1,3 +1,5 @@
+'use client';
+
 import { useAppContext } from '@/app/AppContextProvider';
 import { sendGAEvent } from '@next/third-parties/google';
 import { FC } from 'react';

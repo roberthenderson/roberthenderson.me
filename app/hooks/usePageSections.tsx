@@ -10,9 +10,10 @@ import { AboutSection } from '../components/AboutSection/AboutSection';
 import { ContactSection } from '../components/ContactSection/ContactSection';
 import { SkillsSection } from '../components/SkillsSection/SkillsSection';
 import { WorkSection } from '../components/WorkSection/WorkSection';
+import { PAGE_SECTIONS } from '../constants/pageSections';
 
 export const usePageSections = () => {
-  const { setPageSectionsList, pageSectionLinks } = useAppContext();
+  const { setPageSectionsList } = useAppContext();
 
   const skillsSection = useRef<HTMLElement | null>(null);
   const workSection = useRef<HTMLElement | null>(null);
@@ -22,38 +23,27 @@ export const usePageSections = () => {
   const pageSections: PageSection[] = useMemo(
     () => [
       {
-        id: PageSectionsEnum.Skills,
-        label: 'Skills',
         ref: skillsSection,
-        link: pageSectionLinks[PageSectionsEnum.Skills],
-        isMainNavigation: true,
         children: <SkillsSection />,
+        ...PAGE_SECTIONS[PageSectionsEnum.Skills],
       },
       {
-        id: PageSectionsEnum.Work,
-        label: 'Work',
         ref: workSection,
-        link: pageSectionLinks[PageSectionsEnum.Work],
-        isMainNavigation: true,
         children: <WorkSection />,
+        ...PAGE_SECTIONS[PageSectionsEnum.Work],
       },
       {
-        id: PageSectionsEnum.About,
-        label: 'About',
         ref: aboutSection,
-        link: pageSectionLinks[PageSectionsEnum.About],
-        isMainNavigation: true,
         children: <AboutSection />,
+        ...PAGE_SECTIONS[PageSectionsEnum.About],
       },
       {
-        id: PageSectionsEnum.Contact,
-        label: 'Contact',
         ref: contactSection,
-        isMainNavigation: false,
         children: <ContactSection />,
+        ...PAGE_SECTIONS[PageSectionsEnum.Contact],
       },
     ],
-    [pageSectionLinks],
+    [],
   );
 
   /**
@@ -63,5 +53,5 @@ export const usePageSections = () => {
     setPageSectionsList(pageSections);
   }, [setPageSectionsList, pageSections]);
 
-  return { pageSectionLinks, pageSections };
+  return { pageSections };
 };
