@@ -46,6 +46,7 @@ export const Links: FC<LinksProps> = ({ variant = 'hero', className }) => {
         icon: <FaFileDownload className={iconClassName} size={iconSize} />,
         otherProps: {
           download: RESUME_FILENAME,
+          prefetch: false,
         },
       },
     ],
