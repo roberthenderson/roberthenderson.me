@@ -1,18 +1,23 @@
+'use client';
+
 import { clsxMerge } from '@/app/utils/clsxMerge';
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
 import { FC, ReactNode, useState } from 'react';
 
 export interface TabItem {
+  id: string;
   label: ReactNode;
   content: ReactNode;
 }
 
 interface TabsProps {
   tabs: TabItem[];
+  activeTabId?: string;
 }
 
-export const Tabs: FC<TabsProps> = ({ tabs }) => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+export const Tabs: FC<TabsProps> = ({ tabs, activeTabId }) => {
+  const activeTabIndex = tabs.findIndex((tab) => tab.id === activeTabId) ?? 0;
+  const [selectedIndex, setSelectedIndex] = useState(activeTabIndex);
 
   return (
     <TabGroup selectedIndex={selectedIndex} onChange={setSelectedIndex}>

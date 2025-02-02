@@ -7,13 +7,13 @@ import { Button } from '../base/Button/Button';
 import { LinkButton } from '../base/Button/LinkButton';
 import { Grid } from '../base/Grid/Grid';
 import { Modal } from '../base/Modal/Modal';
+import { CompaniesContent } from '../CompaniesContent/ComaniesContent';
 import { SectionBanner } from '../SectionBanner/SectionBanner';
 import { SectionContainer } from '../SectionContainer/SectionContainer';
 import { SectionContent } from '../SectionContent/SectionContent';
 import { SectionHeading } from '../SectionHeading/SectionHeading';
 import { Company } from './Company';
 import { useCompanies } from './useCompanies';
-import { WorkSectionModalContent } from './WorkSectionModalContent';
 
 export const WorkSection: FC = () => {
   const { featuredCompanies, otherCompanies } = useCompanies();
@@ -77,7 +77,7 @@ export const WorkSection: FC = () => {
         open={modalOpen}
         onClose={handleCloseModal}
         title="Work Experience"
-        content={<WorkSectionModalContent />}
+        content={<CompaniesContent />}
       />
     </SectionContainer>
   );

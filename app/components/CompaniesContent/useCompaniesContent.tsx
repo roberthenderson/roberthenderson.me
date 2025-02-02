@@ -1,40 +1,35 @@
-import { FC, useMemo } from 'react';
-import { TabItem, Tabs } from '../base/Tabs';
+import { useMemo } from 'react';
+import { TabItem } from '../base/Tabs';
 
-interface WorkSectionModalContentProps {
-  tabs?: unknown;
-}
-
-export const WorkSectionModalContent: FC<WorkSectionModalContentProps> = () => {
-  const tabs: TabItem[] = useMemo(
+export const useCompaniesContent = (): TabItem[] => {
+  return useMemo(
     () => [
       {
+        id: 'magic-eden',
         label: 'Magic Eden',
         content: 'Magic Eden content.',
       },
       {
+        id: 'metalex',
         label: 'Metaplex',
         content: 'Metaplex content.',
       },
       {
+        id: 'salesforce',
         label: 'Salesforce',
         content: 'Salesforce content.',
       },
       {
+        id: 'vlocity',
         label: 'Vlocity',
         content: 'Vlocity content.',
       },
       {
+        id: 'blue-acorn',
         label: 'Blue Acorn',
         content: 'Blue Acorn content.',
       },
     ],
     [],
-  );
-
-  return (
-    <div className="flex flex-col">
-      <Tabs tabs={tabs} />
-    </div>
   );
 };
