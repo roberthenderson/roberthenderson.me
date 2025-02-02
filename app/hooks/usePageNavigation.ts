@@ -107,7 +107,6 @@ export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
       return;
     }
 
-    console.log({ pathname });
     if (pathname !== '/') {
       pageSections.forEach((pageSection) => {
         const pageSectionFromRoute = pageSections.find(

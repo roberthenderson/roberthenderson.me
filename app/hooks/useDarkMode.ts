@@ -5,7 +5,13 @@ import { useEffect } from 'react';
 import colors from 'tailwindcss/colors';
 
 export const useDarkMode = () => {
-  const { theme } = useTheme();
+  const { theme, systemTheme, setTheme } = useTheme();
+
+  useEffect(() => {
+    if (theme === 'system' && systemTheme) {
+      setTheme(systemTheme);
+    }
+  }, [theme, systemTheme, setTheme]);
 
   useEffect(() => {
     if (theme === 'dark') {

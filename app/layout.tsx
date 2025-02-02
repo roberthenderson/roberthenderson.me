@@ -6,19 +6,70 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
 import { PropsWithChildren } from 'react';
+import { BASE_URL } from './constants/urls';
 import './globals.css';
 
+const NAME = 'Robert Henderson';
 const METADATA = {
-  title: 'Robert Henderson | Senior Frontend Engineer',
-  description:
-    'Robert Henderson is an accomplished Senior Frontend Engineer with Javascript, React, Typescript, NextJS, and UX Web Design experience.',
-  keywords:
-    'robert henderson,javascript,typescript,frontend,engineer,developer,senior,react,reactjs,nextjs,web design,vercel,html,css,sass,ux,design,web',
+  title: `${NAME} | Senior Frontend Engineer`,
+  description: `${NAME} is an accomplished Senior Frontend Engineer with Javascript, React, Typescript, NextJS, and UX Web Design experience.`,
+  keywords: [
+    NAME.toLowerCase(),
+    'javascript',
+    'typescript',
+    'frontend',
+    'engineer',
+    'developer',
+    'senior',
+    'react',
+    'reactjs',
+    'nextjs',
+    'web design',
+    'vercel',
+    'html',
+    'css',
+    'sass',
+    'ux',
+    'design',
+    'web',
+  ],
 };
 
 export const metadata: Metadata = {
   ...METADATA,
-  openGraph: { ...METADATA },
+  alternates: {
+    canonical: BASE_URL,
+  },
+  applicationName: NAME,
+  authors: [
+    {
+      name: NAME,
+      url: BASE_URL,
+    },
+  ],
+  creator: NAME,
+  referrer: 'origin',
+  robots: 'index, follow',
+  openGraph: {
+    type: 'website',
+    url: BASE_URL,
+    title: METADATA.title,
+    description: METADATA.description,
+    siteName: METADATA.title,
+    images: [
+      {
+        url: `${BASE_URL}/api/og`,
+      },
+    ],
+  },
+  twitter: {
+    title: METADATA.title,
+    description: METADATA.description,
+    card: 'summary_large_image',
+    site: '@site',
+    creator: '@roberthenderson',
+    images: `${BASE_URL}/api/og`,
+  },
 };
 
 export default function Layout({ children }: PropsWithChildren) {
@@ -39,10 +90,10 @@ export default function Layout({ children }: PropsWithChildren) {
             </div>
           </AppContextProvider>
         </ThemeProvider>
-        {typeof window !== 'undefined' &&
-          window.location.hostname !== 'localhost' && (
-            <GoogleAnalytics gaId="G-GML2L3HCRN" />
-          )}
+        <GoogleAnalytics
+          gaId="G-GML2L3HCRN"
+          debugMode={process.env.NODE_ENV === 'development'}
+        />
       </body>
     </html>
   );

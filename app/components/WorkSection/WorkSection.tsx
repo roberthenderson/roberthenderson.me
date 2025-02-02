@@ -39,6 +39,7 @@ export const WorkSection: FC = () => {
             href={RESUME_URI}
             target="_blank"
             download={RESUME_FILENAME}
+            prefetch={false}
             onClick={handleResumeDownloadClick}
           >
             <span>Download Resume</span>
