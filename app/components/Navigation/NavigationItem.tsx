@@ -1,8 +1,8 @@
 import { useAppContext } from '@/app/AppContextProvider';
+import { useNavigateToSection } from '@/app/hooks/useNavigateToSection';
 import { usePrevious } from '@/app/hooks/usePrevious';
 import { PageSectionsEnum } from '@/app/types';
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import { navigateToSection } from '@/app/utils/navigateToSection';
 import { Transition } from '@headlessui/react';
 import { usePathname } from 'next/navigation';
 import {
@@ -34,6 +34,10 @@ export const NavigationItem: FC<NavigationItemProps> = ({
 }) => {
   const { pageSectionsList } = useAppContext();
   const pathname = usePathname();
+  const navigateToSection = useNavigateToSection({
+    navigateToPathname: id,
+    ref,
+  });
   const prevPathname = usePrevious(pathname);
   const navList = Array.from(Object.values(PageSectionsEnum));
   const pathnameIndex = navList.findIndex((nav) => nav === pathname);
@@ -79,7 +83,7 @@ export const NavigationItem: FC<NavigationItemProps> = ({
   ]);
 
   const handleNavLinkClick = () =>
-    ref ? navigateToSection(id, ref, `nav_item_click__${label}`) : null;
+    navigateToSection({ trackingLabel: `nav_item_click__${label}` });
   const handleTouchEnd = () => setIsTouched(true);
   const handleMouseEnter = () => {
     // Checking for isTouched prevents the underline from sticking

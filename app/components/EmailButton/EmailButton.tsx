@@ -2,9 +2,9 @@
 
 import { useAppContext } from '@/app/AppContextProvider';
 import { Button } from '@/app/components/base/Button/Button';
+import { useNavigateToSection } from '@/app/hooks/useNavigateToSection';
 import { PageSectionsEnum } from '@/app/types';
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import { navigateToSection } from '@/app/utils/navigateToSection';
 import { FC, useMemo } from 'react';
 import { RiSendPlaneLine } from 'react-icons/ri';
 
@@ -22,14 +22,12 @@ export const EmailButton: FC<EmailButtonProps> = ({ location, className }) => {
       ),
     [pageSectionsList],
   );
+  const navigateToSection = useNavigateToSection({
+    navigateToPathname: contactSection?.id,
+    ref: contactSection?.ref,
+  });
   const handleClick = () =>
-    contactSection
-      ? navigateToSection(
-          contactSection.id,
-          contactSection.ref,
-          `email_button_click__${location}`,
-        )
-      : null;
+    navigateToSection?.({ trackingLabel: `email_button_click__${location}` });
 
   return (
     <Button

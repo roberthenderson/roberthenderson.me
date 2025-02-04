@@ -1,14 +1,17 @@
 'use client';
 
-import { navigateToSection } from '@/app/utils/navigateToSection';
+import { useNavigateToSection } from '@/app/hooks/useNavigateToSection';
 import { usePathname } from 'next/navigation';
 import { FC } from 'react';
 
 export const Logo: FC = () => {
   const pathname = usePathname();
+  const navigateToSection = useNavigateToSection({ navigateToPathname: '/' });
 
   const handleLogoClick = () =>
-    navigateToSection('/', null, `logo_click__from_${pathname.slice(1)}`);
+    navigateToSection({
+      trackingLabel: `logo_click__from_${pathname.slice(1)}`,
+    });
 
   return (
     <button
