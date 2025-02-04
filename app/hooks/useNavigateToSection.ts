@@ -18,7 +18,6 @@ export const useNavigateToSection = ({
 
   return useCallback(
     ({ trackingLabel }: { trackingLabel: string }) => {
-      console.log({ currentPathname, navigateToPathname });
       if (currentPathname.split('/').length > 2 && navigateToPathname) {
         return router.push(navigateToPathname);
       }
