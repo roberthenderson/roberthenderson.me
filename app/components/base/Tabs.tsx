@@ -24,7 +24,7 @@ export const Tabs: FC<TabsProps> = ({ tabs, activeTabId, handleTabChange }) => {
   };
 
   return (
-    <div className="flex flex-col">
+    <>
       <div className="mb-8 flex w-full items-center justify-center">
         {tabs.map((tab) => (
           <Tab
@@ -40,12 +40,15 @@ export const Tabs: FC<TabsProps> = ({ tabs, activeTabId, handleTabChange }) => {
           return null;
         }
         return (
-          <div key={tab.id} className="flex h-auto flex-col overflow-y-auto">
+          <div
+            key={tab.id}
+            className="flex max-h-full flex-col overflow-y-auto"
+          >
             {tab.content}
           </div>
         );
       })}
-    </div>
+    </>
   );
 };
 

@@ -50,7 +50,7 @@ export const Modal: FC<ModalProps> = ({ onClose, title, content, buttons }) => {
     >
       <motion.div
         className={clsxMerge(
-          'fixed inset-0 z-10 w-screen overflow-y-auto opacity-100 transition-opacity',
+          'fixed inset-0 z-10 w-screen opacity-100 transition-opacity sm:my-12',
           modalOpen ? 'opacity-100' : 'opacity-0',
         )}
         // Same thing here. If we allow a scaling animation all the time,
@@ -66,29 +66,27 @@ export const Modal: FC<ModalProps> = ({ onClose, title, content, buttons }) => {
             : undefined
         }
       >
-        <div className="flex min-h-full justify-center text-center sm:p-6">
-          <div
-            className={clsxMerge(
-              'relative overflow-hidden bg-violet-100 dark:bg-slate-800',
-              'w-full p-8 shadow-xl sm:my-12 sm:max-w-4xl sm:rounded-lg sm:px-8 sm:py-10',
-              'transform transition-all data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-100 data-[enter]:ease-out data-[leave]:ease-in',
-            )}
+        <div
+          className={clsxMerge(
+            'flex flex-col sm:p-6',
+            'relative bg-violet-100 dark:bg-slate-800',
+            'mx-auto max-h-full w-full p-8 shadow-xl sm:max-w-4xl sm:rounded-lg sm:px-8 sm:py-10',
+          )}
+        >
+          <button
+            onClick={handleCloseModal}
+            className="absolute right-0 top-0 p-4 text-foreground opacity-50 transition-opacity hover:opacity-100 sm:right-2 sm:top-2 sm:p-3"
           >
-            <button
-              onClick={handleCloseModal}
-              className="absolute right-0 top-0 p-4 text-foreground opacity-50 transition-opacity hover:opacity-100 sm:right-2 sm:top-2 sm:p-3"
-            >
-              <IoClose size={24} />
-            </button>
-            <h3 className="font-dmSerif text-4xl font-semibold text-indigo-950 sm:pb-6 sm:text-5xl dark:text-slate-100">
-              {title}
-            </h3>
-            <div className="text-foreground">{content}</div>
-            <div className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
-              {buttons?.map((button, index) => (
-                <Button key={index} {...button} />
-              ))}
-            </div>
+            <IoClose size={24} />
+          </button>
+          <h3 className="text-center font-dmSerif text-4xl font-semibold text-indigo-950 sm:pb-6 sm:text-5xl dark:text-slate-100">
+            {title}
+          </h3>
+          {content}
+          <div className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
+            {buttons?.map((button, index) => (
+              <Button key={index} {...button} />
+            ))}
           </div>
         </div>
       </motion.div>
