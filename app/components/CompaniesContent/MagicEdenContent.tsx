@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 export const MagicEdenContent: FC = () => {
   return (
-    <div className="overflow-y-auto">
+    <div>
       <h3>Magic Eden Conntent</h3>
       <strong>The standard Lorem Ipsum passage, used since the 1500s</strong>
       <p>

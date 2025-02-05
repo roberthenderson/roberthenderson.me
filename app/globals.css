@@ -7,13 +7,19 @@
 :root {
   --background: #c7d2fe;
   --foreground: #171717;
+  --scrollbar-color-track: #ede9fe;
+  --scrollbar-color-thumb: #c4b5fd;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #1e293b;
-    --foreground: #c7d2fe;
-  }
+:root.dark {
+  --background: #1e293b;
+  --foreground: #c7d2fe;
+  --scrollbar-color-track: #475569;
+  --scrollbar-color-thumb: #334155;
+}
+
+:root, .scroller {
+  scrollbar-color: var(--scrollbar-color-thumb) var(--scrollbar-color-track);
 }
 
 body {
@@ -22,3 +28,6 @@ body {
   font-style: normal;
   background-color: var(--background);
 }
+
+
+
