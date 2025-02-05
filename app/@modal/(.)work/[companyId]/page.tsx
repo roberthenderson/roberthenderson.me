@@ -10,7 +10,7 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
 
   return (
     <Dialog isInterceptingRoute title="Work Experience">
-      <CompaniesContent companyId={companyId} />
+      <CompaniesContent companyId={companyId} variant="dialog" />
     </Dialog>
   );
 }

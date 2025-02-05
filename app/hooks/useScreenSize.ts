@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useMemo, useState } from 'react';
 import theme from 'tailwindcss/defaultTheme';
 import { useDebouncedCallback } from 'use-debounce';
