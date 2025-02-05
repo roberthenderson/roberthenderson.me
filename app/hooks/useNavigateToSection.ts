@@ -1,6 +1,6 @@
 import { sendGAEvent } from '@next/third-parties/google';
 import { usePathname, useRouter } from 'next/navigation';
-import { RefObject, useCallback } from 'react';
+import { RefObject } from 'react';
 import { PageSectionsEnum } from '../types';
 import { scrollElementIntoView } from '../utils/scrollElementIntoView';
 
@@ -16,19 +16,17 @@ export const useNavigateToSection = ({
   const currentPathname = usePathname();
   const router = useRouter();
 
-  return useCallback(
-    ({ trackingLabel }: { trackingLabel: string }) => {
-      if (currentPathname.split('/').length > 2 && navigateToPathname) {
-        return router.push(navigateToPathname);
-      }
-      window.history.pushState(null, '', navigateToPathname);
-      if (ref?.current) {
-        scrollElementIntoView(ref?.current);
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
+  return ({ trackingLabel }: { trackingLabel: string }) => {
+    if (currentPathname.split('/').length > 2 && navigateToPathname) {
       sendGAEvent('event', trackingLabel);
-    },
-    [currentPathname, router, navigateToPathname, ref],
-  );
+      return router.push(navigateToPathname);
+    }
+    window.history.pushState(null, '', navigateToPathname);
+    if (ref?.current) {
+      scrollElementIntoView(ref?.current);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    sendGAEvent('event', trackingLabel);
+  };
 };

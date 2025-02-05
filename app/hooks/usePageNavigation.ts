@@ -14,6 +14,7 @@ interface UsePageNavigationProps {
 
 export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
   const pathname = usePathname();
+  const isHomePathname = pathname.split('/').length === 2;
   const prevPathname = usePrevious(pathname);
   const { headerRef } = useAppContext();
 
@@ -41,7 +42,7 @@ export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
    * user's location on the page
    */
   useEffect(() => {
-    if (!headerRef?.current?.offsetHeight) {
+    if (!headerRef?.current?.offsetHeight || !isHomePathname) {
       return;
     }
 
@@ -84,11 +85,13 @@ export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
         pathname !== pageSection.id &&
         pageSection.id !== prevPathname
       ) {
+        console.log('here');
         window.history.pushState(null, '', pageSection.id);
       }
     });
   }, [
     pathname,
+    isHomePathname,
     prevPathname,
     pageSections,
     scrollPosition,
@@ -103,7 +106,7 @@ export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
   useEffect(() => {
     // If the user has come directly to the page, the base state
     // will have a `scrollPosition` of 0 and won't have a prevPathname
-    if (scrollPosition > 0 || prevPathname) {
+    if (scrollPosition > 0 || prevPathname || !isHomePathname) {
       return;
     }
 
@@ -120,5 +123,5 @@ export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
         }
       });
     }
-  }, [pageSections, pathname, prevPathname, scrollPosition]);
+  }, [pageSections, pathname, isHomePathname, prevPathname, scrollPosition]);
 };

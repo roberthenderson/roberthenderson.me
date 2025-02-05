@@ -10,7 +10,7 @@ export const useCompaniesContent = (): TabItem[] => {
         content: 'Magic Eden content.',
       },
       {
-        id: 'metalex',
+        id: 'metaplex',
         label: 'Metaplex',
         content: 'Metaplex content.',
       },

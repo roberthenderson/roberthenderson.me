@@ -23,7 +23,7 @@ export const EmailButton: FC<EmailButtonProps> = ({ location, className }) => {
     [pageSectionsList],
   );
   const navigateToSection = useNavigateToSection({
-    navigateToPathname: contactSection?.id,
+    navigateToPathname: PageSectionsEnum.Contact,
     ref: contactSection?.ref,
   });
   const handleClick = () =>

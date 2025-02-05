@@ -13,18 +13,24 @@ export interface TabItem {
 interface TabsProps {
   tabs: TabItem[];
   activeTabId?: string;
+  handleTabChange?: (tabId: string) => void;
 }
 
-export const Tabs: FC<TabsProps> = ({ tabs, activeTabId }) => {
+export const Tabs: FC<TabsProps> = ({ tabs, activeTabId, handleTabChange }) => {
   const activeTabIndex = tabs.findIndex((tab) => tab.id === activeTabId) ?? 0;
   const [selectedIndex, setSelectedIndex] = useState(activeTabIndex);
 
+  const handleChange = (index: number) => {
+    setSelectedIndex(index);
+    handleTabChange?.(`${tabs[index].id}`);
+  };
+
   return (
-    <TabGroup selectedIndex={selectedIndex} onChange={setSelectedIndex}>
+    <TabGroup selectedIndex={selectedIndex} onChange={handleChange}>
       <TabList className="mb-8">
         {tabs.map((tab, index) => (
           <Tab
-            key={`label:${tab.label?.toString()}`}
+            key={tab.id}
             className={clsxMerge(
               'transition-all',
               'mx-2 rounded-full bg-violet-200 px-4 py-2 text-slate-500 dark:bg-slate-900 dark:text-slate-400',
@@ -39,9 +45,7 @@ export const Tabs: FC<TabsProps> = ({ tabs, activeTabId }) => {
       </TabList>
       <TabPanels>
         {tabs.map((tab) => (
-          <TabPanel key={`panel:${tab.label?.toString()}`}>
-            {tab.content}
-          </TabPanel>
+          <TabPanel key={tab.id}>{tab.content}</TabPanel>
         ))}
       </TabPanels>
     </TabGroup>

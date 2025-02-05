@@ -5,7 +5,7 @@ import { clsxMerge } from '@/app/utils/clsxMerge';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, ReactNode } from 'react';
 import { BASE_URL } from './constants/urls';
 import './globals.css';
 
@@ -72,7 +72,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Layout({ children }: PropsWithChildren) {
+interface LayoutProps {
+  modal: ReactNode | null;
+}
+
+export default function Layout({
+  children,
+  modal,
+}: PropsWithChildren<LayoutProps>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
@@ -85,7 +92,10 @@ export default function Layout({ children }: PropsWithChildren) {
               )}
             >
               <Header />
-              <main>{children}</main>
+              <main>
+                {children}
+                {modal}
+              </main>
               <Footer />
             </div>
           </AppContextProvider>

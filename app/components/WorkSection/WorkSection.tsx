@@ -1,13 +1,10 @@
 import { RESUME_FILENAME } from '@/app/constants/labels';
 import { RESUME_URI } from '@/app/constants/urls';
 import { sendGAEvent } from '@next/third-parties/google';
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { FiDownload } from 'react-icons/fi';
-import { Button } from '../base/Button/Button';
 import { LinkButton } from '../base/Button/LinkButton';
 import { Grid } from '../base/Grid/Grid';
-import { Modal } from '../base/Modal/Modal';
-import { CompaniesContent } from '../CompaniesContent/ComaniesContent';
 import { SectionBanner } from '../SectionBanner/SectionBanner';
 import { SectionContainer } from '../SectionContainer/SectionContainer';
 import { SectionContent } from '../SectionContent/SectionContent';
@@ -17,16 +14,12 @@ import { useCompanies } from './useCompanies';
 
 export const WorkSection: FC = () => {
   const { featuredCompanies, otherCompanies } = useCompanies();
-  const [modalOpen, setModalOpen] = useState(false);
-  const handleCloseModal = () => setModalOpen(false);
 
   const handleResumeDownloadClick = () =>
     sendGAEvent('event', 'download_resume_button_click');
 
-  const handleLearnMoreClick = () => {
-    setModalOpen(true);
+  const handleLearnMoreClick = () =>
     sendGAEvent('event', 'learn_more_modal_button_click');
-  };
 
   return (
     <SectionContainer>
@@ -69,16 +62,15 @@ export const WorkSection: FC = () => {
             <Company key={company.id} company={company} />
           ))}
         </Grid>
-        <Button className="self-center" onClick={handleLearnMoreClick}>
+        <LinkButton
+          href="/work/magic-eden"
+          scroll={false}
+          className="self-center"
+          onClick={handleLearnMoreClick}
+        >
           Learn More
-        </Button>
+        </LinkButton>
       </SectionContent>
-      <Modal
-        open={modalOpen}
-        onClose={handleCloseModal}
-        title="Work Experience"
-        content={<CompaniesContent />}
-      />
     </SectionContainer>
   );
 };
