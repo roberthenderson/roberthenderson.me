@@ -18,26 +18,17 @@ interface ModalProps {
 export const Modal: FC<ModalProps> = ({ onClose, title, content, buttons }) => {
   const modalRef = useRef<HTMLDialogElement>(null);
   const { modalOpen, setModalOpen } = useAppContext();
-  // console.log({ modalOpen });
-  // const [modalOpen, setModalOpen] = useState(false);
   const router = useRouter();
 
-  // useEffect(() => {
-  //   setModalOpen(true);
-  // }, []);
-
   useEffect(() => {
-    console.log('hellur');
     if (!modalRef.current?.open) {
-      console.log('in useEffect');
       // Allows for dialog escape key
       modalRef.current?.showModal();
       setModalOpen(true);
     }
-  }, []);
+  }, [setModalOpen]);
 
   const handleCloseModal = () => {
-    console.log('closing');
     setModalOpen(false);
     setTimeout(() => {
       router.back();
@@ -50,6 +41,9 @@ export const Modal: FC<ModalProps> = ({ onClose, title, content, buttons }) => {
       ref={modalRef}
       onClose={handleCloseModal}
       className={clsxMerge(
+        // Because next intercepting routes re-render the modal component on each route
+        // switch, this code prevents the animation from happening each time the route
+        // might be changed to another dynamic route within the @modal slot
         'backdrop:duration-400 backdrop:bg-slate-500/85 backdrop:opacity-100 backdrop:backdrop-blur-sm backdrop:transition-opacity',
         modalOpen ? 'backdrop:opacity-100' : 'backdrop:opacity-0',
       )}
@@ -59,6 +53,9 @@ export const Modal: FC<ModalProps> = ({ onClose, title, content, buttons }) => {
           'fixed inset-0 z-10 w-screen overflow-y-auto opacity-100 transition-opacity',
           modalOpen ? 'opacity-100' : 'opacity-0',
         )}
+        // Same thing here. If we allow a scaling animation all the time,
+        // every time the dynamic route is changed within the @modal slot, the
+        // re-render will perform the animation.
         initial={!modalOpen ? { scale: 0.75 } : { scale: 1 }}
         animate={
           !modalOpen

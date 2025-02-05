@@ -29,6 +29,9 @@ const AppContext = createContext<AppContextType | null>(null);
 export const AppContextProvider: FC<PropsWithChildren> = ({ children }) => {
   const [headerRef, setHeaderRef] = useState<HeaderRef>(null);
   const [pageSectionsList, setPageSectionsList] = useState<PageSections>(null);
+  // We need to store this state globally so that we don't show the modal open
+  // animations when the @modal intercepting dynamic route changes from within
+  // an open modal.
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
