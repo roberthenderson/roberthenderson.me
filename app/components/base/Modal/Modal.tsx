@@ -1,6 +1,8 @@
 'use client';
 
+import { useAppContext } from '@/app/AppContextProvider';
 import { clsxMerge } from '@/app/utils/clsxMerge';
+import { motion } from 'motion/react';
 import { useRouter } from 'next/navigation';
 import { FC, ReactNode, useEffect, useRef } from 'react';
 import { IoClose } from 'react-icons/io5';
@@ -14,30 +16,59 @@ interface ModalProps {
 }
 
 export const Modal: FC<ModalProps> = ({ onClose, title, content, buttons }) => {
-  const dialogRef = useRef<HTMLDialogElement>(null);
+  const modalRef = useRef<HTMLDialogElement>(null);
+  const { modalOpen, setModalOpen } = useAppContext();
+  // console.log({ modalOpen });
+  // const [modalOpen, setModalOpen] = useState(false);
   const router = useRouter();
 
+  // useEffect(() => {
+  //   setModalOpen(true);
+  // }, []);
+
   useEffect(() => {
-    if (!dialogRef.current?.open) {
+    console.log('hellur');
+    if (!modalRef.current?.open) {
+      console.log('in useEffect');
       // Allows for dialog escape key
-      dialogRef.current?.showModal();
+      modalRef.current?.showModal();
+      setModalOpen(true);
     }
   }, []);
 
   const handleCloseModal = () => {
-    router.back();
-    onClose?.();
+    console.log('closing');
+    setModalOpen(false);
+    setTimeout(() => {
+      router.back();
+      onClose?.();
+    }, 300);
   };
 
   return (
     <dialog
-      ref={dialogRef}
+      ref={modalRef}
       onClose={handleCloseModal}
       className={clsxMerge(
-        'backdrop:bg-slate-500/85 backdrop:backdrop-blur-sm',
+        'backdrop:duration-400 backdrop:bg-slate-500/85 backdrop:opacity-100 backdrop:backdrop-blur-sm backdrop:transition-opacity',
+        modalOpen ? 'backdrop:opacity-100' : 'backdrop:opacity-0',
       )}
     >
-      <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+      <motion.div
+        className={clsxMerge(
+          'fixed inset-0 z-10 w-screen overflow-y-auto opacity-100 transition-opacity',
+          modalOpen ? 'opacity-100' : 'opacity-0',
+        )}
+        initial={!modalOpen ? { scale: 0.75 } : { scale: 1 }}
+        animate={
+          !modalOpen
+            ? {
+                scale: 1,
+                transition: { duration: 0.2 },
+              }
+            : undefined
+        }
+      >
         <div className="flex min-h-full justify-center text-center sm:p-6">
           <div
             className={clsxMerge(
@@ -63,7 +94,7 @@ export const Modal: FC<ModalProps> = ({ onClose, title, content, buttons }) => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </dialog>
   );
 };

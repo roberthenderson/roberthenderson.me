@@ -20,6 +20,8 @@ interface AppContextType {
   setHeaderRef: Dispatch<SetStateAction<HeaderRef>>;
   pageSectionsList: PageSections;
   setPageSectionsList: Dispatch<SetStateAction<PageSections>>;
+  modalOpen: boolean;
+  setModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 const AppContext = createContext<AppContextType | null>(null);
@@ -27,6 +29,7 @@ const AppContext = createContext<AppContextType | null>(null);
 export const AppContextProvider: FC<PropsWithChildren> = ({ children }) => {
   const [headerRef, setHeaderRef] = useState<HeaderRef>(null);
   const [pageSectionsList, setPageSectionsList] = useState<PageSections>(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <AppContext.Provider
@@ -35,6 +38,8 @@ export const AppContextProvider: FC<PropsWithChildren> = ({ children }) => {
         setHeaderRef,
         pageSectionsList,
         setPageSectionsList,
+        modalOpen,
+        setModalOpen,
       }}
     >
       {children}
