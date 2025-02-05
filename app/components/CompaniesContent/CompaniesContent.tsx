@@ -1,5 +1,6 @@
 'use client';
 
+import { useAppContext } from '@/app/AppContextProvider';
 import { useRouter } from 'next/navigation';
 import { FC } from 'react';
 import { Tabs } from '../base/Tabs';
@@ -11,11 +12,20 @@ interface CompaniesContentProps {
 
 export const CompaniesContent: FC<CompaniesContentProps> = ({ companyId }) => {
   const router = useRouter();
+  const { modalOpen } = useAppContext();
   const companies = useCompaniesContent();
 
   const handleTabChange = (tabId: string) => {
-    if (tabId) {
-      router.replace(`/work/${tabId}`, { scroll: false });
+    const href = `/work/${tabId}`;
+    const options = { scroll: false };
+    if (modalOpen) {
+      router.replace(href, options);
+    } else {
+      // When the modal isn't open, we don't
+      // want the intercepting route to happen,
+      // so use browser `history` instead of the
+      // next app router
+      history.replaceState(null, '', href);
     }
   };
 
