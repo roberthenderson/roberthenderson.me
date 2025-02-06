@@ -5,11 +5,6 @@ export const shouldLockPageScroll = (lock: boolean) => {
 
   const body = document.body;
   const scrollbarVisible = body.clientWidth < window.innerWidth;
-  console.log({
-    scrollbarVisible,
-    clientWidth: body.clientWidth,
-    windowInnerWidth: window.innerWidth,
-  });
   if (lock) {
     body.style.overflow = 'hidden';
     if (scrollbarVisible) {

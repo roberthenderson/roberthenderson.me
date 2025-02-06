@@ -13,8 +13,8 @@ export const SectionHeading: FC<PropsWithChildren<SectionHeadingProps>> = ({
     <h3
       className={clsxMerge(
         'flex flex-col items-center justify-center gap-4 md:flex-row md:gap-6',
-        'text-center font-dmSerif text-2xl font-semibold text-indigo-950 sm:text-5xl dark:text-slate-200',
-        'lg:text-6xl',
+        'text-center font-dmSerif font-semibold text-indigo-950 dark:text-slate-200',
+        'text-4xl sm:text-5xl lg:text-6xl',
         className,
       )}
     >

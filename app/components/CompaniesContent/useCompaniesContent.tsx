@@ -25,7 +25,7 @@ export const useCompaniesContent = (): Company[] => {
         id: 'magic-eden',
         label: 'Magic Eden',
         image: (
-          <div className="w-10">
+          <div className="w-8 md:w-10">
             <MagicEdenLogo variant="small" />
           </div>
         ),
@@ -35,7 +35,7 @@ export const useCompaniesContent = (): Company[] => {
         id: 'metaplex',
         label: 'Metaplex',
         image: (
-          <div className="text-black-900 w-11 pl-1 dark:text-white">
+          <div className="text-black-900 w-9 pl-1 md:w-11 dark:text-white">
             <MetaplexLogo variant="small" />
           </div>
         ),
@@ -45,7 +45,7 @@ export const useCompaniesContent = (): Company[] => {
         id: 'salesforce',
         label: 'Salesforce',
         image: (
-          <div className="w-11">
+          <div className="w-9 md:w-11">
             <SalesforceLogo />
           </div>
         ),
@@ -58,7 +58,7 @@ export const useCompaniesContent = (): Company[] => {
           <Image
             src={VlocityLogo}
             alt="Vlocity"
-            className="mx-auto w-11 pt-1 dark:brightness-125"
+            className="mx-auto w-9 pt-1 md:w-11 dark:brightness-125"
           />
         ),
         content: <VlocityContent />,
@@ -70,7 +70,7 @@ export const useCompaniesContent = (): Company[] => {
           <Image
             src={BlueAcornLogo}
             alt="Blue Acorn"
-            className="mx-auto w-11 dark:brightness-125"
+            className="mx-auto w-9 md:w-11 dark:brightness-125"
           />
         ),
         content: <BlueAcornContent />,

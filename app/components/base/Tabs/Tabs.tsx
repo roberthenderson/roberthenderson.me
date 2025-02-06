@@ -1,7 +1,10 @@
 'use client';
 
+import { usePrevious } from '@/app/hooks/usePrevious';
+import { useScreenSize } from '@/app/hooks/useScreenSize';
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import { FC, ReactNode } from 'react';
+import { motion } from 'motion/react';
+import { FC, ReactNode, useEffect, useRef, useState } from 'react';
 
 export interface TabItem {
   id: string;
@@ -24,6 +27,7 @@ export const Tabs: FC<TabsProps> = ({
   setSelectedId,
   className,
 }) => {
+  const activeIndex = tabs.findIndex((tab) => selectedId === tab.id);
   return (
     <div
       className={clsxMerge(
@@ -32,10 +36,12 @@ export const Tabs: FC<TabsProps> = ({
         className,
       )}
     >
-      {tabs.map((tab) => (
+      {tabs.map((tab, index) => (
         <Tab
           key={tab.id}
           tab={tab}
+          index={index}
+          activeIndex={activeIndex}
           isActive={selectedId === tab.id}
           onClick={setSelectedId}
         />
@@ -46,25 +52,67 @@ export const Tabs: FC<TabsProps> = ({
 
 interface TabProps {
   tab: TabItem;
+  index: number;
+  activeIndex: number;
   isActive: boolean;
   onClick: (id: string) => void;
 }
 
-const Tab: FC<TabProps> = ({ tab, isActive, onClick }) => {
-  const handleClick = () => onClick(tab.id);
+const Tab: FC<TabProps> = ({ tab, index, activeIndex, isActive, onClick }) => {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const { isSm, isMd, isLg } = useScreenSize();
+  const [y, setY] = useState<number | undefined>();
+  const [marginTop, setMarginTop] = useState<number | undefined>();
+  const prevActiveIndex = usePrevious(activeIndex);
+
+  useEffect(() => {
+    if (!tab.image || activeIndex === prevActiveIndex) {
+      return;
+    }
+
+    const button = buttonRef.current;
+    const totalElementHeightWithGap =
+      button && button.parentElement
+        ? parseInt(getComputedStyle(button.parentElement).gap) +
+          button.offsetHeight
+        : 0;
+    if (isActive && button?.offsetTop) {
+      const containerPaddingTop = isLg ? 26 : isMd ? 20 : isSm ? 22 : 18;
+      const extra =
+        prevActiveIndex !== null && index > prevActiveIndex
+          ? -totalElementHeightWithGap
+          : 0;
+      setY(-button.offsetTop + extra + containerPaddingTop);
+      setMarginTop(undefined);
+    } else if (index - 1 === activeIndex) {
+      setY(0);
+      setMarginTop(-totalElementHeightWithGap);
+    } else if (!isActive && index - 1 !== activeIndex) {
+      setY(0);
+      setMarginTop(undefined);
+    }
+  }, [y, isSm, isMd, isLg, isActive, tab, index, activeIndex, prevActiveIndex]);
+
+  const handleClick = () => {
+    onClick(tab.id);
+    setY(0);
+  };
 
   return (
-    <button
+    <motion.button
+      ref={buttonRef}
+      animate={{ y, marginTop }}
+      transition={{ duration: 0.2 }}
       className={clsxMerge(
-        'transition-all',
         'text-sm md:text-base',
-        'rounded-full bg-violet-200 px-4 py-2 text-slate-500 dark:bg-slate-900 dark:text-slate-400',
+        'rounded-full bg-violet-200 px-2 py-1 text-slate-500 dark:bg-slate-900 dark:text-slate-400',
         'hover:bg-violet-300/80 hover:text-slate-700 hover:dark:bg-slate-950/80 hover:dark:text-slate-200',
         isActive &&
           'bg-violet-300 text-foreground dark:bg-slate-950 dark:text-foreground',
-        tab.image && 'flex aspect-square w-16 items-center justify-center p-0',
         tab.image &&
-          'border-3 border-violet-100 bg-violet-50 opacity-70 hover:bg-violet-50 hover:opacity-100 dark:border-slate-900 dark:bg-slate-500/30 hover:dark:bg-slate-500/35',
+          'flex aspect-square w-12 items-center justify-center p-0 md:w-16',
+        tab.image &&
+          'border-1 border-violet-100 bg-violet-50 opacity-70 hover:bg-violet-50 hover:opacity-100 md:border-3 dark:border-slate-900 dark:bg-slate-500/30 hover:dark:bg-slate-500/35',
         tab.image &&
           isActive &&
           'border-violet-300/30 bg-white/80 opacity-100 hover:bg-violet-50 dark:border-slate-300/10 dark:bg-slate-500/40 hover:dark:bg-slate-500/35',
@@ -72,6 +120,6 @@ const Tab: FC<TabProps> = ({ tab, isActive, onClick }) => {
       onClick={handleClick}
     >
       {tab.image ? tab.image : tab.label}
-    </button>
+    </motion.button>
   );
 };

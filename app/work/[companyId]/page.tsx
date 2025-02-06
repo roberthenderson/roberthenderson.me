@@ -1,5 +1,4 @@
 import { CompaniesContent } from '@/app/components/CompaniesContent/CompaniesContent';
-import { SectionContainer } from '@/app/components/SectionContainer/SectionContainer';
 
 interface CompanyPageProps {
   params: Promise<{ companyId: string }>;
@@ -8,8 +7,8 @@ interface CompanyPageProps {
 export default async function CompanyPage({ params }: CompanyPageProps) {
   const companyId = (await params).companyId;
   return (
-    <SectionContainer>
+    <section>
       <CompaniesContent companyId={companyId} />
-    </SectionContainer>
+    </section>
   );
 }
