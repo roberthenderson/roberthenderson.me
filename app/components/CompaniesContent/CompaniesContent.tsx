@@ -52,7 +52,7 @@ export const CompaniesContent: FC<CompaniesContentProps> = ({
               'scroller my-auto flex max-w-screen-xl flex-col gap-6 overflow-y-auto',
               'mx-auto px-6 pb-10 pt-12 md:px-10 md:pt-10',
               'text-left',
-              isModal && 'max-h-[800px]',
+              isModal && 'md:max-h-[800px]',
             )}
           >
             <SectionHeading className="flex-row justify-between text-left md:items-start">
