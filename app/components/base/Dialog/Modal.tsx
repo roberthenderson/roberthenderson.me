@@ -51,7 +51,7 @@ export const Modal: FC<PropsWithChildren<ModalProps>> = ({
       >
         <div
           className={clsxMerge(
-            'flex max-h-[800px] flex-col',
+            'my-16 flex flex-col',
             'relative bg-violet-50 dark:bg-slate-800',
             'mx-auto w-full overflow-hidden shadow-xl sm:max-w-4xl sm:rounded-3xl',
           )}

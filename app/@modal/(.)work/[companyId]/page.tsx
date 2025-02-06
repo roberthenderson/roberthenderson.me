@@ -10,7 +10,7 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
 
   return (
     <Dialog isInterceptingRoute>
-      <CompaniesContent companyId={companyId} />
+      <CompaniesContent companyId={companyId} isModal />
     </Dialog>
   );
 }
