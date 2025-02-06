@@ -1,8 +1,15 @@
 'use client';
 
 import { useScreenSize } from '@/app/hooks/useScreenSize';
+import { shouldLockPageScroll } from '@/app/utils/shouldLockPageScroll';
 import { useRouter } from 'next/navigation';
-import { Dispatch, FC, PropsWithChildren, SetStateAction } from 'react';
+import {
+  Dispatch,
+  FC,
+  PropsWithChildren,
+  SetStateAction,
+  useEffect,
+} from 'react';
 import { Drawer } from './Drawer';
 import { Modal } from './Modal';
 
@@ -26,10 +33,19 @@ export const Dialog: FC<PropsWithChildren<DialogProps>> = ({
   const isOpen = open ?? isInterceptingRoute;
   const { isMd } = useScreenSize();
 
+  useEffect(() => {
+    if (isOpen) {
+      shouldLockPageScroll(true);
+    } else {
+      shouldLockPageScroll(false);
+    }
+  }, [isOpen]);
+
   const handleClose = () => {
     if (isInterceptingRoute) {
       router.back();
     }
+    shouldLockPageScroll(false);
     setOpen?.(false);
     onClose?.();
   };

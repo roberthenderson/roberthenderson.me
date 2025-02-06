@@ -61,7 +61,7 @@ export const Drawer: FC<PropsWithChildren<DrawerProps>> = ({
             ease: 'easeInOut',
           }}
           className={clsxMerge(
-            'absolute bottom-0 h-[85vh] w-full overflow-hidden rounded-t-3xl',
+            'absolute bottom-0 h-[83vh] w-full overflow-hidden rounded-t-3xl',
             'bg-violet-100 dark:bg-slate-800',
           )}
           style={{ y }}
