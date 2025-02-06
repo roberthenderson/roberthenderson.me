@@ -84,9 +84,11 @@ export const Drawer: FC<PropsWithChildren<DrawerProps>> = ({
         >
           <button
             onPointerDown={(e) => controls.start(e)}
-            className={clsxMerge('flex w-full cursor-grab justify-center py-3')}
+            className={clsxMerge(
+              'flex h-10 w-full cursor-grab touch-none justify-center active:cursor-grabbing',
+            )}
           >
-            <div className="h-2 w-16 touch-none rounded-full bg-violet-300 active:cursor-grabbing dark:bg-slate-700"></div>
+            <div className="my-4 h-2 w-16 rounded-full bg-violet-300 dark:bg-slate-700" />
           </button>
           <div className="relative z-0 h-full">{children}</div>
         </motion.div>
