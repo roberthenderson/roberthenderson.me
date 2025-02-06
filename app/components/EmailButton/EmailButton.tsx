@@ -34,7 +34,7 @@ export const EmailButton: FC<EmailButtonProps> = ({ location, className }) => {
       className={clsxMerge(
         'flex items-center gap-2',
         {
-          'max-sm:py-2 max-sm:pl-2 max-sm:pr-2.5': location === 'header',
+          'max-sm:gap-0 max-sm:p-3 max-sm:pr-[13px]': location === 'header',
           'ml-1 px-16 sm:hidden': location === 'hero',
         },
         className,

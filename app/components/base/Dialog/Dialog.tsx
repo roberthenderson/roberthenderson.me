@@ -2,13 +2,7 @@
 
 import { useScreenSize } from '@/app/hooks/useScreenSize';
 import { useRouter } from 'next/navigation';
-import {
-  Dispatch,
-  FC,
-  PropsWithChildren,
-  ReactNode,
-  SetStateAction,
-} from 'react';
+import { Dispatch, FC, PropsWithChildren, SetStateAction } from 'react';
 import { Drawer } from './Drawer';
 import { Modal } from './Modal';
 
@@ -16,7 +10,6 @@ interface DialogProps {
   open?: boolean;
   setOpen?: Dispatch<SetStateAction<boolean>>;
   onClose?: () => void;
-  title?: ReactNode;
   className?: string;
   isInterceptingRoute?: boolean;
 }

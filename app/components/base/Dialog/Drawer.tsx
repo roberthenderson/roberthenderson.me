@@ -7,20 +7,18 @@ import {
   useDragControls,
   useMotionValue,
 } from 'motion/react';
-import { FC, PropsWithChildren, ReactNode } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import useMeasure from 'react-use-measure';
 
 interface DrawerProps {
   open?: boolean;
   onClose?: () => void;
-  title?: ReactNode;
   className?: string;
 }
 
 export const Drawer: FC<PropsWithChildren<DrawerProps>> = ({
   open,
   onClose,
-  title,
   className,
   children,
 }) => {
@@ -63,7 +61,7 @@ export const Drawer: FC<PropsWithChildren<DrawerProps>> = ({
             ease: 'easeInOut',
           }}
           className={clsxMerge(
-            'absolute bottom-0 h-[75vh] w-full overflow-hidden rounded-t-3xl',
+            'absolute bottom-0 h-[90vh] w-full overflow-hidden rounded-t-3xl',
             'bg-violet-100 dark:bg-slate-800',
           )}
           style={{ y }}
@@ -84,18 +82,15 @@ export const Drawer: FC<PropsWithChildren<DrawerProps>> = ({
             bottom: 0.5,
           }}
         >
-          <div className="absolute left-0 right-0 top-0 z-10 flex justify-center p-4">
+          <div className="absolute left-0 right-0 top-4 z-10 flex justify-center">
             <button
               onPointerDown={(e) => {
                 controls.start(e);
               }}
-              className="h-2 w-14 cursor-grab touch-none rounded-full bg-violet-300 active:cursor-grabbing dark:bg-slate-600"
+              className="h-2 w-16 cursor-grab touch-none rounded-full bg-violet-300 active:cursor-grabbing dark:bg-slate-600"
             ></button>
           </div>
-          <div className="relative z-0 h-full overflow-y-scroll p-4 pt-12">
-            <h3 className="text-center font-dmSerif text-4xl font-semibold text-indigo-950 sm:pb-6 sm:text-5xl dark:text-slate-100">
-              {title}
-            </h3>
+          <div className="relative z-0 h-full overflow-y-scroll">
             {children}
           </div>
         </motion.div>

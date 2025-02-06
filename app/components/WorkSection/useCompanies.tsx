@@ -1,7 +1,6 @@
 'use client';
 
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import { ReactNode, useMemo } from 'react';
 import BlueAcornLogo from '../../../public/companies/blueacorn.png';
@@ -18,13 +17,10 @@ export interface ICompany {
 }
 
 export const useCompanies = () => {
-  const { theme } = useTheme();
-  const darkMode = useMemo(() => theme === 'dark', [theme]);
-
   const featuredCompanies: ICompany[] = useMemo(
     () => [
       {
-        id: 'me',
+        id: 'magic-eden',
         label: 'Magic Eden',
         logo: <MagicEdenLogo />,
         className: 'w-72 md:w-96 mb-4',
@@ -47,7 +43,7 @@ export const useCompanies = () => {
         logo: <MetaplexLogo />,
         className: clsxMerge(
           'w-5/6 sm:w-full min-[500px]:px-20',
-          darkMode ? 'text-slate-50' : 'text-black-900',
+          'text-black-900 dark:text-slate-50',
         ),
       },
       {
@@ -60,10 +56,10 @@ export const useCompanies = () => {
             className="mx-auto w-4/5 pt-8 sm:pt-1"
           />
         ),
-        className: darkMode ? 'brightness-125' : '',
+        className: 'dark:brightness-125',
       },
       {
-        id: 'ba',
+        id: 'blue-acorn',
         label: 'Blue Acorn',
         logo: (
           <Image
@@ -72,10 +68,10 @@ export const useCompanies = () => {
             className="mx-auto w-2/3 pt-2 sm:w-[95%] sm:pb-1.5 sm:pt-0"
           />
         ),
-        className: darkMode ? 'brightness-125' : '',
+        className: 'dark:brightness-125',
       },
     ],
-    [darkMode],
+    [],
   );
 
   return { featuredCompanies, otherCompanies };

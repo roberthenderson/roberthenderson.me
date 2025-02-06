@@ -26,7 +26,7 @@ export const useScreenSize = () => {
       width: window.innerWidth,
       height: window.innerHeight,
     });
-  }, 50);
+  }, 250);
 
   useEffect(() => {
     window.addEventListener('resize', handleResize);

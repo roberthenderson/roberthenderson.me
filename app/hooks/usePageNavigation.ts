@@ -85,7 +85,6 @@ export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
         pathname !== pageSection.id &&
         pageSection.id !== prevPathname
       ) {
-        console.log('here');
         window.history.pushState(null, '', pageSection.id);
       }
     });

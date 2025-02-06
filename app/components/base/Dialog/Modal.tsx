@@ -2,27 +2,19 @@
 
 import { clsxMerge } from '@/app/utils/clsxMerge';
 import { motion, useAnimate } from 'motion/react';
-import {
-  Dispatch,
-  FC,
-  PropsWithChildren,
-  ReactNode,
-  SetStateAction,
-} from 'react';
+import { Dispatch, FC, PropsWithChildren, SetStateAction } from 'react';
 import { IoClose } from 'react-icons/io5';
 
 interface ModalProps {
   open?: boolean;
   setOpen?: Dispatch<SetStateAction<boolean>>;
   onClose?: () => void;
-  title?: ReactNode;
   className?: string;
 }
 
 export const Modal: FC<PropsWithChildren<ModalProps>> = ({
   open,
   onClose,
-  title,
   className,
   children,
 }) => {
@@ -47,7 +39,8 @@ export const Modal: FC<PropsWithChildren<ModalProps>> = ({
         role="dialog"
         onClick={handleCloseModal}
         className={clsxMerge(
-          'fixed inset-0 z-50 bg-slate-500/85 backdrop-blur-sm',
+          'flex flex-col items-center justify-center',
+          'fixed inset-0 z-50 bg-violet-400/70 backdrop-blur-sm dark:bg-slate-500/85',
           className,
         )}
         initial={{ opacity: 0 }}
@@ -56,26 +49,21 @@ export const Modal: FC<PropsWithChildren<ModalProps>> = ({
           transition: { duration: 0.3 },
         }}
       >
-        <div className="fixed inset-0 z-10 w-screen sm:my-12">
-          <div
-            className={clsxMerge(
-              'flex flex-col sm:p-6',
-              'relative bg-violet-100 dark:bg-slate-800',
-              'mx-auto max-h-full w-full p-8 shadow-xl sm:max-w-4xl sm:rounded-lg sm:px-8 sm:py-10',
-            )}
-            onClick={(e) => e.stopPropagation()}
+        <div
+          className={clsxMerge(
+            'flex max-h-[800px] flex-col',
+            'relative bg-violet-50 dark:bg-slate-800',
+            'mx-auto w-full overflow-hidden shadow-xl sm:max-w-4xl sm:rounded-3xl',
+          )}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button
+            onClick={handleCloseModal}
+            className="absolute right-0 top-0 p-4 text-foreground opacity-50 transition-opacity hover:opacity-100 sm:right-2 sm:top-2 sm:p-3"
           >
-            <button
-              onClick={handleCloseModal}
-              className="absolute right-0 top-0 p-4 text-foreground opacity-50 transition-opacity hover:opacity-100 sm:right-2 sm:top-2 sm:p-3"
-            >
-              <IoClose size={24} />
-            </button>
-            <h3 className="text-center font-dmSerif text-4xl font-semibold text-indigo-950 sm:pb-6 sm:text-5xl dark:text-slate-100">
-              {title}
-            </h3>
-            {children}
-          </div>
+            <IoClose size={24} />
+          </button>
+          {children}
         </div>
       </motion.div>
     )
