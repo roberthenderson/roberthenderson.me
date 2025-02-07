@@ -80,7 +80,7 @@ export const CompaniesContent: FC<CompaniesContentProps> = ({ companyId }) => {
                   )}
                 >
                   <span>{company.label}</span>
-                  <ResumeButton className="gap-0 p-3 pr-[13px] sm:gap-2 sm:px-6 md:mr-6" label="Download Resume" />
+                  <ResumeButton className="gap-0 p-3 pr-[13px] sm:gap-2 sm:px-6 md:mr-6" />
                 </SectionHeading>
               </div>
 
