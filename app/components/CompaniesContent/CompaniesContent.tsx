@@ -2,7 +2,6 @@
 
 import { useAppContext } from '@/app/AppContextProvider';
 import { SECTION_CLASSNAME } from '@/app/constants/classNames';
-import { useScreenSize } from '@/app/hooks/useScreenSize';
 import { clsxMerge } from '@/app/utils/clsxMerge';
 import { FC, useEffect, useRef, useState } from 'react';
 import { Tabs } from '../base/Tabs/Tabs';
@@ -21,7 +20,6 @@ export const CompaniesContent: FC<CompaniesContentProps> = ({ companyId }) => {
   const { dialogTypeOpen } = useAppContext();
   const isDialog = dialogTypeOpen !== null;
   const companies = useCompaniesContent();
-  const { isSm, isMd } = useScreenSize();
   const [selectedCompanyId, setSelectedCompanyId] = useState(companyId);
   const headingRef = useRef<HTMLDivElement>(null);
   const [headingHeight, setHeadingHeight] = useState(
