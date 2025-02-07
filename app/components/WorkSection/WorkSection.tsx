@@ -21,7 +21,7 @@ export const WorkSection: FC = () => {
       <SectionContent>
         <SectionHeading>
           <span>Work Experience</span>
-          <ResumeButton />
+          <ResumeButton label="Download Resume" />
         </SectionHeading>
       </SectionContent>
       <SectionBanner>
