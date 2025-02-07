@@ -48,9 +48,11 @@ export const Modal: FC<PropsWithChildren<ModalProps>> = ({
     >
       <div
         className={clsxMerge(
-          'my-16 flex flex-col',
+          'my-16 flex flex-col [@media(min-height:200px)]:my-0 [@media(min-height:600px)]:my-8',
           'relative bg-violet-50 dark:bg-slate-800',
+          '[@media(min-height:200px)]:rounded-none [@media(min-height:600px)]:rounded-3xl',
           'mx-auto w-full overflow-hidden shadow-xl sm:max-w-4xl sm:rounded-3xl',
+          'md:h-[800px]',
         )}
         onClick={(e) => e.stopPropagation()}
       >

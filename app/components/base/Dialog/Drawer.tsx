@@ -47,7 +47,7 @@ export const Drawer: FC<PropsWithChildren<DrawerProps>> = ({
       animate={{ opacity: 1 }}
       onClick={handleClose}
       className={clsxMerge(
-        'fixed inset-0 z-50 bg-slate-500/85 backdrop-blur-sm',
+        'fixed inset-0 z-50 h-full bg-slate-500/85 backdrop-blur-sm',
         className,
       )}
     >
@@ -61,7 +61,7 @@ export const Drawer: FC<PropsWithChildren<DrawerProps>> = ({
           ease: 'easeInOut',
         }}
         className={clsxMerge(
-          'absolute bottom-0 h-[83vh] w-full overflow-hidden rounded-t-3xl',
+          'absolute top-[17svh] w-full overflow-hidden rounded-t-3xl',
           'bg-violet-200 dark:bg-slate-950',
         )}
         style={{ y }}
@@ -82,15 +82,18 @@ export const Drawer: FC<PropsWithChildren<DrawerProps>> = ({
           bottom: 0.5,
         }}
       >
-        <button
-          onPointerDown={(e) => controls.start(e)}
-          className={clsxMerge(
-            'flex h-10 w-full cursor-grab touch-none justify-center active:cursor-grabbing',
-          )}
-        >
-          <div className="my-4 h-2 w-16 rounded-full bg-violet-300 dark:bg-slate-700" />
-        </button>
-        <div className="relative z-0 h-full">{children}</div>
+        <div className="relative h-[83svh]">
+          <button
+            onPointerDown={(e) => controls.start(e)}
+            className={clsxMerge(
+              'absolute left-0 top-0',
+              'flex h-10 w-full cursor-grab touch-none justify-center active:cursor-grabbing',
+            )}
+          >
+            <div className="my-4 h-2 w-16 rounded-full bg-violet-300 dark:bg-slate-700" />
+          </button>
+          <div className="h-full pt-10">{children}</div>
+        </div>
       </motion.div>
     </motion.div>
   );

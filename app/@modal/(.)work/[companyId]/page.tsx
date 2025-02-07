@@ -10,7 +10,7 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
 
   return (
     <Dialog>
-      <CompaniesContent companyId={companyId} isModal />
+      <CompaniesContent companyId={companyId} />
     </Dialog>
   );
 }
