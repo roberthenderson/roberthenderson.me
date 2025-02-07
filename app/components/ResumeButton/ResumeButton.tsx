@@ -28,7 +28,7 @@ export const ResumeButton: FC<ResumeButtonProps> = ({ className, label }) => {
       prefetch={false}
       onClick={handleClick}
     >
-      {label ? label : (
+      {Boolean(label) ? label : (
         <>
           <span className="hidden md:inline">Download Resume</span>
           <span className="hidden sm:inline md:hidden">Resume</span>
