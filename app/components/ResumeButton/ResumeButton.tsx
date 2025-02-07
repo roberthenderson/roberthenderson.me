@@ -8,7 +8,7 @@ import { LinkButton } from '../base/Button/LinkButton';
 
 interface ResumeButtonProps {
   className?: string;
-  label:? string;
+  label?: string;
 }
 
 export const ResumeButton: FC<ResumeButtonProps> = ({ className, label }) => {
@@ -28,7 +28,7 @@ export const ResumeButton: FC<ResumeButtonProps> = ({ className, label }) => {
       prefetch={false}
       onClick={handleClick}
     >
-      {Boolean(label) ? label : (
+      {label ? label : (
         <>
           <span className="hidden md:inline">Download Resume</span>
           <span className="hidden sm:inline md:hidden">Resume</span>
