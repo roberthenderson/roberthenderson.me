@@ -1,62 +1,51 @@
 'use client';
 
+import { useAppContext } from '@/app/AppContextProvider';
 import { useScreenSize } from '@/app/hooks/useScreenSize';
 import { shouldLockPageScroll } from '@/app/utils/shouldLockPageScroll';
 import { useRouter } from 'next/navigation';
-import {
-  Dispatch,
-  FC,
-  PropsWithChildren,
-  SetStateAction,
-  useEffect,
-} from 'react';
+import { FC, PropsWithChildren, useEffect } from 'react';
 import { Drawer } from './Drawer';
 import { Modal } from './Modal';
 
+export type DialogType = 'drawer' | 'modal';
 interface DialogProps {
-  open?: boolean;
-  setOpen?: Dispatch<SetStateAction<boolean>>;
   onClose?: () => void;
-  className?: string;
-  isInterceptingRoute?: boolean;
 }
 
 export const Dialog: FC<PropsWithChildren<DialogProps>> = ({
-  open,
-  setOpen,
   onClose,
-  isInterceptingRoute,
   children,
-  ...rest
 }) => {
   const router = useRouter();
-  const isOpen = open ?? isInterceptingRoute;
+  const { dialogTypeOpen, setDialogTypeOpen } = useAppContext();
   const { isMd } = useScreenSize();
 
+  useEffect(
+    () => setDialogTypeOpen(isMd ? 'modal' : 'drawer'),
+    [setDialogTypeOpen, isMd],
+  );
+
   useEffect(() => {
-    if (isOpen) {
+    if (dialogTypeOpen) {
       shouldLockPageScroll(true);
     } else {
       shouldLockPageScroll(false);
     }
-  }, [isOpen]);
+  }, [dialogTypeOpen]);
 
   const handleClose = () => {
-    if (isInterceptingRoute) {
+    setDialogTypeOpen?.(null);
+    if (dialogTypeOpen) {
       router.back();
     }
     shouldLockPageScroll(false);
-    setOpen?.(false);
     onClose?.();
   };
 
-  return isMd ? (
-    <Modal onClose={handleClose} open={isOpen} {...rest}>
-      {children}
-    </Modal>
+  return dialogTypeOpen === 'modal' ? (
+    <Modal onClose={handleClose}>{children}</Modal>
   ) : (
-    <Drawer onClose={handleClose} open={isOpen} {...rest}>
-      {children}
-    </Drawer>
+    <Drawer onClose={handleClose}>{children}</Drawer>
   );
 };

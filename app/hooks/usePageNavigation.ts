@@ -42,11 +42,7 @@ export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
    * user's location on the page
    */
   useEffect(() => {
-    if (
-      !headerRef?.current?.offsetHeight ||
-      !isHomePathname ||
-      prevPathname?.includes(pathname)
-    ) {
+    if (!headerRef?.current?.offsetHeight || !isHomePathname) {
       return;
     }
 

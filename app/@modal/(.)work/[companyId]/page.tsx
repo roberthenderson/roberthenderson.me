@@ -9,7 +9,7 @@ export default async function CompanyPage({ params }: CompanyPageProps) {
   const companyId = (await params).companyId;
 
   return (
-    <Dialog isInterceptingRoute>
+    <Dialog>
       <CompaniesContent companyId={companyId} isModal />
     </Dialog>
   );

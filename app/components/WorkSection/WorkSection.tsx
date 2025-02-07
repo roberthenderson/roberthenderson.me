@@ -38,6 +38,7 @@ export const WorkSection: FC = () => {
         </p>
         <LinkButton
           href="/work/magic-eden"
+          prefetch
           scroll={false}
           className="self-center"
           onClick={handleLearnMoreClick}

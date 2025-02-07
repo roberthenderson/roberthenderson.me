@@ -11,6 +11,7 @@ export const Company: FC<CompanyProps> = ({ company }) => {
   return (
     <Link
       href={`/work/${company.id}`}
+      prefetch
       scroll={false}
       suppressHydrationWarning
       className={clsxMerge(
