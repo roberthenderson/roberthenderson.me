@@ -95,7 +95,9 @@ const Tab: FC<TabProps> = ({ tab, index, activeIndex, isActive, onClick }) => {
 
   const handleClick = () => {
     onClick(tab.id);
-    setY(0);
+    if (!isActive) {
+      setY(0);
+    }
   };
 
   return (

@@ -6,9 +6,5 @@ interface CompanyPageProps {
 
 export default async function CompanyPage({ params }: CompanyPageProps) {
   const companyId = (await params).companyId;
-  return (
-    <section>
-      <CompaniesContent companyId={companyId} />
-    </section>
-  );
+  return <CompaniesContent companyId={companyId} />;
 }

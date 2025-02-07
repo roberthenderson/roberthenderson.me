@@ -13,7 +13,7 @@ export const getButtonStyles = ({
 }) => {
   return clsxMerge(
     'rounded-full font-semibold transition-all',
-    'px-6 py-2',
+    'px-6 py-3',
     {
       'bg-emerald-600 text-emerald-100 dark:bg-teal-600 dark:text-teal-100':
         variant === 'primary',

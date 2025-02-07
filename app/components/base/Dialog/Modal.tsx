@@ -59,7 +59,7 @@ export const Modal: FC<PropsWithChildren<ModalProps>> = ({
         >
           <button
             onClick={handleCloseModal}
-            className="absolute right-0 top-0 p-4 text-foreground opacity-50 transition-opacity hover:opacity-100 sm:right-2 sm:top-2 sm:p-3"
+            className="absolute right-0 top-0 z-10 p-4 text-foreground opacity-50 transition-opacity hover:opacity-100 sm:right-2 sm:top-2 sm:p-3"
           >
             <IoClose size={24} />
           </button>

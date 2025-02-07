@@ -9,11 +9,16 @@ import { FC, useMemo } from 'react';
 import { RiSendPlaneLine } from 'react-icons/ri';
 
 interface EmailButtonProps {
-  location: 'header' | 'hero';
+  location?: 'header' | 'hero';
   className?: string;
+  onClick?: () => void;
 }
 
-export const EmailButton: FC<EmailButtonProps> = ({ location, className }) => {
+export const EmailButton: FC<EmailButtonProps> = ({
+  location,
+  className,
+  onClick,
+}) => {
   const { pageSectionsList } = useAppContext();
   const contactSection = useMemo(
     () =>
@@ -26,16 +31,19 @@ export const EmailButton: FC<EmailButtonProps> = ({ location, className }) => {
     navigateToPathname: PageSectionsEnum.Contact,
     ref: contactSection?.ref,
   });
-  const handleClick = () =>
+  const handleClick = () => {
+    onClick?.();
     navigateToSection?.({ trackingLabel: `email_button_click__${location}` });
+  };
 
   return (
     <Button
       className={clsxMerge(
-        'flex items-center gap-2',
+        'flex items-center gap-2 px-14',
         {
-          'max-sm:gap-0 max-sm:p-3 max-sm:pr-[13px]': location === 'header',
-          'ml-1 px-16 sm:hidden': location === 'hero',
+          'px-6 py-2 max-sm:gap-0 max-sm:p-3 max-sm:pr-[13px]':
+            location === 'header',
+          'ml-1 px-16 py-2.5 sm:hidden': location === 'hero',
         },
         className,
       )}
