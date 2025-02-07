@@ -28,7 +28,7 @@ export const ResumeButton: FC<ResumeButtonProps> = ({ className, label }) => {
       prefetch={false}
       onClick={handleClick}
     >
-      {Boolean(label) ? 
+      {label ? 
         (
           <span>{label}</span>
         ) : (
