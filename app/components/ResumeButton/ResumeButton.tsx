@@ -8,9 +8,10 @@ import { LinkButton } from '../base/Button/LinkButton';
 
 interface ResumeButtonProps {
   className?: string;
+  label:? string;
 }
 
-export const ResumeButton: FC<ResumeButtonProps> = ({ className }) => {
+export const ResumeButton: FC<ResumeButtonProps> = ({ className, label }) => {
   const handleClick = () =>
     sendGAEvent('event', 'download_resume_button_click');
 
@@ -27,8 +28,12 @@ export const ResumeButton: FC<ResumeButtonProps> = ({ className }) => {
       prefetch={false}
       onClick={handleClick}
     >
-      <span className="hidden md:inline">Download Resume</span>
-      <span className="hidden sm:inline md:hidden">Resume</span>
+      {label ? label : (
+        <>
+          <span className="hidden md:inline">Download Resume</span>
+          <span className="hidden sm:inline md:hidden">Resume</span>
+        </>
+      )}
       <FiDownload />
     </LinkButton>
   );
