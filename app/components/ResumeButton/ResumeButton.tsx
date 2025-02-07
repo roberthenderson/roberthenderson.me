@@ -7,14 +7,10 @@ import { FiDownload } from 'react-icons/fi';
 import { LinkButton } from '../base/Button/LinkButton';
 
 interface ResumeButtonProps {
-  label?: string;
   className?: string;
 }
 
-export const ResumeButton: FC<ResumeButtonProps> = ({
-  label = 'Download Resume',
-  className,
-}) => {
+export const ResumeButton: FC<ResumeButtonProps> = ({ className }) => {
   const handleClick = () =>
     sendGAEvent('event', 'download_resume_button_click');
 
@@ -31,7 +27,8 @@ export const ResumeButton: FC<ResumeButtonProps> = ({
       prefetch={false}
       onClick={handleClick}
     >
-      <span>{label}</span>
+      <span className="hidden md:inline">Download Resume</span>
+      <span className="hidden sm:inline md:hidden">Resume</span>
       <FiDownload />
     </LinkButton>
   );

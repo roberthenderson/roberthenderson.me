@@ -10,6 +10,7 @@ import { ContactSection } from '../ContactSection/ContactSection';
 import { ResumeButton } from '../ResumeButton/ResumeButton';
 import { SectionHeading } from '../SectionHeading/SectionHeading';
 import { CompanyContent } from './CompanyContent';
+import { CompanyYears } from './CompanyYears';
 import { useCompaniesContent } from './useCompaniesContent';
 
 interface CompaniesContentProps {
@@ -81,10 +82,7 @@ export const CompaniesContent: FC<CompaniesContentProps> = ({ companyId }) => {
                   )}
                 >
                   <span>{company.label}</span>
-                  <ResumeButton
-                    className="gap-0 p-3 pr-[13px] sm:gap-2 sm:px-6 md:mr-6"
-                    label={isMd ? 'Download Resume' : isSm ? 'Resume' : ''}
-                  />
+                  <ResumeButton className="gap-0 p-3 pr-[13px] sm:gap-2 sm:px-6 md:mr-6" />
                 </SectionHeading>
               </div>
 
@@ -103,14 +101,28 @@ export const CompaniesContent: FC<CompaniesContentProps> = ({ companyId }) => {
               >
                 <div
                   className={clsxMerge(
-                    'flex',
+                    'flex flex-col',
                     'border-l-3 border-t-3 border-violet-300/30 dark:border-slate-700/60',
                     'h-full rounded-tl-2xl',
                     'bg-violet-50 dark:bg-slate-700/50',
                     !isDialog && 'min-h-[500px] md:min-h-[700px]',
                   )}
                 >
-                  <CompanyContent contentItems={company.content} />
+                  <div
+                    className={clsxMerge(
+                      'flex-auto overflow-y-auto',
+                      'px-6 pb-10 pt-5 md:px-10 md:pt-8',
+                    )}
+                  >
+                    {company.years && (
+                      <CompanyYears
+                        years={company.years}
+                        color="sky"
+                        className="mb-7 text-xs md:text-sm"
+                      />
+                    )}
+                    <CompanyContent contentItems={company.content} />
+                  </div>
                 </div>
               </div>
             </div>
