@@ -12,8 +12,8 @@ import './globals.css';
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: dark)', color: '#1e293b' },
-    { media: '(prefers-color-scheme: light)', color: '#c7d2fe' },
+    { media: '(color-scheme: dark)', color: '#1e293b' },
+    { media: '(color-scheme: light)', color: '#c7d2fe' },
   ],
 };
 
@@ -65,7 +65,7 @@ export default function Layout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <ThemeProvider attribute="class">
+        <ThemeProvider attribute="class" enableColorScheme>
           <AppContextProvider>
             <div
               className={clsxMerge(
