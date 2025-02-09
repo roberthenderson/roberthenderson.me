@@ -2,8 +2,9 @@
 
 import { useAppContext } from '@/app/AppContextProvider';
 import { Button } from '@/app/components/base/Button/Button';
+import { ROUTES } from '@/app/constants/routes';
 import { useNavigateToSection } from '@/app/hooks/useNavigateToSection';
-import { PageSectionsEnum } from '@/app/types';
+import { PageSectionIdEnum } from '@/app/types';
 import { clsxMerge } from '@/app/utils/clsxMerge';
 import { FC, useMemo } from 'react';
 import { RiSendPlaneLine } from 'react-icons/ri';
@@ -23,12 +24,12 @@ export const EmailButton: FC<EmailButtonProps> = ({
   const contactSection = useMemo(
     () =>
       pageSectionsList?.find(
-        (section) => section.id === PageSectionsEnum.Contact,
+        (section) => section.id === PageSectionIdEnum.Contact,
       ),
     [pageSectionsList],
   );
   const navigateToSection = useNavigateToSection({
-    navigateToPathname: PageSectionsEnum.Contact,
+    navigateToPathname: ROUTES[PageSectionIdEnum.Contact].route,
     ref: contactSection?.ref,
   });
   const handleClick = () => {

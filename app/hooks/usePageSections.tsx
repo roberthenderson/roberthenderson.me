@@ -7,7 +7,7 @@ import { SkillsSection } from '@/app/components/SkillsSection/SkillsSection';
 import { WorkSection } from '@/app/components/WorkSection/WorkSection';
 import { PAGE_SECTIONS } from '@/app/constants/pageSections';
 import { useEffect, useMemo, useRef } from 'react';
-import { PageSection, PageSectionsEnum } from '../types';
+import { PageSection, PageSectionIdEnum } from '../types';
 
 export const usePageSections = () => {
   const { setPageSectionsList } = useAppContext();
@@ -22,22 +22,22 @@ export const usePageSections = () => {
       {
         ref: skillsSection,
         children: <SkillsSection />,
-        ...PAGE_SECTIONS[PageSectionsEnum.Skills],
+        ...PAGE_SECTIONS[PageSectionIdEnum.Skills],
       },
       {
         ref: workSection,
         children: <WorkSection />,
-        ...PAGE_SECTIONS[PageSectionsEnum.Work],
+        ...PAGE_SECTIONS[PageSectionIdEnum.Work],
       },
       {
         ref: aboutSection,
         children: <AboutSection />,
-        ...PAGE_SECTIONS[PageSectionsEnum.About],
+        ...PAGE_SECTIONS[PageSectionIdEnum.About],
       },
       {
         ref: contactSection,
         children: <ContactSection />,
-        ...PAGE_SECTIONS[PageSectionsEnum.Contact],
+        ...PAGE_SECTIONS[PageSectionIdEnum.Contact],
       },
     ],
     [],

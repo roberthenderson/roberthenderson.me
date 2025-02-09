@@ -1,7 +1,21 @@
 import { CompaniesContent } from '@/app/components/CompaniesContent/CompaniesContent';
+import { NAME, TITLE_SUFFIX } from '@/app/constants/metadata';
+import { ROUTES } from '@/app/constants/routes';
+import { CompanyIdEnum } from '@/app/types';
+import { Metadata } from 'next';
 
 interface CompanyPageProps {
   params: Promise<{ companyId: string }>;
+}
+
+export async function generateMetadata({
+  params,
+}: CompanyPageProps): Promise<Metadata> {
+  const companyId = (await params).companyId as CompanyIdEnum;
+
+  return {
+    title: `${NAME}, ${ROUTES[companyId]?.label} ${TITLE_SUFFIX}`,
+  };
 }
 
 export default async function CompanyPage({ params }: CompanyPageProps) {

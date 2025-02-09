@@ -1,3 +1,5 @@
+import { ROUTES } from '@/app/constants/routes';
+import { CompanyIdEnum } from '@/app/types';
 import Image from 'next/image';
 import { ReactNode, useMemo } from 'react';
 import { AiOutlineProduct } from 'react-icons/ai';
@@ -48,8 +50,8 @@ export const useCompaniesContent = (): Company[] => {
   return useMemo(
     () => [
       {
-        id: 'magic-eden',
-        label: 'Magic Eden',
+        id: CompanyIdEnum.MagicEden,
+        label: ROUTES[CompanyIdEnum.MagicEden].label,
         years: [2023, 2024],
         image: (
           <div className="w-8 md:w-10">
@@ -95,8 +97,8 @@ export const useCompaniesContent = (): Company[] => {
         ],
       },
       {
-        id: 'metaplex',
-        label: 'Metaplex',
+        id: CompanyIdEnum.Metaplex,
+        label: ROUTES[CompanyIdEnum.Metaplex].label,
         years: [2022, 2023],
         image: (
           <div className="text-black-900 w-9 pl-1 md:w-11 dark:text-white">
@@ -142,8 +144,8 @@ export const useCompaniesContent = (): Company[] => {
         ],
       },
       {
-        id: 'salesforce',
-        label: 'Salesforce',
+        id: CompanyIdEnum.Salesforce,
+        label: ROUTES[CompanyIdEnum.Salesforce].label,
         years: [2018, 2019, 2020, 2021, 2022],
         image: (
           <div className="w-9 md:w-11">
@@ -227,13 +229,13 @@ export const useCompaniesContent = (): Company[] => {
         ],
       },
       {
-        id: 'vlocity',
-        label: 'Vlocity',
+        id: CompanyIdEnum.Vlocity,
+        label: ROUTES[CompanyIdEnum.Vlocity].label,
         years: [2015, 2016, 2017, 2018],
         image: (
           <Image
             src={VlocityLogo}
-            alt="Vlocity"
+            alt={ROUTES[CompanyIdEnum.Vlocity].label}
             className="mx-auto w-9 pt-1 md:w-11 dark:brightness-125"
           />
         ),
@@ -263,13 +265,13 @@ export const useCompaniesContent = (): Company[] => {
         ],
       },
       {
-        id: 'blue-acorn',
-        label: 'Blue Acorn',
+        id: CompanyIdEnum.BlueAcorn,
+        label: ROUTES[CompanyIdEnum.BlueAcorn].label,
         years: [2010, 2011, 2012, 2013, 2014, 2015],
         image: (
           <Image
             src={BlueAcornLogo}
-            alt="Blue Acorn"
+            alt={ROUTES[CompanyIdEnum.BlueAcorn].label}
             className="mx-auto w-9 md:w-11 dark:brightness-125"
           />
         ),

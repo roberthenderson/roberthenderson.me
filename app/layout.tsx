@@ -6,34 +6,9 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
 import { PropsWithChildren, ReactNode } from 'react';
+import { METADATA, NAME } from './constants/metadata';
 import { BASE_URL } from './constants/urls';
 import './globals.css';
-
-const NAME = 'Robert Henderson';
-const METADATA = {
-  title: `${NAME} | Senior Frontend Engineer`,
-  description: `${NAME} is an accomplished Senior Frontend Engineer with Javascript, React, Typescript, NextJS, and UX Web Design experience.`,
-  keywords: [
-    NAME.toLowerCase(),
-    'javascript',
-    'typescript',
-    'frontend',
-    'engineer',
-    'developer',
-    'senior',
-    'react',
-    'reactjs',
-    'nextjs',
-    'web design',
-    'vercel',
-    'html',
-    'css',
-    'sass',
-    'ux',
-    'design',
-    'web',
-  ],
-};
 
 export const metadata: Metadata = {
   ...METADATA,
@@ -102,7 +77,7 @@ export default function Layout({
         </ThemeProvider>
         <GoogleAnalytics
           gaId="G-GML2L3HCRN"
-          debugMode={process.env.NODE_ENV === 'development'}
+          debugMode={process.env.NODE_ENV !== 'production'}
         />
       </body>
     </html>

@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 import { useAppContext } from '../AppContextProvider';
+import { ROUTES } from '../constants/routes';
 import { PageSection } from '../types';
 import { scrollElementIntoView } from '../utils/scrollElementIntoView';
 import { usePrevious } from './usePrevious';
@@ -85,7 +86,7 @@ export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
         pathname !== pageSection.id &&
         pageSection.id !== prevPathname
       ) {
-        window.history.pushState(null, '', pageSection.id);
+        window.history.pushState(null, '', ROUTES[pageSection.id].route);
       }
     });
   }, [
@@ -112,7 +113,7 @@ export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
     if (pathname !== '/') {
       pageSections.forEach((pageSection) => {
         const pageSectionFromRoute = pageSections.find(
-          (section) => section.id === pathname,
+          (section) => ROUTES[section.id].route === pathname,
         );
         if (
           pageSectionFromRoute &&

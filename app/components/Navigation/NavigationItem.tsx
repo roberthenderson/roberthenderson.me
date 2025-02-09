@@ -1,7 +1,8 @@
 import { useAppContext } from '@/app/AppContextProvider';
+import { ROUTES } from '@/app/constants/routes';
 import { useNavigateToSection } from '@/app/hooks/useNavigateToSection';
 import { usePrevious } from '@/app/hooks/usePrevious';
-import { PageSectionsEnum } from '@/app/types';
+import { PageSectionIdEnum } from '@/app/types';
 import { clsxMerge } from '@/app/utils/clsxMerge';
 import { Transition } from '@headlessui/react';
 import { usePathname } from 'next/navigation';
@@ -16,7 +17,7 @@ import {
 } from 'react';
 
 interface NavigationItemProps {
-  id: PageSectionsEnum;
+  id: PageSectionIdEnum;
   label: ReactNode;
   ref?: RefObject<HTMLElement | null>;
   index: number;
@@ -35,18 +36,18 @@ export const NavigationItem: FC<NavigationItemProps> = ({
   const { pageSectionsList } = useAppContext();
   const pathname = usePathname();
   const navigateToSection = useNavigateToSection({
-    navigateToPathname: id,
+    navigateToPathname: ROUTES[id].route,
     ref,
   });
   const prevPathname = usePrevious(pathname);
-  const navList = Array.from(Object.values(PageSectionsEnum));
+  const navList = Object.values(ROUTES).map((r) => r.route);
   const pathnameIndex = navList.findIndex((nav) => nav === pathname);
   const prevPathNameIndex = navList.findIndex((nav) => nav === prevPathname);
 
   const [isHovered, setIsHovered] = useState(false);
   const [isTouched, setIsTouched] = useState(false);
 
-  const isActive = id === pathname;
+  const isActive = ROUTES[id].route === pathname;
 
   // So the transition below moves the underline from right
   // to left when the user's previous hover/scroll is coming from

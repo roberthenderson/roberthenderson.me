@@ -2,6 +2,8 @@
 
 import { useAppContext } from '@/app/AppContextProvider';
 import { SECTION_CLASSNAME } from '@/app/constants/classNames';
+import { ROUTES } from '@/app/constants/routes';
+import { PageSectionIdEnum } from '@/app/types';
 import { clsxMerge } from '@/app/utils/clsxMerge';
 import { FC, useEffect, useRef, useState } from 'react';
 import { Tabs } from '../base/Tabs/Tabs';
@@ -34,7 +36,11 @@ export const CompaniesContent: FC<CompaniesContentProps> = ({ companyId }) => {
     if (id === selectedCompanyId) {
       return;
     }
-    history.replaceState(null, '', `/work/${id}`);
+    history.replaceState(
+      null,
+      '',
+      `${ROUTES[PageSectionIdEnum.Work].route}/${id}`,
+    );
     setSelectedCompanyId(id);
   };
 
@@ -87,7 +93,8 @@ export const CompaniesContent: FC<CompaniesContentProps> = ({ companyId }) => {
               <div
                 className={clsxMerge(
                   'flex flex-col',
-                  'bg-violet-150 dark:bg-slate-850 md:max-h-screen',
+                  'bg-violet-150 dark:bg-slate-850',
+                  isDialog && 'md:max-h-screen',
                 )}
                 style={
                   headingRef.current && isDialog
@@ -108,7 +115,7 @@ export const CompaniesContent: FC<CompaniesContentProps> = ({ companyId }) => {
                 >
                   <div
                     className={clsxMerge(
-                      'flex-auto overflow-y-auto',
+                      isDialog && 'flex-auto overflow-y-auto',
                       'px-6 pb-10 pt-5 md:px-10 md:pt-8',
                     )}
                   >

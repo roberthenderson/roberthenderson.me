@@ -1,5 +1,7 @@
 'use client';
 
+import { ROUTES } from '@/app/constants/routes';
+import { CompanyIdEnum } from '@/app/types';
 import { clsxMerge } from '@/app/utils/clsxMerge';
 import Image from 'next/image';
 import { ReactNode, useMemo } from 'react';
@@ -10,7 +12,7 @@ import { MetaplexLogo } from '../MetaplexLogo/MetaplexLogo';
 import { SalesforceLogo } from '../SalesforceLogo/SalesforceLogo';
 
 export interface ICompany {
-  id: string;
+  id: CompanyIdEnum;
   label: string;
   logo: ReactNode;
   className?: string;
@@ -20,14 +22,14 @@ export const useCompanies = () => {
   const featuredCompanies: ICompany[] = useMemo(
     () => [
       {
-        id: 'magic-eden',
-        label: 'Magic Eden',
+        id: CompanyIdEnum.MagicEden,
+        label: ROUTES[CompanyIdEnum.MagicEden].label,
         logo: <MagicEdenLogo />,
         className: 'w-72 md:w-96 mb-4',
       },
       {
-        id: 'salesforce',
-        label: 'Salesforce',
+        id: CompanyIdEnum.Salesforce,
+        label: ROUTES[CompanyIdEnum.Salesforce].label,
         logo: <SalesforceLogo />,
         className: 'w-60 md:w-64',
       },
@@ -38,8 +40,8 @@ export const useCompanies = () => {
   const otherCompanies: ICompany[] = useMemo(
     () => [
       {
-        id: 'metaplex',
-        label: 'Metaplex',
+        id: CompanyIdEnum.Metaplex,
+        label: ROUTES[CompanyIdEnum.Metaplex].label,
         logo: <MetaplexLogo />,
         className: clsxMerge(
           'w-5/6 sm:w-full min-[500px]:px-20',
@@ -47,8 +49,8 @@ export const useCompanies = () => {
         ),
       },
       {
-        id: 'vlocity',
-        label: 'Vlocity',
+        id: CompanyIdEnum.Vlocity,
+        label: ROUTES[CompanyIdEnum.Vlocity].label,
         logo: (
           <Image
             src={VlocityLogo}
@@ -59,8 +61,8 @@ export const useCompanies = () => {
         className: 'dark:brightness-125',
       },
       {
-        id: 'blue-acorn',
-        label: 'Blue Acorn',
+        id: CompanyIdEnum.BlueAcorn,
+        label: ROUTES[CompanyIdEnum.BlueAcorn].label,
         logo: (
           <Image
             src={BlueAcornLogo}

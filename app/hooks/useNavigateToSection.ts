@@ -1,11 +1,10 @@
 import { sendGAEvent } from '@next/third-parties/google';
 import { usePathname, useRouter } from 'next/navigation';
 import { RefObject } from 'react';
-import { PageSectionsEnum } from '../types';
 import { scrollElementIntoView } from '../utils/scrollElementIntoView';
 
 interface UseNavigateToSectionProps {
-  navigateToPathname?: PageSectionsEnum | '/';
+  navigateToPathname?: string;
   ref?: RefObject<HTMLElement | null>;
 }
 

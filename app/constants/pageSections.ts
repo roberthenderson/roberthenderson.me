@@ -1,26 +1,26 @@
-import { PageSection, PageSectionsEnum } from '../types';
+import { PageSection, PageSectionIdEnum } from '../types';
 
 export const PAGE_SECTIONS: Record<
-  PageSectionsEnum,
+  PageSectionIdEnum,
   Omit<PageSection, 'ref' | 'children'>
 > = {
-  [PageSectionsEnum.Skills]: {
-    id: PageSectionsEnum.Skills,
+  [PageSectionIdEnum.Skills]: {
+    id: PageSectionIdEnum.Skills,
     label: 'Skills',
     isMainNavigation: true,
   },
-  [PageSectionsEnum.Work]: {
-    id: PageSectionsEnum.Work,
+  [PageSectionIdEnum.Work]: {
+    id: PageSectionIdEnum.Work,
     label: 'Work',
     isMainNavigation: true,
   },
-  [PageSectionsEnum.About]: {
-    id: PageSectionsEnum.About,
+  [PageSectionIdEnum.About]: {
+    id: PageSectionIdEnum.About,
     label: 'About',
     isMainNavigation: true,
   },
-  [PageSectionsEnum.Contact]: {
-    id: PageSectionsEnum.Contact,
+  [PageSectionIdEnum.Contact]: {
+    id: PageSectionIdEnum.Contact,
     label: 'Contact',
     isMainNavigation: false,
   },

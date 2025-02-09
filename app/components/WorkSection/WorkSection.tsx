@@ -1,3 +1,5 @@
+import { ROUTES } from '@/app/constants/routes';
+import { CompanyIdEnum } from '@/app/types';
 import { sendGAEvent } from '@next/third-parties/google';
 import { FC } from 'react';
 import { LinkButton } from '../base/Button/LinkButton';
@@ -37,7 +39,7 @@ export const WorkSection: FC = () => {
           years.
         </p>
         <LinkButton
-          href="/work/magic-eden"
+          href={ROUTES[CompanyIdEnum.MagicEden].route}
           prefetch
           scroll={false}
           className="self-center"

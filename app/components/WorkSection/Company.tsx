@@ -1,3 +1,5 @@
+import { ROUTES } from '@/app/constants/routes';
+import { PageSectionIdEnum } from '@/app/types';
 import { clsxMerge } from '@/app/utils/clsxMerge';
 import Link from 'next/link';
 import { FC } from 'react';
@@ -10,7 +12,7 @@ interface CompanyProps {
 export const Company: FC<CompanyProps> = ({ company }) => {
   return (
     <Link
-      href={`/work/${company.id}`}
+      href={`${ROUTES[PageSectionIdEnum.Work].route}/${company.id}`}
       prefetch
       scroll={false}
       suppressHydrationWarning
