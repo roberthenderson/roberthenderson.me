@@ -3,12 +3,19 @@ import { Footer } from '@/app/components/Footer/Footer';
 import { Header } from '@/app/components/Header/Header';
 import { clsxMerge } from '@/app/utils/clsxMerge';
 import { GoogleAnalytics } from '@next/third-parties/google';
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 import { ThemeProvider } from 'next-themes';
 import { PropsWithChildren, ReactNode } from 'react';
 import { METADATA, NAME } from './constants/metadata';
 import { BASE_URL } from './constants/urls';
 import './globals.css';
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: dark)', color: '#1e293b' },
+    { media: '(prefers-color-scheme: light)', color: '#c7d2fe' },
+  ],
+};
 
 export const metadata: Metadata = {
   ...METADATA,
