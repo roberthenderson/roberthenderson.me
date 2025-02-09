@@ -32,6 +32,7 @@ export const Dialog: FC<PropsWithChildren<DialogProps>> = ({
     } else {
       shouldLockPageScroll(false);
     }
+    return () => shouldLockPageScroll(false);
   }, [dialogTypeOpen]);
 
   const handleClose = () => {

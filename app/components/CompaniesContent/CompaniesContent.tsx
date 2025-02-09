@@ -32,6 +32,23 @@ export const CompaniesContent: FC<CompaniesContentProps> = ({ companyId }) => {
     setHeadingHeight(headingRef.current?.offsetHeight);
   }, []);
 
+  /**
+   * If someone refreshes the page when in the intercepting
+   * route modal, the scroll position is retained on the route
+   * that is no longer in the modal. This puts it at the top.
+   */
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      if (isDialog) {
+        window.scrollTo(0, 0);
+      }
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, [isDialog]);
+
   const handleCompanyChange = (id: string) => {
     if (id === selectedCompanyId) {
       return;
