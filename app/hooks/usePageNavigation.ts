@@ -57,7 +57,7 @@ export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
       pathname !== '/' &&
       prevScrollPosition
     ) {
-      window.history.pushState(null, '', '/');
+      window.history.replaceState(null, '', '/');
       return;
     }
 
@@ -70,7 +70,7 @@ export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
         lastSection.offsetTop + lastSection.offsetHeight &&
       pathname !== '/'
     ) {
-      window.history.pushState(null, '', '/');
+      window.history.replaceState(null, '', '/');
       return;
     }
 
@@ -86,7 +86,7 @@ export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
         pathname !== pageSection.id &&
         pageSection.id !== prevPathname
       ) {
-        window.history.pushState(null, '', ROUTES[pageSection.id].route);
+        window.history.replaceState(null, '', ROUTES[pageSection.id].route);
       }
     });
   }, [
