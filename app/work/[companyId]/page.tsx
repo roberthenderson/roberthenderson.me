@@ -13,11 +13,15 @@ export async function generateMetadata({
   params,
 }: CompanyPageProps): Promise<Metadata> {
   const companyId = (await params).companyId as CompanyIdEnum;
+  const canonical = `${BASE_URL}${ROUTES[companyId]?.route}`;
 
   return {
-    title: `${NAME}, ${ROUTES[companyId]?.label} ${TITLE_SUFFIX}`,
+    title: `${NAME} - ${ROUTES[companyId]?.label} ${TITLE_SUFFIX}`,
     alternates: {
-      canonical: `${BASE_URL}${ROUTES[companyId]?.route}`,
+      canonical,
+    },
+    openGraph: {
+      url: canonical,
     },
   };
 }

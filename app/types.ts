@@ -15,6 +15,16 @@ export enum CompanyIdEnum {
   BlueAcorn = 'blue-acorn',
 }
 
+export type AppRouteType = PageSectionIdEnum | CompanyIdEnum | '/';
+
+export type RoutesObject = Record<
+  AppRouteType,
+  {
+    route: string;
+    label: string;
+  }
+>;
+
 export interface PageSection {
   id: PageSectionIdEnum;
   label: ReactNode;

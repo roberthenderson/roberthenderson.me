@@ -1,6 +1,10 @@
-import { CompanyIdEnum, PageSectionIdEnum } from '../types';
+import { CompanyIdEnum, PageSectionIdEnum, RoutesObject } from '../types';
 
-export const ROUTES = {
+export const ROUTES: RoutesObject = {
+  '/': {
+    route: '/',
+    label: '',
+  },
   [PageSectionIdEnum.Skills]: {
     route: `/${PageSectionIdEnum.Skills}`,
     label: 'Skills',

@@ -7,6 +7,7 @@ import { useAppContext } from '../AppContextProvider';
 import { ROUTES } from '../constants/routes';
 import { PageSection } from '../types';
 import { scrollElementIntoView } from '../utils/scrollElementIntoView';
+import { updatePageSectionMetadata } from '../utils/updatePageSectionMetadata';
 import { usePrevious } from './usePrevious';
 
 interface UsePageNavigationProps {
@@ -58,6 +59,7 @@ export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
       prevScrollPosition
     ) {
       window.history.replaceState(null, '', '/');
+      updatePageSectionMetadata('/');
       return;
     }
 
@@ -71,6 +73,7 @@ export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
       pathname !== '/'
     ) {
       window.history.replaceState(null, '', '/');
+      updatePageSectionMetadata('/');
       return;
     }
 
@@ -87,6 +90,7 @@ export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
         pageSection.id !== prevPathname
       ) {
         window.history.replaceState(null, '', ROUTES[pageSection.id].route);
+        updatePageSectionMetadata(pageSection.id);
       }
     });
   }, [

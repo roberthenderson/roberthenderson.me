@@ -11,10 +11,8 @@ import { BASE_URL } from './constants/urls';
 import './globals.css';
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: '(prefers-color-scheme: dark)', color: '#1e293b' },
-    { media: '(prefers-color-scheme: light)', color: '#c7d2fe' },
-  ],
+  themeColor: '#c7d2fe',
+  userScalable: false,
 };
 
 export const metadata: Metadata = {
