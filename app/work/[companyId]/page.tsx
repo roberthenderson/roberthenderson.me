@@ -1,6 +1,7 @@
 import { CompaniesContent } from '@/app/components/CompaniesContent/CompaniesContent';
 import { NAME, TITLE_SUFFIX } from '@/app/constants/metadata';
 import { ROUTES } from '@/app/constants/routes';
+import { BASE_URL } from '@/app/constants/urls';
 import { CompanyIdEnum } from '@/app/types';
 import { Metadata } from 'next';
 
@@ -15,6 +16,9 @@ export async function generateMetadata({
 
   return {
     title: `${NAME}, ${ROUTES[companyId]?.label} ${TITLE_SUFFIX}`,
+    alternates: {
+      canonical: `${BASE_URL}${ROUTES[companyId]?.route}`,
+    },
   };
 }
 
