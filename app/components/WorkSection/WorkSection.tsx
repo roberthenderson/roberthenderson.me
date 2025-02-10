@@ -2,6 +2,8 @@ import { ROUTES } from '@/app/constants/routes';
 import { CompanyIdEnum } from '@/app/types';
 import { sendGAEvent } from '@next/third-parties/google';
 import { FC } from 'react';
+import { CgArrowsExpandUpRight } from 'react-icons/cg';
+import { HiListBullet } from 'react-icons/hi2';
 import { LinkButton } from '../base/Button/LinkButton';
 import { Grid } from '../base/Grid/Grid';
 import { ResumeButton } from '../ResumeButton/ResumeButton';
@@ -10,6 +12,7 @@ import { SectionContainer } from '../SectionContainer/SectionContainer';
 import { SectionContent } from '../SectionContent/SectionContent';
 import { SectionHeading } from '../SectionHeading/SectionHeading';
 import { Company } from './Company';
+import { ThisProject } from './ThisProject';
 import { useCompanies } from './useCompanies';
 
 export const WorkSection: FC = () => {
@@ -45,10 +48,12 @@ export const WorkSection: FC = () => {
           className="self-center"
           onClick={handleLearnMoreClick}
         >
-          Learn More
+          <HiListBullet />
+          <span>Learn More</span>
+          <CgArrowsExpandUpRight />
         </LinkButton>
       </SectionBanner>
-      <SectionContent>
+      <SectionContent className="md:pb-24 md:pt-18">
         <Grid>
           {featuredCompanies.map((company) => (
             <Company key={company.id} company={company} />
@@ -60,6 +65,7 @@ export const WorkSection: FC = () => {
           ))}
         </Grid>
       </SectionContent>
+      <ThisProject />
     </SectionContainer>
   );
 };

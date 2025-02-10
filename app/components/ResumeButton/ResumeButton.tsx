@@ -4,6 +4,7 @@ import { clsxMerge } from '@/app/utils/clsxMerge';
 import { sendGAEvent } from '@next/third-parties/google';
 import { FC } from 'react';
 import { FiDownload } from 'react-icons/fi';
+import { IoDocumentTextOutline } from 'react-icons/io5';
 import { LinkButton } from '../base/Button/LinkButton';
 
 interface ResumeButtonProps {
@@ -19,7 +20,7 @@ export const ResumeButton: FC<ResumeButtonProps> = ({ className, label }) => {
     <LinkButton
       variant="secondary"
       className={clsxMerge(
-        'flex items-center gap-2 font-dmSans text-base md:self-end lg:mb-1.5',
+        'font-dmSans text-base md:self-end lg:mb-1.5',
         className,
       )}
       href={RESUME_URI}
@@ -28,15 +29,17 @@ export const ResumeButton: FC<ResumeButtonProps> = ({ className, label }) => {
       prefetch={false}
       onClick={handleClick}
     >
-      {label ? 
-        (
+      {label ? (
+        <>
+          <IoDocumentTextOutline />
           <span>{label}</span>
-        ) : (
-          <>
-            <span className="hidden md:inline">Download Resume</span>
-            <span className="hidden sm:inline md:hidden">Resume</span>
-          </>
-        )}
+        </>
+      ) : (
+        <>
+          <span className="hidden md:inline">Download Resume</span>
+          <span className="hidden sm:inline md:hidden">Resume</span>
+        </>
+      )}
       <FiDownload />
     </LinkButton>
   );

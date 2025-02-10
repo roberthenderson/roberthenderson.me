@@ -23,6 +23,7 @@ export default {
         18: '4.5rem',
         26: '6.5rem',
         34: '8.5rem',
+        88: '22rem',
       },
       letterSpacing: {
         wide: '0.01em',
@@ -55,6 +56,7 @@ export default {
         ...colors,
         slate: {
           ...colors.slate,
+          750: '#263345',
           850: '#172032',
         },
         violet: {

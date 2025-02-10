@@ -1,3 +1,4 @@
+import { clsxMerge } from '@/app/utils/clsxMerge';
 import Link, { LinkProps as NextLinkProps } from 'next/link';
 import { FC, HTMLProps } from 'react';
 import { getButtonStyles } from './getButtonStyles';
@@ -17,7 +18,10 @@ export const LinkButton: FC<LinkButtonProps> = ({
 }) => {
   return (
     <Link
-      className={getButtonStyles({ variant, disabled, className })}
+      className={clsxMerge(
+        'flex items-center gap-2.5 self-center px-8',
+        getButtonStyles({ variant, disabled, className }),
+      )}
       {...rest}
     >
       {children}

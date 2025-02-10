@@ -6,7 +6,8 @@ import { clsxMerge } from '@/app/utils/clsxMerge';
 import { sendGAEvent } from '@next/third-parties/google';
 import Link from 'next/link';
 import { FC, HTMLProps, PropsWithChildren, useMemo } from 'react';
-import { FaFileDownload, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { HiOutlineDocumentDownload } from 'react-icons/hi';
 
 interface LinksProps {
   variant?: 'hero' | 'footer';
@@ -38,12 +39,22 @@ export const Links: FC<LinksProps> = ({ variant = 'hero', className }) => {
       {
         name: 'linkedin',
         href: LINKEDIN_URL,
-        icon: <FaLinkedin className={iconClassName} size={iconSize} />,
+        icon: (
+          <FaLinkedin
+            className={clsxMerge(iconClassName, 'pl-1')}
+            size={iconSize}
+          />
+        ),
       },
       {
         name: 'resume_download',
         href: RESUME_URI,
-        icon: <FaFileDownload className={iconClassName} size={iconSize} />,
+        icon: (
+          <HiOutlineDocumentDownload
+            className={clsxMerge(iconClassName, 'scale-x-[-1] transform')}
+            size={iconSize + 3}
+          />
+        ),
         otherProps: {
           download: RESUME_FILENAME,
           prefetch: false,
@@ -56,7 +67,7 @@ export const Links: FC<LinksProps> = ({ variant = 'hero', className }) => {
   return (
     <div
       className={clsxMerge(
-        'flex cursor-pointer gap-3 text-2xl',
+        'flex cursor-pointer items-center gap-3 text-2xl',
         'lg:gap-5',
         {
           'max-sm:pt-0': variant === 'hero',

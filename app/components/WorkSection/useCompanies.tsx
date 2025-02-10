@@ -25,13 +25,13 @@ export const useCompanies = () => {
         id: CompanyIdEnum.MagicEden,
         label: ROUTES[CompanyIdEnum.MagicEden].label,
         logo: <MagicEdenLogo />,
-        className: 'w-72 md:w-96 mb-4',
+        className: 'w-72 md:w-88 lg:w-96 mb-4',
       },
       {
         id: CompanyIdEnum.Salesforce,
         label: ROUTES[CompanyIdEnum.Salesforce].label,
         logo: <SalesforceLogo />,
-        className: 'w-60 md:w-64',
+        className: 'w-64 mb-3 sm:w-48 md:w-56 lg:w-64',
       },
     ],
     [],
@@ -55,7 +55,7 @@ export const useCompanies = () => {
           <Image
             src={VlocityLogo}
             alt="Vlocity"
-            className="mx-auto w-4/5 pt-8 sm:pt-1"
+            className="mx-auto w-4/5 pt-7 sm:pt-1"
           />
         ),
         className: 'dark:brightness-125',
@@ -67,7 +67,7 @@ export const useCompanies = () => {
           <Image
             src={BlueAcornLogo}
             alt="Blue Acorn"
-            className="mx-auto w-2/3 pt-2 sm:w-[95%] sm:pb-1.5 sm:pt-0"
+            className="mx-auto w-2/3 pt-3 sm:w-[95%] sm:pb-1.5 sm:pt-0"
           />
         ),
         className: 'dark:brightness-125',

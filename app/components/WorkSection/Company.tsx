@@ -17,7 +17,7 @@ export const Company: FC<CompanyProps> = ({ company }) => {
       scroll={false}
       suppressHydrationWarning
       className={clsxMerge(
-        'mx-auto px-4 opacity-100 transition-opacity duration-200 min-[480px]:px-10 sm:px-4 md:px-8',
+        'mx-auto px-6 opacity-100 transition-opacity duration-200 min-[480px]:px-10 sm:px-0 md:px-4',
         'hover:opacity-70',
         company.className,
       )}
