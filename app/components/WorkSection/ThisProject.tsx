@@ -1,3 +1,4 @@
+import { THIS_PROJECT_SCREENSHOT_CLASSNAME } from '@/app/constants/classNames';
 import { GITHUB_REPO_URL } from '@/app/constants/urls';
 import { clsxMerge } from '@/app/utils/clsxMerge';
 import Image from 'next/image';
@@ -5,6 +6,7 @@ import { FC } from 'react';
 import { RxOpenInNewWindow } from 'react-icons/rx';
 import { SiGithub } from 'react-icons/si';
 import VsCode from '../../../public/companies/vscode.png';
+import VsCodeLight from '../../../public/companies/vscode_light.png';
 import { LinkButton } from '../base/Button/LinkButton';
 import { TextLink } from '../base/TextLink/TextLink';
 import { SectionContainer } from '../SectionContainer/SectionContainer';
@@ -73,14 +75,23 @@ export const ThisProject: FC = () => {
             className={clsxMerge(
               'absolute right-0 z-10 h-full w-full',
               'dark:from-slate-750 bg-gradient-to-r from-violet-200 to-transparent',
-              'from-5% to-50% lg:to-60%',
+              'from-0% via-violet-200/90 to-100% md:via-10% lg:via-20% dark:from-5% dark:to-50% lg:dark:to-60%',
             )}
           />
           <Image
             src={VsCode}
             alt="Code Screenshot"
             className={clsxMerge(
-              'absolute right-40 top-60 scale-[3.75] blur-[0.01em] lg:top-36 lg:scale-[2.25] xl:top-16 xl:scale-[1.7]',
+              'hidden dark:block',
+              THIS_PROJECT_SCREENSHOT_CLASSNAME,
+            )}
+          />
+          <Image
+            src={VsCodeLight}
+            alt="Code Screenshot"
+            className={clsxMerge(
+              'dark:hidden',
+              THIS_PROJECT_SCREENSHOT_CLASSNAME,
             )}
           />
         </div>

@@ -15,3 +15,5 @@ export const FIELD_CLASSNAME = clsxMerge(
   'dark:outline-slate-300 dark:focus:outline-indigo-500',
 );
 export const DARK_MODE_CLASSNAME = 'dark';
+export const THIS_PROJECT_SCREENSHOT_CLASSNAME =
+  'absolute right-40 top-60 scale-[3.75] blur-[0.01em] lg:top-36 lg:scale-[2.25] xl:top-16 xl:scale-[1.7]';
