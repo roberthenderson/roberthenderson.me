@@ -3,22 +3,21 @@ import { getPageSectionMetadata } from './getPageSectionMetadata';
 
 export const updatePageSectionMetadata = (pageSectionId: AppRouteType) => {
   const pageSectionMetadata = getPageSectionMetadata(pageSectionId);
+  const { title, alternates, openGraph } = pageSectionMetadata;
+  const { canonical } = alternates ?? {};
+  const { url: ogUrl } = openGraph ?? {};
 
-  if (pageSectionMetadata.title) {
-    document.title = pageSectionMetadata.title as string;
+  if (title && document.title !== title) {
+    document.title = title as string;
   }
-  if (pageSectionMetadata.alternates?.canonical) {
-    const canonicalElement = document.querySelector('link[rel="canonical"]');
-    canonicalElement?.setAttribute(
-      'href',
-      pageSectionMetadata.alternates.canonical as string,
-    );
+
+  const canonicalElement = document.querySelector('link[rel="canonical"]');
+  if (canonical && canonicalElement?.getAttribute('href') !== canonical) {
+    canonicalElement?.setAttribute('href', canonical as string);
   }
-  if (pageSectionMetadata.openGraph?.url) {
-    const ogUrlElement = document.querySelector('meta[property="og:url"]');
-    ogUrlElement?.setAttribute(
-      'content',
-      pageSectionMetadata.openGraph.url as string,
-    );
+
+  const ogUrlElement = document.querySelector('meta[property="og:url"]');
+  if (ogUrl && ogUrlElement?.getAttribute('content') !== ogUrl) {
+    ogUrlElement?.setAttribute('content', ogUrl as string);
   }
 };
