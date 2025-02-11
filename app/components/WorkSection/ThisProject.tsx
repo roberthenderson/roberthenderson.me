@@ -16,45 +16,52 @@ export const ThisProject: FC = () => {
     <SectionContainer>
       <div
         className={clsxMerge(
-          'w-full border-t-3 border-violet-300 dark:border-slate-700',
+          'w-full border-t-5 border-violet-400 dark:border-slate-600',
           'dark:bg-slate-750 relative bg-violet-200',
         )}
       >
-        <div className="mx-auto flex max-w-screen-xl flex-col md:flex-row">
+        <div className="dark:bg-slate-750 mx-auto flex max-w-screen-xl flex-col bg-violet-200 md:flex-row">
           <div
             className={clsxMerge(
-              'flex w-full flex-col gap-8 md:w-1/2 md:gap-6',
-              'dark:bg-slate-750 relative overflow-y-hidden bg-violet-200',
-              'p-10 sm:px-12 md:px-12 md:py-8 md:pr-0',
+              'flex w-full flex-col gap-8 md:w-[70%] md:gap-6 lg:w-[65%]',
+              'relative z-20 overflow-y-hidden',
+              'px-8 pb-16 pt-8 sm:px-12 md:px-12 md:pb-12 md:pr-0 md:pt-10',
               'text-center md:text-left',
             )}
           >
-            <h4 className="text-semibold text-center font-dmSerif text-5xl md:text-left">
-              This Project
-            </h4>
-            <LinkButton
-              href={GITHUB_REPO_URL}
-              target="_blank"
-              variant="primary"
-              className="flex items-center gap-2.5 self-center px-8 md:self-start"
-            >
-              <SiGithub />
-              <span>GitHub Repo</span>
-              <RxOpenInNewWindow />
-            </LinkButton>
+            <div className="flex flex-col items-center gap-3 md:flex-row md:gap-8">
+              <h4
+                className={clsxMerge(
+                  'text-center font-dmSerif font-semibold md:text-left',
+                  'text-[40px]',
+                )}
+              >
+                This Project
+              </h4>
+              <LinkButton
+                href={GITHUB_REPO_URL}
+                target="_blank"
+                variant="primary"
+                className="flex items-center gap-2.5 px-8"
+              >
+                <SiGithub />
+                <span>GitHub Repo</span>
+                <RxOpenInNewWindow />
+              </LinkButton>
+            </div>
             <p>
               After 15 years of working, I decided to take my first meaningful
               time off from working in December, 2024 in order to spend more
-              quality time with my daughter and explore my own interests. This{' '}
-              <TextLink href="/">project (roberthenderson.me)</TextLink> is what
+              quality time with my daughter and explore my own interests. This
+              project, <TextLink href="/">roberthenderson.me</TextLink>, is what
               I've been working on.
             </p>
             <p>
               I've always wanted to create a personal website, but life just
               gets in the way and there's never enough time to focus on it along
-              with everything else. Please check out the{' '}
+              with everything else. Please check out the GitHub{' '}
               <TextLink href={GITHUB_REPO_URL} target="_blank">
-                GitHub repository
+                repository
               </TextLink>
               , clone it, and check out the code. It's a great insight into my
               ability.
@@ -62,7 +69,7 @@ export const ThisProject: FC = () => {
             <p>
               Not only is the site coded all by me, but I also designed it.
               There is no "template", no UX designer figma files, just me
-              designing with code, and I'm proud of it.
+              designing with code.
             </p>
           </div>
         </div>
@@ -75,7 +82,7 @@ export const ThisProject: FC = () => {
             className={clsxMerge(
               'absolute right-0 z-10 h-full w-full',
               'dark:from-slate-750 bg-gradient-to-r from-violet-200 to-transparent',
-              'from-0% via-violet-200/90 to-100% md:via-10% lg:via-20% dark:from-5% dark:to-50% lg:dark:to-60%',
+              'via-violet-200/90 to-100% md:from-10% md:via-30% lg:from-0% lg:via-20% dark:to-100% md:dark:from-40% lg:dark:from-20% lg:dark:to-80%',
             )}
           />
           <Image
