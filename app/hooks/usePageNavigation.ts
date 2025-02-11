@@ -15,6 +15,7 @@ interface UsePageNavigationProps {
 }
 
 export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
+  const { navItemClicked } = useAppContext();
   const pathname = usePathname();
   const isHomePathname = pathname.split('/').length === 2;
   const prevPathname = usePrevious(pathname);
@@ -34,9 +35,7 @@ export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
 
   /**
@@ -44,7 +43,16 @@ export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
    * user's location on the page
    */
   useEffect(() => {
-    if (!headerRef?.current?.offsetHeight || !isHomePathname) {
+    if (
+      !headerRef?.current?.offsetHeight ||
+      !isHomePathname ||
+      // This boolean is set in appContext by `useNavigateToSection` in
+      // order to prevent the scroll from a nav item click kicking in this
+      // effect, which replaces the route unnecessarily and causes a visual
+      // delay with the underline appearing on the user-clicked item in the
+      // header navigation
+      navItemClicked
+    ) {
       return;
     }
 
@@ -96,6 +104,7 @@ export const usePageNavigation = ({ pageSections }: UsePageNavigationProps) => {
   }, [
     pathname,
     isHomePathname,
+    navItemClicked,
     prevPathname,
     pageSections,
     scrollPosition,

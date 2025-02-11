@@ -23,6 +23,8 @@ interface AppContextType {
   setPageSectionsList: Dispatch<SetStateAction<PageSections>>;
   dialogTypeOpen: DialogType | null;
   setDialogTypeOpen: Dispatch<SetStateAction<DialogType | null>>;
+  navItemClicked: boolean;
+  setNavItemClicked: Dispatch<SetStateAction<boolean>>;
 }
 
 const AppContext = createContext<AppContextType | null>(null);
@@ -31,6 +33,7 @@ export const AppContextProvider: FC<PropsWithChildren> = ({ children }) => {
   const [headerRef, setHeaderRef] = useState<HeaderRef>(null);
   const [pageSectionsList, setPageSectionsList] = useState<PageSections>(null);
   const [dialogTypeOpen, setDialogTypeOpen] = useState<DialogType | null>(null);
+  const [navItemClicked, setNavItemClicked] = useState(false);
 
   return (
     <AppContext.Provider
@@ -41,6 +44,8 @@ export const AppContextProvider: FC<PropsWithChildren> = ({ children }) => {
         setPageSectionsList,
         dialogTypeOpen,
         setDialogTypeOpen,
+        navItemClicked,
+        setNavItemClicked,
       }}
     >
       {children}
