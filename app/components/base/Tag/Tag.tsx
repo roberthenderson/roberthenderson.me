@@ -13,6 +13,7 @@ export const Tag: FC<PropsWithChildren<TagProps>> = ({
 }) => {
   return (
     <div
+      suppressHydrationWarning
       className={clsxMerge(
         'rounded-lg border border-violet-700 bg-violet-300/50 px-2 py-0.5 text-violet-800',
         'dark:border-purple-800 dark:bg-purple-700/30 dark:text-slate-100',

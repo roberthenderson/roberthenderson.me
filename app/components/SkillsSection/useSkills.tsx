@@ -1,3 +1,4 @@
+import { shuffle } from 'lodash';
 import { ReactNode, useMemo } from 'react';
 import { FaReact } from 'react-icons/fa';
 import {
@@ -23,124 +24,149 @@ export interface ISkillTag {
 
 export const useSkills = () => {
   const skillTags: ISkillTag[] = useMemo(
-    () => [
-      {
-        label: 'React',
-        type: 'framework',
-      },
-      {
-        label: 'Typescript',
-        type: 'code',
-      },
-      {
-        label: 'Javascript',
-        type: 'code',
-      },
-      {
-        label: 'NextJS',
-        type: 'framework',
-      },
-      {
-        label: 'TailwindCSS',
-        type: 'framework',
-      },
-      {
-        label: 'Git',
-        type: 'devops',
-      },
-      {
-        label: 'CSS',
-        type: 'code',
-      },
-      {
-        label: 'UX',
-        type: 'design',
-      },
-      {
-        label: 'SASS',
-        type: 'framework',
-      },
-      {
-        label: 'PHP',
-        type: 'code',
-      },
-      {
-        label: 'CI',
-        type: 'devops',
-      },
-      {
-        label: 'Java',
-        type: 'code',
-      },
-      {
-        label: 'Figma',
-        type: 'design',
-      },
-      {
-        label: 'Chakra UI',
-        type: 'framework',
-      },
-      {
-        label: 'SEO',
-        type: 'code',
-      },
-      {
-        label: 'Responsive Web Design',
-        type: 'design',
-      },
-      {
-        label: 'ZSH',
-        type: 'devops',
-      },
-      {
-        label: 'E-Commerce',
-        type: 'industry',
-      },
-      {
-        label: 'Open Graph',
-        type: 'code',
-      },
-      {
-        label: 'Crypto',
-        type: 'industry',
-      },
-      {
-        label: 'Web3',
-        type: 'industry',
-      },
-      {
-        label: 'Vercel',
-        type: 'framework',
-      },
-      {
-        label: 'Enterprise Software',
-        type: 'industry',
-      },
-      {
-        label: 'Salesforce',
-        type: 'framework',
-      },
-      {
-        label: 'Web Components',
-        type: 'framework',
-      },
-      {
-        label: 'HTML',
-        type: 'code',
-      },
-      {
-        label: 'AWS',
-        type: 'framework',
-      },
-      {
-        label: 'GraphQL',
-        type: 'framework',
-      },
-      {
-        label: 'REST API',
-        type: 'code',
-      },
-    ],
+    () =>
+      shuffle([
+        {
+          label: 'React',
+          type: 'framework',
+        },
+        {
+          label: 'Typescript',
+          type: 'code',
+        },
+        {
+          label: 'Javascript',
+          type: 'code',
+        },
+        {
+          label: 'NextJS',
+          type: 'framework',
+        },
+        {
+          label: 'TailwindCSS',
+          type: 'framework',
+        },
+        {
+          label: 'Git',
+          type: 'devops',
+        },
+        {
+          label: 'CSS',
+          type: 'code',
+        },
+        {
+          label: 'UX',
+          type: 'design',
+        },
+        {
+          label: 'SASS',
+          type: 'framework',
+        },
+        {
+          label: 'PHP',
+          type: 'code',
+        },
+        {
+          label: 'CI',
+          type: 'devops',
+        },
+        {
+          label: 'Java',
+          type: 'code',
+        },
+        {
+          label: 'Figma',
+          type: 'design',
+        },
+        {
+          label: 'Chakra UI',
+          type: 'framework',
+        },
+        {
+          label: 'SEO',
+          type: 'code',
+        },
+        {
+          label: 'Responsive Web Design',
+          type: 'design',
+        },
+        {
+          label: 'ZSH',
+          type: 'devops',
+        },
+        {
+          label: 'E-Commerce',
+          type: 'industry',
+        },
+        {
+          label: 'Open Graph',
+          type: 'code',
+        },
+        {
+          label: 'Crypto',
+          type: 'industry',
+        },
+        {
+          label: 'Web3',
+          type: 'industry',
+        },
+        {
+          label: 'Vercel',
+          type: 'framework',
+        },
+        {
+          label: 'Enterprise Software',
+          type: 'industry',
+        },
+        {
+          label: 'Salesforce',
+          type: 'framework',
+        },
+        {
+          label: 'Web Components',
+          type: 'framework',
+        },
+        {
+          label: 'HTML',
+          type: 'code',
+        },
+        {
+          label: 'AWS',
+          type: 'framework',
+        },
+        {
+          label: 'GraphQL',
+          type: 'framework',
+        },
+        {
+          label: 'REST API',
+          type: 'code',
+        },
+        {
+          label: 'Postgres',
+          type: 'code',
+        },
+        {
+          label: 'Supabase',
+          type: 'framework',
+        },
+        {
+          label: 'prisma',
+          type: 'code',
+        },
+        {
+          label: 'shadui/cn',
+          type: 'design',
+        },
+        {
+          label: 'React Query',
+          type: 'framework',
+        },
+        {
+          label: 'Serverless Functions',
+          type: 'code',
+        },
+      ]),
     [],
   );
   const skillCards: ISkillCard[] = useMemo(
