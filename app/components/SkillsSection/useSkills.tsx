@@ -178,6 +178,18 @@ export const useSkills = () => {
           label: 'Storybook',
           type: 'design',
         },
+        {
+          label: 'Recoil',
+          type: 'code',
+        },
+        {
+          label: 'Zustand',
+          type: 'code',
+        },
+        {
+          label: 'Redux',
+          type: 'code',
+        },
       ]),
     [],
   );
