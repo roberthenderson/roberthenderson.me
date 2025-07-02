@@ -67,7 +67,7 @@ export const useSkills = () => {
           type: 'code',
         },
         {
-          label: 'CI',
+          label: 'CI/CD',
           type: 'devops',
         },
         {
@@ -165,6 +165,18 @@ export const useSkills = () => {
         {
           label: 'Serverless Functions',
           type: 'code',
+        },
+        {
+          label: 'Firebase',
+          type: 'framework',
+        },
+        {
+          label: 'Datadog',
+          type: 'framework',
+        },
+        {
+          label: 'Storybook',
+          type: 'design',
         },
       ]),
     [],
