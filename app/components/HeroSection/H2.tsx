@@ -25,7 +25,9 @@ export const H2: FC = () => {
             'sm:text-[53px] sm:tracking-tight lg:text-6xl lg:tracking-normal',
           )}
         >
-          <span className="block leading-10">Frontend</span>
+          <span className="block text-[55px] leading-11 sm:text-[49px] lg:text-[55px]">
+            Full-Stack
+          </span>
           <span className="leading-10">Engineer</span>
         </p>
       </h2>

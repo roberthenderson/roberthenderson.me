@@ -2,11 +2,11 @@ import { BASE_URL } from '@/app/constants/urls';
 import Head from 'next/head';
 
 const METADATA = {
-  title: 'Robert Henderson | Senior Frontend Engineer',
+  title: 'Robert Henderson | Senior Full-Stack Engineer',
   description:
-    'Robert Henderson is an accomplished Senior Frontend Engineer with Javascript, React, Typescript, NextJS, and UX Web Design experience.',
+    'Robert Henderson is an accomplished Senior Full-Stack Engineer with Javascript, React, Typescript, NextJS, and UX Web Design experience.',
   keywords:
-    'robert henderson,javascript,typescript,frontend,engineer,developer,senior,react,reactjs,nextjs,web design,vercel,html,css,sass,ux,design,web',
+    'robert henderson,javascript,typescript,Frontend,Backend,Full-Stack,engineer,developer,senior,react,reactjs,nextjs,web design,vercel,html,css,sass,ux,design,web',
 };
 
 export const Metadata = () => (

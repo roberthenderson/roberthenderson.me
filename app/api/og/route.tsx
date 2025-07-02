@@ -46,7 +46,7 @@ export async function GET(request: NextRequest) {
         >
           <img
             src={`${baseUrl}/robert.png`}
-            alt="Robert Henderson, Frontend Engineer"
+            alt="Robert Henderson, Full-Stack Engineer"
             width="583"
             height="630"
           />
@@ -96,7 +96,7 @@ export async function GET(request: NextRequest) {
               fontSize: 81,
             }}
           >
-            Frontend
+            Full-Stack
           </p>
           <p
             style={{

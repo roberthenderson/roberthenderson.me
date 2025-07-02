@@ -61,7 +61,7 @@ export const useCompaniesContent = (): Company[] => {
         content: [
           {
             description:
-              'Worked as a Senior Frontend Software Engineer building the client-side application of Magic Eden, a digital asset (NFT) Marketplace. Magic Eden is a large React/NextJS/TailwindCSS application with millions of visitors each month.',
+              'Worked as a L5 Senior Software Engineer (Frontend) building the client-side application of Magic Eden, a digital asset (NFT) Marketplace. Magic Eden is a large React/NextJS/TailwindCSS application with millions of visitors each month.',
 
             bullets: [
               {
