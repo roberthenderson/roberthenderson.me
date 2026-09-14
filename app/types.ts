@@ -8,6 +8,9 @@ export enum PageSectionIdEnum {
 }
 
 export enum CompanyIdEnum {
+  SphereLabs = 'sphere-labs',
+  Eider = 'eider',
+  Umbrellx = 'umbrellx',
   MagicEden = 'magic-eden',
   Metaplex = 'metaplex',
   Salesforce = 'salesforce',
@@ -51,8 +54,12 @@ export interface CompanyContentItem {
 export interface CompanyDefinition {
   id: CompanyIdEnum;
   label: string;
-  /** Renders large in the top row of the work grid. */
-  featured: boolean;
+  /**
+   * Which row of the work grid this company renders in, top row first.
+   * Row membership is the layout: companies in the same row share a grid,
+   * and the row's length decides its column count.
+   */
+  gridRow: number;
   years?: number[];
   /** Small logo shown in the company tab rail. */
   image?: ReactNode;

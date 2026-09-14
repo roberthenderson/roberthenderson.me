@@ -16,7 +16,7 @@ import { ThisProject } from './ThisProject';
 import { useCompanies } from './useCompanies';
 
 export const WorkSection: FC = () => {
-  const { featuredCompanies, otherCompanies } = useCompanies();
+  const { companyRows } = useCompanies();
 
   const handleLearnMoreClick = () =>
     sendGAEvent('event', 'learn_more_modal_button_click');
@@ -38,8 +38,7 @@ export const WorkSection: FC = () => {
           lot of code. After graduating from college with a Business degree when
           the market crashed in 2009, I went back to school to refine my web
           design skills. I landed an internship, and then full-time position at
-          Blue Acorn and worked there and for 4 other companies over the next 15
-          years.
+          Blue Acorn and have worked there and at 7 other companies since.
         </p>
         <LinkButton
           href={ROUTES[CompanyIdEnum.MagicEden].route}
@@ -54,16 +53,13 @@ export const WorkSection: FC = () => {
         </LinkButton>
       </SectionBanner>
       <SectionContent className="md:pt-18 md:pb-24">
-        <Grid>
-          {featuredCompanies.map((company) => (
-            <Company key={company.id} company={company} />
-          ))}
-        </Grid>
-        <Grid columns={3}>
-          {otherCompanies.map((company) => (
-            <Company key={company.id} company={company} />
-          ))}
-        </Grid>
+        {companyRows.map((row) => (
+          <Grid key={row[0].id} columns={row.length}>
+            {row.map((company) => (
+              <Company key={company.id} company={company} />
+            ))}
+          </Grid>
+        ))}
       </SectionContent>
       <ThisProject />
     </SectionContainer>

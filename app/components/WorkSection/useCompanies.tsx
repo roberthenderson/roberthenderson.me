@@ -19,16 +19,24 @@ const toGridCompany = (company: CompanyDefinition): ICompany => ({
   className: company.gridClassName,
 });
 
+/**
+ * Groups the work history into the rows of the work-section grid, ordered by
+ * `gridRow`. Companies keep their order within a row.
+ */
 export const useCompanies = () => {
-  const featuredCompanies = useMemo(
-    () => COMPANIES.filter((c) => c.featured).map(toGridCompany),
-    [],
-  );
+  const companyRows = useMemo(() => {
+    const byRow = new Map<number, ICompany[]>();
 
-  const otherCompanies = useMemo(
-    () => COMPANIES.filter((c) => !c.featured).map(toGridCompany),
-    [],
-  );
+    for (const company of COMPANIES) {
+      const row = byRow.get(company.gridRow) ?? [];
+      row.push(toGridCompany(company));
+      byRow.set(company.gridRow, row);
+    }
 
-  return { featuredCompanies, otherCompanies };
+    return [...byRow.entries()]
+      .sort(([a], [b]) => a - b)
+      .map(([, companies]) => companies);
+  }, []);
+
+  return { companyRows };
 };

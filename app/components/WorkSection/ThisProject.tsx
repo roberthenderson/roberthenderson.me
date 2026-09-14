@@ -50,11 +50,11 @@ export const ThisProject: FC = () => {
               </LinkButton>
             </div>
             <p>
-              After 15 years of working, I decided to take my first meaningful
-              time off from working in December, 2024 in order to spend more
-              quality time with my daughter and explore my own interests. This
-              project, <TextLink href="/">roberthenderson.me</TextLink>, is what
-              I've been working on.
+              After 15 years of working, I took my first meaningful time off in
+              December, 2024 in order to spend more quality time with my
+              daughter and explore my own interests. This project,{' '}
+              <TextLink href="/">roberthenderson.me</TextLink>, is what I built
+              during that break, and I have kept it current since.
             </p>
             <p>
               I've always wanted to create a personal website, but life just

@@ -1,12 +1,12 @@
 import { type ReactNode, useMemo } from 'react';
 import { FaReact } from 'react-icons/fa';
 import {
-  SiGit,
-  SiJavascript,
   SiNextdotjs,
+  SiPostgresql,
   SiTailwindcss,
   SiTypescript,
 } from 'react-icons/si';
+import { TbBrandReactNative } from 'react-icons/tb';
 import { shuffle } from '@/app/utils/shuffle';
 
 const ICON_SIZE = 32;
@@ -151,15 +151,15 @@ export const useSkills = () => {
           type: 'framework',
         },
         {
-          label: 'prisma',
+          label: 'Prisma',
           type: 'code',
         },
         {
-          label: 'shadui/cn',
+          label: 'shadcn/ui',
           type: 'design',
         },
         {
-          label: 'React Query',
+          label: 'TanStack Query',
           type: 'framework',
         },
         {
@@ -190,45 +190,110 @@ export const useSkills = () => {
           label: 'Redux',
           type: 'code',
         },
+        {
+          label: 'React Native',
+          type: 'framework',
+        },
+        {
+          label: 'Expo',
+          type: 'framework',
+        },
+        {
+          label: 'Turborepo',
+          type: 'devops',
+        },
+        {
+          label: 'Cloudflare Workers',
+          type: 'framework',
+        },
+        {
+          label: 'Durable Objects',
+          type: 'framework',
+        },
+        {
+          label: 'Neon',
+          type: 'framework',
+        },
+        {
+          label: 'Playwright',
+          type: 'devops',
+        },
+        {
+          label: 'Maestro',
+          type: 'devops',
+        },
+        {
+          label: 'Design Systems',
+          type: 'design',
+        },
+        {
+          label: 'Stripe',
+          type: 'framework',
+        },
+        {
+          label: 'Plaid',
+          type: 'framework',
+        },
+        {
+          label: 'Sentry',
+          type: 'devops',
+        },
+        {
+          label: 'PostHog',
+          type: 'devops',
+        },
+        {
+          label: 'Fintech',
+          type: 'industry',
+        },
+        {
+          label: 'Accessibility',
+          type: 'design',
+        },
+        {
+          label: 'Monorepos',
+          type: 'devops',
+        },
       ]),
     [],
   );
   const skillCards: ISkillCard[] = useMemo(
     () => [
       {
+        label: 'NextJS',
+        icon: <SiNextdotjs size={ICON_SIZE} />,
+        description:
+          'App Router, server components, SSR, and static generation across six years of NextJS apps.',
+      },
+      {
         label: 'React',
         icon: <FaReact size={ICON_SIZE} />,
         description:
-          'Expert in React building components, hooks, and performance optimization.',
+          'Expert in React components, hooks, state, and performance optimization.',
       },
       {
         label: 'Typescript',
         icon: <SiTypescript size={ICON_SIZE} />,
         description:
-          '5+ years experience creating strongly typed applications using Typescript.',
-      },
-      {
-        label: 'Javascript',
-        icon: <SiJavascript size={ICON_SIZE} />,
-        description:
-          '15 years of Javascript experience from vanilla through and React.',
-      },
-      {
-        label: 'NextJS',
-        icon: <SiNextdotjs size={ICON_SIZE} />,
-        description: '5+ years of building NextJS apps.',
+          'Strongly typed applications end to end, from shared domain models to API boundaries.',
       },
       {
         label: 'TailwindCSS',
         icon: <SiTailwindcss size={ICON_SIZE} />,
         description:
-          '20+ years of using CSS, SASS, and Less. Now an expert in TailwindCSS.',
+          '20+ years of CSS, SASS, and Less. Now build design systems on TailwindCSS.',
       },
       {
-        label: 'Git',
-        icon: <SiGit size={ICON_SIZE} />,
+        label: 'Postgres',
+        icon: <SiPostgresql size={ICON_SIZE} />,
         description:
-          'For my whole career, I have been using Git for version control.',
+          'Schema design, versioned migrations, and query tuning through Prisma on Postgres.',
+      },
+      {
+        label: 'React Native',
+        icon: <TbBrandReactNative size={ICON_SIZE} />,
+        description:
+          'Shipped an Expo / React Native app to both the App Store and Google Play.',
       },
     ],
     [],

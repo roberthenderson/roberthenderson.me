@@ -6,7 +6,7 @@ import { GiGearStickPattern } from 'react-icons/gi';
 import { GoGear } from 'react-icons/go';
 import { GrDocumentTest, GrSelect } from 'react-icons/gr';
 import { IoCodeSlashSharp, IoDocumentsOutline } from 'react-icons/io5';
-import { LuBug } from 'react-icons/lu';
+import { LuBug, LuComponent, LuLayoutDashboard, LuStore } from 'react-icons/lu';
 import { MdOutlineWeb } from 'react-icons/md';
 import {
   PiFlowArrow,
@@ -24,6 +24,10 @@ import {
   SiFigma,
   SiGrunt,
   SiJquery,
+  SiPrisma,
+  SiStripe,
+  SiTurborepo,
+  SiVite,
   SiWeb3Dotjs,
 } from 'react-icons/si';
 import { SlChart } from 'react-icons/sl';
@@ -31,10 +35,15 @@ import { VscDebugAltSmall } from 'react-icons/vsc';
 import { MagicEdenLogo } from '@/app/components/MagicEdenLogo/MagicEdenLogo';
 import { MetaplexLogo } from '@/app/components/MetaplexLogo/MetaplexLogo';
 import { SalesforceLogo } from '@/app/components/SalesforceLogo/SalesforceLogo';
+import { SphereLogo } from '@/app/components/SphereLogo/SphereLogo';
+import { UmbrellxLogo } from '@/app/components/UmbrellxLogo/UmbrellxLogo';
 import { type CompanyDefinition, CompanyIdEnum } from '@/app/types';
 import { clsxMerge } from '@/app/utils/clsxMerge';
 import BlueAcornLogoLarge from '../../public/companies/blueacorn.png';
 import BlueAcornLogo from '../../public/companies/blueacorn_small.png';
+import EiderLogoLarge from '../../public/companies/eider.png';
+import EiderLogo from '../../public/companies/eider_small.png';
+import UmbrellxLogo512 from '../../public/companies/umbrellx_small.png';
 import VlocityLogoLarge from '../../public/companies/vlocity.png';
 import VlocityLogo from '../../public/companies/vlocity_small.png';
 
@@ -50,8 +59,149 @@ import VlocityLogo from '../../public/companies/vlocity_small.png';
  */
 export const COMPANIES: CompanyDefinition[] = [
   {
+    id: CompanyIdEnum.SphereLabs,
+    gridRow: 1,
+    gridLogo: <SphereLogo />,
+    gridClassName: 'mb-3 w-56 sm:w-44 md:w-52 lg:w-60',
+    label: 'Sphere Labs',
+    years: [2025, 2026],
+    image: (
+      <div className="w-7 md:w-9">
+        <SphereLogo variant="small" />
+      </div>
+    ),
+    content: [
+      {
+        description:
+          'Frontend and full-stack engineering across three products for a global money-transfer platform: a shared design system, an internal operations platform, and the customer-facing enterprise dashboard.',
+        bullets: [
+          {
+            icon: <SlChart size={19} />,
+            text: 'Led the ground-up redesign of spherepay.co, the enterprise dashboard for global money transfers, rebuilt on the company design system from new product designs and shipped in 2026',
+          },
+          {
+            icon: <RiLayoutMasonryLine size={20} />,
+            text: 'Led implementation and UX direction for integrator (B2B2C) customer support: a CRM-style model of the dashboard with entity list views and record detail pages, drawing on enterprise platform patterns from prior Salesforce work',
+          },
+          {
+            icon: <LuComponent size={19} />,
+            text: 'Created and own @sphere/ui, the company design system built on shadcn/ui and Tailwind v4, published through GitHub Packages with an automated release workflow and consumed by every production frontend to enforce consistent, accessible UI patterns',
+          },
+          {
+            icon: <SiVite size={19} />,
+            text: "Built a custom Vite-based component explorer in place of Storybook, rendering stories inside the system's own layout components so the documentation mirrors real product usage",
+          },
+          {
+            icon: <LuLayoutDashboard size={19} />,
+            text: 'Designed the full architecture of an internal ops platform where teams such as banking, crypto vaults, and liquidity management create their own org and compose dashboard pages from configurable components wired to their own APIs, with no engineering involvement',
+          },
+          {
+            icon: <SiFigma size={19} />,
+            text: 'Led the end-to-end UX redesign of the ops platform as sole design owner, improving layout consistency and usability on a product without dedicated design support',
+          },
+          {
+            icon: <PiLightning size={20} />,
+            text: 'Rebuilt spherepay.co authentication to run server-side, moved key views to SSR, and introduced optimistic updates where they improve perceived speed without risking data integrity',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: CompanyIdEnum.Eider,
+    gridRow: 1,
+    gridLogo: (
+      <Image
+        src={EiderLogoLarge}
+        alt="Eider"
+        className="mx-auto w-40 md:w-48 lg:w-52"
+      />
+    ),
+    gridClassName: 'mb-3',
+    label: 'Eider',
+    years: [2026],
+    image: (
+      <Image
+        src={EiderLogo}
+        alt="Eider"
+        className="mx-auto w-8 rounded-md md:w-10"
+      />
+    ),
+    content: [
+      {
+        description:
+          'Founded Loftery LLC and solo-built Eider, a cross-platform expense-splitting app live on the App Store and Google Play. Sole owner of product, design, engineering, release, store compliance, and marketing, run alongside full-time work.',
+        bullets: [
+          {
+            icon: <LuStore size={19} />,
+            text: "Shipped from an empty repository to public listings on both stores in under five months, clearing Apple App Review (Sign in with Apple, privacy labels, EU trader verification) and Google Play's closed-testing gate, Data Safety declarations, content rating, and account-deletion requirements",
+          },
+          {
+            icon: <SiTurborepo size={18} />,
+            text: 'Architected a Turborepo monorepo shipping one product to three surfaces: a NextJS 16 / React 19 web app, an Expo / React Native iOS and Android app, and a Cloudflare Durable Objects realtime service, sharing ~290 paired web and native components and 3,700+ localized strings from a single source',
+          },
+          {
+            icon: <PiLightning size={20} />,
+            text: 'Built a no-loader, no-layout-shift client: reads paint their final layout on the first frame from a warm TanStack Query cache, writes are optimistic with rollback, and live balances push to every signed-in device over a Durable Object event bus',
+          },
+          {
+            icon: <SiPrisma size={18} />,
+            text: 'Designed the data layer: a 48-model Prisma schema on Neon Postgres with 125 versioned migrations, field-level encryption for financial tokens, and 144 API routes as thin adapters over portable domain functions',
+          },
+          {
+            icon: <SiStripe size={19} />,
+            text: 'Integrated Plaid for bank import, and Stripe, Apple In-App Purchase, and Google Play Billing behind one cross-platform entitlement layer',
+          },
+          {
+            icon: <GrDocumentTest size={19} />,
+            text: 'Own quality and release operations: 1,700+ test files, 160 Playwright end-to-end specs, 69 Maestro mobile flows, a pre-push gate (format, lint, typecheck, unit, Postgres integration), a dev to staging to production promotion pipeline with nightly e2e, and EAS over-the-air updates, shipping weekly',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: CompanyIdEnum.Umbrellx,
+    gridRow: 3,
+    gridLogo: <UmbrellxLogo />,
+    gridClassName: 'w-11/12 sm:w-full min-[500px]:px-12 pt-4 sm:pt-0',
+    label: 'Umbrellx',
+    years: [2025],
+    image: (
+      <Image
+        src={UmbrellxLogo512}
+        alt="Umbrellx"
+        className="mx-auto w-8 md:w-10"
+      />
+    ),
+    content: [
+      {
+        description:
+          'Designed and built an LGBTQ+-focused social media app to pre-alpha, owning product, branding, and UX end to end on a NextJS, React, Typescript, and Supabase stack with MUX for video.',
+        bullets: [
+          {
+            icon: <AiOutlineProduct size={20} />,
+            text: 'Owned product, branding, and UX end to end, shipping as a responsive PWA with service-worker notifications',
+          },
+          {
+            icon: <PiLightning size={20} />,
+            text: 'Built viewport-aware prefetching of routes and data, treating performance as the primary UX lever rather than a later optimization',
+          },
+          {
+            icon: <RiLayoutMasonryLine size={20} />,
+            text: 'Built a custom aspect-ratio post grid so mixed-media posts keep their composition across breakpoints',
+          },
+          {
+            icon: <BsDatabase size={19} />,
+            text: 'Modeled and secured the data in Supabase with row-level security, and served video through MUX',
+          },
+        ],
+      },
+    ],
+  },
+  {
     id: CompanyIdEnum.MagicEden,
-    featured: true,
+    gridRow: 2,
     gridLogo: <MagicEdenLogo />,
     gridClassName: 'w-72 md:w-88 lg:w-96 mb-4',
     label: 'Magic Eden',
@@ -101,7 +251,7 @@ export const COMPANIES: CompanyDefinition[] = [
   },
   {
     id: CompanyIdEnum.Metaplex,
-    featured: false,
+    gridRow: 2,
     gridLogo: <MetaplexLogo />,
     gridClassName: clsxMerge(
       'w-5/6 sm:w-full min-[500px]:px-20',
@@ -154,7 +304,7 @@ export const COMPANIES: CompanyDefinition[] = [
   },
   {
     id: CompanyIdEnum.Salesforce,
-    featured: false,
+    gridRow: 1,
     gridLogo: <SalesforceLogo />,
     gridClassName: 'w-64 mb-3 sm:w-48 md:w-56 lg:w-64',
     label: 'Salesforce',
@@ -242,7 +392,7 @@ export const COMPANIES: CompanyDefinition[] = [
   },
   {
     id: CompanyIdEnum.Vlocity,
-    featured: false,
+    gridRow: 3,
     gridLogo: (
       <Image
         src={VlocityLogoLarge}
@@ -287,7 +437,7 @@ export const COMPANIES: CompanyDefinition[] = [
   },
   {
     id: CompanyIdEnum.BlueAcorn,
-    featured: false,
+    gridRow: 3,
     gridLogo: (
       <Image
         src={BlueAcornLogoLarge}
