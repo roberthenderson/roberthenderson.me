@@ -45,6 +45,12 @@ export const ROUTES: RoutesObject = {
   ...COMPANY_ROUTES,
 } as RoutesObject;
 
+/**
+ * The company the work section links to by default. Derived from list order
+ * rather than named, so re-ordering the work history moves the link with it.
+ */
+export const LEAD_COMPANY_ID = COMPANIES[0].id;
+
 /** Valid `/work/[companyId]` segments, used for static params and 404s. */
 export const COMPANY_IDS = COMPANIES.map((company) => company.id);
 

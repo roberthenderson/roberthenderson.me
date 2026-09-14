@@ -2,8 +2,7 @@ import { sendGAEvent } from '@next/third-parties/google';
 import type { FC } from 'react';
 import { CgArrowsExpandUpRight } from 'react-icons/cg';
 import { HiListBullet } from 'react-icons/hi2';
-import { ROUTES } from '@/app/constants/routes';
-import { CompanyIdEnum } from '@/app/types';
+import { LEAD_COMPANY_ID, ROUTES } from '@/app/constants/routes';
 import { LinkButton } from '../base/Button/LinkButton';
 import { Grid } from '../base/Grid/Grid';
 import { ResumeButton } from '../ResumeButton/ResumeButton';
@@ -41,7 +40,7 @@ export const WorkSection: FC = () => {
           Blue Acorn and have worked there and at 7 other companies since.
         </p>
         <LinkButton
-          href={ROUTES[CompanyIdEnum.MagicEden].route}
+          href={ROUTES[LEAD_COMPANY_ID].route}
           prefetch
           scroll={false}
           className="self-center"

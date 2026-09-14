@@ -1,12 +1,11 @@
-import Image from 'next/image';
 import type { FC } from 'react';
 import { SECTION_CLASSNAME } from '@/app/constants/classNames';
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import Robert from '../../../public/robert.webp';
 import { EmailButton } from '../EmailButton/EmailButton';
 import { H1 } from './H1';
 import { H2 } from './H2';
 import { H3 } from './H3';
+import { HeroBackdrop } from './HeroBackdrop';
 import { Links } from './Links';
 import { TagLine } from './TagLine';
 
@@ -16,16 +15,7 @@ export const HeroSection: FC = () => {
       className={clsxMerge('relative overflow-hidden', SECTION_CLASSNAME)}
     >
       <div className="mx-auto flex w-full max-w-screen-xl justify-between px-8 lg:px-12 2xl:px-0">
-        <Image
-          priority
-          src={Robert}
-          alt="Robert Henderson, Full-Stack Engineer"
-          className={clsxMerge(
-            'absolute -bottom-2 -left-14 z-10 w-[65%] opacity-90 hue-rotate-15 max-sm:hidden',
-            'sm:-top-2 sm:-left-26 sm:w-[63%] md:-left-28 md:w-[55%] lg:w-[50%] xl:w-[40%] 2xl:-left-10 2xl:w-[33%]',
-            'dark:opacity-70',
-          )}
-        />
+        <HeroBackdrop />
         <div
           className={clsxMerge(
             'flex w-full flex-col pt-13 pb-12',

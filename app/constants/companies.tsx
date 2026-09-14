@@ -62,7 +62,7 @@ export const COMPANIES: CompanyDefinition[] = [
     id: CompanyIdEnum.SphereLabs,
     gridRow: 1,
     gridLogo: <SphereLogo />,
-    gridClassName: 'mb-3 w-56 sm:w-44 md:w-52 lg:w-60',
+    gridClassName: 'mb-3 w-64 sm:w-52 md:w-60 lg:w-64',
     label: 'Sphere Labs',
     years: [2025, 2026],
     image: (
@@ -114,7 +114,7 @@ export const COMPANIES: CompanyDefinition[] = [
       <Image
         src={EiderLogoLarge}
         alt="Eider"
-        className="mx-auto w-40 md:w-48 lg:w-52"
+        className="mx-auto w-44 md:w-52 lg:w-56"
       />
     ),
     gridClassName: 'mb-3',
@@ -306,7 +306,7 @@ export const COMPANIES: CompanyDefinition[] = [
     id: CompanyIdEnum.Salesforce,
     gridRow: 1,
     gridLogo: <SalesforceLogo />,
-    gridClassName: 'w-64 mb-3 sm:w-48 md:w-56 lg:w-64',
+    gridClassName: 'mb-3 w-52 sm:w-40 md:w-44 lg:w-52',
     label: 'Salesforce',
     years: [2018, 2019, 2020, 2021, 2022],
     image: (
