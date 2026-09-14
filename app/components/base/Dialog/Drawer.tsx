@@ -61,7 +61,7 @@ export const Drawer: FC<PropsWithChildren<DrawerProps>> = ({
           ease: 'easeInOut',
         }}
         className={clsxMerge(
-          'absolute top-[10vh] w-full overflow-hidden rounded-t-3xl',
+          'absolute top-[5vh] w-full overflow-hidden rounded-t-3xl',
           'bg-violet-200 dark:bg-slate-950',
         )}
         style={{ y }}
@@ -82,7 +82,7 @@ export const Drawer: FC<PropsWithChildren<DrawerProps>> = ({
           bottom: 0.5,
         }}
       >
-        <div className="relative h-[90vh]">
+        <div className="relative h-[95vh]">
           <button
             type="button"
             aria-label="Drag to close"
