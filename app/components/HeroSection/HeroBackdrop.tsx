@@ -11,8 +11,10 @@ export const HeroBackdrop: FC = () => {
     <div
       aria-hidden="true"
       className={clsxMerge(
-        'pointer-events-none absolute -bottom-10 -left-20 z-0 w-[70%] select-none max-sm:hidden',
-        'sm:-top-10 sm:-left-28 sm:w-[66%] md:-left-32 md:w-[58%] lg:w-[52%] xl:w-[44%] 2xl:-left-16 2xl:w-[38%]',
+        'pointer-events-none absolute -left-[12%] z-0 w-[124%] select-none',
+        'top-12 opacity-60',
+        'sm:-top-8 sm:-left-8 sm:w-[62%] sm:opacity-100',
+        'md:-left-10 md:w-[56%] lg:-left-8 lg:w-[50%] xl:left-0 xl:w-[42%] 2xl:left-4 2xl:w-[36%]',
       )}
     >
       <div
