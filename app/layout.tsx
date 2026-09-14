@@ -8,7 +8,7 @@ import { Footer } from '@/app/components/Footer/Footer';
 import { Header } from '@/app/components/Header/Header';
 import { clsxMerge } from '@/app/utils/clsxMerge';
 import { METADATA, NAME } from './constants/metadata';
-import { BASE_URL } from './constants/urls';
+import { BASE_URL, OG_IMAGE_URL } from './constants/urls';
 import './globals.css';
 
 const dmSans = DM_Sans({
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     siteName: METADATA.title,
     images: [
       {
-        url: `${BASE_URL}/api/og`,
+        url: OG_IMAGE_URL,
       },
     ],
   },
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@site',
     creator: '@roberthenderson',
-    images: `${BASE_URL}/api/og`,
+    images: OG_IMAGE_URL,
   },
 };
 
