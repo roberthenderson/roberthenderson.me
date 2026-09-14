@@ -11,7 +11,7 @@ import { SectionContainer } from '../SectionContainer/SectionContainer';
 import { SectionContent } from '../SectionContent/SectionContent';
 import { SectionHeading } from '../SectionHeading/SectionHeading';
 import { Company } from './Company';
-import { ThisProject } from './ThisProject';
+import { FrontendArchitecture } from './FrontendArchitecture';
 import { useCompanies } from './useCompanies';
 
 export const WorkSection: FC = () => {
@@ -64,7 +64,7 @@ export const WorkSection: FC = () => {
           </Grid>
         ))}
       </SectionContent>
-      <ThisProject />
+      <FrontendArchitecture />
     </SectionContainer>
   );
 };

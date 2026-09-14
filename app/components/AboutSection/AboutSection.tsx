@@ -9,20 +9,20 @@ import { SectionHeading } from '../SectionHeading/SectionHeading';
 
 const ABOUT_SECTIONS = [
   {
-    title: 'Always Learning',
-    text: "I have a degree in Business Administration, but decided to pursue web development when I graduated. I started as an intern designing email marketing emails, and learning SEO. I've continuously needed to learn new coding languages, paradigms, and frameworks.",
+    title: 'Understand the Problem',
+    text: 'I start with the workflow and the people stuck inside it, not the framework. At Sphere I designed an internal operations platform where teams like banking, crypto vaults, and liquidity management create their own org and build dashboard pages out of configurable components wired to their own APIs. That shape only became obvious once I understood the bottleneck was engineering time rather than missing features. Those teams now ship their own pages without me in the loop.',
   },
   {
-    title: 'Take Risks',
-    text: 'My experience includes working on eCommerce websites, enterprise software, and web3/crypto consumer applications. I enjoy a challenge, and am eager to take risks if it means learning more. I started working and did most of my work in crypto during the last bear market.',
+    title: 'Structure for Change',
+    text: "Structure decides whether a project stays cheap to work in after the first month. I created and own @sphere/ui, the company design system built on shadcn and Tailwind, published through GitHub Packages with an automated release workflow and used by every production frontend we run. I also replaced Storybook with a custom Vite component explorer that renders each story inside the system's own layout components, so the documentation matches how the product really looks. One accessibility fix in the library now lands in every app at once.",
   },
   {
-    title: 'Team Player',
-    text: 'Working on teams is what I do. I started my career at a small startup as the 6th employee and have worked at Salesforce with tens of thousands of employees. I have been the technical lead of several teams, and the project lead on many. I know how to collaborate in person and remotely and believe constant communication is the key to staying on track.',
+    title: 'Fast and Accessible',
+    text: 'Performance and accessibility cost far less built in than bolted on, and most of the time they are the same work. I architected and led the Employee Service Catalog Builder at Salesforce, a web-component application with a custom drag-and-drop library and async data loading to meet page-time SLAs, built accessible from the ground up instead of audited later. Before that, on Employee Services Search, I used a custom state manager, debouncing, and stencils to make filtering feel instant across a large record set. Neither one needed a cleanup project afterward.',
   },
   {
-    title: 'Have Fun',
-    text: "There's not much point to all of this if you're not trying to have fun. It's important to me to surround myself with a diverse group of people who challenge me personally and professionally, but also know how to have a great time. My interests beyond coding include cooking, hiking, tricking my house out with IOT, gardening, and most importantly being my daughter's dad.",
+    title: 'Ship, Then Keep Shipping',
+    text: "Getting to production is part of the engineering, not something that happens after it. I founded Loftery LLC and took Eider from an empty repository to public listings on the App Store and Google Play in under five months as the only engineer, clearing Apple App Review and Google Play's closed testing gate myself. It runs on a promotion pipeline with nightly end-to-end tests, 160 Playwright specs, 69 Maestro flows, and over-the-air updates. That is why I can still ship it weekly alongside a full-time job.",
   },
 ];
 
@@ -33,10 +33,10 @@ export const AboutSection: FC = () => {
         <SectionHeading>My Approach</SectionHeading>
       </SectionContent>
       <SectionBanner>
-        My interests are pretty diverse. I grew up rooting for the Miami
-        Dolphins and playing football in the fall. I drew and painted in the
-        winter, and performed in musicals in the spring. My creativity is what
-        led me to web design and ultimately my career as a UI/UX Engineer.
+        Every project I start answers the same four questions before I write a
+        component. Who is blocked and why, what the tenth change will cost, what
+        the product needs to feel like, and how it gets to production every
+        week. Fifteen years of answering them badly is why I answer them first.
       </SectionBanner>
       <SectionContent>
         <Grid className="items-start">
