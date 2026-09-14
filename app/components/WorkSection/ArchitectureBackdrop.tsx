@@ -3,8 +3,11 @@ import { clsxMerge } from '@/app/utils/clsxMerge';
 
 /**
  * Decorative texture for the frontend architecture panel, in the footprint the
- * editor screenshot used to occupy. Pure vector and gradient, so it costs no
- * image request and has no intrinsic size to shift the layout while it loads.
+ * editor screenshot used to occupy. A full-bleed diagonal hatch carries the
+ * whole column so the space reads as filled at any panel height, with stacked
+ * isometric planes centered over it. Deliberately unlike the hero's dot field
+ * and concentric rings. Pure vector, so it costs no image request and has no
+ * intrinsic size to shift the layout while it loads.
  */
 export const ArchitectureBackdrop: FC = () => {
   return (
@@ -13,86 +16,79 @@ export const ArchitectureBackdrop: FC = () => {
       className="pointer-events-none absolute inset-0 select-none"
     >
       <svg
-        viewBox="0 0 520 520"
-        fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={clsxMerge(
-          'absolute top-1/2 right-0 w-[128%] max-w-none -translate-y-1/2',
-          'text-violet-500/45 dark:text-indigo-300/25',
+          'absolute inset-0 h-full w-full',
+          'text-violet-600/35 dark:text-indigo-300/20',
         )}
         role="presentation"
       >
         <defs>
           <pattern
-            id="architecture-backdrop-dots"
+            id="architecture-hatch"
             width="18"
             height="18"
             patternUnits="userSpaceOnUse"
           >
-            <circle cx="2" cy="2" r="1.6" fill="currentColor" />
+            <path
+              d="M-1 1 l2 -2 M0 18 l18 -18 M17 19 l2 -2"
+              stroke="currentColor"
+              strokeWidth="1"
+              fill="none"
+            />
           </pattern>
-          <radialGradient id="architecture-backdrop-fade">
-            <stop offset="0%" stopColor="#fff" stopOpacity="1" />
-            <stop offset="60%" stopColor="#fff" stopOpacity="0.5" />
-            <stop offset="100%" stopColor="#fff" stopOpacity="0" />
-          </radialGradient>
-          <mask id="architecture-backdrop-mask">
-            <rect
-              width="520"
-              height="520"
-              fill="url(#architecture-backdrop-fade)"
-            />
-          </mask>
         </defs>
-        <g mask="url(#architecture-backdrop-mask)">
-          <rect
-            width="520"
-            height="520"
-            fill="url(#architecture-backdrop-dots)"
+        <rect width="100%" height="100%" fill="url(#architecture-hatch)" />
+      </svg>
+      <svg
+        viewBox="0 0 520 560"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className={clsxMerge(
+          'absolute top-1/2 right-0 w-[118%] max-w-none -translate-y-1/2',
+          'text-violet-700/45 dark:text-indigo-200/30',
+        )}
+        role="presentation"
+      >
+        <g stroke="currentColor" strokeLinejoin="round">
+          <path
+            d="M260 34 408 80 260 126 112 80Z"
+            strokeWidth="1"
+            fill="currentColor"
+            fillOpacity="0.07"
           />
-          <g stroke="currentColor" fill="none">
-            <rect
-              x="150"
-              y="322"
-              width="220"
-              height="64"
-              rx="10"
-              strokeWidth="1.75"
-            />
-            <rect
-              x="176"
-              y="232"
-              width="168"
-              height="58"
-              rx="10"
-              strokeWidth="1.25"
-            />
-            <rect
-              x="120"
-              y="132"
-              width="126"
-              height="52"
-              rx="10"
-              strokeWidth="1"
-            />
-            <rect
-              x="274"
-              y="132"
-              width="126"
-              height="52"
-              rx="10"
-              strokeWidth="1"
-            />
-            <path d="M183 184v48M337 184v48M260 290v32" strokeWidth="1" />
-          </g>
-          <g fill="currentColor">
-            <circle cx="183" cy="184" r="4" />
-            <circle cx="337" cy="184" r="4" />
-            <circle cx="260" cy="290" r="4" />
-            <circle cx="260" cy="322" r="4" />
-          </g>
+          <path d="M260 174 408 220 260 266 112 220Z" strokeWidth="1.75" />
+          <path
+            d="M260 314 408 360 260 406 112 360Z"
+            strokeWidth="1"
+            fill="currentColor"
+            fillOpacity="0.07"
+          />
+          <path d="M260 454 408 500 260 546 112 500Z" strokeWidth="1" />
+          <path
+            d="M260 126v48M260 266v48M260 406v48"
+            strokeWidth="1"
+            strokeDasharray="5 7"
+          />
+        </g>
+        <g fill="currentColor">
+          <circle cx="260" cy="126" r="4.5" />
+          <circle cx="260" cy="266" r="4.5" />
+          <circle cx="260" cy="406" r="4.5" />
         </g>
       </svg>
+      <div
+        className={clsxMerge(
+          'absolute inset-x-0 top-0 h-40',
+          'bg-gradient-to-b from-violet-200 to-transparent dark:from-slate-750',
+        )}
+      />
+      <div
+        className={clsxMerge(
+          'absolute inset-x-0 bottom-0 h-40',
+          'bg-gradient-to-t from-violet-200 to-transparent dark:from-slate-750',
+        )}
+      />
     </div>
   );
 };
