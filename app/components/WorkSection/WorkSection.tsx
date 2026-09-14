@@ -56,7 +56,7 @@ export const WorkSection: FC = () => {
           <Grid
             key={row[0].id}
             columns={row.length}
-            className="sm:min-h-28 lg:min-h-32"
+            className="auto-rows-[minmax(68px,auto)] gap-8 sm:min-h-28 sm:auto-rows-auto lg:min-h-32"
           >
             {row.map((company) => (
               <Company key={company.id} company={company} />
