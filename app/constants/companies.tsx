@@ -114,10 +114,10 @@ export const COMPANIES: CompanyDefinition[] = [
       <Image
         src={EiderLogoLarge}
         alt="Eider"
-        className="mx-auto w-44 md:w-52 lg:w-56"
+        className="mx-auto w-24 lg:w-26"
       />
     ),
-    gridClassName: 'mb-3',
+    gridClassName: 'mb-3 pb-2.5',
     label: 'Eider',
     years: [2026],
     image: (
@@ -164,7 +164,7 @@ export const COMPANIES: CompanyDefinition[] = [
     id: CompanyIdEnum.Umbrellx,
     gridRow: 3,
     gridLogo: <UmbrellxLogo />,
-    gridClassName: 'w-11/12 sm:w-full min-[500px]:px-12 pt-4 sm:pt-0',
+    gridClassName: 'w-4/5 pt-4 pb-2 min-[500px]:px-12 sm:pt-0 xl:w-3/4',
     label: 'Umbrellx',
     years: [2025],
     image: (
