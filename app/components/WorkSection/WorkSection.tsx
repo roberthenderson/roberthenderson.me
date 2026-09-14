@@ -53,7 +53,11 @@ export const WorkSection: FC = () => {
       </SectionBanner>
       <SectionContent className="md:pt-18 md:pb-24">
         {companyRows.map((row) => (
-          <Grid key={row[0].id} columns={row.length}>
+          <Grid
+            key={row[0].id}
+            columns={row.length}
+            className="sm:min-h-28 lg:min-h-32"
+          >
             {row.map((company) => (
               <Company key={company.id} company={company} />
             ))}

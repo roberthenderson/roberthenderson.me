@@ -62,7 +62,7 @@ export const COMPANIES: CompanyDefinition[] = [
     id: CompanyIdEnum.SphereLabs,
     gridRow: 1,
     gridLogo: <SphereLogo />,
-    gridClassName: 'mb-3 w-64 sm:w-52 md:w-60 lg:w-64',
+    gridClassName: 'w-64 sm:w-52 md:w-60 lg:w-64',
     label: 'Sphere Labs',
     years: [2025, 2026],
     image: (
@@ -117,7 +117,7 @@ export const COMPANIES: CompanyDefinition[] = [
         className="mx-auto w-24 lg:w-26"
       />
     ),
-    gridClassName: 'mb-3 pb-2.5',
+    gridClassName: 'pb-2.5',
     label: 'Eider',
     years: [2026],
     image: (
@@ -203,7 +203,7 @@ export const COMPANIES: CompanyDefinition[] = [
     id: CompanyIdEnum.MagicEden,
     gridRow: 2,
     gridLogo: <MagicEdenLogo />,
-    gridClassName: 'w-72 md:w-88 lg:w-96 mb-4',
+    gridClassName: 'w-72 md:w-88 lg:w-96',
     label: 'Magic Eden',
     years: [2023, 2024],
     image: (
@@ -306,7 +306,7 @@ export const COMPANIES: CompanyDefinition[] = [
     id: CompanyIdEnum.Salesforce,
     gridRow: 1,
     gridLogo: <SalesforceLogo />,
-    gridClassName: 'mb-3 w-52 sm:w-40 md:w-44 lg:w-52',
+    gridClassName: 'w-52 sm:w-40 md:w-44 lg:w-52',
     label: 'Salesforce',
     years: [2018, 2019, 2020, 2021, 2022],
     image: (

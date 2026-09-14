@@ -4,7 +4,8 @@ import { clsxMerge } from '@/app/utils/clsxMerge';
 /**
  * Umbrellx brand lockup: the umbrella mark and wordmark as one vector.
  * Glyphs inherit `currentColor`; the brand purple is too dark to read on the
- * dark background, so the dark theme lightens it rather than dimming the mark.
+ * dark background, so the dark theme swaps in the brand's light lavender rather
+ * than dimming the mark.
  */
 export const UmbrellxLogo: FC = () => {
   return (
@@ -12,7 +13,7 @@ export const UmbrellxLogo: FC = () => {
       viewBox="0 0 1228 215"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={clsxMerge('text-[#530a74] dark:text-[#c084fc]')}
+      className={clsxMerge('text-[#530a74] dark:text-[#f2dffc]')}
       role="img"
     >
       <title>Umbrellx</title>
