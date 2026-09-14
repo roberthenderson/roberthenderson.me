@@ -1,5 +1,6 @@
 import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata, Viewport } from 'next';
+import { DM_Sans, DM_Serif_Text, League_Spartan } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 import type { PropsWithChildren, ReactNode } from 'react';
 import { AppContextProvider } from '@/app/AppContextProvider';
@@ -9,6 +10,26 @@ import { clsxMerge } from '@/app/utils/clsxMerge';
 import { METADATA, NAME } from './constants/metadata';
 import { BASE_URL } from './constants/urls';
 import './globals.css';
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+  variable: '--font-dm-sans',
+});
+
+const dmSerifText = DM_Serif_Text({
+  subsets: ['latin'],
+  weight: '400',
+  display: 'swap',
+  variable: '--font-dm-serif-text',
+});
+
+const leagueSpartan = League_Spartan({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-league-spartan',
+});
 
 export const viewport: Viewport = {
   themeColor: '#c7d2fe',
@@ -61,7 +82,15 @@ export default function Layout({
   modal,
 }: PropsWithChildren<LayoutProps>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={clsxMerge(
+        dmSans.variable,
+        dmSerifText.variable,
+        leagueSpartan.variable,
+      )}
+      suppressHydrationWarning
+    >
       <body>
         <ThemeProvider attribute="class" enableColorScheme>
           <AppContextProvider>

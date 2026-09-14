@@ -31,9 +31,9 @@ export default {
         logo: '2.5rem',
       },
       fontFamily: {
-        leagueSpartan: '"League Spartan", serif',
-        dmSerif: '"DM Serif Text", serif',
-        dmSans: '"DM Sans", serif',
+        leagueSpartan: 'var(--font-league-spartan), sans-serif',
+        dmSerif: 'var(--font-dm-serif-text), serif',
+        dmSans: 'var(--font-dm-sans), sans-serif',
       },
       fontWeight: {
         500: '500',
