@@ -37,15 +37,89 @@ export async function GET(request: NextRequest) {
         style={{
           display: 'flex',
           position: 'absolute',
-          left: -140,
-          top: -10,
+          left: -110,
+          top: -25,
+          width: 620,
+          height: 620,
         }}
       >
-        <img
-          src={`${baseUrl}/robert.png`}
-          alt="Robert Henderson, Full-Stack Engineer"
-          width="583"
-          height="630"
+        <div
+          style={{
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            width: 620,
+            height: 620,
+            borderRadius: 310,
+            background:
+              'radial-gradient(circle, rgba(99,102,241,0.34) 0%, rgba(99,102,241,0) 70%)',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            left: 70,
+            top: 70,
+            width: 480,
+            height: 480,
+            borderRadius: 240,
+            border: '1px solid rgba(148,163,184,0.28)',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            left: 140,
+            top: 140,
+            width: 340,
+            height: 340,
+            borderRadius: 170,
+            border: '1px solid rgba(148,163,184,0.4)',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            left: 205,
+            top: 205,
+            width: 210,
+            height: 210,
+            borderRadius: 105,
+            border: '2px solid rgba(148,163,184,0.5)',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            left: 303,
+            top: 63,
+            width: 14,
+            height: 14,
+            borderRadius: 7,
+            background: '#ca8a04',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            left: 539,
+            top: 304,
+            width: 11,
+            height: 11,
+            borderRadius: 6,
+            background: '#ca8a04',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            left: 166,
+            top: 476,
+            width: 9,
+            height: 9,
+            borderRadius: 5,
+            background: '#64748b',
+          }}
         />
       </div>
       <div
@@ -131,6 +205,12 @@ export async function GET(request: NextRequest) {
           }}
         >
           <img
+            alt="Next.js"
+            src={`${baseUrl}/icons/og/nextjs.svg`}
+            width={50}
+            height={50}
+          />
+          <img
             alt="React"
             src={`${baseUrl}/icons/og/react.svg`}
             width={60}
@@ -149,22 +229,16 @@ export async function GET(request: NextRequest) {
             height={60}
           />
           <img
-            alt="Next.js"
-            src={`${baseUrl}/icons/og/nextjs.svg`}
-            width={50}
-            height={50}
+            alt="Postgres"
+            src={`${baseUrl}/icons/og/postgres.svg`}
+            width={54}
+            height={54}
           />
           <img
-            alt="JavaScript"
-            src={`${baseUrl}/icons/og/js.svg`}
-            width={50}
-            height={50}
-          />
-          <img
-            alt="Git"
-            src={`${baseUrl}/icons/og/git.svg`}
-            width={50}
-            height={50}
+            alt="Expo and React Native"
+            src={`${baseUrl}/icons/og/expo.svg`}
+            width={52}
+            height={52}
           />
         </div>
       </div>
