@@ -63,14 +63,14 @@ export const FrontendArchitecture: FC = () => {
               'flex w-full flex-col gap-8 md:w-[70%] md:gap-6 lg:w-[65%]',
               'relative z-20 overflow-y-hidden',
               'px-8 pt-8 pb-16 sm:px-12 md:px-12 md:pt-10 md:pr-0 md:pb-12',
-              'text-center md:text-left',
+              'text-left',
             )}
           >
-            <div className="flex flex-col items-center gap-3 md:flex-row md:gap-8">
+            <div className="flex flex-col items-start gap-3 md:flex-row md:items-center md:gap-8">
               <h4
                 className={clsxMerge(
-                  'text-center font-dmSerif font-semibold md:text-left',
-                  'text-[40px]',
+                  'text-left font-dmSerif font-semibold',
+                  'text-[40px]/[1.1]',
                 )}
               >
                 Frontend Architecture
@@ -79,7 +79,7 @@ export const FrontendArchitecture: FC = () => {
                 href={GITHUB_REPO_URL}
                 target="_blank"
                 variant="primary"
-                className="flex items-center gap-2.5 px-8"
+                className="flex shrink-0 items-center gap-2.5 self-start whitespace-nowrap px-8 md:self-center"
               >
                 <SiGithub />
                 <span>GitHub Repo</span>
@@ -96,7 +96,7 @@ export const FrontendArchitecture: FC = () => {
             <ul className="flex flex-col gap-6 text-left">
               {ARCHITECTURE_PRINCIPLES.map((principle) => (
                 <li key={principle.title}>
-                  <p className="font-dmSerif font-semibold text-[22px]/8 text-violet-700 dark:text-slate-200">
+                  <p className="mb-2 font-dmSerif font-semibold text-[22px]/8 text-violet-700 dark:text-slate-200">
                     {principle.title}
                   </p>
                   <p className="dark:text-slate-400">{principle.text}</p>

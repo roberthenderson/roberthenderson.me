@@ -43,7 +43,7 @@ export const AboutSection: FC = () => {
       <SectionContent>
         <Grid className="items-start">
           {ABOUT_SECTIONS.map((section) => (
-            <div key={section.title} className="text-center sm:text-left">
+            <div key={section.title} className="text-left">
               <p className="font-dmSerif font-semibold text-[22px]/12 text-violet-700 sm:text-[26px]/12 dark:text-slate-200">
                 {section.title}
               </p>

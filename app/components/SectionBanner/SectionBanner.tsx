@@ -15,7 +15,7 @@ export const SectionBanner: FC<PropsWithChildren<SectionBannerProps>> = ({
       className,
     )}
   >
-    <div className="mx-auto flex max-w-screen-xl flex-col gap-6 px-8 pt-4 pb-2 text-center sm:px-12 sm:text-left md:px-12 md:py-8 2xl:px-0">
+    <div className="mx-auto flex max-w-screen-xl flex-col gap-6 px-8 pt-4 pb-2 text-left sm:px-12 md:px-12 md:py-8 2xl:px-0">
       {children}
     </div>
   </div>
