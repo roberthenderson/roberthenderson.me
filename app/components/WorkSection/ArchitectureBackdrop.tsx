@@ -34,8 +34,8 @@ export const ArchitectureBackdrop: FC = () => {
         <defs>
           <pattern
             id="architecture-flow"
-            width="300"
-            height="260"
+            width="375"
+            height="325"
             patternUnits="userSpaceOnUse"
           >
             <g
@@ -44,36 +44,36 @@ export const ArchitectureBackdrop: FC = () => {
               strokeWidth="1.5"
               strokeLinecap="round"
             >
-              <path d="M150 0v18" />
-              <rect x="95" y="18" width="110" height="44" rx="18" />
-              <path d="M150 62v18a6 6 0 0 1-6 6H66a6 6 0 0 0-6 6v20" />
-              <path d="M150 62v18a6 6 0 0 0 6 6h78a6 6 0 0 1 6 6v20" />
+              <path d="M187.5 0v22.5" />
+              <rect x="118.75" y="22.5" width="137.5" height="55" rx="22.5" />
+              <path d="M187.5 77.5V100a7.5 7.5 0 0 1-7.5 7.5H82.5a7.5 7.5 0 0 0-7.5 7.5v25" />
+              <path d="M187.5 77.5V100a7.5 7.5 0 0 0 7.5 7.5h97.5a7.5 7.5 0 0 1 7.5 7.5v25" />
               <rect
-                x="14"
-                y="112"
-                width="92"
-                height="40"
-                rx="16"
+                x="17.5"
+                y="140"
+                width="115"
+                height="50"
+                rx="20"
                 fill="currentColor"
                 fillOpacity="0.07"
               />
-              <rect x="194" y="112" width="92" height="40" rx="16" />
-              <path d="M60 152v18a6 6 0 0 0 6 6h78a6 6 0 0 1 6 6v18" />
-              <path d="M240 152v18a6 6 0 0 1-6 6h-78a6 6 0 0 0-6 6v18" />
+              <rect x="242.5" y="140" width="115" height="50" rx="20" />
+              <path d="M75 190v22.5a7.5 7.5 0 0 0 7.5 7.5H180a7.5 7.5 0 0 1 7.5 7.5V250" />
+              <path d="M300 190v22.5a7.5 7.5 0 0 1-7.5 7.5H195a7.5 7.5 0 0 0-7.5 7.5V250" />
               <rect
-                x="110"
-                y="200"
-                width="80"
-                height="36"
-                rx="15"
+                x="137.5"
+                y="250"
+                width="100"
+                height="45"
+                rx="18.75"
                 fill="currentColor"
                 fillOpacity="0.07"
               />
-              <path d="M150 236v24" />
+              <path d="M187.5 295v30" />
             </g>
             <g fill="currentColor">
-              <circle cx="150" cy="86" r="3" />
-              <circle cx="150" cy="176" r="3" />
+              <circle cx="187.5" cy="107.5" r="3.75" />
+              <circle cx="187.5" cy="220" r="3.75" />
             </g>
           </pattern>
         </defs>

@@ -93,7 +93,8 @@ export const FrontendArchitecture: FC = () => {
         </div>
         <div
           className={clsxMerge(
-            'absolute top-0 right-0 hidden h-full w-1/2 overflow-hidden md:block',
+            'absolute top-0 right-0 hidden h-full overflow-hidden md:block',
+            'md:w-[30%] lg:w-[35%]',
           )}
         >
           <div
