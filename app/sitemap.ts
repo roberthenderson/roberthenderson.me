@@ -1,69 +1,34 @@
 import type { MetadataRoute } from 'next';
-import { ROUTES } from './constants/routes';
+import { COMPANIES } from './constants/companies';
+import { getCompanyRoute, ROUTES } from './constants/routes';
 import { BASE_URL } from './constants/urls';
-import { CompanyIdEnum, PageSectionIdEnum } from './types';
+import { PageSectionIdEnum } from './types';
+
+const SECTION_PRIORITY: Partial<Record<PageSectionIdEnum, number>> = {
+  [PageSectionIdEnum.Contact]: 0.5,
+};
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date();
+
   return [
     {
       url: BASE_URL,
-      lastModified: new Date(),
+      lastModified,
       changeFrequency: 'yearly',
       priority: 1,
     },
-    {
-      url: `${BASE_URL}${ROUTES[PageSectionIdEnum.Skills].route}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}${ROUTES[PageSectionIdEnum.Work].route}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}${ROUTES[PageSectionIdEnum.About].route}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${BASE_URL}${ROUTES[PageSectionIdEnum.Contact].route}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
+    ...Object.values(PageSectionIdEnum).map((id) => ({
+      url: `${BASE_URL}${ROUTES[id].route}`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: SECTION_PRIORITY[id] ?? 0.8,
+    })),
+    ...COMPANIES.map((company) => ({
+      url: `${BASE_URL}${getCompanyRoute(company.id)}`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
       priority: 0.5,
-    },
-    {
-      url: `${BASE_URL}${ROUTES[CompanyIdEnum.MagicEden].route}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
-    {
-      url: `${BASE_URL}${ROUTES[CompanyIdEnum.Metaplex].route}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
-    {
-      url: `${BASE_URL}${ROUTES[CompanyIdEnum.Salesforce].route}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
-    {
-      url: `${BASE_URL}${ROUTES[CompanyIdEnum.Vlocity].route}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
-    {
-      url: `${BASE_URL}${ROUTES[CompanyIdEnum.BlueAcorn].route}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
+    })),
   ];
 }

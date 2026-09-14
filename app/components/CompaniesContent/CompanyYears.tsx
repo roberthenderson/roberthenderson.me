@@ -1,6 +1,6 @@
+import type { FC } from 'react';
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import { FC } from 'react';
-import { Tag, TagProps } from '../base/Tag/Tag';
+import { Tag, type TagProps } from '../base/Tag/Tag';
 
 interface CompanyYearsProps {
   years: number[];

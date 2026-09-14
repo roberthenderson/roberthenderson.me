@@ -1,5 +1,5 @@
-import { BASE_URL } from '@/app/constants/urls';
 import Head from 'next/head';
+import { BASE_URL } from '@/app/constants/urls';
 
 const METADATA = {
   title: 'Robert Henderson | Senior Full-Stack Engineer',

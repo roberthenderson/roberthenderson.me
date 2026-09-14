@@ -1,10 +1,10 @@
-import { clsxMerge } from '@/app/utils/clsxMerge';
 import { Fieldset, Legend } from '@headlessui/react';
-import { ChangeEvent, FC, ReactNode, useMemo } from 'react';
-import { Button, ButtonProps } from '../Button/Button';
+import { type ChangeEvent, type FC, type ReactNode, useMemo } from 'react';
+import { clsxMerge } from '@/app/utils/clsxMerge';
+import { Button, type ButtonProps } from '../Button/Button';
 import { InputField } from '../Input/Input';
 import { TextareaField } from '../Textarea/Textarea';
-import { FormState } from './useFormState';
+import type { FormState } from './useFormState';
 
 interface FormField {
   type: 'text' | 'email' | 'textarea';
@@ -45,14 +45,16 @@ export const Form: FC<FormProps> = ({ data, state }) => {
     <div className="flex flex-col items-end">
       <Fieldset className="mx-auto flex flex-col gap-6">
         {legend && <Legend>{legend}</Legend>}
-        {fields.map((field, index) => {
-          return <FormField key={index} field={field} state={state} />;
+        {fields.map((field) => {
+          return (
+            <FormField key={field.props.name} field={field} state={state} />
+          );
         })}
       </Fieldset>
       <Button
         variant={button.variant}
         onClick={button.onClick}
-        className={clsxMerge('mb-1 mt-4', button.className)}
+        className={clsxMerge('mt-4 mb-1', button.className)}
         disabled={state.disabled}
       >
         {button.label}
@@ -113,7 +115,7 @@ interface ErrorMessageProps {
 const ErrorMessage: FC<ErrorMessageProps> = ({ error, className }) => (
   <span
     className={clsxMerge(
-      'self-start text-sm font-500 text-red-400 dark:text-red-300',
+      'self-start font-500 text-red-400 text-sm dark:text-red-300',
       className,
     )}
   >

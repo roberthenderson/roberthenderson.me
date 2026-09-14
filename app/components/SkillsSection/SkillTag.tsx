@@ -1,6 +1,6 @@
-import { FC, useMemo } from 'react';
+import { type FC, useMemo } from 'react';
 import { Tag } from '../base/Tag/Tag';
-import { ISkillTag } from './useSkills';
+import type { ISkillTag } from './useSkills';
 
 interface SkillTagProps {
   skill: ISkillTag;

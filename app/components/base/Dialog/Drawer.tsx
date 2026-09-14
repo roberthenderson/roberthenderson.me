@@ -1,14 +1,14 @@
 'use client';
 
-import { clsxMerge } from '@/app/utils/clsxMerge';
 import {
   motion,
   useAnimate,
   useDragControls,
   useMotionValue,
 } from 'motion/react';
-import { FC, PropsWithChildren } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 import useMeasure from 'react-use-measure';
+import { clsxMerge } from '@/app/utils/clsxMerge';
 
 interface DrawerProps {
   onClose?: () => void;
@@ -84,9 +84,11 @@ export const Drawer: FC<PropsWithChildren<DrawerProps>> = ({
       >
         <div className="relative h-[90vh]">
           <button
+            type="button"
+            aria-label="Drag to close"
             onPointerDown={(e) => controls.start(e)}
             className={clsxMerge(
-              'absolute left-0 top-0',
+              'absolute top-0 left-0',
               'flex h-10 w-full cursor-grab touch-none justify-center active:cursor-grabbing',
             )}
           >

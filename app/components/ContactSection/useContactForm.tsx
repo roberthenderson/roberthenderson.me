@@ -1,14 +1,14 @@
 'use client';
 
-import { clsxMerge } from '@/app/utils/clsxMerge';
-import { formatGAErrorString } from '@/app/utils/formatGAErrorString';
-import { validateEmail } from '@/app/utils/validateEmail';
 import { sendGAEvent } from '@next/third-parties/google';
 import { useCallback, useMemo, useReducer } from 'react';
 import { BiMailSend } from 'react-icons/bi';
 import { CgSpinner } from 'react-icons/cg';
 import { useDebouncedCallback } from 'use-debounce';
-import { FormData } from '../base/Form/Form';
+import { clsxMerge } from '@/app/utils/clsxMerge';
+import { formatGAErrorString } from '@/app/utils/formatGAErrorString';
+import { validateEmail } from '@/app/utils/validateEmail';
+import type { FormData } from '../base/Form/Form';
 import { FormActionType, useFormState } from '../base/Form/useFormState';
 import { useToast } from '../base/Toast/useToast';
 
@@ -53,10 +53,12 @@ const EMAIL_INVALID_MESSAGE = 'Please enter a valid email address.';
 export const useContactForm = () => {
   const { formState, dispatchFormState, toggleLoading } = useFormState();
   const [state, dispatch] = useReducer(reducer, initialState);
-  const resetState = () => {
+  const resetState = useCallback(() => {
     const types = Object.values(ContactFormActionType);
-    types.forEach((type) => dispatch({ type, payload: '' }));
-  };
+    types.forEach((type) => {
+      dispatch({ type, payload: '' });
+    });
+  }, []);
   const { toast, openToast, closeToast } = useToast();
 
   const handleError = useCallback(
@@ -166,6 +168,7 @@ export const useContactForm = () => {
     openToast,
     toggleLoading,
     handleError,
+    resetState,
   ]);
 
   const handleValidateEmail = useDebouncedCallback((email: string) => {

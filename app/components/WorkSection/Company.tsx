@@ -1,9 +1,9 @@
+import Link from 'next/link';
+import type { FC } from 'react';
 import { ROUTES } from '@/app/constants/routes';
 import { PageSectionIdEnum } from '@/app/types';
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import Link from 'next/link';
-import { FC } from 'react';
-import { ICompany } from './useCompanies';
+import type { ICompany } from './useCompanies';
 
 interface CompanyProps {
   company: ICompany;
@@ -17,7 +17,7 @@ export const Company: FC<CompanyProps> = ({ company }) => {
       scroll={false}
       suppressHydrationWarning
       className={clsxMerge(
-        'mx-auto px-6 opacity-100 transition-opacity duration-200 min-[480px]:px-10 sm:px-0 md:px-4',
+        'mx-auto px-6 opacity-100 transition-opacity duration-200 sm:px-0 md:px-4 min-[480px]:px-10',
         'hover:opacity-70',
         company.className,
       )}

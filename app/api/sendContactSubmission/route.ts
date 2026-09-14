@@ -1,5 +1,5 @@
-import { ContactSubmission } from '@/app/components/emailTemplates/ContactSubmission';
 import { Resend } from 'resend';
+import { ContactSubmission } from '@/app/components/emailTemplates/ContactSubmission';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 

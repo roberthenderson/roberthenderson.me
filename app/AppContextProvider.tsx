@@ -2,16 +2,16 @@
 
 import {
   createContext,
-  Dispatch,
-  FC,
-  PropsWithChildren,
-  RefObject,
-  SetStateAction,
+  type Dispatch,
+  type FC,
+  type PropsWithChildren,
+  type RefObject,
+  type SetStateAction,
   useContext,
   useState,
 } from 'react';
-import { DialogType } from './components/base/Dialog/Dialog';
-import { PageSection } from './types';
+import type { DialogType } from './components/base/Dialog/Dialog';
+import type { PageSection } from './types';
 
 type HeaderRef = RefObject<HTMLElement | null> | null;
 type PageSections = PageSection[] | null;

@@ -1,6 +1,6 @@
+import Link, { type LinkProps } from 'next/link';
+import type { FC, HTMLProps } from 'react';
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import Link, { LinkProps } from 'next/link';
-import { FC, HTMLProps } from 'react';
 
 type TextLinkProps = LinkProps & HTMLProps<HTMLAnchorElement>;
 

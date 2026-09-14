@@ -1,10 +1,10 @@
+import Image from 'next/image';
+import type { FC } from 'react';
+import { RxOpenInNewWindow } from 'react-icons/rx';
+import { SiGithub } from 'react-icons/si';
 import { THIS_PROJECT_SCREENSHOT_CLASSNAME } from '@/app/constants/classNames';
 import { GITHUB_REPO_URL } from '@/app/constants/urls';
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import Image from 'next/image';
-import { FC } from 'react';
-import { RxOpenInNewWindow } from 'react-icons/rx';
-import { SiGithub } from 'react-icons/si';
 import VsCode from '../../../public/companies/vscode.png';
 import VsCodeLight from '../../../public/companies/vscode_light.png';
 import { LinkButton } from '../base/Button/LinkButton';
@@ -16,16 +16,16 @@ export const ThisProject: FC = () => {
     <SectionContainer>
       <div
         className={clsxMerge(
-          'w-full border-t-5 border-violet-400 dark:border-slate-600',
-          'dark:bg-slate-750 relative bg-violet-200',
+          'w-full border-violet-400 border-t-5 dark:border-slate-600',
+          'relative bg-violet-200 dark:bg-slate-750',
         )}
       >
-        <div className="dark:bg-slate-750 mx-auto flex max-w-screen-xl flex-col bg-violet-200 md:flex-row">
+        <div className="mx-auto flex max-w-screen-xl flex-col bg-violet-200 md:flex-row dark:bg-slate-750">
           <div
             className={clsxMerge(
               'flex w-full flex-col gap-8 md:w-[70%] md:gap-6 lg:w-[65%]',
               'relative z-20 overflow-y-hidden',
-              'px-8 pb-16 pt-8 sm:px-12 md:px-12 md:pb-12 md:pr-0 md:pt-10',
+              'px-8 pt-8 pb-16 sm:px-12 md:px-12 md:pt-10 md:pr-0 md:pb-12',
               'text-center md:text-left',
             )}
           >
@@ -75,14 +75,14 @@ export const ThisProject: FC = () => {
         </div>
         <div
           className={clsxMerge(
-            'absolute right-0 top-0 hidden h-full w-1/2 overflow-hidden md:block',
+            'absolute top-0 right-0 hidden h-full w-1/2 overflow-hidden md:block',
           )}
         >
           <div
             className={clsxMerge(
               'absolute right-0 z-10 h-full w-full',
-              'dark:from-slate-750 bg-gradient-to-r from-violet-200 to-transparent',
-              'via-violet-200/90 to-100% md:from-10% md:via-30% lg:from-0% lg:via-20% dark:to-100% md:dark:from-40% lg:dark:from-20% lg:dark:to-80%',
+              'bg-gradient-to-r from-violet-200 to-transparent dark:from-slate-750',
+              'via-violet-200/90 to-100% md:from-10% md:via-30% lg:from-0% lg:via-20% dark:to-100% lg:dark:from-20% lg:dark:to-80% md:dark:from-40%',
             )}
           />
           <Image

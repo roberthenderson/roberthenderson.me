@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { FC } from 'react';
+import type { FC } from 'react';
 import { ImQuotesRight } from 'react-icons/im';
 import { Grid } from '../base/Grid/Grid';
 import { SectionBanner } from '../SectionBanner/SectionBanner';
@@ -40,9 +40,9 @@ export const AboutSection: FC = () => {
       </SectionBanner>
       <SectionContent>
         <Grid className="items-start">
-          {ABOUT_SECTIONS.map((section, index) => (
-            <div key={index} className="text-center sm:text-left">
-              <p className="font-dmSerif text-[22px]/12 font-semibold text-violet-700 sm:text-[26px]/12 dark:text-slate-200">
+          {ABOUT_SECTIONS.map((section) => (
+            <div key={section.title} className="text-center sm:text-left">
+              <p className="font-dmSerif font-semibold text-[22px]/12 text-violet-700 sm:text-[26px]/12 dark:text-slate-200">
                 {section.title}
               </p>
               <p className="dark:text-slate-400">{section.text}</p>

@@ -3,12 +3,9 @@ import allColors from 'tailwindcss/colors';
 
 const entries = Object.entries(
   Object.getOwnPropertyDescriptors(allColors),
-).filter(
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  ([key, descriptor]) => {
-    return typeof descriptor.get !== 'function'; // Exclude getters
-  },
-);
+).filter(([, descriptor]) => {
+  return typeof descriptor.get !== 'function'; // Exclude getters
+});
 
 export const colors = Object.fromEntries(
   entries.map(([key, descriptor]) => [key, descriptor.value]),

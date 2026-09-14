@@ -1,9 +1,9 @@
-import { FC } from 'react';
+import type { FC } from 'react';
+import { Form } from '../base/Form/Form';
+import { Toast } from '../base/Toast/Toast';
 import { SectionContainer } from '../SectionContainer/SectionContainer';
 import { SectionContent } from '../SectionContent/SectionContent';
 import { SectionHeading } from '../SectionHeading/SectionHeading';
-import { Form } from '../base/Form/Form';
-import { Toast } from '../base/Toast/Toast';
 import { useContactForm } from './useContactForm';
 
 export const ContactSection: FC = () => {

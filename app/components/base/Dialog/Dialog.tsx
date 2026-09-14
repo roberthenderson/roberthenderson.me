@@ -1,10 +1,10 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+import { type FC, type PropsWithChildren, useEffect } from 'react';
 import { useAppContext } from '@/app/AppContextProvider';
 import { useScreenSize } from '@/app/hooks/useScreenSize';
 import { shouldLockPageScroll } from '@/app/utils/shouldLockPageScroll';
-import { useRouter } from 'next/navigation';
-import { FC, PropsWithChildren, useEffect } from 'react';
 import { Drawer } from './Drawer';
 import { Modal } from './Modal';
 

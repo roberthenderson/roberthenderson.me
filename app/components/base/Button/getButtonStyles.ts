@@ -1,6 +1,6 @@
+import type { ButtonProps as HeadlessButtonProps } from '@headlessui/react';
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import { ButtonProps as HeadlessButtonProps } from '@headlessui/react';
-import { ButtonProps } from './Button';
+import type { ButtonProps } from './Button';
 
 export const getButtonStyles = ({
   variant,

@@ -1,5 +1,5 @@
+import type { FC, PropsWithChildren } from 'react';
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import { FC, PropsWithChildren } from 'react';
 
 interface GridProps {
   columns?: number;

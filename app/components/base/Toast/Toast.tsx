@@ -1,11 +1,11 @@
 'use client';
 
-import { clsxMerge } from '@/app/utils/clsxMerge';
 import { Transition } from '@headlessui/react';
-import { FC, ReactNode, useEffect } from 'react';
+import { type FC, type ReactNode, useEffect } from 'react';
 import { BsExclamationCircle } from 'react-icons/bs';
 import { FaRegCircleCheck } from 'react-icons/fa6';
 import { IoClose } from 'react-icons/io5';
+import { clsxMerge } from '@/app/utils/clsxMerge';
 
 export interface ToastProps {
   type?: 'success' | 'error';
@@ -52,7 +52,7 @@ export const Toast: FC<ToastProps> = ({
       >
         <div
           className={clsxMerge(
-            'pointer-events-auto flex items-center justify-between gap-x-6 bg-slate-300 py-2.5 pl-6 pr-5 sm:rounded-xl sm:py-3',
+            'pointer-events-auto flex items-center justify-between gap-x-6 bg-slate-300 py-2.5 pr-5 pl-6 sm:rounded-xl sm:py-3',
             'dark:bg-slate-500',
             type === 'success' &&
               'bg-emerald-600 text-emerald-50 dark:bg-emerald-600',
@@ -65,7 +65,11 @@ export const Toast: FC<ToastProps> = ({
             {type === 'error' && <BsExclamationCircle className="opacity-85" />}
             <span>{message}</span>
           </div>
-          <button onClick={onClose}>
+          <button
+            type="button"
+            aria-label="Dismiss notification"
+            onClick={onClose}
+          >
             <IoClose />
           </button>
         </div>

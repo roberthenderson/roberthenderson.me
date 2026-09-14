@@ -1,20 +1,20 @@
+import { Transition } from '@headlessui/react';
+import { usePathname } from 'next/navigation';
+import {
+  type Dispatch,
+  type FC,
+  type ReactNode,
+  type RefObject,
+  type SetStateAction,
+  useMemo,
+  useState,
+} from 'react';
 import { useAppContext } from '@/app/AppContextProvider';
 import { ROUTES } from '@/app/constants/routes';
 import { useNavigateToSection } from '@/app/hooks/useNavigateToSection';
 import { usePrevious } from '@/app/hooks/usePrevious';
-import { PageSectionIdEnum } from '@/app/types';
+import type { PageSectionIdEnum } from '@/app/types';
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import { Transition } from '@headlessui/react';
-import { usePathname } from 'next/navigation';
-import {
-  Dispatch,
-  FC,
-  ReactNode,
-  RefObject,
-  SetStateAction,
-  useMemo,
-  useState,
-} from 'react';
 
 interface NavigationItemProps {
   id: PageSectionIdEnum;
@@ -41,8 +41,8 @@ export const NavigationItem: FC<NavigationItemProps> = ({
   });
   const prevPathname = usePrevious(pathname);
   const navList = Object.values(ROUTES).map((r) => r.route);
-  const pathnameIndex = navList.findIndex((nav) => nav === pathname);
-  const prevPathNameIndex = navList.findIndex((nav) => nav === prevPathname);
+  const pathnameIndex = navList.indexOf(pathname);
+  const prevPathNameIndex = prevPathname ? navList.indexOf(prevPathname) : -1;
 
   const [isHovered, setIsHovered] = useState(false);
   const [isTouched, setIsTouched] = useState(false);
@@ -98,9 +98,10 @@ export const NavigationItem: FC<NavigationItemProps> = ({
 
   return (
     <button
+      type="button"
       onClick={handleNavLinkClick}
       className={clsxMerge(
-        'group relative text-base font-500 text-violet-950 transition-all',
+        'group relative font-500 text-base text-violet-950 transition-all',
         'h-8',
         'dark:text-slate-200 dark:hover:text-slate-300',
         'md:text-lg',

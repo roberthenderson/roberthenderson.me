@@ -1,10 +1,10 @@
+import { sendGAEvent } from '@next/third-parties/google';
+import type { FC } from 'react';
+import { FiDownload } from 'react-icons/fi';
+import { IoDocumentTextOutline } from 'react-icons/io5';
 import { RESUME_FILENAME } from '@/app/constants/labels';
 import { RESUME_URI } from '@/app/constants/urls';
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import { sendGAEvent } from '@next/third-parties/google';
-import { FC } from 'react';
-import { FiDownload } from 'react-icons/fi';
-import { IoDocumentTextOutline } from 'react-icons/io5';
 import { LinkButton } from '../base/Button/LinkButton';
 
 interface ResumeButtonProps {

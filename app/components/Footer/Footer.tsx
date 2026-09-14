@@ -1,14 +1,14 @@
 'use client';
 
-import { GITHUB_REPO_URL } from '@/app/constants/urls';
-import { clsxMerge } from '@/app/utils/clsxMerge';
 import { sendGAEvent } from '@next/third-parties/google';
 import Image from 'next/image';
-import { FC } from 'react';
+import type { FC } from 'react';
 import { FaRegCopyright } from 'react-icons/fa';
 import { SiNextdotjs } from 'react-icons/si';
-import { Links } from '../HeroSection/Links';
+import { GITHUB_REPO_URL } from '@/app/constants/urls';
+import { clsxMerge } from '@/app/utils/clsxMerge';
 import { TextLink } from '../base/TextLink/TextLink';
+import { Links } from '../HeroSection/Links';
 
 export const Footer: FC = () => {
   const year = new Date().getFullYear();
@@ -52,7 +52,7 @@ export const Footer: FC = () => {
                     alt="Fort Collins, Colorado"
                     width="90"
                     height="23"
-                    className="relative -left-3 top-[5px] hidden dark:block"
+                    className="relative top-[5px] -left-3 hidden dark:block"
                   />
                   <Image
                     suppressHydrationWarning
@@ -60,7 +60,7 @@ export const Footer: FC = () => {
                     alt="Fort Collins, Colorado"
                     width="90"
                     height="23"
-                    className="relative -left-3 top-[5px] block dark:hidden"
+                    className="relative top-[5px] -left-3 block dark:hidden"
                   />
                 </div>
               </div>
@@ -70,12 +70,12 @@ export const Footer: FC = () => {
         </section>
         <div
           className={clsxMerge(
-            'absolute -left-[5%] top-10 h-[270px] w-[110%] opacity-[0.96] blur-lg',
+            'absolute top-10 -left-[5%] h-[270px] w-[110%] opacity-[0.96] blur-lg',
             'bg-gradient-to-r from-[#8bb3d7] from-[41%] via-[#77a1cb] via-[61%] to-[#5b8ab8] to-[93%]',
             'hidden sm:block',
           )}
         ></div>
-        <div className="h-[350px] w-full bg-[url(/joshua-sukoff-rocky-mountains.jpg)] bg-cover bg-center"></div>
+        <div className="h-[350px] w-full bg-[url(/joshua-sukoff-rocky-mountains.jpg)] bg-center bg-cover"></div>
       </div>
     </footer>
   );

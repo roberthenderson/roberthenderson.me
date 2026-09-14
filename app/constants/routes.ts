@@ -1,6 +1,12 @@
-import { CompanyIdEnum, PageSectionIdEnum, RoutesObject } from '../types';
+import { COMPANIES } from '@/app/constants/companies';
+import {
+  type AppRouteType,
+  type CompanyIdEnum,
+  PageSectionIdEnum,
+  type RoutesObject,
+} from '../types';
 
-export const ROUTES: RoutesObject = {
+const PAGE_SECTION_ROUTES = {
   '/': {
     route: '/',
     label: '',
@@ -21,24 +27,28 @@ export const ROUTES: RoutesObject = {
     route: `/${PageSectionIdEnum.Contact}`,
     label: 'Contact',
   },
-  [CompanyIdEnum.MagicEden]: {
-    route: `/${PageSectionIdEnum.Work}/${CompanyIdEnum.MagicEden}`,
-    label: 'Magic Eden',
-  },
-  [CompanyIdEnum.Metaplex]: {
-    route: `/${PageSectionIdEnum.Work}/${CompanyIdEnum.Metaplex}`,
-    label: 'Metaplex',
-  },
-  [CompanyIdEnum.Salesforce]: {
-    route: `/${PageSectionIdEnum.Work}/${CompanyIdEnum.Salesforce}`,
-    label: 'Salesforce',
-  },
-  [CompanyIdEnum.Vlocity]: {
-    route: `/${PageSectionIdEnum.Work}/${CompanyIdEnum.Vlocity}`,
-    label: 'Vlocity',
-  },
-  [CompanyIdEnum.BlueAcorn]: {
-    route: `/${PageSectionIdEnum.Work}/${CompanyIdEnum.BlueAcorn}`,
-    label: 'Blue Acorn',
-  },
 };
+
+/** `/work/<id>` for a company. Kept here so the segment is defined once. */
+export const getCompanyRoute = (id: CompanyIdEnum | string) =>
+  `/${PageSectionIdEnum.Work}/${id}`;
+
+const COMPANY_ROUTES = Object.fromEntries(
+  COMPANIES.map((company) => [
+    company.id,
+    { route: getCompanyRoute(company.id), label: company.label },
+  ]),
+);
+
+export const ROUTES: RoutesObject = {
+  ...PAGE_SECTION_ROUTES,
+  ...COMPANY_ROUTES,
+} as RoutesObject;
+
+/** Valid `/work/[companyId]` segments, used for static params and 404s. */
+export const COMPANY_IDS = COMPANIES.map((company) => company.id);
+
+export const isValidCompanyId = (id: string): id is CompanyIdEnum =>
+  COMPANY_IDS.includes(id as CompanyIdEnum);
+
+export type { AppRouteType };

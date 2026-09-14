@@ -1,15 +1,9 @@
 'use client';
 
-import { ROUTES } from '@/app/constants/routes';
-import { CompanyIdEnum } from '@/app/types';
-import { clsxMerge } from '@/app/utils/clsxMerge';
-import Image from 'next/image';
-import { ReactNode, useMemo } from 'react';
-import BlueAcornLogo from '../../../public/companies/blueacorn.png';
-import VlocityLogo from '../../../public/companies/vlocity.png';
-import { MagicEdenLogo } from '../MagicEdenLogo/MagicEdenLogo';
-import { MetaplexLogo } from '../MetaplexLogo/MetaplexLogo';
-import { SalesforceLogo } from '../SalesforceLogo/SalesforceLogo';
+import type { ReactNode } from 'react';
+import { useMemo } from 'react';
+import { COMPANIES } from '@/app/constants/companies';
+import type { CompanyDefinition, CompanyIdEnum } from '@/app/types';
 
 export interface ICompany {
   id: CompanyIdEnum;
@@ -18,61 +12,21 @@ export interface ICompany {
   className?: string;
 }
 
+const toGridCompany = (company: CompanyDefinition): ICompany => ({
+  id: company.id,
+  label: company.label,
+  logo: company.gridLogo,
+  className: company.gridClassName,
+});
+
 export const useCompanies = () => {
-  const featuredCompanies: ICompany[] = useMemo(
-    () => [
-      {
-        id: CompanyIdEnum.MagicEden,
-        label: ROUTES[CompanyIdEnum.MagicEden].label,
-        logo: <MagicEdenLogo />,
-        className: 'w-72 md:w-88 lg:w-96 mb-4',
-      },
-      {
-        id: CompanyIdEnum.Salesforce,
-        label: ROUTES[CompanyIdEnum.Salesforce].label,
-        logo: <SalesforceLogo />,
-        className: 'w-64 mb-3 sm:w-48 md:w-56 lg:w-64',
-      },
-    ],
+  const featuredCompanies = useMemo(
+    () => COMPANIES.filter((c) => c.featured).map(toGridCompany),
     [],
   );
 
-  const otherCompanies: ICompany[] = useMemo(
-    () => [
-      {
-        id: CompanyIdEnum.Metaplex,
-        label: ROUTES[CompanyIdEnum.Metaplex].label,
-        logo: <MetaplexLogo />,
-        className: clsxMerge(
-          'w-5/6 sm:w-full min-[500px]:px-20',
-          'text-black-900 dark:text-slate-50',
-        ),
-      },
-      {
-        id: CompanyIdEnum.Vlocity,
-        label: ROUTES[CompanyIdEnum.Vlocity].label,
-        logo: (
-          <Image
-            src={VlocityLogo}
-            alt="Vlocity"
-            className="mx-auto w-4/5 pt-7 sm:pt-1"
-          />
-        ),
-        className: 'dark:brightness-125',
-      },
-      {
-        id: CompanyIdEnum.BlueAcorn,
-        label: ROUTES[CompanyIdEnum.BlueAcorn].label,
-        logo: (
-          <Image
-            src={BlueAcornLogo}
-            alt="Blue Acorn"
-            className="mx-auto w-2/3 pt-3 sm:w-[95%] sm:pb-1.5 sm:pt-0"
-          />
-        ),
-        className: 'dark:brightness-125',
-      },
-    ],
+  const otherCompanies = useMemo(
+    () => COMPANIES.filter((c) => !c.featured).map(toGridCompany),
     [],
   );
 

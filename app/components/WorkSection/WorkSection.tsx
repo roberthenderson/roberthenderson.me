@@ -1,9 +1,9 @@
-import { ROUTES } from '@/app/constants/routes';
-import { CompanyIdEnum } from '@/app/types';
 import { sendGAEvent } from '@next/third-parties/google';
-import { FC } from 'react';
+import type { FC } from 'react';
 import { CgArrowsExpandUpRight } from 'react-icons/cg';
 import { HiListBullet } from 'react-icons/hi2';
+import { ROUTES } from '@/app/constants/routes';
+import { CompanyIdEnum } from '@/app/types';
 import { LinkButton } from '../base/Button/LinkButton';
 import { Grid } from '../base/Grid/Grid';
 import { ResumeButton } from '../ResumeButton/ResumeButton';
@@ -53,7 +53,7 @@ export const WorkSection: FC = () => {
           <CgArrowsExpandUpRight />
         </LinkButton>
       </SectionBanner>
-      <SectionContent className="md:pb-24 md:pt-18">
+      <SectionContent className="md:pt-18 md:pb-24">
         <Grid>
           {featuredCompanies.map((company) => (
             <Company key={company.id} company={company} />

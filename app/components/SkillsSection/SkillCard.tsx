@@ -1,6 +1,6 @@
+import type { FC } from 'react';
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import { FC } from 'react';
-import { ISkillCard } from './useSkills';
+import type { ISkillCard } from './useSkills';
 
 interface SkillCardProps {
   skill: ISkillCard;
@@ -16,7 +16,7 @@ export const SkillCard: FC<SkillCardProps> = ({ skill }) => {
       )}
     >
       <div className="flex items-center justify-between">
-        <p className="text-lg font-semibold">{skill.label}</p>
+        <p className="font-semibold text-lg">{skill.label}</p>
         <div className="text-violet-700 opacity-80 dark:text-yellow-700">
           {skill.icon}
         </div>
@@ -24,9 +24,9 @@ export const SkillCard: FC<SkillCardProps> = ({ skill }) => {
       <p className="text-base leading-5 sm:text-sm">{skill.description}</p>
       <div
         className={clsxMerge(
-          'absolute bottom-6 right-10 z-10 scale-[4] overflow-hidden rounded-sm text-indigo-900 opacity-[0.08]',
+          'absolute right-10 bottom-6 z-10 scale-[4] overflow-hidden rounded-sm text-indigo-900 opacity-[0.08]',
           'dark:text-slate-200',
-          'xl:bottom-10 xl:right-14 xl:scale-[5]',
+          'xl:right-14 xl:bottom-10 xl:scale-[5]',
         )}
       >
         {skill.icon}

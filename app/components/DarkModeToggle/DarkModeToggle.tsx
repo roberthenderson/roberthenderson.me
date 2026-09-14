@@ -1,10 +1,10 @@
 'use client';
 
-import { useDarkMode } from '@/app/hooks/useDarkMode';
 import { sendGAEvent } from '@next/third-parties/google';
 import { useTheme } from 'next-themes';
-import { FC, useMemo } from 'react';
+import { type FC, useMemo } from 'react';
 import { MdDarkMode, MdOutlineDarkMode } from 'react-icons/md';
+import { useDarkMode } from '@/app/hooks/useDarkMode';
 
 const THEME_ICON_SIZE = 28;
 
@@ -23,6 +23,7 @@ export const DarkModeToggle: FC = () => {
 
   return (
     <button
+      type="button"
       onClick={toggleDarkMode}
       className="opacity-100 transition-opacity hover:opacity-80"
     >

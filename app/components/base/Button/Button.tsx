@@ -1,8 +1,8 @@
 import {
   Button as HeadlessButton,
-  ButtonProps as HeadlessButtonProps,
+  type ButtonProps as HeadlessButtonProps,
 } from '@headlessui/react';
-import { FC } from 'react';
+import type { FC } from 'react';
 import { getButtonStyles } from './getButtonStyles';
 
 export interface ButtonProps extends HeadlessButtonProps {

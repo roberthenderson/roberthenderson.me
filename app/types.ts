@@ -1,4 +1,4 @@
-import { ReactNode, RefObject } from 'react';
+import type { ReactNode, RefObject } from 'react';
 
 export enum PageSectionIdEnum {
   Skills = 'skills',
@@ -31,4 +31,33 @@ export interface PageSection {
   ref: RefObject<HTMLElement | null>;
   isMainNavigation: boolean;
   children: ReactNode;
+}
+
+export interface Bullet {
+  icon: ReactNode;
+  text: string;
+}
+
+export interface CompanyContentItem {
+  description: string;
+  bullets: Bullet[];
+  years?: number[];
+}
+
+/**
+ * One entry in the work history. Drives the work-section grid, the company
+ * tab rail, the detail content, ROUTES, the sitemap, and static params.
+ */
+export interface CompanyDefinition {
+  id: CompanyIdEnum;
+  label: string;
+  /** Renders large in the top row of the work grid. */
+  featured: boolean;
+  years?: number[];
+  /** Small logo shown in the company tab rail. */
+  image?: ReactNode;
+  /** Large logo shown in the work-section grid. */
+  gridLogo: ReactNode;
+  gridClassName?: string;
+  content: CompanyContentItem[];
 }

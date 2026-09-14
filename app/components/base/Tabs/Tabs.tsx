@@ -1,10 +1,10 @@
 'use client';
 
+import { motion } from 'motion/react';
+import { type FC, type ReactNode, useEffect, useRef, useState } from 'react';
 import { usePrevious } from '@/app/hooks/usePrevious';
 import { useScreenSize } from '@/app/hooks/useScreenSize';
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import { motion } from 'motion/react';
-import { FC, ReactNode, useEffect, useRef, useState } from 'react';
 
 export interface TabItem {
   id: string;
@@ -71,11 +71,10 @@ const Tab: FC<TabProps> = ({ tab, index, activeIndex, isActive, onClick }) => {
     }
 
     const button = buttonRef.current;
-    const totalElementHeightWithGap =
-      button && button.parentElement
-        ? parseInt(getComputedStyle(button.parentElement).gap) +
-          button.offsetHeight
-        : 0;
+    const totalElementHeightWithGap = button?.parentElement
+      ? parseInt(getComputedStyle(button.parentElement).gap, 10) +
+        button.offsetHeight
+      : 0;
     if (isActive && button?.offsetTop) {
       const containerPaddingTop = isLg ? 26 : isMd ? 20 : isSm ? 22 : 18;
       const extra =
@@ -91,7 +90,7 @@ const Tab: FC<TabProps> = ({ tab, index, activeIndex, isActive, onClick }) => {
       setY(0);
       setMarginTop(undefined);
     }
-  }, [y, isSm, isMd, isLg, isActive, tab, index, activeIndex, prevActiveIndex]);
+  }, [isSm, isMd, isLg, isActive, tab, index, activeIndex, prevActiveIndex]);
 
   const handleClick = () => {
     onClick(tab.id);

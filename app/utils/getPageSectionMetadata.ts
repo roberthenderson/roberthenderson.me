@@ -1,8 +1,8 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { NAME, TITLE_SUFFIX } from '../constants/metadata';
 import { ROUTES } from '../constants/routes';
 import { BASE_URL } from '../constants/urls';
-import { AppRouteType } from '../types';
+import type { AppRouteType } from '../types';
 
 export const getPageSectionMetadata = (
   pageSectionId: AppRouteType,

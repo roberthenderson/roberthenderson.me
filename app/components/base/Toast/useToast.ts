@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ToastProps } from './Toast';
+import type { ToastProps } from './Toast';
 
 type UseToastProps = Omit<ToastProps, 'open'>;
 

@@ -1,5 +1,5 @@
+import type { FC, PropsWithChildren } from 'react';
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import { FC, PropsWithChildren } from 'react';
 
 export const SectionContainer: FC<PropsWithChildren> = ({ children }) => {
   return (

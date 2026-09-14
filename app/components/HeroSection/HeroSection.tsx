@@ -1,7 +1,7 @@
+import Image from 'next/image';
+import type { FC } from 'react';
 import { SECTION_CLASSNAME } from '@/app/constants/classNames';
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import Image from 'next/image';
-import { FC } from 'react';
 import Robert from '../../../public/robert.webp';
 import { EmailButton } from '../EmailButton/EmailButton';
 import { H1 } from './H1';
@@ -22,14 +22,14 @@ export const HeroSection: FC = () => {
           alt="Robert Henderson, Full-Stack Engineer"
           className={clsxMerge(
             'absolute -bottom-2 -left-14 z-10 w-[65%] opacity-90 hue-rotate-15 max-sm:hidden',
-            'sm:-left-26 sm:-top-2 sm:w-[63%] md:-left-28 md:w-[55%] lg:w-[50%] xl:w-[40%] 2xl:-left-10 2xl:w-[33%]',
+            'sm:-top-2 sm:-left-26 sm:w-[63%] md:-left-28 md:w-[55%] lg:w-[50%] xl:w-[40%] 2xl:-left-10 2xl:w-[33%]',
             'dark:opacity-70',
           )}
         />
         <div
           className={clsxMerge(
-            'flex w-full flex-col pb-12 pt-13',
-            'md:pt-22 sm:pb-14 md:pb-16',
+            'flex w-full flex-col pt-13 pb-12',
+            'sm:pb-14 md:pt-22 md:pb-16',
           )}
         >
           <H3 />

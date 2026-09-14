@@ -1,13 +1,18 @@
 'use client';
 
+import { sendGAEvent } from '@next/third-parties/google';
+import Link from 'next/link';
+import {
+  type FC,
+  type HTMLProps,
+  type PropsWithChildren,
+  useMemo,
+} from 'react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { HiOutlineDocumentDownload } from 'react-icons/hi';
 import { RESUME_FILENAME } from '@/app/constants/labels';
 import { GITHUB_URL, LINKEDIN_URL, RESUME_URI } from '@/app/constants/urls';
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import { sendGAEvent } from '@next/third-parties/google';
-import Link from 'next/link';
-import { FC, HTMLProps, PropsWithChildren, useMemo } from 'react';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import { HiOutlineDocumentDownload } from 'react-icons/hi';
 
 interface LinksProps {
   variant?: 'hero' | 'footer';

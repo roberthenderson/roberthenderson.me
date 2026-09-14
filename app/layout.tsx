@@ -1,11 +1,11 @@
+import { GoogleAnalytics } from '@next/third-parties/google';
+import type { Metadata, Viewport } from 'next';
+import { ThemeProvider } from 'next-themes';
+import type { PropsWithChildren, ReactNode } from 'react';
 import { AppContextProvider } from '@/app/AppContextProvider';
 import { Footer } from '@/app/components/Footer/Footer';
 import { Header } from '@/app/components/Header/Header';
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import { GoogleAnalytics } from '@next/third-parties/google';
-import { Metadata, Viewport } from 'next';
-import { ThemeProvider } from 'next-themes';
-import { PropsWithChildren, ReactNode } from 'react';
 import { METADATA, NAME } from './constants/metadata';
 import { BASE_URL } from './constants/urls';
 import './globals.css';

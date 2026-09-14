@@ -1,8 +1,9 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 
 export const SalesforceLogo: FC = () => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 64">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92 64" role="img">
+      <title>Salesforce</title>
       <g fill="none" fillRule="evenodd">
         <path
           fill="#00A1E0"

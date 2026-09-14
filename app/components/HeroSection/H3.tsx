@@ -1,5 +1,5 @@
+import type { FC } from 'react';
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import { FC } from 'react';
 
 export const H3: FC = () => {
   return (

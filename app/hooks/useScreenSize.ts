@@ -13,11 +13,11 @@ export const useScreenSize = () => {
   const tailwindScreenSizes = useMemo(() => {
     return {
       isXs: screenSize.width > 0,
-      isSm: screenSize.width >= parseInt(theme.screens.sm),
-      isMd: screenSize.width >= parseInt(theme.screens.md),
-      isLg: screenSize.width >= parseInt(theme.screens.lg),
-      isXl: screenSize.width >= parseInt(theme.screens.xl),
-      is2xl: screenSize.width >= parseInt(theme.screens['2xl']),
+      isSm: screenSize.width >= parseInt(theme.screens.sm, 10),
+      isMd: screenSize.width >= parseInt(theme.screens.md, 10),
+      isLg: screenSize.width >= parseInt(theme.screens.lg, 10),
+      isXl: screenSize.width >= parseInt(theme.screens.xl, 10),
+      is2xl: screenSize.width >= parseInt(theme.screens['2xl'], 10),
     };
   }, [screenSize]);
 

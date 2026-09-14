@@ -1,8 +1,8 @@
 'use client';
 
+import { type FC, useState } from 'react';
 import { useAppContext } from '@/app/AppContextProvider';
 import { PAGE_SECTIONS } from '@/app/constants/pageSections';
-import { FC, useState } from 'react';
 import { NavigationItem } from './NavigationItem';
 
 export const Navigation: FC = () => {

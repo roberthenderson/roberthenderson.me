@@ -1,4 +1,4 @@
-import { PageSection, PageSectionIdEnum } from '../types';
+import { type PageSection, PageSectionIdEnum } from '../types';
 
 export const PAGE_SECTIONS: Record<
   PageSectionIdEnum,

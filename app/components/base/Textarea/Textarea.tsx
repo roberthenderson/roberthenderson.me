@@ -1,12 +1,12 @@
-import { FIELD_CLASSNAME } from '@/app/constants/classNames';
-import { useFieldFocus } from '@/app/hooks/useFieldFocus';
-import { clsxMerge } from '@/app/utils/clsxMerge';
 import {
   Field,
   Textarea as HeadlessTextarea,
-  TextareaProps as HeadlessTextareaProps,
+  type TextareaProps as HeadlessTextareaProps,
 } from '@headlessui/react';
-import { FC } from 'react';
+import type { FC } from 'react';
+import { FIELD_CLASSNAME } from '@/app/constants/classNames';
+import { useFieldFocus } from '@/app/hooks/useFieldFocus';
+import { clsxMerge } from '@/app/utils/clsxMerge';
 import { FieldLabel } from '../FieldLabel/FieldLabel';
 
 export const Textarea: FC<HeadlessTextareaProps> = ({ className, ...rest }) => {

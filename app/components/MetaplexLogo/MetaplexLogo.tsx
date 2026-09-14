@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 
 interface MetaplexLogoProps {
   variant?: 'small' | 'large';
@@ -10,7 +10,9 @@ export const MetaplexLogo: FC<MetaplexLogoProps> = ({ variant = 'large' }) => {
       viewBox={variant === 'large' ? '0 0 124 12' : '0 0 18 12'}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      role="img"
     >
+      <title>Metaplex</title>
       <g clipPath="url(#clip0_4779_99813)">
         <path
           fillRule="evenodd"

@@ -1,10 +1,8 @@
-import { getYearsExperience } from '@/app/utils/getYearsExperience';
 import { ImageResponse } from 'next/og';
-import { NextRequest } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { getYearsExperience } from '@/app/utils/getYearsExperience';
 
-export const config = {
-  runtime: 'edge',
-};
+export const runtime = 'edge';
 
 export async function GET(request: NextRequest) {
   const requestUrl = new URL(request.url);
@@ -23,134 +21,154 @@ export async function GET(request: NextRequest) {
   ).then((res) => res.arrayBuffer());
 
   return new ImageResponse(
-    (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'row',
+        background: '#1e293b',
+        width: '100%',
+        height: '100%',
+        position: 'relative',
+        borderTop: '10px solid #475569',
+        borderBottom: '24px solid #475569',
+      }}
+    >
       <div
         style={{
           display: 'flex',
-          flexDirection: 'row',
-          background: '#1e293b',
-          width: '100%',
-          height: '100%',
-          position: 'relative',
-          borderTop: '10px solid #475569',
-          borderBottom: '24px solid #475569',
+          position: 'absolute',
+          left: -140,
+          top: -10,
         }}
       >
+        <img
+          src={`${baseUrl}/robert.png`}
+          alt="Robert Henderson, Full-Stack Engineer"
+          width="583"
+          height="630"
+        />
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          fontFamily: 'DM Sans',
+          marginLeft: 'auto',
+          paddingTop: 30,
+          paddingRight: 60,
+        }}
+      >
+        <p
+          style={{
+            letterSpacing: -2,
+            color: '#ca8a04',
+            fontFamily: 'DM Serif Text',
+            fontSize: 107,
+            marginTop: 0,
+            marginBottom: 0,
+            marginLeft: 'auto',
+          }}
+        >
+          Robert Henderson
+        </p>
+        <p
+          style={{
+            fontFamily: 'League Spartan',
+            color: '#64748b',
+            marginTop: 30,
+            marginBottom: 0,
+            marginLeft: 'auto',
+            fontSize: 35,
+          }}
+        >
+          Accomplished Senior
+        </p>
+        <p
+          style={{
+            fontFamily: 'League Spartan',
+            color: '#e2e8f0',
+            marginTop: 0,
+            marginBottom: 0,
+            marginLeft: 'auto',
+            fontSize: 81,
+          }}
+        >
+          Full-Stack
+        </p>
+        <p
+          style={{
+            fontFamily: 'League Spartan',
+            color: '#e2e8f0',
+            marginTop: -10,
+            marginLeft: 'auto',
+            paddingRight: 4,
+            fontSize: 83,
+            letterSpacing: -1,
+          }}
+        >
+          Engineer
+        </p>
+        <p
+          style={{
+            fontFamily: 'DM Sans',
+            color: '#64748b',
+            fontSize: 22,
+            letterSpacing: 1,
+            marginTop: 30,
+            marginLeft: 'auto',
+          }}
+        >
+          {getYearsExperience()} years of experience in big tech and startups
+        </p>
         <div
           style={{
             display: 'flex',
-            position: 'absolute',
-            left: -140,
-            top: -10,
+            gap: 32,
+            alignItems: 'center',
+            marginTop: 8,
+            marginLeft: 'auto',
+            marginRight: 5,
           }}
         >
           <img
-            src={`${baseUrl}/robert.png`}
-            alt="Robert Henderson, Full-Stack Engineer"
-            width="583"
-            height="630"
+            alt="React"
+            src={`${baseUrl}/icons/og/react.svg`}
+            width={60}
+            height={60}
+          />
+          <img
+            alt="TypeScript"
+            src={`${baseUrl}/icons/og/ts.svg`}
+            width={50}
+            height={50}
+          />
+          <img
+            alt="Tailwind CSS"
+            src={`${baseUrl}/icons/og/tailwind.svg`}
+            width={60}
+            height={60}
+          />
+          <img
+            alt="Next.js"
+            src={`${baseUrl}/icons/og/nextjs.svg`}
+            width={50}
+            height={50}
+          />
+          <img
+            alt="JavaScript"
+            src={`${baseUrl}/icons/og/js.svg`}
+            width={50}
+            height={50}
+          />
+          <img
+            alt="Git"
+            src={`${baseUrl}/icons/og/git.svg`}
+            width={50}
+            height={50}
           />
         </div>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            fontFamily: 'DM Sans',
-            marginLeft: 'auto',
-            paddingTop: 30,
-            paddingRight: 60,
-          }}
-        >
-          <p
-            style={{
-              letterSpacing: -2,
-              color: '#ca8a04',
-              fontFamily: 'DM Serif Text',
-              fontSize: 107,
-              marginTop: 0,
-              marginBottom: 0,
-              marginLeft: 'auto',
-            }}
-          >
-            Robert Henderson
-          </p>
-          <p
-            style={{
-              fontFamily: 'League Spartan',
-              color: '#64748b',
-              marginTop: 30,
-              marginBottom: 0,
-              marginLeft: 'auto',
-              fontSize: 35,
-            }}
-          >
-            Accomplished Senior
-          </p>
-          <p
-            style={{
-              fontFamily: 'League Spartan',
-              color: '#e2e8f0',
-              marginTop: 0,
-              marginBottom: 0,
-              marginLeft: 'auto',
-              fontSize: 81,
-            }}
-          >
-            Full-Stack
-          </p>
-          <p
-            style={{
-              fontFamily: 'League Spartan',
-              color: '#e2e8f0',
-              marginTop: -10,
-              marginLeft: 'auto',
-              paddingRight: 4,
-              fontSize: 83,
-              letterSpacing: -1,
-            }}
-          >
-            Engineer
-          </p>
-          <p
-            style={{
-              fontFamily: 'DM Sans',
-              color: '#64748b',
-              fontSize: 22,
-              letterSpacing: 1,
-              marginTop: 30,
-              marginLeft: 'auto',
-            }}
-          >
-            {getYearsExperience()} years of experience in big tech and startups
-          </p>
-          <div
-            style={{
-              display: 'flex',
-              gap: 32,
-              alignItems: 'center',
-              marginTop: 8,
-              marginLeft: 'auto',
-              marginRight: 5,
-            }}
-          >
-            <img src={`${baseUrl}/icons/og/react.svg`} width={60} height={60} />
-            <img src={`${baseUrl}/icons/og/ts.svg`} width={50} height={50} />
-            <img
-              src={`${baseUrl}/icons/og/tailwind.svg`}
-              width={60}
-              height={60}
-            />
-            <img
-              src={`${baseUrl}/icons/og/nextjs.svg`}
-              width={50}
-              height={50}
-            />
-            <img src={`${baseUrl}/icons/og/js.svg`} width={50} height={50} />
-            <img src={`${baseUrl}/icons/og/git.svg`} width={50} height={50} />
-          </div>
-        </div>
       </div>
-    ),
+    </div>,
     {
       width: 1200,
       height: 630,

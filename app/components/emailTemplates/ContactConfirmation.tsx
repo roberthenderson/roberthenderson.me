@@ -1,5 +1,5 @@
+import type { FC } from 'react';
 import { capitalizeFirstWord } from '@/app/utils/capitalizeFirstWord';
-import { FC } from 'react';
 
 interface ContactConfirmationProps {
   name: string;

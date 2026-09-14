@@ -1,6 +1,6 @@
 import { sendGAEvent } from '@next/third-parties/google';
 import { usePathname, useRouter } from 'next/navigation';
-import { RefObject, useEffect } from 'react';
+import { type RefObject, useEffect } from 'react';
 import { useAppContext } from '../AppContextProvider';
 import { scrollElementIntoView } from '../utils/scrollElementIntoView';
 

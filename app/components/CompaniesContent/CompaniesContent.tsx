@@ -1,11 +1,11 @@
 'use client';
 
+import { type FC, useEffect, useRef, useState } from 'react';
 import { useAppContext } from '@/app/AppContextProvider';
 import { SECTION_CLASSNAME } from '@/app/constants/classNames';
 import { ROUTES } from '@/app/constants/routes';
 import { PageSectionIdEnum } from '@/app/types';
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import { FC, useEffect, useRef, useState } from 'react';
 import { Tabs } from '../base/Tabs/Tabs';
 import { ContactSection } from '../ContactSection/ContactSection';
 import { ResumeButton } from '../ResumeButton/ResumeButton';
@@ -69,8 +69,8 @@ export const CompaniesContent: FC<CompaniesContentProps> = ({ companyId }) => {
         <div
           className={clsxMerge(
             'relative max-w-[93px]',
-            'md:pt-34 px-2.5 pt-26 md:px-3',
-            'dark:bg-slate-850 bg-violet-150',
+            'px-2.5 pt-26 md:px-3 md:pt-34',
+            'bg-violet-150 dark:bg-slate-850',
           )}
         >
           <Tabs
@@ -99,7 +99,7 @@ export const CompaniesContent: FC<CompaniesContentProps> = ({ companyId }) => {
                     'flex-row justify-between text-left',
                     'w-full px-6 py-5 md:px-10 md:py-6',
                     'border-violet-300/20 dark:border-slate-700/40',
-                    'dark:bg-slate-850 bg-violet-150',
+                    'bg-violet-150 dark:bg-slate-850',
                   )}
                 >
                   <span>{company.label}</span>
@@ -124,7 +124,7 @@ export const CompaniesContent: FC<CompaniesContentProps> = ({ companyId }) => {
                 <div
                   className={clsxMerge(
                     'flex flex-col',
-                    'border-l-3 border-t-3 border-violet-300/30 dark:border-slate-700/60',
+                    'border-violet-300/30 border-t-3 border-l-3 dark:border-slate-700/60',
                     'h-full rounded-tl-2xl',
                     'bg-violet-50 dark:bg-slate-700/50',
                     !isDialog && 'min-h-[500px] md:min-h-[700px]',
@@ -133,7 +133,7 @@ export const CompaniesContent: FC<CompaniesContentProps> = ({ companyId }) => {
                   <div
                     className={clsxMerge(
                       isDialog && 'flex-auto overflow-y-auto',
-                      'px-6 pb-10 pt-5 md:px-10 md:pt-8',
+                      'px-6 pt-5 pb-10 md:px-10 md:pt-8',
                     )}
                   >
                     {company.years && (

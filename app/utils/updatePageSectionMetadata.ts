@@ -1,4 +1,4 @@
-import { AppRouteType } from '../types';
+import type { AppRouteType } from '../types';
 import { getPageSectionMetadata } from './getPageSectionMetadata';
 
 export const updatePageSectionMetadata = (pageSectionId: AppRouteType) => {

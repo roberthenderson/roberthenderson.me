@@ -1,18 +1,18 @@
+import type { FC } from 'react';
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import { FC } from 'react';
 
 export const H2: FC = () => {
   return (
     <div className="flex justify-center gap-2 sm:justify-end">
       <h2
         className={clsxMerge(
-          'flex flex-col pl-2 pr-1.5 text-center leading-10 lg:pr-2',
+          'flex flex-col pr-1.5 pl-2 text-center leading-10 lg:pr-2',
           'sm:text-right',
         )}
       >
         <p
           className={clsxMerge(
-            'pl-0.5 font-leagueSpartan text-[26px] tracking-tight text-slate-500',
+            'pl-0.5 font-leagueSpartan text-[26px] text-slate-500 tracking-tight',
             'sm:pl-0 sm:text-[22px] sm:tracking-wide lg:text-[25px]',
           )}
         >

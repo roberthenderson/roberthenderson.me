@@ -1,6 +1,6 @@
+import Link, { type LinkProps as NextLinkProps } from 'next/link';
+import type { FC, HTMLProps } from 'react';
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import Link, { LinkProps as NextLinkProps } from 'next/link';
-import { FC, HTMLProps } from 'react';
 import { getButtonStyles } from './getButtonStyles';
 
 type LinkProps = NextLinkProps & HTMLProps<HTMLAnchorElement>;

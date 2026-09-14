@@ -1,13 +1,13 @@
 'use client';
 
+import { useEffect, useMemo, useRef } from 'react';
 import { useAppContext } from '@/app/AppContextProvider';
 import { AboutSection } from '@/app/components/AboutSection/AboutSection';
 import { ContactSection } from '@/app/components/ContactSection/ContactSection';
 import { SkillsSection } from '@/app/components/SkillsSection/SkillsSection';
 import { WorkSection } from '@/app/components/WorkSection/WorkSection';
 import { PAGE_SECTIONS } from '@/app/constants/pageSections';
-import { useEffect, useMemo, useRef } from 'react';
-import { PageSection, PageSectionIdEnum } from '../types';
+import { type PageSection, PageSectionIdEnum } from '../types';
 
 export const usePageSections = () => {
   const { setPageSectionsList } = useAppContext();

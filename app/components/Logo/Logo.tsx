@@ -1,8 +1,8 @@
 'use client';
 
-import { useNavigateToSection } from '@/app/hooks/useNavigateToSection';
 import { usePathname } from 'next/navigation';
-import { FC } from 'react';
+import type { FC } from 'react';
+import { useNavigateToSection } from '@/app/hooks/useNavigateToSection';
 
 export const Logo: FC = () => {
   const pathname = usePathname();
@@ -15,6 +15,7 @@ export const Logo: FC = () => {
 
   return (
     <button
+      type="button"
       aria-label="Robert Henderson"
       onClick={handleLogoClick}
       className="group pb-2 font-dmSerif text-logo sm:pb-1"

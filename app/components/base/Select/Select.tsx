@@ -1,6 +1,5 @@
 'use client';
 
-import { clsxMerge } from '@/app/utils/clsxMerge';
 import {
   Label,
   Listbox,
@@ -8,9 +7,10 @@ import {
   ListboxOption,
   ListboxOptions,
 } from '@headlessui/react';
-import { FC, useEffect, useMemo, useState } from 'react';
+import { type FC, useEffect, useMemo, useState } from 'react';
 import { FaCheck } from 'react-icons/fa6';
 import { HiChevronUpDown } from 'react-icons/hi2';
+import { clsxMerge } from '@/app/utils/clsxMerge';
 
 export interface SelectOption {
   id: string;
@@ -53,14 +53,14 @@ export const Select: FC<SelectProps> = ({
   return (
     <div className={className}>
       <Listbox value={selected} onChange={handleChange}>
-        <Label className="block text-sm/6 font-medium text-slate-900">
+        <Label className="block font-medium text-slate-900 text-sm/6">
           {label}
         </Label>
         <div className="relative mt-2">
           <ListboxButton
             className={clsxMerge(
-              'grid w-full cursor-default grid-cols-1 rounded-md py-2 pl-4 pr-2',
-              'text-left outline outline-1 -outline-offset-1 outline-slate-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-violet-600',
+              'grid w-full cursor-default grid-cols-1 rounded-md py-2 pr-2 pl-4',
+              'text-left outline outline-1 outline-slate-300 -outline-offset-1 focus:outline focus:outline-2 focus:outline-violet-600 focus:-outline-offset-2',
               'bg-violet-100 text-foreground dark:bg-slate-950',
               'hover:bg-violet-200/80 hover:text-slate-700 hover:dark:bg-slate-950/80 hover:dark:text-slate-200',
             )}
@@ -84,7 +84,7 @@ export const Select: FC<SelectProps> = ({
                 key={option.id}
                 value={option}
                 className={clsxMerge(
-                  'group relative cursor-default select-none py-2 pl-8 pr-4 text-foreground',
+                  'group relative cursor-default select-none py-2 pr-4 pl-8 text-foreground',
                   'data-[focus]:bg-violet-600 data-[focus]:text-slate-200 data-[focus]:outline-none data-[focus]:dark:bg-slate-600',
                 )}
               >

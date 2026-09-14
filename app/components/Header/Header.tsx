@@ -1,7 +1,7 @@
 'use client';
 
+import { type FC, useEffect, useRef } from 'react';
 import { clsxMerge } from '@/app/utils/clsxMerge';
-import { FC, useEffect, useRef } from 'react';
 import { useAppContext } from '../../AppContextProvider';
 import { DarkModeToggle } from '../DarkModeToggle/DarkModeToggle';
 import { EmailButton } from '../EmailButton/EmailButton';
@@ -17,10 +17,10 @@ export const Header: FC = () => {
     <header
       ref={headerRef}
       className={clsxMerge(
-        'sticky left-0 top-0 z-50',
+        'sticky top-0 left-0 z-50',
         'flex items-center justify-between gap-2',
         'h-16 w-full px-4 lg:h-18',
-        'border-b-3 border-violet-600 bg-indigo-200',
+        'border-violet-600 border-b-3 bg-indigo-200',
         'dark:border-slate-600 dark:bg-slate-800',
         'md:px-8',
       )}

@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 import { useAppContext } from '../AppContextProvider';
 import { ROUTES } from '../constants/routes';
-import { PageSection } from '../types';
+import type { PageSection } from '../types';
 import { scrollElementIntoView } from '../utils/scrollElementIntoView';
 import { updatePageSectionMetadata } from '../utils/updatePageSectionMetadata';
 import { usePrevious } from './usePrevious';

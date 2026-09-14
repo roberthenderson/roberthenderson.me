@@ -1,5 +1,4 @@
-import { shuffle } from 'lodash';
-import { ReactNode, useMemo } from 'react';
+import { type ReactNode, useMemo } from 'react';
 import { FaReact } from 'react-icons/fa';
 import {
   SiGit,
@@ -8,6 +7,7 @@ import {
   SiTailwindcss,
   SiTypescript,
 } from 'react-icons/si';
+import { shuffle } from '@/app/utils/shuffle';
 
 const ICON_SIZE = 32;
 

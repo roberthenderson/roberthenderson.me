@@ -1,22 +1,39 @@
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { CompaniesContent } from '@/app/components/CompaniesContent/CompaniesContent';
+import { COMPANIES } from '@/app/constants/companies';
 import { NAME, TITLE_SUFFIX } from '@/app/constants/metadata';
-import { ROUTES } from '@/app/constants/routes';
+import {
+  getCompanyRoute,
+  isValidCompanyId,
+  ROUTES,
+} from '@/app/constants/routes';
 import { BASE_URL } from '@/app/constants/urls';
-import { CompanyIdEnum } from '@/app/types';
-import { Metadata } from 'next';
 
 interface CompanyPageProps {
   params: Promise<{ companyId: string }>;
 }
 
+/** Prerender every known company; anything else 404s. */
+export function generateStaticParams() {
+  return COMPANIES.map((company) => ({ companyId: company.id }));
+}
+
+export const dynamicParams = false;
+
 export async function generateMetadata({
   params,
 }: CompanyPageProps): Promise<Metadata> {
-  const companyId = (await params).companyId as CompanyIdEnum;
-  const canonical = `${BASE_URL}${ROUTES[companyId]?.route}`;
+  const { companyId } = await params;
+
+  if (!isValidCompanyId(companyId)) {
+    return {};
+  }
+
+  const canonical = `${BASE_URL}${getCompanyRoute(companyId)}`;
 
   return {
-    title: `${NAME} - ${ROUTES[companyId]?.label} ${TITLE_SUFFIX}`,
+    title: `${NAME} - ${ROUTES[companyId].label} ${TITLE_SUFFIX}`,
     alternates: {
       canonical,
     },
@@ -27,6 +44,11 @@ export async function generateMetadata({
 }
 
 export default async function CompanyPage({ params }: CompanyPageProps) {
-  const companyId = (await params).companyId;
+  const { companyId } = await params;
+
+  if (!isValidCompanyId(companyId)) {
+    notFound();
+  }
+
   return <CompaniesContent companyId={companyId} />;
 }
