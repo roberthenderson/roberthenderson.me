@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import type { FC } from 'react';
 import { ImQuotesRight } from 'react-icons/im';
+import { getYearsExperience } from '@/app/utils/getYearsExperience';
 import { Grid } from '../base/Grid/Grid';
 import { SectionBanner } from '../SectionBanner/SectionBanner';
 import { SectionContainer } from '../SectionContainer/SectionContainer';
@@ -36,8 +37,8 @@ export const AboutSection: FC = () => {
         Every project I start answers the same four questions before I write a
         component. Who is blocked and why, what the tenth change will cost, what
         the product needs to feel like, and how it gets to production every
-        week. Fifteen years of shipping taught me they get answered either way,
-        and answering them first is cheaper.
+        week. {getYearsExperience()} years of shipping taught me they get
+        answered either way, and answering them first is cheaper.
       </SectionBanner>
       <SectionContent>
         <Grid className="items-start">

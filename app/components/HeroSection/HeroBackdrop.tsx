@@ -3,8 +3,9 @@ import { clsxMerge } from '@/app/utils/clsxMerge';
 
 /**
  * Decorative texture behind the hero copy, in the footprint the portrait used
- * to occupy. Pure vector and gradient, so it costs no image request and has no
- * intrinsic size to shift the layout while it loads.
+ * to occupy. The two accent dots carry the share card's yellow so the page and
+ * its preview read as one thing. Pure vector and gradient, so it costs no image
+ * request and has no intrinsic size to shift the layout while it loads.
  */
 export const HeroBackdrop: FC = () => {
   return (
@@ -59,9 +60,14 @@ export const HeroBackdrop: FC = () => {
             <circle cx="300" cy="300" r="254" strokeWidth="0.75" />
           </g>
           <g fill="currentColor">
+            <circle cx="223" cy="542" r="3.5" />
+          </g>
+          <g
+            className="text-yellow-600 dark:text-yellow-500"
+            fill="currentColor"
+          >
             <circle cx="300" cy="182" r="5" />
             <circle cx="486" cy="300" r="4" />
-            <circle cx="223" cy="542" r="3.5" />
           </g>
         </g>
       </svg>
