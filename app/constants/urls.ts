@@ -1,5 +1,6 @@
 // URLS
 export const BASE_URL = 'https://roberthenderson.me';
+export const EIDER_URL = 'https://eider.app';
 export const GITHUB_URL = 'https://github.com/roberthenderson';
 export const GITHUB_REPO_URL =
   'https://github.com/roberthenderson/roberthenderson.me';

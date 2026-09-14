@@ -1,21 +1,34 @@
-import type { FC } from 'react';
+import type { FC, ReactNode } from 'react';
 import { RxOpenInNewWindow } from 'react-icons/rx';
 import { SiGithub } from 'react-icons/si';
-import { GITHUB_REPO_URL } from '@/app/constants/urls';
+import { EIDER_URL, GITHUB_REPO_URL } from '@/app/constants/urls';
 import { clsxMerge } from '@/app/utils/clsxMerge';
 import { LinkButton } from '../base/Button/LinkButton';
+import { TextLink } from '../base/TextLink/TextLink';
 import { SectionContainer } from '../SectionContainer/SectionContainer';
 import { ArchitectureBackdrop } from './ArchitectureBackdrop';
 
 interface ArchitecturePrinciple {
   title: string;
-  text: string;
+  text: ReactNode;
 }
 
 const ARCHITECTURE_PRINCIPLES: ArchitecturePrinciple[] = [
   {
     title: 'One source, every surface',
-    text: 'One list should drive everything derived from it. On this site a single companies file feeds the work grid, the detail pages, the sitemap, and the static params, so adding a job is a one-line edit. At Eider the same rule puts about 290 paired web and native components and 3,700 localized strings behind one definition, which means a change cannot land on half the product.',
+    text: (
+      <>
+        One list should drive everything derived from it. On this site a single
+        companies file feeds the work grid, the detail pages, the sitemap, and
+        the static params, so adding a job is a one-line edit. At{' '}
+        <TextLink href={EIDER_URL} target="_blank">
+          Eider
+        </TextLink>{' '}
+        the same rule puts about 290 paired web and native components and 3,700
+        localized strings behind one definition, which means a change cannot
+        land on half the product.
+      </>
+    ),
   },
   {
     title: 'No loaders, no layout shift',
