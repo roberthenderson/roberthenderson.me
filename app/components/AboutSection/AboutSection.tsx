@@ -36,7 +36,8 @@ export const AboutSection: FC = () => {
         Every project I start answers the same four questions before I write a
         component. Who is blocked and why, what the tenth change will cost, what
         the product needs to feel like, and how it gets to production every
-        week. Fifteen years of answering them badly is why I answer them first.
+        week. Fifteen years of shipping taught me they get answered either way,
+        and answering them first is cheaper.
       </SectionBanner>
       <SectionContent>
         <Grid className="items-start">

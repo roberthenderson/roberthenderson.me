@@ -74,10 +74,11 @@ export const FrontendArchitecture: FC = () => {
               </LinkButton>
             </div>
             <p>
-              Most of the frontend problems I have been paid to fix turned out
+              Most of the frontend problems I have been given to fix turned out
               to be structural. These are the rules I build by now, and what
-              each one bought me. The code for this site is public, so you can
-              check it against them.
+              each one bought me. The code for this site is public, and the
+              single source rule and the commit history are both easy to check
+              in it.
             </p>
             <ul className="flex flex-col gap-6 text-left">
               {ARCHITECTURE_PRINCIPLES.map((principle) => (
